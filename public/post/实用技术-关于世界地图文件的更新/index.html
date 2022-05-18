@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="实用技术 | 关于世界地图文件的更新 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#地图绘制 6 个
+#数据可视化 15 个
+我们在推出有关世界地图绘制和数据化（实用技术 | 如何用R绘制并填充相对正确的世界地图、实用技术 | 如何用R基本复现《经济学人》杂志中的地图插图）的帖子后，得到了不少读者朋友的肯定与支持。近期，有读者朋友向我们反馈之前上传的世界地图world.json出现读取错误的情况，我们随即做了核查，发现确实如此，但迄今不明白是何原因所致，在此我们向这位读者表示感谢。
+为了方便大家研究，我们重新将一份新的世界地图文件上传到GitHub网站上，该世界地图以0°经线为中心，坚持“一个中国”原则，在中印边界藏南段、阿克赛钦段绘制出均无明显缺漏，但在处理时仍需加注九段线，同时该地图对克什米尔地区、科索沃地区的标识也与我国立场一致，初步效果如下图所示：
+值得指出的是，这次更新的地图文件是shp格式的，同样可以使用sf包进行读取，如：
+       world &lt;- read_sf(“shijieditu”)NineDashLine &lt;- read_sf(&quot;NineDashLine&quot;)  最后感兴趣的读者朋友可以点击文末 “阅读原文” 前往GitHub上下载使用。
+撰文：杨端程 审校：吴温泉 编辑：康张城">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%96%B0/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="实用技术 | 关于世界地图文件的更新 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#地图绘制 6 个
+#数据可视化 15 个
+我们在推出有关世界地图绘制和数据化（实用技术 | 如何用R绘制并填充相对正确的世界地图、实用技术 | 如何用R基本复现《经济学人》杂志中的地图插图）的帖子后，得到了不少读者朋友的肯定与支持。近期，有读者朋友向我们反馈之前上传的世界地图world.json出现读取错误的情况，我们随即做了核查，发现确实如此，但迄今不明白是何原因所致，在此我们向这位读者表示感谢。
+为了方便大家研究，我们重新将一份新的世界地图文件上传到GitHub网站上，该世界地图以0°经线为中心，坚持“一个中国”原则，在中印边界藏南段、阿克赛钦段绘制出均无明显缺漏，但在处理时仍需加注九段线，同时该地图对克什米尔地区、科索沃地区的标识也与我国立场一致，初步效果如下图所示：
+值得指出的是，这次更新的地图文件是shp格式的，同样可以使用sf包进行读取，如：
+       world &lt;- read_sf(“shijieditu”)NineDashLine &lt;- read_sf(&quot;NineDashLine&quot;)  最后感兴趣的读者朋友可以点击文末 “阅读原文” 前往GitHub上下载使用。
+撰文：杨端程 审校：吴温泉 编辑：康张城" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%96%B0/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用技术 | 关于世界地图文件的更新 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#地图绘制 6 个
+#数据可视化 15 个
+我们在推出有关世界地图绘制和数据化（实用技术 | 如何用R绘制并填充相对正确的世界地图、实用技术 | 如何用R基本复现《经济学人》杂志中的地图插图）的帖子后，得到了不少读者朋友的肯定与支持。近期，有读者朋友向我们反馈之前上传的世界地图world.json出现读取错误的情况，我们随即做了核查，发现确实如此，但迄今不明白是何原因所致，在此我们向这位读者表示感谢。
+为了方便大家研究，我们重新将一份新的世界地图文件上传到GitHub网站上，该世界地图以0°经线为中心，坚持“一个中国”原则，在中印边界藏南段、阿克赛钦段绘制出均无明显缺漏，但在处理时仍需加注九段线，同时该地图对克什米尔地区、科索沃地区的标识也与我国立场一致，初步效果如下图所示：
+值得指出的是，这次更新的地图文件是shp格式的，同样可以使用sf包进行读取，如：
+       world &lt;- read_sf(“shijieditu”)NineDashLine &lt;- read_sf(&quot;NineDashLine&quot;)  最后感兴趣的读者朋友可以点击文末 “阅读原文” 前往GitHub上下载使用。
+撰文：杨端程 审校：吴温泉 编辑：康张城"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%96%B0/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "实用技术 | 关于世界地图文件的更新 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#实用技术 19 个\n#地图绘制 6 个\n#数据可视化 15 个\n我们在推出有关世界地图绘制和数据化（实用技术 | 如何用R绘制并填充相对正确的世界地图、实用技术 | 如何用R基本复现《经济学人》杂志中的地图插图）的帖子后，得到了不少读者朋友的肯定与支持。近期，有读者朋友向我们反馈之前上传的世界地图world.json出现读取错误的情况，我们随即做了核查，发现确实如此，但迄今不明白是何原因所致，在此我们向这位读者表示感谢。\n为了方便大家研究，我们重新将一份新的世界地图文件上传到GitHub网站上，该世界地图以0°经线为中心，坚持“一个中国”原则，在中印边界藏南段、阿克赛钦段绘制出均无明显缺漏，但在处理时仍需加注九段线，同时该地图对克什米尔地区、科索沃地区的标识也与我国立场一致，初步效果如下图所示：\n值得指出的是，这次更新的地图文件是shp格式的，同样可以使用sf包进行读取，如：\n       world \u0026lt;- read_sf(“shijieditu”)NineDashLine \u0026lt;- read_sf(\u0026quot;NineDashLine\u0026quot;)  最后感兴趣的读者朋友可以点击文末 “阅读原文” 前往GitHub上下载使用。\n撰文：杨端程 审校：吴温泉 编辑：康张城",
+  "keywords": [
+    
+  ],
+  "articleBody": "实用技术 | 关于世界地图文件的更新 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#实用技术 19 个\n#地图绘制 6 个\n#数据可视化 15 个\n我们在推出有关世界地图绘制和数据化（实用技术 | 如何用R绘制并填充相对正确的世界地图、实用技术 | 如何用R基本复现《经济学人》杂志中的地图插图）的帖子后，得到了不少读者朋友的肯定与支持。近期，有读者朋友向我们反馈之前上传的世界地图world.json出现读取错误的情况，我们随即做了核查，发现确实如此，但迄今不明白是何原因所致，在此我们向这位读者表示感谢。\n为了方便大家研究，我们重新将一份新的世界地图文件上传到GitHub网站上，该世界地图以0°经线为中心，坚持“一个中国”原则，在中印边界藏南段、阿克赛钦段绘制出均无明显缺漏，但在处理时仍需加注九段线，同时该地图对克什米尔地区、科索沃地区的标识也与我国立场一致，初步效果如下图所示：\n值得指出的是，这次更新的地图文件是shp格式的，同样可以使用sf包进行读取，如：\n       world  最后感兴趣的读者朋友可以点击文末 “阅读原文” 前往GitHub上下载使用。\n撰文：杨端程 审校：吴温泉 编辑：康张城\n",
+  "wordCount" : "39",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%96%B0/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="实用技术--关于世界地图文件的更新">实用技术 | 关于世界地图文件的更新<a hidden class="anchor" aria-hidden="true" href="#实用技术--关于世界地图文件的更新">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p>#实用技术 19 个</p>
+<p>#地图绘制 6 个</p>
+<p>#数据可视化 15 个</p>
+<p>我们在推出有关世界地图绘制和数据化（<a href="http://mp.weixin.qq.com/s?__biz=MzI5ODY0MTQ1OA==&amp;mid=2247488243&amp;idx=1&amp;sn=1934769d74dff81e24a07b12688c27cb&amp;chksm=eca3e3aedbd46ab8fdb72def06ae5af91ebaa0866f87a0bcf662693270eab5360a554a6a1d0a&amp;scene=21#wechat_redirect">实用技术 |
+如何用R绘制并填充相对正确的世界地图</a>、<a href="http://mp.weixin.qq.com/s?__biz=MzI5ODY0MTQ1OA==&amp;mid=2247489236&amp;idx=1&amp;sn=c152e10f61fe6edfe15307f469b7ea76&amp;chksm=eca3e789dbd46e9fbf604142472d8d9f56f0cf30fe0618a43cf6ee210671813dcf0ab0eaae9a&amp;scene=21#wechat_redirect">实用技术
+|
+如何用R基本复现《经济学人》杂志中的地图插图</a>）的帖子后，得到了不少读者朋友的肯定与支持。近期，有读者朋友向我们反馈之前上传的世界地图world.json出现读取错误的情况，我们随即做了核查，发现确实如此，但迄今不明白是何原因所致，在此我们向这位读者表示感谢。</p>
+<p>为了方便大家研究，我们重新将一份新的世界地图文件上传到GitHub网站上，该世界地图以0°经线为中心，坚持“一个中国”原则，在中印边界藏南段、阿克赛钦段绘制出均无明显缺漏，但在处理时仍需加注九段线，同时该地图对克什米尔地区、科索沃地区的标识也与我国立场一致，初步效果如下图所示：</p>
+<p><img loading="lazy" src="images/105/2.png" alt=""  />
+</p>
+<p>值得指出的是，这次更新的地图文件是shp格式的，同样可以使用sf包进行读取，如：</p>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<pre><code>world &lt;- read_sf(“shijieditu”)NineDashLine &lt;- read_sf(&quot;NineDashLine&quot;)
+</code></pre>
+<p>最后感兴趣的读者朋友可以点击文末 <strong>“阅读原文”</strong> 前往GitHub上下载使用。</p>
+<p>撰文：杨端程 审校：吴温泉 编辑：康张城</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

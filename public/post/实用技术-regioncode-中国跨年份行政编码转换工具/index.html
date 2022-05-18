@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="实用技术 | regioncode: 中国跨年份行政编码转换工具 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#数据可视化 15 个
+当代中国行政区划的频繁变迁，给数据科学研究者使用跨年数据或数据可视化的过程当中带来了诸多不便，受到 Vincent Arel-Bundock countrycode包的启发，清华大学政治学系胡悦副教授团队创建的regioncode包实现了中国各地级市1986-2019年间地区正式名称、常用名称和行政区划代码之间的无缝转换。regioncode0.1.1版本已通过CRAN和Github双平台向全球发布，供需要者免费使用。
+本文旨在向各位读者介绍regioncode的功能和使用方法。
+/ 安装 /  最新发布版本：install.packages(&quot;regioncode&quot;). 最新开发版本：remotes::install_github(&quot;sammo3182/regioncode&quot;).  / 基本用法 / 我们结合哈佛大学政府系王裕华教授搜集的数据集China’s Corruption Investigations Dataset(CCID)来介绍regioncode的使用方法。
+在regioncode包中，我们将行政区划代码命名为code，地区的正式名称为name，它们的常用缩写为sname。当前版本支持任意一对之间的相互转换。为此，用户只需将名称的字符向量或地理编码的数字向量传递到函数中。在当前版本中，该函数可以产生三种类型的地级和省级输出：代码（code）、名称（name）和地区（area，如华北、东北、华南等）。只需在参数中指定他们想要的输出类型convert_to以及输入和输出的相应年份。例如，以下代码将CCID数据中的2019地理编码转换为1989版本：
+library(regioncode) data(&quot;corruption&quot;) # Original 2019 version corruption$prefecture_id ## [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600 # 1999 version regioncode(data_input = corruption$prefecture_id, convert_to = &quot;code&quot;, # default set year_from = 2019, year_to = 1989) ## [1] 370100 329001 310227 420500 422700 452200 433000 350300 512500 460025 ## [11] 420600  请注意，如果一个区域最初在例如1989年进行了地理编码并包含在新区域中，则在2019年，此后将使用新区域地理编码。如果一个大的地方被分成几个区域，那么晚年的代码将按照区域数字地理编码的升序与第一个区域对齐。">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-regioncode-%E4%B8%AD%E5%9B%BD%E8%B7%A8%E5%B9%B4%E4%BB%BD%E8%A1%8C%E6%94%BF%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="实用技术 | regioncode: 中国跨年份行政编码转换工具 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#数据可视化 15 个
+当代中国行政区划的频繁变迁，给数据科学研究者使用跨年数据或数据可视化的过程当中带来了诸多不便，受到 Vincent Arel-Bundock countrycode包的启发，清华大学政治学系胡悦副教授团队创建的regioncode包实现了中国各地级市1986-2019年间地区正式名称、常用名称和行政区划代码之间的无缝转换。regioncode0.1.1版本已通过CRAN和Github双平台向全球发布，供需要者免费使用。
+本文旨在向各位读者介绍regioncode的功能和使用方法。
+/ 安装 /  最新发布版本：install.packages(&quot;regioncode&quot;). 最新开发版本：remotes::install_github(&quot;sammo3182/regioncode&quot;).  / 基本用法 / 我们结合哈佛大学政府系王裕华教授搜集的数据集China’s Corruption Investigations Dataset(CCID)来介绍regioncode的使用方法。
+在regioncode包中，我们将行政区划代码命名为code，地区的正式名称为name，它们的常用缩写为sname。当前版本支持任意一对之间的相互转换。为此，用户只需将名称的字符向量或地理编码的数字向量传递到函数中。在当前版本中，该函数可以产生三种类型的地级和省级输出：代码（code）、名称（name）和地区（area，如华北、东北、华南等）。只需在参数中指定他们想要的输出类型convert_to以及输入和输出的相应年份。例如，以下代码将CCID数据中的2019地理编码转换为1989版本：
+library(regioncode) data(&quot;corruption&quot;) # Original 2019 version corruption$prefecture_id ## [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600 # 1999 version regioncode(data_input = corruption$prefecture_id, convert_to = &quot;code&quot;, # default set year_from = 2019, year_to = 1989) ## [1] 370100 329001 310227 420500 422700 452200 433000 350300 512500 460025 ## [11] 420600  请注意，如果一个区域最初在例如1989年进行了地理编码并包含在新区域中，则在2019年，此后将使用新区域地理编码。如果一个大的地方被分成几个区域，那么晚年的代码将按照区域数字地理编码的升序与第一个区域对齐。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-regioncode-%E4%B8%AD%E5%9B%BD%E8%B7%A8%E5%B9%B4%E4%BB%BD%E8%A1%8C%E6%94%BF%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用技术 | regioncode: 中国跨年份行政编码转换工具 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#数据可视化 15 个
+当代中国行政区划的频繁变迁，给数据科学研究者使用跨年数据或数据可视化的过程当中带来了诸多不便，受到 Vincent Arel-Bundock countrycode包的启发，清华大学政治学系胡悦副教授团队创建的regioncode包实现了中国各地级市1986-2019年间地区正式名称、常用名称和行政区划代码之间的无缝转换。regioncode0.1.1版本已通过CRAN和Github双平台向全球发布，供需要者免费使用。
+本文旨在向各位读者介绍regioncode的功能和使用方法。
+/ 安装 /  最新发布版本：install.packages(&quot;regioncode&quot;). 最新开发版本：remotes::install_github(&quot;sammo3182/regioncode&quot;).  / 基本用法 / 我们结合哈佛大学政府系王裕华教授搜集的数据集China’s Corruption Investigations Dataset(CCID)来介绍regioncode的使用方法。
+在regioncode包中，我们将行政区划代码命名为code，地区的正式名称为name，它们的常用缩写为sname。当前版本支持任意一对之间的相互转换。为此，用户只需将名称的字符向量或地理编码的数字向量传递到函数中。在当前版本中，该函数可以产生三种类型的地级和省级输出：代码（code）、名称（name）和地区（area，如华北、东北、华南等）。只需在参数中指定他们想要的输出类型convert_to以及输入和输出的相应年份。例如，以下代码将CCID数据中的2019地理编码转换为1989版本：
+library(regioncode) data(&quot;corruption&quot;) # Original 2019 version corruption$prefecture_id ## [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600 # 1999 version regioncode(data_input = corruption$prefecture_id, convert_to = &quot;code&quot;, # default set year_from = 2019, year_to = 1989) ## [1] 370100 329001 310227 420500 422700 452200 433000 350300 512500 460025 ## [11] 420600  请注意，如果一个区域最初在例如1989年进行了地理编码并包含在新区域中，则在2019年，此后将使用新区域地理编码。如果一个大的地方被分成几个区域，那么晚年的代码将按照区域数字地理编码的升序与第一个区域对齐。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-regioncode-%E4%B8%AD%E5%9B%BD%E8%B7%A8%E5%B9%B4%E4%BB%BD%E8%A1%8C%E6%94%BF%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "实用技术 | regioncode: 中国跨年份行政编码转换工具 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#实用技术 19 个\n#数据可视化 15 个\n当代中国行政区划的频繁变迁，给数据科学研究者使用跨年数据或数据可视化的过程当中带来了诸多不便，受到 Vincent Arel-Bundock countrycode包的启发，清华大学政治学系胡悦副教授团队创建的regioncode包实现了中国各地级市1986-2019年间地区正式名称、常用名称和行政区划代码之间的无缝转换。regioncode0.1.1版本已通过CRAN和Github双平台向全球发布，供需要者免费使用。\n本文旨在向各位读者介绍regioncode的功能和使用方法。\n/ 安装 /  最新发布版本：install.packages(\u0026quot;regioncode\u0026quot;). 最新开发版本：remotes::install_github(\u0026quot;sammo3182/regioncode\u0026quot;).  / 基本用法 / 我们结合哈佛大学政府系王裕华教授搜集的数据集China’s Corruption Investigations Dataset(CCID)来介绍regioncode的使用方法。\n在regioncode包中，我们将行政区划代码命名为code，地区的正式名称为name，它们的常用缩写为sname。当前版本支持任意一对之间的相互转换。为此，用户只需将名称的字符向量或地理编码的数字向量传递到函数中。在当前版本中，该函数可以产生三种类型的地级和省级输出：代码（code）、名称（name）和地区（area，如华北、东北、华南等）。只需在参数中指定他们想要的输出类型convert_to以及输入和输出的相应年份。例如，以下代码将CCID数据中的2019地理编码转换为1989版本：\nlibrary(regioncode) data(\u0026quot;corruption\u0026quot;) # Original 2019 version corruption$prefecture_id ## [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600 # 1999 version regioncode(data_input = corruption$prefecture_id, convert_to = \u0026quot;code\u0026quot;, # default set year_from = 2019, year_to = 1989) ## [1] 370100 329001 310227 420500 422700 452200 433000 350300 512500 460025 ## [11] 420600  请注意，如果一个区域最初在例如1989年进行了地理编码并包含在新区域中，则在2019年，此后将使用新区域地理编码。如果一个大的地方被分成几个区域，那么晚年的代码将按照区域数字地理编码的升序与第一个区域对齐。",
+  "keywords": [
+    
+  ],
+  "articleBody": "实用技术 | regioncode: 中国跨年份行政编码转换工具 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#实用技术 19 个\n#数据可视化 15 个\n当代中国行政区划的频繁变迁，给数据科学研究者使用跨年数据或数据可视化的过程当中带来了诸多不便，受到 Vincent Arel-Bundock countrycode包的启发，清华大学政治学系胡悦副教授团队创建的regioncode包实现了中国各地级市1986-2019年间地区正式名称、常用名称和行政区划代码之间的无缝转换。regioncode0.1.1版本已通过CRAN和Github双平台向全球发布，供需要者免费使用。\n本文旨在向各位读者介绍regioncode的功能和使用方法。\n/ 安装 /  最新发布版本：install.packages(\"regioncode\"). 最新开发版本：remotes::install_github(\"sammo3182/regioncode\").  / 基本用法 / 我们结合哈佛大学政府系王裕华教授搜集的数据集China’s Corruption Investigations Dataset(CCID)来介绍regioncode的使用方法。\n在regioncode包中，我们将行政区划代码命名为code，地区的正式名称为name，它们的常用缩写为sname。当前版本支持任意一对之间的相互转换。为此，用户只需将名称的字符向量或地理编码的数字向量传递到函数中。在当前版本中，该函数可以产生三种类型的地级和省级输出：代码（code）、名称（name）和地区（area，如华北、东北、华南等）。只需在参数中指定他们想要的输出类型convert_to以及输入和输出的相应年份。例如，以下代码将CCID数据中的2019地理编码转换为1989版本：\nlibrary(regioncode) data(\"corruption\") # Original 2019 version corruption$prefecture_id ## [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600 # 1999 version regioncode(data_input = corruption$prefecture_id, convert_to = \"code\", # default set year_from = 2019, year_to = 1989) ## [1] 370100 329001 310227 420500 422700 452200 433000 350300 512500 460025 ## [11] 420600  请注意，如果一个区域最初在例如1989年进行了地理编码并包含在新区域中，则在2019年，此后将使用新区域地理编码。如果一个大的地方被分成几个区域，那么晚年的代码将按照区域数字地理编码的升序与第一个区域对齐。\n通过将输出格式更改为name，可以轻松地将给定年份的代码或地区名称转换为另一年份的地区名称。regioncode自动检测输入格式，因此用户只需指定 输出 格式（连同输入和输出年份）即可获得所需的内容。在以下示例中，我们将corruption数据集中的地理编码变量转换为地区名称，将名称变量转换为另一年的代码和名称。\n# The original name corruption$prefecture ## [1] \"济南市\" \"泰州市\" \"松江区\" \"宜昌市\" \"来宾市\" \"怀化市\" \"莆田市\" \"宜宾市\" ## [9] \"定安县\" \"襄阳市\" # Codes to name regioncode(data_input = corruption$prefecture_id, convert_to = \"name\", year_from = 2019, year_to = 1989) ## [1] \"济南市\" \"泰州市\" \"松江县\" \"宜昌市\" \"宜昌地区\" \"柳州地区\" ## [7] \"怀化地区\" \"莆田市\" \"宜宾地区\" \"定安县\" \"襄樊市\" # Name to codes of the same year regioncode(data_input = corruption$prefecture, convert_to = \"code\", year_from = 2019, year_to = 2019) ## [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600 # Name to name of a different year regioncode(data_input = corruption$prefecture, convert_to = \"name\", year_from = 2019, year_to = 1989) ## [1] \"济南市\" \"泰州市\" \"松江县\" \"宜昌市\" \"宜昌地区\" \"柳州地区\" ## [7] \"怀化地区\" \"莆田市\" \"宜宾地区\" \"定安县\" \"襄樊市\"  / 进阶应用 / 为进一步帮助用户使用更“杂乱”的数据和多样化的需求，regioncode提供五种特殊转换：不完整数据的转换、直辖市、地理区划和方言区域转换、拼音输出。当前版本还允许在省级转换。\n不完整数据的转换 通常，数据代码在记录地理信息时可能会省略行政级别，例如使用“北京”而不是“北京市”。要完成此类数据的转换，需要指定incomplete_name参数。如果输入的数据不完整，用户应将参数设置为“from”；如果他们希望输出名称（when convert_to = \"name\"）不包含“city”或“prefecture”，他们可以将参数设置为“to”（参见下面的示例）；如果用户想要为输入和输出名称获得不完整的名称，incomplete_name = \"both\". 以上所有转换都可以持续数年。\n# Full, official names corruption$prefecture ## [1] \"济南市\" \"泰州市\" \"松江区\" \"宜昌市\" \"来宾市\" \"怀化市\" \"莆田市\" \"宜宾市\" ## [9] \"定安县\" \"襄阳市\" regioncode(data_input = corruption$prefecture, convert_to = \"name\", year_from = 2019, year_to = 1989, incomplete_name = \"to\") ## [1] \"济南\" \"泰州\" \"松江\" \"宜昌\" \"柳州\" \"来宾\" \"怀化\" \"莆田\" \"宜宾\" \"定安\" ## [11] \"襄樊\" \"襄阳\"  直辖市 直辖市（“直辖市”）在地理上是城市，但在行政上是省级的。因此，这些直辖市内的地区是县级的。不同的分析以不同的方式对待这些地区：一些与其他县平行的地区，而另一些则将整个自治市视为一个县。要处理后一种情况，请regioncode设置参数zhixiashi。设置参数时TRUE，将直辖市视为整个县，并使用其省级代码作为地理编码。\n地理区划和方言区域 由于多种原因，中国各省级行政单位在地理空间上可以分为七个不同地区，它们如下所示：\n   地区 省级行政单位     华北 北京市、天津市、山西省、河北省、内蒙古自治区   东北 黑龙江省、吉林省、辽宁省   华东 上海市、江苏省、浙江省、安徽省、福建省、台湾省、江西省、山东省   华中 河南省、湖北省、湖南省   华南 广东省、海南省、广西壮族自治区、香港特别行政区、澳门特别行政区   西南 重庆市、四川省、贵州省、云南省、西藏自治区、云南省   西北 陕西省、甘肃省、青海省、宁夏回族自治区、新疆维吾尔自治区    regioncode 提供了一种方法，将区域的代码和名称转换为这样的区域。\nregioncode(data_input = corruption$prefecture, year_from = 2019, year_to = 1989, convert_to=\"area\") ## [1] \"华东\" \"华东\" \"华东\" \"华中\" \"华南\" \"华中\" \"华东\" \"西南\" \"华南\" \"华中\"  中国国土广袤，方言多样。这些方言可能会被一个省或省的多个县使用。不同省份的州也可能使用相同的方言。\nregioncode允许用户获得县所属的语言区域作为输出。用户可以通过将参数设置to_pinyin为dia_group或来获得两个级别的语言区域，方言组和方言子组dia_sub_group。请注意，中国的语言分布过于复杂，无法在地级进行精确衡量。因此，语言区的输出regioncode仅供参考，而不是严格的语言研究。\nregioncode(data_input = corruption$prefecture, year_from = 2019, year_to = 1989, to_dialect = \"dia_group\") ## [1] \"冀鲁官话\" \"江淮官话\" \"吴语\" \"西南官话\" \"西南官话\" \"湘语\" ## [7] \"莆仙区\" \"西南官话\" \"琼文区\" \"西南官话\" regioncode(data_input = corruption$prefecture, year_from = 2019, year_to = 1989, to_dialect = \"dia_sub_group\") ## [1] \"沧惠片-1\" \"石济片-8\" \"泰如片-1\" \"太湖片-1\" \"成渝片-3\" \"成渝片-9\" ## [7] \"桂柳片-10\" \"岑江片-2\" \"吉溆片-3\" \"娄邵片-1\" \"黔北片-3\" \"长益片-3\" ## [13] \"莆仙区-4\" \"灌赤片-10\" \"府城片-1\" \"鄂北片-10\"  汉语拼音 有些数据用汉语拼音而不是汉字来存储地区名称。regioncode可以通过设置to_pinyin = TRUE参数获得拼音输出。该参数可应用于正式名称、不完整名称或地理区划和方言区域的输出。\nregioncode(data_input = corruption$prefecture, year_from = 2019, year_to = 1989, convert_to=\"name\", to_pinyin=TRUE) ## 济南市 泰州市 松江县 宜昌市 ## \"ji_nan_shi\" \"tai_zhou_shi\" \"song_jiang_xian\" \"yi_chang_shi\" ## 宜昌地区 柳州地区 怀化地区 莆田市 ## \"yi_chang_di_qu\" \"liu_zhou_di_qu\" \"huai_hua_di_qu\" \"pu_tian_shi\" ## 宜宾地区 定安县 襄樊市 ## \"yi_bin_di_qu\" \"ding_an_xian\" \"xiang_fan_shi\" regioncode(data_input = corruption$prefecture, year_from = 2019, year_to = 1989, convert_to=\"name\", incomplete_name = \"to\", to_pinyin=TRUE) ## 济南 泰州 松江 宜昌 柳州 来宾 ## \"ji_nan\" \"tai_zhou\" \"song_jiang\" \"yi_chang\" \"liu_zhou\" \"lai_bin\" ## 怀化 莆田 宜宾 定安 襄樊 襄阳 ## \"huai_hua\" \"pu_tian\" \"yi_bin\" \"ding_an\" \"xiang_fan\" \"xiang_yang\" regioncode(data_input = corruption$prefecture, year_from = 2019, year_to = 1989, convert_to=\"area\", to_pinyin=TRUE) ## 华东 华东 华东 华中 华南 华中 ## \"hua_dong\" \"hua_dong\" \"hua_dong\" \"hua_zhong\" \"hua_nan\" \"hua_zhong\" ## 华东 西南 华南 华中 ## \"hua_dong\" \"xi_nan\" \"hua_nan\" \"hua_zhong\"  省份 regioncode不仅允许在地级市层级对数据进行转换而且还提供在省级转换的功能。通过设置参数province = TRUE，用户可以完成所有省级的代号、名称、区域转换。（注意，在省级层面，语言转换只能是方言组。）而且，由于省份有固定的缩写，当输入是缩写，用户可以设置的convert_to参数abbreTocode，abbreToname或abbreToarea。当他们想要省级缩写输出时，只需设置convert_to = \"abbre\".\nregioncode(data_input = corruption$province_id, convert_to = \"codeToabbre\", year_from = 2019, year_to = 1989, province = TRUE) ## [1] \"鲁\" \"苏\" \"沪\" \"鄂\" \"桂\" \"湘\" \"闽\" \"蜀\" \"琼\" \"鄂\"  / 总结 / 由清华大学政治学系胡悦副教授团队开发的regioncode为中国行政区划代码、官方名称、地理区划和方言区域、省份缩写等之间的相互转换提供了一种便捷的方式。本文为用户提供了软件包功能的快速视图和简短的教程。\n本软件包的进一步开发正在进行中，之后还会陆续推出县级市转换和更加丰富的功能。欢迎大家使用并提出改进意见（意见和建议可以在软件GitHub主页通过issue方式提出），更欢迎志趣相投的朋友一起加入研发。\n撰文：孙宇飞 审读：杨端程 编辑：吴温泉\n",
+  "wordCount" : "539",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-regioncode-%E4%B8%AD%E5%9B%BD%E8%B7%A8%E5%B9%B4%E4%BB%BD%E8%A1%8C%E6%94%BF%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="实用技术--regioncode-中国跨年份行政编码转换工具">实用技术 | regioncode: 中国跨年份行政编码转换工具<a hidden class="anchor" aria-hidden="true" href="#实用技术--regioncode-中国跨年份行政编码转换工具">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p>#实用技术 19 个</p>
+<p>#数据可视化 15 个</p>
+<p>当代中国行政区划的频繁变迁，给数据科学研究者使用跨年数据或数据可视化的过程当中带来了诸多不便，受到 Vincent Arel-Bundock
+<code>countrycode</code>包的启发，清华大学政治学系胡悦副教授团队创建的<code>regioncode</code>包实现了中国各地级市1986-2019年间地区正式名称、常用名称和行政区划代码之间的无缝转换。<code>regioncode</code>0.1.1版本已通过CRAN和Github双平台向全球发布，供需要者免费使用。</p>
+<p>本文旨在向各位读者介绍<code>regioncode</code>的功能和使用方法。</p>
+<h1 id="-安装-">/ 安装 /<a hidden class="anchor" aria-hidden="true" href="#-安装-">#</a></h1>
+<ul>
+<li>最新发布版本：<code>install.packages(&quot;regioncode&quot;)</code>.</li>
+<li>最新开发版本：<code>remotes::install_github(&quot;sammo3182/regioncode&quot;)</code>.</li>
+</ul>
+<h1 id="-基本用法-">/ 基本用法 /<a hidden class="anchor" aria-hidden="true" href="#-基本用法-">#</a></h1>
+<p>我们结合哈佛大学政府系王裕华教授搜集的数据集<code>China’s Corruption Investigations Dataset(CCID)</code>来介绍<code>regioncode</code>的使用方法。</p>
+<p>在<code>regioncode</code>包中，我们将行政区划代码命名为<code>code</code>，地区的正式名称为<code>name</code>，它们的常用缩写为<code>sname</code>。当前版本支持任意一对之间的相互转换。为此，用户只需将名称的字符向量或地理编码的数字向量传递到函数中。在当前版本中，该函数可以产生三种类型的地级和省级输出：代码（<code>code</code>）、名称（<code>name</code>）和地区（<code>area</code>，如华北、东北、华南等）。只需在参数中指定他们想要的输出类型<code>convert_to</code>以及输入和输出的相应年份。例如，以下代码将<code>CCID</code>数据中的2019地理编码转换为1989版本：</p>
+<pre><code>library(regioncode)  
+data(&quot;corruption&quot;)  
+# Original 2019 version  
+corruption$prefecture_id  
+##  [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600  
+
+
+
+# 1999 version  
+regioncode(data_input = corruption$prefecture_id,   
+           convert_to = &quot;code&quot;, # default set  
+           year_from = 2019,  
+           year_to = 1989)  
+##  [1] 370100 329001 310227 420500 422700 452200 433000 350300 512500 460025  
+## [11] 420600  
+</code></pre>
+<p>请注意，如果一个区域最初在例如1989年进行了地理编码并包含在新区域中，则在2019年，此后将使用新区域地理编码。如果一个大的地方被分成几个区域，那么晚年的代码将按照区域数字地理编码的升序与第一个区域对齐。</p>
+<p>通过将输出格式更改为<code>name</code>，可以轻松地将给定年份的代码或地区名称转换为另一年份的地区名称。<code>regioncode</code>自动检测输入格式，因此用户只需指定
+<em>输出</em>
+格式（连同输入和输出年份）即可获得所需的内容。在以下示例中，我们将<code>corruption</code>数据集中的地理编码变量转换为地区名称，将名称变量转换为另一年的代码和名称。</p>
+<pre><code># The original name  
+corruption$prefecture  
+##  [1] &quot;济南市&quot; &quot;泰州市&quot; &quot;松江区&quot; &quot;宜昌市&quot; &quot;来宾市&quot; &quot;怀化市&quot; &quot;莆田市&quot; &quot;宜宾市&quot;  
+##  [9] &quot;定安县&quot; &quot;襄阳市&quot;  
+
+
+
+# Codes to name  
+regioncode(data_input = corruption$prefecture_id,   
+           convert_to = &quot;name&quot;,  
+           year_from = 2019,  
+           year_to = 1989)  
+##  [1] &quot;济南市&quot;   &quot;泰州市&quot;   &quot;松江县&quot;   &quot;宜昌市&quot;   &quot;宜昌地区&quot; &quot;柳州地区&quot;  
+##  [7] &quot;怀化地区&quot; &quot;莆田市&quot;   &quot;宜宾地区&quot; &quot;定安县&quot;   &quot;襄樊市&quot;  
+
+
+
+# Name to codes of the same year  
+regioncode(data_input = corruption$prefecture,   
+           convert_to = &quot;code&quot;,  
+           year_from = 2019,  
+           year_to = 2019)  
+##  [1] 370100 321200 310117 420500 451300 431200 350300 511500 469021 420600  
+
+
+
+# Name to name of a different year  
+regioncode(data_input = corruption$prefecture,   
+           convert_to = &quot;name&quot;,  
+           year_from = 2019,  
+           year_to = 1989)  
+##  [1] &quot;济南市&quot;   &quot;泰州市&quot;   &quot;松江县&quot;   &quot;宜昌市&quot;   &quot;宜昌地区&quot; &quot;柳州地区&quot;  
+##  [7] &quot;怀化地区&quot; &quot;莆田市&quot;   &quot;宜宾地区&quot; &quot;定安县&quot;   &quot;襄樊市&quot;  
+</code></pre>
+<h1 id="-进阶应用-">/ 进阶应用 /<a hidden class="anchor" aria-hidden="true" href="#-进阶应用-">#</a></h1>
+<p>为进一步帮助用户使用更“杂乱”的数据和多样化的需求，<code>regioncode</code>提供五种特殊转换：不完整数据的转换、直辖市、地理区划和方言区域转换、拼音输出。当前版本还允许在省级转换。</p>
+<h2 id="不完整数据的转换">不完整数据的转换<a hidden class="anchor" aria-hidden="true" href="#不完整数据的转换">#</a></h2>
+<p>通常，数据代码在记录地理信息时可能会省略行政级别，例如使用“北京”而不是“北京市”。要完成此类数据的转换，需要指定<code>incomplete_name</code>参数。如果输入的数据不完整，用户应将参数设置为“from”；如果他们希望输出名称（when
+<code>convert_to = &quot;name&quot;</code>）不包含“city”或“prefecture”，他们可以将参数设置为“to”（参见下面的示例）；如果用户想要为输入和输出名称获得不完整的名称，<code>incomplete_name = &quot;both&quot;</code>. 以上所有转换都可以持续数年。</p>
+<pre><code># Full, official names  
+corruption$prefecture  
+##  [1] &quot;济南市&quot; &quot;泰州市&quot; &quot;松江区&quot; &quot;宜昌市&quot; &quot;来宾市&quot; &quot;怀化市&quot; &quot;莆田市&quot; &quot;宜宾市&quot;  
+##  [9] &quot;定安县&quot; &quot;襄阳市&quot;  
+
+
+
+regioncode(data_input = corruption$prefecture,   
+           convert_to = &quot;name&quot;,  
+           year_from = 2019,  
+           year_to = 1989,  
+           incomplete_name = &quot;to&quot;)  
+##  [1] &quot;济南&quot; &quot;泰州&quot; &quot;松江&quot; &quot;宜昌&quot; &quot;柳州&quot; &quot;来宾&quot; &quot;怀化&quot; &quot;莆田&quot; &quot;宜宾&quot; &quot;定安&quot;  
+## [11] &quot;襄樊&quot; &quot;襄阳&quot;  
+</code></pre>
+<h2 id="直辖市">直辖市<a hidden class="anchor" aria-hidden="true" href="#直辖市">#</a></h2>
+<p>直辖市（“直辖市”）在地理上是城市，但在行政上是省级的。因此，这些直辖市内的地区是县级的。不同的分析以不同的方式对待这些地区：一些与其他县平行的地区，而另一些则将整个自治市视为一个县。要处理后一种情况，请<code>regioncode</code>设置参数<code>zhixiashi</code>。设置参数时<code>TRUE</code>，将直辖市视为整个县，并使用其省级代码作为地理编码。</p>
+<h2 id="地理区划和方言区域">地理区划和方言区域<a hidden class="anchor" aria-hidden="true" href="#地理区划和方言区域">#</a></h2>
+<p>由于多种原因，中国各省级行政单位在地理空间上可以分为七个不同地区，它们如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>地区</th>
+<th>省级行政单位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>华北</td>
+<td>北京市、天津市、山西省、河北省、内蒙古自治区</td>
+</tr>
+<tr>
+<td>东北</td>
+<td>黑龙江省、吉林省、辽宁省</td>
+</tr>
+<tr>
+<td>华东</td>
+<td>上海市、江苏省、浙江省、安徽省、福建省、台湾省、江西省、山东省</td>
+</tr>
+<tr>
+<td>华中</td>
+<td>河南省、湖北省、湖南省</td>
+</tr>
+<tr>
+<td>华南</td>
+<td>广东省、海南省、广西壮族自治区、香港特别行政区、澳门特别行政区</td>
+</tr>
+<tr>
+<td>西南</td>
+<td>重庆市、四川省、贵州省、云南省、西藏自治区、云南省</td>
+</tr>
+<tr>
+<td>西北</td>
+<td>陕西省、甘肃省、青海省、宁夏回族自治区、新疆维吾尔自治区</td>
+</tr>
+</tbody>
+</table>
+<p><code>regioncode</code> 提供了一种方法，将区域的代码和名称转换为这样的区域。</p>
+<pre><code>regioncode(data_input = corruption$prefecture,   
+           year_from = 2019,  
+           year_to = 1989,   
+           convert_to=&quot;area&quot;)  
+##  [1] &quot;华东&quot; &quot;华东&quot; &quot;华东&quot; &quot;华中&quot; &quot;华南&quot; &quot;华中&quot; &quot;华东&quot; &quot;西南&quot; &quot;华南&quot; &quot;华中&quot;  
+</code></pre>
+<p>中国国土广袤，方言多样。这些方言可能会被一个省或省的多个县使用。不同省份的州也可能使用相同的方言。</p>
+<p><code>regioncode</code>允许用户获得县所属的语言区域作为输出。用户可以通过将参数设置<code>to_pinyin</code>为<code>dia_group</code>或来获得两个级别的语言区域，方言组和方言子组<code>dia_sub_group</code>。请注意，中国的语言分布过于复杂，无法在地级进行精确衡量。因此，语言区的输出<code>regioncode</code>仅供参考，而不是严格的语言研究。</p>
+<pre><code>regioncode(data_input = corruption$prefecture,   
+           year_from = 2019,  
+           year_to = 1989,  
+           to_dialect = &quot;dia_group&quot;)  
+##  [1] &quot;冀鲁官话&quot; &quot;江淮官话&quot; &quot;吴语&quot;     &quot;西南官话&quot; &quot;西南官话&quot; &quot;湘语&quot;      
+##  [7] &quot;莆仙区&quot;   &quot;西南官话&quot; &quot;琼文区&quot;   &quot;西南官话&quot;  
+
+
+
+regioncode(data_input = corruption$prefecture,   
+           year_from = 2019,  
+           year_to = 1989,  
+           to_dialect = &quot;dia_sub_group&quot;)  
+##  [1] &quot;沧惠片-1&quot;  &quot;石济片-8&quot;  &quot;泰如片-1&quot;  &quot;太湖片-1&quot;  &quot;成渝片-3&quot;  &quot;成渝片-9&quot;   
+##  [7] &quot;桂柳片-10&quot; &quot;岑江片-2&quot;  &quot;吉溆片-3&quot;  &quot;娄邵片-1&quot;  &quot;黔北片-3&quot;  &quot;长益片-3&quot;   
+## [13] &quot;莆仙区-4&quot;  &quot;灌赤片-10&quot; &quot;府城片-1&quot;  &quot;鄂北片-10&quot;  
+</code></pre>
+<h2 id="汉语拼音">汉语拼音<a hidden class="anchor" aria-hidden="true" href="#汉语拼音">#</a></h2>
+<p>有些数据用汉语拼音而不是汉字来存储地区名称。<code>regioncode</code>可以通过设置<code>to_pinyin = TRUE</code>参数获得拼音输出。该参数可应用于正式名称、不完整名称或地理区划和方言区域的输出。</p>
+<pre><code>regioncode(data_input = corruption$prefecture,   
+           year_from = 2019,  
+           year_to = 1989,   
+           convert_to=&quot;name&quot;,  
+           to_pinyin=TRUE)  
+##            济南市            泰州市            松江县            宜昌市   
+##      &quot;ji_nan_shi&quot;    &quot;tai_zhou_shi&quot; &quot;song_jiang_xian&quot;    &quot;yi_chang_shi&quot;   
+##          宜昌地区          柳州地区          怀化地区            莆田市   
+##  &quot;yi_chang_di_qu&quot;  &quot;liu_zhou_di_qu&quot;  &quot;huai_hua_di_qu&quot;     &quot;pu_tian_shi&quot;   
+##          宜宾地区            定安县            襄樊市   
+##    &quot;yi_bin_di_qu&quot;    &quot;ding_an_xian&quot;   &quot;xiang_fan_shi&quot;  
+
+
+
+regioncode(data_input = corruption$prefecture,   
+           year_from = 2019,  
+           year_to = 1989,   
+           convert_to=&quot;name&quot;,  
+           incomplete_name = &quot;to&quot;,  
+           to_pinyin=TRUE)  
+##         济南         泰州         松江         宜昌         柳州         来宾   
+##     &quot;ji_nan&quot;   &quot;tai_zhou&quot; &quot;song_jiang&quot;   &quot;yi_chang&quot;   &quot;liu_zhou&quot;    &quot;lai_bin&quot;   
+##         怀化         莆田         宜宾         定安         襄樊         襄阳   
+##   &quot;huai_hua&quot;    &quot;pu_tian&quot;     &quot;yi_bin&quot;    &quot;ding_an&quot;  &quot;xiang_fan&quot; &quot;xiang_yang&quot;  
+
+
+
+regioncode(data_input = corruption$prefecture,   
+           year_from = 2019,  
+           year_to = 1989,   
+           convert_to=&quot;area&quot;,  
+           to_pinyin=TRUE)  
+##        华东        华东        华东        华中        华南        华中   
+##  &quot;hua_dong&quot;  &quot;hua_dong&quot;  &quot;hua_dong&quot; &quot;hua_zhong&quot;   &quot;hua_nan&quot; &quot;hua_zhong&quot;   
+##        华东        西南        华南        华中   
+##  &quot;hua_dong&quot;    &quot;xi_nan&quot;   &quot;hua_nan&quot; &quot;hua_zhong&quot;  
+</code></pre>
+<h2 id="省份">省份<a hidden class="anchor" aria-hidden="true" href="#省份">#</a></h2>
+<p><code>regioncode</code>不仅允许在地级市层级对数据进行转换而且还提供在省级转换的功能。通过设置参数<code>province = TRUE</code>，用户可以完成所有省级的代号、名称、区域转换。（注意，在省级层面，语言转换只能是方言组。）而且，由于省份有固定的缩写，当输入是缩写，用户可以设置的<code>convert_to</code>参数<code>abbreTocode</code>，<code>abbreToname</code>或<code>abbreToarea</code>。当他们想要省级缩写输出时，只需设置<code>convert_to = &quot;abbre&quot;</code>.</p>
+<pre><code>regioncode(data_input = corruption$province_id,   
+           convert_to = &quot;codeToabbre&quot;,  
+           year_from = 2019,  
+           year_to = 1989,  
+           province = TRUE)  
+##  [1] &quot;鲁&quot; &quot;苏&quot; &quot;沪&quot; &quot;鄂&quot; &quot;桂&quot; &quot;湘&quot; &quot;闽&quot; &quot;蜀&quot; &quot;琼&quot; &quot;鄂&quot;  
+</code></pre>
+<h1 id="-总结-">/ 总结 /<a hidden class="anchor" aria-hidden="true" href="#-总结-">#</a></h1>
+<p>由清华大学政治学系胡悦副教授团队开发的<code>regioncode</code>为中国行政区划代码、官方名称、地理区划和方言区域、省份缩写等之间的相互转换提供了一种便捷的方式。本文为用户提供了软件包功能的快速视图和简短的教程。</p>
+<p>本软件包的进一步开发正在进行中，之后还会陆续推出县级市转换和更加丰富的功能。欢迎大家使用并提出改进意见（意见和建议可以在软件GitHub主页通过issue方式提出），更欢迎志趣相投的朋友一起加入研发。</p>
+<p>撰文：孙宇飞 审读：杨端程 编辑：吴温泉</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

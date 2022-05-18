@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="实用技术 | 如何用R绘制中国历史地图 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+#实用技术 19 个
+在前几期的实用技术推送中，我们与大家分享了《如何用R绘制并填充相对正确的世界地图》和《如何用R绘制并填充相对正确的中国地图》两篇技术贴，获得了圈内读者朋友的好评与支持。随着学习和研究的深入，在阅读偏向经济史和政治史的文献时，我们会发现这些领域的文献有时附上了作者绘制的历史地图，这让读者觉得耳目一新，甚至心生羡慕。事实上，对于可供R/Python/Stata读取的历史地图文件而言，其并没有什么神秘之处，它和绘制现代地图所需要的shp/json等文件一样，在本质上就是储存地理信息的多边形。
+对于我们从事历史政治学/社会学研究的学生来说，如果在撰写论文或者做展示的时候插入一些有关历史地图的可视化往往会起到“一图胜千言”的效果。因此，只要能找到相关的历史地图文件，我们就能用R等统计软件将其绘制出来。因此，在今天的实用技术贴中，我们就与大家分享如何用R来绘制中国历史地图。我们希望这篇贴子能达成两个目的：首先是教大家如何寻找历史地图素材，其次是用R将它们绘制出来。
+对于如何寻找历史地图素材这一问题很好解决，哈佛大学运行的世界地图网站（地址：http://worldmap.harvard.edu/maps/search?sort=last_modified&amp;dir=DESC）提供了丰富且免费的不同时期的中外电子地图素材，读者可以前往这里搜索下载需要的地图素材（大部分的地图文件是可以找到的）。值得说明的是，该网站也收录了哈佛大学东亚系包弼德（Peter K. Bol）教授团队制作的中国历史地图文件。该系列地图以中国资深历史地理专家谭其骧院士主编的《中国历史地图集》地图为蓝本，对中国部分历史时期的地图进行了电子化处理。当然这一系列的电子地图并不全面，如并未对南北朝和五代十国等重要时期的历史地图进行全部电子化。
+接下来，我将结合手头正在进行的博士论文章节写作，以宋元嘉二十六年，魏太平真君十年（449年）的全局地图绘制为例进行说明。这一年的次年在中国历史上具有重要的意义，因为开创“元嘉之治”的宋文帝刘义隆发起第二次北伐，结果大败，从此南朝由盛转衰，而北朝则开始转盛。需要指明的是，对照《中国历史地图集》可见，这一时期的中国境内还存在如柔然、吐谷浑、室韦、契丹、库莫奚以及西域等政权，但是电子地图文件并未包含。
+首先，我们在哈佛世界地图网站的页面搜索栏中输入“Northern and Southern”，选择第二行进入，如图1所示：
+图1
+然后我们勾选左侧选项中的448 CE Northern Wei and (Liu) Song，再点击红框处的Share Map进入，如图2所示：
+图2
+如图3所示，进入后我们再按照红框处选择448 CE Northern Wei and (Liu) Song进入：
+图3
+这样我们在图4中的红框处就能下载我们偏好的格式了（如shp、json或tiff等），本文选用的是json格式文件，它具有小巧轻便的优势。
+图4
+既然找到了历史地图资源，那么如何将其绘制出来呢？这一步其实与之前推送的实用技术贴中绘制当代中国/世界地图的方法一致。为了避免本文的历史地图绘制显得过于单薄，我们同时加载了世界地图和当代中国地图的json格式文件作为底图。为了方便大家理解，我们尽量将每一步绘制历史地图的步骤都完整呈现。
+首先，我们打开R载入绘制地图必不可少的两个基本包tidyverse和sf并读取相应的json格式文件：
+library(tidyverse) library(sf) World &lt;- st_read(&quot;world.json&quot;) China &lt;- st_read(&quot;Chinaditu.json&quot;) WeiSong &lt;- st_read(&quot;WeiSong.json&quot;)  然后绘制宋魏时期的地图，如图5所示：
+ggplot()&#43; geom_sf(data = World, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)&#43; #之所以将边界和填充颜色设为相同是因为不能用当下世界地图的行政边界来表示当时历史上国家的行政边界 geom_sf(data = WeiSong, colour = &quot;#d9d9d9&quot;,fill=&quot;white&quot;)&#43; coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = &quot;on&quot;)&#43; ggtitle(&quot;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）&quot;)&#43; theme(panel.">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%9C%B0%E5%9B%BE/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="实用技术 | 如何用R绘制中国历史地图 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+#实用技术 19 个
+在前几期的实用技术推送中，我们与大家分享了《如何用R绘制并填充相对正确的世界地图》和《如何用R绘制并填充相对正确的中国地图》两篇技术贴，获得了圈内读者朋友的好评与支持。随着学习和研究的深入，在阅读偏向经济史和政治史的文献时，我们会发现这些领域的文献有时附上了作者绘制的历史地图，这让读者觉得耳目一新，甚至心生羡慕。事实上，对于可供R/Python/Stata读取的历史地图文件而言，其并没有什么神秘之处，它和绘制现代地图所需要的shp/json等文件一样，在本质上就是储存地理信息的多边形。
+对于我们从事历史政治学/社会学研究的学生来说，如果在撰写论文或者做展示的时候插入一些有关历史地图的可视化往往会起到“一图胜千言”的效果。因此，只要能找到相关的历史地图文件，我们就能用R等统计软件将其绘制出来。因此，在今天的实用技术贴中，我们就与大家分享如何用R来绘制中国历史地图。我们希望这篇贴子能达成两个目的：首先是教大家如何寻找历史地图素材，其次是用R将它们绘制出来。
+对于如何寻找历史地图素材这一问题很好解决，哈佛大学运行的世界地图网站（地址：http://worldmap.harvard.edu/maps/search?sort=last_modified&amp;dir=DESC）提供了丰富且免费的不同时期的中外电子地图素材，读者可以前往这里搜索下载需要的地图素材（大部分的地图文件是可以找到的）。值得说明的是，该网站也收录了哈佛大学东亚系包弼德（Peter K. Bol）教授团队制作的中国历史地图文件。该系列地图以中国资深历史地理专家谭其骧院士主编的《中国历史地图集》地图为蓝本，对中国部分历史时期的地图进行了电子化处理。当然这一系列的电子地图并不全面，如并未对南北朝和五代十国等重要时期的历史地图进行全部电子化。
+接下来，我将结合手头正在进行的博士论文章节写作，以宋元嘉二十六年，魏太平真君十年（449年）的全局地图绘制为例进行说明。这一年的次年在中国历史上具有重要的意义，因为开创“元嘉之治”的宋文帝刘义隆发起第二次北伐，结果大败，从此南朝由盛转衰，而北朝则开始转盛。需要指明的是，对照《中国历史地图集》可见，这一时期的中国境内还存在如柔然、吐谷浑、室韦、契丹、库莫奚以及西域等政权，但是电子地图文件并未包含。
+首先，我们在哈佛世界地图网站的页面搜索栏中输入“Northern and Southern”，选择第二行进入，如图1所示：
+图1
+然后我们勾选左侧选项中的448 CE Northern Wei and (Liu) Song，再点击红框处的Share Map进入，如图2所示：
+图2
+如图3所示，进入后我们再按照红框处选择448 CE Northern Wei and (Liu) Song进入：
+图3
+这样我们在图4中的红框处就能下载我们偏好的格式了（如shp、json或tiff等），本文选用的是json格式文件，它具有小巧轻便的优势。
+图4
+既然找到了历史地图资源，那么如何将其绘制出来呢？这一步其实与之前推送的实用技术贴中绘制当代中国/世界地图的方法一致。为了避免本文的历史地图绘制显得过于单薄，我们同时加载了世界地图和当代中国地图的json格式文件作为底图。为了方便大家理解，我们尽量将每一步绘制历史地图的步骤都完整呈现。
+首先，我们打开R载入绘制地图必不可少的两个基本包tidyverse和sf并读取相应的json格式文件：
+library(tidyverse) library(sf) World &lt;- st_read(&quot;world.json&quot;) China &lt;- st_read(&quot;Chinaditu.json&quot;) WeiSong &lt;- st_read(&quot;WeiSong.json&quot;)  然后绘制宋魏时期的地图，如图5所示：
+ggplot()&#43; geom_sf(data = World, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)&#43; #之所以将边界和填充颜色设为相同是因为不能用当下世界地图的行政边界来表示当时历史上国家的行政边界 geom_sf(data = WeiSong, colour = &quot;#d9d9d9&quot;,fill=&quot;white&quot;)&#43; coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = &quot;on&quot;)&#43; ggtitle(&quot;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）&quot;)&#43; theme(panel." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%9C%B0%E5%9B%BE/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用技术 | 如何用R绘制中国历史地图 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+#实用技术 19 个
+在前几期的实用技术推送中，我们与大家分享了《如何用R绘制并填充相对正确的世界地图》和《如何用R绘制并填充相对正确的中国地图》两篇技术贴，获得了圈内读者朋友的好评与支持。随着学习和研究的深入，在阅读偏向经济史和政治史的文献时，我们会发现这些领域的文献有时附上了作者绘制的历史地图，这让读者觉得耳目一新，甚至心生羡慕。事实上，对于可供R/Python/Stata读取的历史地图文件而言，其并没有什么神秘之处，它和绘制现代地图所需要的shp/json等文件一样，在本质上就是储存地理信息的多边形。
+对于我们从事历史政治学/社会学研究的学生来说，如果在撰写论文或者做展示的时候插入一些有关历史地图的可视化往往会起到“一图胜千言”的效果。因此，只要能找到相关的历史地图文件，我们就能用R等统计软件将其绘制出来。因此，在今天的实用技术贴中，我们就与大家分享如何用R来绘制中国历史地图。我们希望这篇贴子能达成两个目的：首先是教大家如何寻找历史地图素材，其次是用R将它们绘制出来。
+对于如何寻找历史地图素材这一问题很好解决，哈佛大学运行的世界地图网站（地址：http://worldmap.harvard.edu/maps/search?sort=last_modified&amp;dir=DESC）提供了丰富且免费的不同时期的中外电子地图素材，读者可以前往这里搜索下载需要的地图素材（大部分的地图文件是可以找到的）。值得说明的是，该网站也收录了哈佛大学东亚系包弼德（Peter K. Bol）教授团队制作的中国历史地图文件。该系列地图以中国资深历史地理专家谭其骧院士主编的《中国历史地图集》地图为蓝本，对中国部分历史时期的地图进行了电子化处理。当然这一系列的电子地图并不全面，如并未对南北朝和五代十国等重要时期的历史地图进行全部电子化。
+接下来，我将结合手头正在进行的博士论文章节写作，以宋元嘉二十六年，魏太平真君十年（449年）的全局地图绘制为例进行说明。这一年的次年在中国历史上具有重要的意义，因为开创“元嘉之治”的宋文帝刘义隆发起第二次北伐，结果大败，从此南朝由盛转衰，而北朝则开始转盛。需要指明的是，对照《中国历史地图集》可见，这一时期的中国境内还存在如柔然、吐谷浑、室韦、契丹、库莫奚以及西域等政权，但是电子地图文件并未包含。
+首先，我们在哈佛世界地图网站的页面搜索栏中输入“Northern and Southern”，选择第二行进入，如图1所示：
+图1
+然后我们勾选左侧选项中的448 CE Northern Wei and (Liu) Song，再点击红框处的Share Map进入，如图2所示：
+图2
+如图3所示，进入后我们再按照红框处选择448 CE Northern Wei and (Liu) Song进入：
+图3
+这样我们在图4中的红框处就能下载我们偏好的格式了（如shp、json或tiff等），本文选用的是json格式文件，它具有小巧轻便的优势。
+图4
+既然找到了历史地图资源，那么如何将其绘制出来呢？这一步其实与之前推送的实用技术贴中绘制当代中国/世界地图的方法一致。为了避免本文的历史地图绘制显得过于单薄，我们同时加载了世界地图和当代中国地图的json格式文件作为底图。为了方便大家理解，我们尽量将每一步绘制历史地图的步骤都完整呈现。
+首先，我们打开R载入绘制地图必不可少的两个基本包tidyverse和sf并读取相应的json格式文件：
+library(tidyverse) library(sf) World &lt;- st_read(&quot;world.json&quot;) China &lt;- st_read(&quot;Chinaditu.json&quot;) WeiSong &lt;- st_read(&quot;WeiSong.json&quot;)  然后绘制宋魏时期的地图，如图5所示：
+ggplot()&#43; geom_sf(data = World, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)&#43; #之所以将边界和填充颜色设为相同是因为不能用当下世界地图的行政边界来表示当时历史上国家的行政边界 geom_sf(data = WeiSong, colour = &quot;#d9d9d9&quot;,fill=&quot;white&quot;)&#43; coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = &quot;on&quot;)&#43; ggtitle(&quot;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）&quot;)&#43; theme(panel."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%9C%B0%E5%9B%BE/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "实用技术 | 如何用R绘制中国历史地图 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#地图绘制 6 个\n#数据可视化 15 个\n#实用技术 19 个\n在前几期的实用技术推送中，我们与大家分享了《如何用R绘制并填充相对正确的世界地图》和《如何用R绘制并填充相对正确的中国地图》两篇技术贴，获得了圈内读者朋友的好评与支持。随着学习和研究的深入，在阅读偏向经济史和政治史的文献时，我们会发现这些领域的文献有时附上了作者绘制的历史地图，这让读者觉得耳目一新，甚至心生羡慕。事实上，对于可供R/Python/Stata读取的历史地图文件而言，其并没有什么神秘之处，它和绘制现代地图所需要的shp/json等文件一样，在本质上就是储存地理信息的多边形。\n对于我们从事历史政治学/社会学研究的学生来说，如果在撰写论文或者做展示的时候插入一些有关历史地图的可视化往往会起到“一图胜千言”的效果。因此，只要能找到相关的历史地图文件，我们就能用R等统计软件将其绘制出来。因此，在今天的实用技术贴中，我们就与大家分享如何用R来绘制中国历史地图。我们希望这篇贴子能达成两个目的：首先是教大家如何寻找历史地图素材，其次是用R将它们绘制出来。\n对于如何寻找历史地图素材这一问题很好解决，哈佛大学运行的世界地图网站（地址：http://worldmap.harvard.edu/maps/search?sort=last_modified\u0026amp;dir=DESC）提供了丰富且免费的不同时期的中外电子地图素材，读者可以前往这里搜索下载需要的地图素材（大部分的地图文件是可以找到的）。值得说明的是，该网站也收录了哈佛大学东亚系包弼德（Peter K. Bol）教授团队制作的中国历史地图文件。该系列地图以中国资深历史地理专家谭其骧院士主编的《中国历史地图集》地图为蓝本，对中国部分历史时期的地图进行了电子化处理。当然这一系列的电子地图并不全面，如并未对南北朝和五代十国等重要时期的历史地图进行全部电子化。\n接下来，我将结合手头正在进行的博士论文章节写作，以宋元嘉二十六年，魏太平真君十年（449年）的全局地图绘制为例进行说明。这一年的次年在中国历史上具有重要的意义，因为开创“元嘉之治”的宋文帝刘义隆发起第二次北伐，结果大败，从此南朝由盛转衰，而北朝则开始转盛。需要指明的是，对照《中国历史地图集》可见，这一时期的中国境内还存在如柔然、吐谷浑、室韦、契丹、库莫奚以及西域等政权，但是电子地图文件并未包含。\n首先，我们在哈佛世界地图网站的页面搜索栏中输入“Northern and Southern”，选择第二行进入，如图1所示：\n图1\n然后我们勾选左侧选项中的448 CE Northern Wei and (Liu) Song，再点击红框处的Share Map进入，如图2所示：\n图2\n如图3所示，进入后我们再按照红框处选择448 CE Northern Wei and (Liu) Song进入：\n图3\n这样我们在图4中的红框处就能下载我们偏好的格式了（如shp、json或tiff等），本文选用的是json格式文件，它具有小巧轻便的优势。\n图4\n既然找到了历史地图资源，那么如何将其绘制出来呢？这一步其实与之前推送的实用技术贴中绘制当代中国/世界地图的方法一致。为了避免本文的历史地图绘制显得过于单薄，我们同时加载了世界地图和当代中国地图的json格式文件作为底图。为了方便大家理解，我们尽量将每一步绘制历史地图的步骤都完整呈现。\n首先，我们打开R载入绘制地图必不可少的两个基本包tidyverse和sf并读取相应的json格式文件：\nlibrary(tidyverse) library(sf) World \u0026lt;- st_read(\u0026quot;world.json\u0026quot;) China \u0026lt;- st_read(\u0026quot;Chinaditu.json\u0026quot;) WeiSong \u0026lt;- st_read(\u0026quot;WeiSong.json\u0026quot;)  然后绘制宋魏时期的地图，如图5所示：\nggplot()+ geom_sf(data = World, colour = \u0026quot;#d9d9d9\u0026quot;,fill=\u0026quot;#d9d9d9\u0026quot;)+ #之所以将边界和填充颜色设为相同是因为不能用当下世界地图的行政边界来表示当时历史上国家的行政边界 geom_sf(data = WeiSong, colour = \u0026quot;#d9d9d9\u0026quot;,fill=\u0026quot;white\u0026quot;)+ coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = \u0026quot;on\u0026quot;)+ ggtitle(\u0026quot;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）\u0026quot;)+ theme(panel.",
+  "keywords": [
+    
+  ],
+  "articleBody": "实用技术 | 如何用R绘制中国历史地图 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#地图绘制 6 个\n#数据可视化 15 个\n#实用技术 19 个\n在前几期的实用技术推送中，我们与大家分享了《如何用R绘制并填充相对正确的世界地图》和《如何用R绘制并填充相对正确的中国地图》两篇技术贴，获得了圈内读者朋友的好评与支持。随着学习和研究的深入，在阅读偏向经济史和政治史的文献时，我们会发现这些领域的文献有时附上了作者绘制的历史地图，这让读者觉得耳目一新，甚至心生羡慕。事实上，对于可供R/Python/Stata读取的历史地图文件而言，其并没有什么神秘之处，它和绘制现代地图所需要的shp/json等文件一样，在本质上就是储存地理信息的多边形。\n对于我们从事历史政治学/社会学研究的学生来说，如果在撰写论文或者做展示的时候插入一些有关历史地图的可视化往往会起到“一图胜千言”的效果。因此，只要能找到相关的历史地图文件，我们就能用R等统计软件将其绘制出来。因此，在今天的实用技术贴中，我们就与大家分享如何用R来绘制中国历史地图。我们希望这篇贴子能达成两个目的：首先是教大家如何寻找历史地图素材，其次是用R将它们绘制出来。\n对于如何寻找历史地图素材这一问题很好解决，哈佛大学运行的世界地图网站（地址：http://worldmap.harvard.edu/maps/search?sort=last_modified\u0026dir=DESC）提供了丰富且免费的不同时期的中外电子地图素材，读者可以前往这里搜索下载需要的地图素材（大部分的地图文件是可以找到的）。值得说明的是，该网站也收录了哈佛大学东亚系包弼德（Peter K. Bol）教授团队制作的中国历史地图文件。该系列地图以中国资深历史地理专家谭其骧院士主编的《中国历史地图集》地图为蓝本，对中国部分历史时期的地图进行了电子化处理。当然这一系列的电子地图并不全面，如并未对南北朝和五代十国等重要时期的历史地图进行全部电子化。\n接下来，我将结合手头正在进行的博士论文章节写作，以宋元嘉二十六年，魏太平真君十年（449年）的全局地图绘制为例进行说明。这一年的次年在中国历史上具有重要的意义，因为开创“元嘉之治”的宋文帝刘义隆发起第二次北伐，结果大败，从此南朝由盛转衰，而北朝则开始转盛。需要指明的是，对照《中国历史地图集》可见，这一时期的中国境内还存在如柔然、吐谷浑、室韦、契丹、库莫奚以及西域等政权，但是电子地图文件并未包含。\n首先，我们在哈佛世界地图网站的页面搜索栏中输入“Northern and Southern”，选择第二行进入，如图1所示：\n图1\n然后我们勾选左侧选项中的448 CE Northern Wei and (Liu) Song，再点击红框处的Share Map进入，如图2所示：\n图2\n如图3所示，进入后我们再按照红框处选择448 CE Northern Wei and (Liu) Song进入：\n图3\n这样我们在图4中的红框处就能下载我们偏好的格式了（如shp、json或tiff等），本文选用的是json格式文件，它具有小巧轻便的优势。\n图4\n既然找到了历史地图资源，那么如何将其绘制出来呢？这一步其实与之前推送的实用技术贴中绘制当代中国/世界地图的方法一致。为了避免本文的历史地图绘制显得过于单薄，我们同时加载了世界地图和当代中国地图的json格式文件作为底图。为了方便大家理解，我们尽量将每一步绘制历史地图的步骤都完整呈现。\n首先，我们打开R载入绘制地图必不可少的两个基本包tidyverse和sf并读取相应的json格式文件：\nlibrary(tidyverse) library(sf) World  然后绘制宋魏时期的地图，如图5所示：\nggplot()+ geom_sf(data = World, colour = \"#d9d9d9\",fill=\"#d9d9d9\")+ #之所以将边界和填充颜色设为相同是因为不能用当下世界地图的行政边界来表示当时历史上国家的行政边界 geom_sf(data = WeiSong, colour = \"#d9d9d9\",fill=\"white\")+ coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = \"on\")+ ggtitle(\"宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）\")+ theme(panel.grid = element_blank(), panel.background = element_rect(fill = \"Aliceblue\"), axis.text = element_blank(), axis.ticks = element_blank(), axis.title = element_blank(), plot.title = element_text(size = 15, hjust = 0.5, vjust=0), plot.margin = unit(c(0, 0, 0, 0), \"inches\"))  图5\n我们还可以增加一些城市的注记，这里我提供了南北朝一些重要城市的经纬度，如平城、洛阳、长安、建康和江陵等作为示例。我们首先载入带有经纬度的城市数据库：\nWeiSongcities  然后将其投射到地图上并标记名称，如图6所示：\nggplot()+ geom_sf(data = World, colour = \"#d9d9d9\",fill=\"#d9d9d9\")+ geom_sf(data = WeiSong, colour = \"#d9d9d9\",fill=\"white\")+ coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = \"on\")+ geom_point(data = WeiSongcities , aes(x=Long,y=Latitude),colour=\"red\",size=3,alpha=0.8)+ geom_text(data = WeiSongcities,aes(x=Long,y=Latitude,label=Cities),size =4,vjust = 0, nudge_y = 0.5)+ ggtitle(\"宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）\")+ theme(panel.grid = element_blank(), panel.background = element_rect(fill = \"Aliceblue\"), axis.text = element_blank(), axis.ticks = element_blank(), axis.title = element_blank(), plot.title = element_text(size = 15, hjust = 0.5, vjust=0), plot.margin = unit(c(0, 0, 0, 0), \"inches\"))  图6\n到了这一步我们切记不要以为大功告成了。因为根据国内出版中国历史地图的有关规定，在绘制西汉（公元前206年）以降的中国历代历史地图时，必须绘出南海诸岛和九段线，并加注“南海（涨海）”字样。由于本文使用的作为底图的中国地图自带南海诸岛和九段线，既可以弥补同样作为底图的世界地图相对简陋的缺点，同时也不需要再单独载入有关九段线和南海诸岛的地图文件。因此我们将其叠加到之前的图层当中，如图7所示：\nNorthernWeiLiuSong  图7\n由于coord_sf()的设置限定了地图的显示区域，导致图7中的南海诸岛和九段线显示不全，这样我们需要单独绘制南海小图并将其插入到原来的主图当中。这里就需要借助coord_sf()的缩放功能和cowplot包的图片排版功能。\n我们首先绘制这一历史时期的南海诸岛地图，如图8所示：\nSouthChinaSea  图8\n因为我们是对这一时期的历史地图进行缩放，因此当时刘宋的交州覆盖了今天越南的中部以北地区。\n然后我们载入cowplot包将两幅图合并保存即可，结果如图9所示：\nlibrary(cowplot) ggdraw() + draw_plot(NorthernWeiLiuSong) + draw_plot(SouthChinaSea, x = 0.7, y = 0, width = 0.1, height = 0.25) ggsave(\"WeiSong.jpg\",dpi=500,width=12,height=7.5)  图9\n这样一副比较完整的中国历史地图就绘制完成了，最后我们可以利用专业图片处理软件（或Windows系统自带的画图程序）在南海及其附图的合适位置标注“南海（涨海）”字样（这里不再附图展示）。同理，我们可以利用本文介绍的方法绘制其它朝代的中国历史地图。\n最后需要强调的是，根据国务院2016年颁布的《地图管理条例》中的有关规定，凡在国内出版或公开使用中国历史地图前需要报送主管部门审核，而中国学者在国际学术场合涉及中国历史地图的发表时虽不涉及相关程序但也需要注意相应的问题。未来我们还将继续与大家分享用R/Stata进行可视化处理的实用技术，欢迎大家继续关注、支持我们！\n注释：\n[1] 文本所需代码和文件已上传至百度网盘，读者们可点击 “阅读原文” （提取码：2021）下载复验。\n[2] 在访问哈佛大学世界地图网站时可能遇到不稳定的问题，这种情况下需要多试几次。\n参考文献：\n[1] 陆兵：《编辑地图插图应注意的重点问题》\n[2] 宁海涛：《R-ggplot2标准中国地图制作》\n[3] 谭其骧主编：《中国历史地图集》（第四册·东晋十六国·南北朝时期），北京：中国地图出版社1982年版，第17-18页。\n撰文：杨端程 审校：赵德昊 编辑：康张城\n",
+  "wordCount" : "399",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%9C%B0%E5%9B%BE/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="实用技术--如何用r绘制中国历史地图">实用技术 | 如何用R绘制中国历史地图<a hidden class="anchor" aria-hidden="true" href="#实用技术--如何用r绘制中国历史地图">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p>#地图绘制 6 个</p>
+<p>#数据可视化 15 个</p>
+<p>#实用技术 19 个</p>
+<p>在前几期的实用技术推送中，我们与大家分享了《<a href="http://mp.weixin.qq.com/s?__biz=MzI5ODY0MTQ1OA==&amp;mid=2247488243&amp;idx=1&amp;sn=1934769d74dff81e24a07b12688c27cb&amp;chksm=eca3e3aedbd46ab8fdb72def06ae5af91ebaa0866f87a0bcf662693270eab5360a554a6a1d0a&amp;scene=21#wechat_redirect">如何用R绘制并填充相对正确的世界地图</a>》和《<a href="http://mp.weixin.qq.com/s?__biz=MzI5ODY0MTQ1OA==&amp;mid=2247488841&amp;idx=1&amp;sn=e160998fbc3b1ed3aab291c1114dcc27&amp;chksm=eca3e414dbd46d028588f39940203e0beb4da7fe263ed9d589f40fd43a435402cf2ef0d648e5&amp;scene=21#wechat_redirect">如何用R绘制并填充相对正确的中国地图</a>》两篇技术贴，获得了圈内读者朋友的好评与支持。随着学习和研究的深入，在阅读偏向经济史和政治史的文献时，我们会发现这些领域的文献有时附上了作者绘制的历史地图，这让读者觉得耳目一新，甚至心生羡慕。事实上，对于可供R/Python/Stata读取的历史地图文件而言，其并没有什么神秘之处，它和绘制现代地图所需要的shp/json等文件一样，在本质上就是储存地理信息的多边形。</p>
+<p>对于我们从事历史政治学/社会学研究的学生来说，如果在撰写论文或者做展示的时候插入一些有关历史地图的可视化往往会起到“一图胜千言”的效果。因此，只要能找到相关的历史地图文件，我们就能用R等统计软件将其绘制出来。因此，在今天的实用技术贴中，我们就与大家分享如何用R来绘制中国历史地图。我们希望这篇贴子能达成两个目的：首先是教大家如何寻找历史地图素材，其次是用R将它们绘制出来。</p>
+<p>对于如何寻找历史地图素材这一问题很好解决，哈佛大学运行的世界地图网站（地址：http://worldmap.harvard.edu/maps/search?sort=last_modified&amp;dir=DESC）提供了丰富且免费的不同时期的中外电子地图素材，读者可以前往这里搜索下载需要的地图素材（大部分的地图文件是可以找到的）。值得说明的是，该网站也收录了哈佛大学东亚系包弼德（Peter
+K.
+Bol）教授团队制作的中国历史地图文件。该系列地图以中国资深历史地理专家谭其骧院士主编的《中国历史地图集》地图为蓝本，对中国部分历史时期的地图进行了电子化处理。当然这一系列的电子地图并不全面，如并未对南北朝和五代十国等重要时期的历史地图进行全部电子化。</p>
+<p>接下来，我将结合手头正在进行的博士论文章节写作，以宋元嘉二十六年，魏太平真君十年（449年）的全局地图绘制为例进行说明。这一年的次年在中国历史上具有重要的意义，因为开创“元嘉之治”的宋文帝刘义隆发起第二次北伐，结果大败，从此南朝由盛转衰，而北朝则开始转盛。需要指明的是，对照《中国历史地图集》可见，这一时期的中国境内还存在如柔然、吐谷浑、室韦、契丹、库莫奚以及西域等政权，但是电子地图文件并未包含。</p>
+<p>首先，我们在哈佛世界地图网站的页面搜索栏中输入“Northern and Southern”，选择第二行进入，如图1所示：</p>
+<p><img loading="lazy" src="images/154/2.jpeg" alt=""  />
+图1</p>
+<p>然后我们勾选左侧选项中的448 CE Northern Wei and (Liu) Song，再点击红框处的Share Map进入，如图2所示：</p>
+<p><img loading="lazy" src="images/154/3.jpeg" alt=""  />
+</p>
+<p>图2</p>
+<p>如图3所示，进入后我们再按照红框处选择448 CE Northern Wei and (Liu) Song进入：</p>
+<p><img loading="lazy" src="images/154/4.jpeg" alt=""  />
+</p>
+<p>图3</p>
+<p>这样我们在图4中的红框处就能下载我们偏好的格式了（如shp、json或tiff等），本文选用的是json格式文件，它具有小巧轻便的优势。</p>
+<p><img loading="lazy" src="images/154/5.jpeg" alt=""  />
+</p>
+<p>图4</p>
+<p>既然找到了历史地图资源，那么如何将其绘制出来呢？这一步其实与之前推送的实用技术贴中绘制当代中国/世界地图的方法一致。为了避免本文的历史地图绘制显得过于单薄，我们同时加载了世界地图和当代中国地图的json格式文件作为底图。为了方便大家理解，我们尽量将每一步绘制历史地图的步骤都完整呈现。</p>
+<p>首先，我们打开R载入绘制地图必不可少的两个基本包tidyverse和sf并读取相应的json格式文件：</p>
+<pre><code>library(tidyverse)  
+library(sf)  
+World &lt;- st_read(&quot;world.json&quot;)  
+China &lt;- st_read(&quot;Chinaditu.json&quot;)  
+WeiSong &lt;- st_read(&quot;WeiSong.json&quot;)  
+</code></pre>
+<p>然后绘制宋魏时期的地图，如图5所示：</p>
+<pre><code>ggplot()+  
+geom_sf(data = World, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)+ #之所以将边界和填充颜色设为相同是因为不能用当下世界地图的行政边界来表示当时历史上国家的行政边界  
+geom_sf(data = WeiSong, colour = &quot;#d9d9d9&quot;,fill=&quot;white&quot;)+  
+coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = &quot;on&quot;)+  
+ggtitle(&quot;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）&quot;)+  
+theme(panel.grid = element_blank(),  
+panel.background = element_rect(fill = &quot;Aliceblue&quot;),  
+axis.text = element_blank(),  
+axis.ticks = element_blank(),  
+axis.title = element_blank(),  
+plot.title = element_text(size = 15, hjust = 0.5, vjust=0),  
+plot.margin = unit(c(0, 0, 0, 0), &quot;inches&quot;))
+</code></pre>
+<p><img loading="lazy" src="images/154/6.jpeg" alt=""  />
+</p>
+<p>图5</p>
+<p>我们还可以增加一些城市的注记，这里我提供了南北朝一些重要城市的经纬度，如平城、洛阳、长安、建康和江陵等作为示例。我们首先载入带有经纬度的城市数据库：</p>
+<pre><code>WeiSongcities &lt;- read_csv(&quot;WeiSongcities.csv&quot;, col_types = cols(Latitude = col_number(), Long = col_number()))
+</code></pre>
+<p>然后将其投射到地图上并标记名称，如图6所示：</p>
+<pre><code>ggplot()+  
+geom_sf(data = World, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)+  
+geom_sf(data = WeiSong, colour = &quot;#d9d9d9&quot;,fill=&quot;white&quot;)+  
+coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = &quot;on&quot;)+  
+geom_point(data = WeiSongcities , aes(x=Long,y=Latitude),colour=&quot;red&quot;,size=3,alpha=0.8)+  
+geom_text(data = WeiSongcities,aes(x=Long,y=Latitude,label=Cities),size =4,vjust = 0, nudge_y = 0.5)+  
+ggtitle(&quot;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）&quot;)+  
+theme(panel.grid = element_blank(),  
+panel.background = element_rect(fill = &quot;Aliceblue&quot;),  
+axis.text = element_blank(),  
+axis.ticks = element_blank(),  
+axis.title = element_blank(),  
+plot.title = element_text(size = 15, hjust = 0.5, vjust=0),  
+plot.margin = unit(c(0, 0, 0, 0), &quot;inches&quot;))
+</code></pre>
+<p><img loading="lazy" src="images/154/7.jpeg" alt=""  />
+</p>
+<p>图6</p>
+<p>到了这一步我们切记不要以为大功告成了。因为根据国内出版中国历史地图的有关规定，在绘制西汉（公元前206年）以降的中国历代历史地图时，必须绘出南海诸岛和九段线，并加注“南海（涨海）”字样。由于本文使用的作为底图的中国地图自带南海诸岛和九段线，既可以弥补同样作为底图的世界地图相对简陋的缺点，同时也不需要再单独载入有关九段线和南海诸岛的地图文件。因此我们将其叠加到之前的图层当中，如图7所示：</p>
+<pre><code>NorthernWeiLiuSong &lt;- ggplot()+  
+geom_sf(data = World, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)+  
+geom_sf(data = China,colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)+ #同时将其边界和填充颜色设置为同色是为了突出这一时期历史两个政权的行政边界  
+geom_sf(data = WeiSong, colour = &quot;#d9d9d9&quot;,fill=&quot;white&quot;)+  
+coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = &quot;on&quot;)+  
+geom_point(data = WeiSongcities , aes(x=Long,y=Latitude),colour=&quot;red&quot;,size=3,alpha=0.8)+  
+geom_text(data = WeiSongcities,aes(x=Long,y=Latitude,label=Cities),size =4,vjust = 0, nudge_y = 0.5)+  
+ggtitle(&quot;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）&quot;)+  
+theme(panel.grid = element_blank(),  
+panel.background = element_rect(fill = &quot;Aliceblue&quot;),  
+axis.text = element_blank(),  
+axis.ticks = element_blank(),  
+axis.title = element_blank(),  
+plot.title = element_text(size = 15, hjust = 0.5, vjust=0),  
+plot.margin = unit(c(0, 0, 0, 0), &quot;inches&quot;))
+</code></pre>
+<p><img loading="lazy" src="images/154/8.jpeg" alt=""  />
+</p>
+<p>图7</p>
+<p>由于coord_sf()的设置限定了地图的显示区域，导致图7中的南海诸岛和九段线显示不全，这样我们需要单独绘制南海小图并将其插入到原来的主图当中。这里就需要借助coord_sf()的缩放功能和cowplot包的图片排版功能。</p>
+<p>我们首先绘制这一历史时期的南海诸岛地图，如图8所示：</p>
+<pre><code>SouthChinaSea &lt;- ggplot() +  
+geom_sf(data = China, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)+  
+geom_sf(data = World, colour = &quot;#d9d9d9&quot;,fill=&quot;#d9d9d9&quot;)+  
+geom_sf(data = WeiSong, colour = &quot;#d9d9d9&quot;,fill=&quot;white&quot;)+  
+coord_sf(xlim = c(117131.4,2115095),ylim = c(-4028017,-1877844),  
+crs=&quot;+proj=laea +lat_0=40 +lon_0=104&quot;)+  
+theme(aspect.ratio = 1.25,  
+axis.text = element_blank(),  
+axis.ticks = element_blank(),  
+axis.title = element_blank(),  
+panel.grid = element_blank(),  
+panel.background = element_rect(fill = &quot;Aliceblue&quot;),  
+panel.border = element_rect(fill=NA,colour=&quot;#d9d9d9&quot;),  
+plot.margin=unit(c(0,0,0,0),&quot;mm&quot;))
+</code></pre>
+<p><img loading="lazy" src="images/154/9.jpeg" alt=""  />
+图8</p>
+<p>因为我们是对这一时期的历史地图进行缩放，因此当时刘宋的交州覆盖了今天越南的中部以北地区。</p>
+<p>然后我们载入cowplot包将两幅图合并保存即可，结果如图9所示：</p>
+<pre><code>library(cowplot)  
+ggdraw() +  
+draw_plot(NorthernWeiLiuSong) +  
+draw_plot(SouthChinaSea, x = 0.7, y = 0, width = 0.1, height = 0.25)  
+ggsave(&quot;WeiSong.jpg&quot;,dpi=500,width=12,height=7.5)
+</code></pre>
+<p><img loading="lazy" src="images/154/10.jpeg" alt=""  />
+</p>
+<p>图9</p>
+<p>这样一副比较完整的中国历史地图就绘制完成了，最后我们可以利用专业图片处理软件（或Windows系统自带的画图程序）在南海及其附图的合适位置标注“南海（涨海）”字样（这里不再附图展示）。同理，我们可以利用本文介绍的方法绘制其它朝代的中国历史地图。</p>
+<p>最后需要强调的是，根据国务院2016年颁布的《地图管理条例》中的有关规定，凡在国内出版或公开使用中国历史地图前需要报送主管部门审核，而中国学者在国际学术场合涉及中国历史地图的发表时虽不涉及相关程序但也需要注意相应的问题。未来我们还将继续与大家分享用R/Stata进行可视化处理的实用技术，欢迎大家继续关注、支持我们！</p>
+<p><strong>注释：</strong></p>
+<p>[1] 文本所需代码和文件已上传至百度网盘，读者们可点击 <strong>“阅读原文”</strong> （提取码：2021）下载复验。</p>
+<p>[2] 在访问哈佛大学世界地图网站时可能遇到不稳定的问题，这种情况下需要多试几次。</p>
+<p><strong>参考文献：</strong></p>
+<p>[1] 陆兵：《编辑地图插图应注意的重点问题》</p>
+<p>[2]
+宁海涛：《<a href="https://mp.weixin.qq.com/s?__biz=MzA5ODk0NjA1Mg==&amp;mid=2247487922&amp;idx=2&amp;sn=03d37f5a640b09203a870af5de4421ba&amp;scene=21#wechat_redirect">R-ggplot2标准中国地图制作</a>》</p>
+<p>[3] 谭其骧主编：《中国历史地图集》（第四册·东晋十六国·南北朝时期），北京：中国地图出版社1982年版，第17-18页。</p>
+<p>撰文：杨端程 审校：赵德昊 编辑：康张城</p>
+<p><img loading="lazy" src="images/154/11.jpeg" alt=""  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

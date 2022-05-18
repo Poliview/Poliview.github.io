@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="政观专栏 | 孙宇飞：政治科学研究者的数据管理 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#专栏文章 11 个
+#实用技术 19 个
+作者简介： 孙宇飞，清华大学定量俱乐部讲师，清华大学社会科学学院政治学系博士生，研究方向为语言政治、身份政治和互联网政治。
+计算社会科学的发展对作为研究者的我们提出更多的要求，我们不仅需要掌握数据分析方法和工具，还需要管理数据分析所用到的海量数据。数据管理包括备份、同步和还原等多个过程，业界已有完整但昂贵的管理方案，那作为花呗、信用卡和白条多重压力下的穷博士，我们应当如何设计和选择一条便宜但不简陋的数据管理方案呢？本文文章就是笔者在设计数据管理方案的心得，和诸君共勉。
+什么是好的数据管理方案
+明确需求有助于我们更好的设计方案，个人认为一个好的数据管理方案需要满足以下六个维度的要求。
+第一点是安全 。这一点对于数据管理毋庸置疑，文件会毁掉、储存的介质（硬盘）会毁掉、甚至储存的物理空间也会出问题，因此，一个好的备份计划是要有不同的备份文件、备份介质和备份的物理空间。没有一个备份计划是完美的，但可以从目前广为接受的 3-2-1 备份策略开始：3 份副本、2 种不同备份媒体、1 个异地存储。
+第二点是自动化 。能够懒对于笔者来说来说十分重要，无论是备份还是同步，自动化对于所有数据科学的使用者来说不仅是节省时间，更是避免我们在进行重复工作时出现错误，毕竟人类一败涂地。
+第三点是尽可能小的占用储存空间。由于预算有限，因此备份文件能小则小。其实，减少备份文件占用的储存空间，提供备份来源端重复数据删除，简小化备份文件的备份方案，不仅是能够有效减少带宽使用，大幅降低云端备份空间使用，还能够大量减少数据备份及还原的时间，有效达成优异的灾难备援 RPO （Recovery Point Objective） 及 RTO （Recovery Time Objective）指标。
+第四点是一个忠告：不要相信任何主体 。人可能会误删、企业可能会倒闭、云服务商一定会收超高的数据储存费、有些机构会把你的数据吃掉，因此跟3-2-1的数据备份策略的思路一样，我们不仅要将数据安全的储存在多个备份文件、储存介质、物理空间，这些备份文件最好还隶属于不同的人、机构。
+第五点是还原方便 。这一点包括两个维度，一则是还原的速度快，一则是能够提供具有版本控制的备份文件。
+第六点是能够将数据管理方案纳入一个能够进行多人协作的工作流 。数据是拿来用的不是拿来存的。因此如何使我们的数据管理方案能够纳入我们的工作流，最好还是一个能够进行多人协作的工作流，数据分析产生的数据能够自动进入数据管理，数据管理方案自动备份数据分析产生的数据对于数据科学的研究者来说非常重要。
+因为篇幅原因工作流的搭建在此不表，如果大家有兴趣的话我们可以在之后的推文中讨论。
+我们需要什么硬件和软件
+ 在硬件和软件的选择上我们需要满足两个要求，第一个是价格合适；第二个是尽可能的能够满足上述六个维度的要求。因为并没有收到业配费，所以笔者只将笔者选配的设备和软件附在后边，仅供参考。
+硬件
+  笔记本电脑（MacBook）
+  NAS（QNAP）
+  大容量的移动硬盘（WD）
+  软件
+  电脑备份软件（Apple的时间机器）
+  NAS的数据管理软件（Hybrid Backup Sync）">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E6%94%BF%E8%A7%82%E4%B8%93%E6%A0%8F-%E5%AD%99%E5%AE%87%E9%A3%9E%E6%94%BF%E6%B2%BB%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%80%85%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="政观专栏 | 孙宇飞：政治科学研究者的数据管理 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#专栏文章 11 个
+#实用技术 19 个
+作者简介： 孙宇飞，清华大学定量俱乐部讲师，清华大学社会科学学院政治学系博士生，研究方向为语言政治、身份政治和互联网政治。
+计算社会科学的发展对作为研究者的我们提出更多的要求，我们不仅需要掌握数据分析方法和工具，还需要管理数据分析所用到的海量数据。数据管理包括备份、同步和还原等多个过程，业界已有完整但昂贵的管理方案，那作为花呗、信用卡和白条多重压力下的穷博士，我们应当如何设计和选择一条便宜但不简陋的数据管理方案呢？本文文章就是笔者在设计数据管理方案的心得，和诸君共勉。
+什么是好的数据管理方案
+明确需求有助于我们更好的设计方案，个人认为一个好的数据管理方案需要满足以下六个维度的要求。
+第一点是安全 。这一点对于数据管理毋庸置疑，文件会毁掉、储存的介质（硬盘）会毁掉、甚至储存的物理空间也会出问题，因此，一个好的备份计划是要有不同的备份文件、备份介质和备份的物理空间。没有一个备份计划是完美的，但可以从目前广为接受的 3-2-1 备份策略开始：3 份副本、2 种不同备份媒体、1 个异地存储。
+第二点是自动化 。能够懒对于笔者来说来说十分重要，无论是备份还是同步，自动化对于所有数据科学的使用者来说不仅是节省时间，更是避免我们在进行重复工作时出现错误，毕竟人类一败涂地。
+第三点是尽可能小的占用储存空间。由于预算有限，因此备份文件能小则小。其实，减少备份文件占用的储存空间，提供备份来源端重复数据删除，简小化备份文件的备份方案，不仅是能够有效减少带宽使用，大幅降低云端备份空间使用，还能够大量减少数据备份及还原的时间，有效达成优异的灾难备援 RPO （Recovery Point Objective） 及 RTO （Recovery Time Objective）指标。
+第四点是一个忠告：不要相信任何主体 。人可能会误删、企业可能会倒闭、云服务商一定会收超高的数据储存费、有些机构会把你的数据吃掉，因此跟3-2-1的数据备份策略的思路一样，我们不仅要将数据安全的储存在多个备份文件、储存介质、物理空间，这些备份文件最好还隶属于不同的人、机构。
+第五点是还原方便 。这一点包括两个维度，一则是还原的速度快，一则是能够提供具有版本控制的备份文件。
+第六点是能够将数据管理方案纳入一个能够进行多人协作的工作流 。数据是拿来用的不是拿来存的。因此如何使我们的数据管理方案能够纳入我们的工作流，最好还是一个能够进行多人协作的工作流，数据分析产生的数据能够自动进入数据管理，数据管理方案自动备份数据分析产生的数据对于数据科学的研究者来说非常重要。
+因为篇幅原因工作流的搭建在此不表，如果大家有兴趣的话我们可以在之后的推文中讨论。
+我们需要什么硬件和软件
+ 在硬件和软件的选择上我们需要满足两个要求，第一个是价格合适；第二个是尽可能的能够满足上述六个维度的要求。因为并没有收到业配费，所以笔者只将笔者选配的设备和软件附在后边，仅供参考。
+硬件
+  笔记本电脑（MacBook）
+  NAS（QNAP）
+  大容量的移动硬盘（WD）
+  软件
+  电脑备份软件（Apple的时间机器）
+  NAS的数据管理软件（Hybrid Backup Sync）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E6%94%BF%E8%A7%82%E4%B8%93%E6%A0%8F-%E5%AD%99%E5%AE%87%E9%A3%9E%E6%94%BF%E6%B2%BB%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%80%85%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="政观专栏 | 孙宇飞：政治科学研究者的数据管理 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#专栏文章 11 个
+#实用技术 19 个
+作者简介： 孙宇飞，清华大学定量俱乐部讲师，清华大学社会科学学院政治学系博士生，研究方向为语言政治、身份政治和互联网政治。
+计算社会科学的发展对作为研究者的我们提出更多的要求，我们不仅需要掌握数据分析方法和工具，还需要管理数据分析所用到的海量数据。数据管理包括备份、同步和还原等多个过程，业界已有完整但昂贵的管理方案，那作为花呗、信用卡和白条多重压力下的穷博士，我们应当如何设计和选择一条便宜但不简陋的数据管理方案呢？本文文章就是笔者在设计数据管理方案的心得，和诸君共勉。
+什么是好的数据管理方案
+明确需求有助于我们更好的设计方案，个人认为一个好的数据管理方案需要满足以下六个维度的要求。
+第一点是安全 。这一点对于数据管理毋庸置疑，文件会毁掉、储存的介质（硬盘）会毁掉、甚至储存的物理空间也会出问题，因此，一个好的备份计划是要有不同的备份文件、备份介质和备份的物理空间。没有一个备份计划是完美的，但可以从目前广为接受的 3-2-1 备份策略开始：3 份副本、2 种不同备份媒体、1 个异地存储。
+第二点是自动化 。能够懒对于笔者来说来说十分重要，无论是备份还是同步，自动化对于所有数据科学的使用者来说不仅是节省时间，更是避免我们在进行重复工作时出现错误，毕竟人类一败涂地。
+第三点是尽可能小的占用储存空间。由于预算有限，因此备份文件能小则小。其实，减少备份文件占用的储存空间，提供备份来源端重复数据删除，简小化备份文件的备份方案，不仅是能够有效减少带宽使用，大幅降低云端备份空间使用，还能够大量减少数据备份及还原的时间，有效达成优异的灾难备援 RPO （Recovery Point Objective） 及 RTO （Recovery Time Objective）指标。
+第四点是一个忠告：不要相信任何主体 。人可能会误删、企业可能会倒闭、云服务商一定会收超高的数据储存费、有些机构会把你的数据吃掉，因此跟3-2-1的数据备份策略的思路一样，我们不仅要将数据安全的储存在多个备份文件、储存介质、物理空间，这些备份文件最好还隶属于不同的人、机构。
+第五点是还原方便 。这一点包括两个维度，一则是还原的速度快，一则是能够提供具有版本控制的备份文件。
+第六点是能够将数据管理方案纳入一个能够进行多人协作的工作流 。数据是拿来用的不是拿来存的。因此如何使我们的数据管理方案能够纳入我们的工作流，最好还是一个能够进行多人协作的工作流，数据分析产生的数据能够自动进入数据管理，数据管理方案自动备份数据分析产生的数据对于数据科学的研究者来说非常重要。
+因为篇幅原因工作流的搭建在此不表，如果大家有兴趣的话我们可以在之后的推文中讨论。
+我们需要什么硬件和软件
+ 在硬件和软件的选择上我们需要满足两个要求，第一个是价格合适；第二个是尽可能的能够满足上述六个维度的要求。因为并没有收到业配费，所以笔者只将笔者选配的设备和软件附在后边，仅供参考。
+硬件
+  笔记本电脑（MacBook）
+  NAS（QNAP）
+  大容量的移动硬盘（WD）
+  软件
+  电脑备份软件（Apple的时间机器）
+  NAS的数据管理软件（Hybrid Backup Sync）"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E6%94%BF%E8%A7%82%E4%B8%93%E6%A0%8F-%E5%AD%99%E5%AE%87%E9%A3%9E%E6%94%BF%E6%B2%BB%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%80%85%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "政观专栏 | 孙宇飞：政治科学研究者的数据管理 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#专栏文章 11 个\n#实用技术 19 个\n作者简介： 孙宇飞，清华大学定量俱乐部讲师，清华大学社会科学学院政治学系博士生，研究方向为语言政治、身份政治和互联网政治。\n计算社会科学的发展对作为研究者的我们提出更多的要求，我们不仅需要掌握数据分析方法和工具，还需要管理数据分析所用到的海量数据。数据管理包括备份、同步和还原等多个过程，业界已有完整但昂贵的管理方案，那作为花呗、信用卡和白条多重压力下的穷博士，我们应当如何设计和选择一条便宜但不简陋的数据管理方案呢？本文文章就是笔者在设计数据管理方案的心得，和诸君共勉。\n什么是好的数据管理方案\n明确需求有助于我们更好的设计方案，个人认为一个好的数据管理方案需要满足以下六个维度的要求。\n第一点是安全 。这一点对于数据管理毋庸置疑，文件会毁掉、储存的介质（硬盘）会毁掉、甚至储存的物理空间也会出问题，因此，一个好的备份计划是要有不同的备份文件、备份介质和备份的物理空间。没有一个备份计划是完美的，但可以从目前广为接受的 3-2-1 备份策略开始：3 份副本、2 种不同备份媒体、1 个异地存储。\n第二点是自动化 。能够懒对于笔者来说来说十分重要，无论是备份还是同步，自动化对于所有数据科学的使用者来说不仅是节省时间，更是避免我们在进行重复工作时出现错误，毕竟人类一败涂地。\n第三点是尽可能小的占用储存空间。由于预算有限，因此备份文件能小则小。其实，减少备份文件占用的储存空间，提供备份来源端重复数据删除，简小化备份文件的备份方案，不仅是能够有效减少带宽使用，大幅降低云端备份空间使用，还能够大量减少数据备份及还原的时间，有效达成优异的灾难备援 RPO （Recovery Point Objective） 及 RTO （Recovery Time Objective）指标。\n第四点是一个忠告：不要相信任何主体 。人可能会误删、企业可能会倒闭、云服务商一定会收超高的数据储存费、有些机构会把你的数据吃掉，因此跟3-2-1的数据备份策略的思路一样，我们不仅要将数据安全的储存在多个备份文件、储存介质、物理空间，这些备份文件最好还隶属于不同的人、机构。\n第五点是还原方便 。这一点包括两个维度，一则是还原的速度快，一则是能够提供具有版本控制的备份文件。\n第六点是能够将数据管理方案纳入一个能够进行多人协作的工作流 。数据是拿来用的不是拿来存的。因此如何使我们的数据管理方案能够纳入我们的工作流，最好还是一个能够进行多人协作的工作流，数据分析产生的数据能够自动进入数据管理，数据管理方案自动备份数据分析产生的数据对于数据科学的研究者来说非常重要。\n因为篇幅原因工作流的搭建在此不表，如果大家有兴趣的话我们可以在之后的推文中讨论。\n我们需要什么硬件和软件\n 在硬件和软件的选择上我们需要满足两个要求，第一个是价格合适；第二个是尽可能的能够满足上述六个维度的要求。因为并没有收到业配费，所以笔者只将笔者选配的设备和软件附在后边，仅供参考。\n硬件\n  笔记本电脑（MacBook）\n  NAS（QNAP）\n  大容量的移动硬盘（WD）\n  软件\n  电脑备份软件（Apple的时间机器）\n  NAS的数据管理软件（Hybrid Backup Sync）",
+  "keywords": [
+    
+  ],
+  "articleBody": "政观专栏 | 孙宇飞：政治科学研究者的数据管理 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#专栏文章 11 个\n#实用技术 19 个\n作者简介： 孙宇飞，清华大学定量俱乐部讲师，清华大学社会科学学院政治学系博士生，研究方向为语言政治、身份政治和互联网政治。\n计算社会科学的发展对作为研究者的我们提出更多的要求，我们不仅需要掌握数据分析方法和工具，还需要管理数据分析所用到的海量数据。数据管理包括备份、同步和还原等多个过程，业界已有完整但昂贵的管理方案，那作为花呗、信用卡和白条多重压力下的穷博士，我们应当如何设计和选择一条便宜但不简陋的数据管理方案呢？本文文章就是笔者在设计数据管理方案的心得，和诸君共勉。\n什么是好的数据管理方案\n明确需求有助于我们更好的设计方案，个人认为一个好的数据管理方案需要满足以下六个维度的要求。\n第一点是安全 。这一点对于数据管理毋庸置疑，文件会毁掉、储存的介质（硬盘）会毁掉、甚至储存的物理空间也会出问题，因此，一个好的备份计划是要有不同的备份文件、备份介质和备份的物理空间。没有一个备份计划是完美的，但可以从目前广为接受的 3-2-1 备份策略开始：3 份副本、2 种不同备份媒体、1 个异地存储。\n第二点是自动化 。能够懒对于笔者来说来说十分重要，无论是备份还是同步，自动化对于所有数据科学的使用者来说不仅是节省时间，更是避免我们在进行重复工作时出现错误，毕竟人类一败涂地。\n第三点是尽可能小的占用储存空间。由于预算有限，因此备份文件能小则小。其实，减少备份文件占用的储存空间，提供备份来源端重复数据删除，简小化备份文件的备份方案，不仅是能够有效减少带宽使用，大幅降低云端备份空间使用，还能够大量减少数据备份及还原的时间，有效达成优异的灾难备援 RPO （Recovery Point Objective） 及 RTO （Recovery Time Objective）指标。\n第四点是一个忠告：不要相信任何主体 。人可能会误删、企业可能会倒闭、云服务商一定会收超高的数据储存费、有些机构会把你的数据吃掉，因此跟3-2-1的数据备份策略的思路一样，我们不仅要将数据安全的储存在多个备份文件、储存介质、物理空间，这些备份文件最好还隶属于不同的人、机构。\n第五点是还原方便 。这一点包括两个维度，一则是还原的速度快，一则是能够提供具有版本控制的备份文件。\n第六点是能够将数据管理方案纳入一个能够进行多人协作的工作流 。数据是拿来用的不是拿来存的。因此如何使我们的数据管理方案能够纳入我们的工作流，最好还是一个能够进行多人协作的工作流，数据分析产生的数据能够自动进入数据管理，数据管理方案自动备份数据分析产生的数据对于数据科学的研究者来说非常重要。\n因为篇幅原因工作流的搭建在此不表，如果大家有兴趣的话我们可以在之后的推文中讨论。\n我们需要什么硬件和软件\n 在硬件和软件的选择上我们需要满足两个要求，第一个是价格合适；第二个是尽可能的能够满足上述六个维度的要求。因为并没有收到业配费，所以笔者只将笔者选配的设备和软件附在后边，仅供参考。\n硬件\n  笔记本电脑（MacBook）\n  NAS（QNAP）\n  大容量的移动硬盘（WD）\n  软件\n  电脑备份软件（Apple的时间机器）\n  NAS的数据管理软件（Hybrid Backup Sync）\n  文件同步软件（Sync Folders）\n  一个免费、不限速、可挂在到本地的网盘（清华云盘）\n  一个大容量的海外网盘（启用云上加州服务的iCloud）\n  数据管理方案\n本文以下图展示了笔者的数据管理计划，蓝色的箭头表示数据备份，黄色箭头表示数据同步。\n首先，笔者的数据处理终端是MacBook，在MacBook上笔者会进行数据添加、修改和删除的任务；\n笔者的 第一份备份 文件储存在NAS的第一个盘位，MacBook文件和借助WebDrive挂载在Mac上的第一份备份文件使用Sync Folders保持单向同步；\n第二份备份 文件储存在NAS的第二个盘位，它和第一个盘位的备份文件按照数据管理计划，使用Hybrid Backup Sync软件每天晚上3点（笔者估计自己能写完作业睡觉的时间）进行增量备份，同时进行智版本控制；\n第三份备份 文件储存在移动硬盘中，它使用Apple的时间机器定时进行备份，实现了两个不同的介质备份；\n第四份备份 文件借助iCloud订阅，储存在云上加州，实现了一个异地储存；因为笔者所在学校的清华云盘容量有限（200GB）且安全性存疑，因此我们不用它来备份完成的数据，而是把它作为数据管理方案的入口和出口，借助FTP协议和R Studio Server进行交互，同时这些活动文件也同样通过挂载盘和Sync Folders和MacBook进行双向同步，从而实现数据的输入和输出。\n至此，我们超额实现了3-2-1的备份计划，实现了 4.5份备份文件 （NAS1，NAS2，桌面移动硬盘，iCloud，清华云盘（只同步活动的项目文件））， 3个储存介质 （NAS，桌面移动硬盘，iCloud）， 3个异地储存 （宿舍，清华云盘服务器，加州），一定程度上实现了安全性的目标。\n其次，同时我们借助Apple的时间机器、Hybrid Backup Sync和Sync Folders在不同设备之间完成自动的同步和定时备份，设置完成后不用进行任何的多余操作。\n无论是Apple的时间机器还是Hybrid Backup Sync都是非常成熟的备份软件，因此无论是加密、还原还是增量备份都十分方便，Hybrid Backup Sync的智能版本控制还能大大缩小备份文件所占用的储存空间。\n很重要的是，我们的备份数据储存于三个不同的主体（笔者、QNAP中国区和iCloud云上加州）和两个不同的国家（中国、美国），一方面使用中国区的QNAP保证文件传输的速度，另一方面选择云上加州（亦可使用云上贵州），增强文件的安全性。\n与此同时，NAS天然的多人协作功能和多样化的分享设置，给团队的协作更添一层便利。\n方案成本计算\n那这样一套包括数据的备份、同步和还原的完整数据管理方案需要多少钱呢？因为笔者真的很穷，所以上述软件和硬件最大程度上的压缩了成本。\n软件方面除了iCloud之外全部免费，iCloud使用的是Apple One Premier的全家桶订阅方案，折合约30元/月。硬件方面也是入门版：因为整个工作流的计算核心在远程的服务器，所以笔记本终端的要求就是便携、好看和对用户友好。基于上述要求笔者选择是12寸的MacBook；NAS选择的是丐版的QNAP，配上4T的红盘，1500元有找；虽然一切工作流都在云端对储存介质便携的需求较少，但因为合作者背景的多元，一个大容量的移动设备也是必须的，结合这两点笔者选购的是西部数据的桌面储存设备My Book 6T，1000元有找。\n这样算下来，除了大多研究者都已有的笔电，这套完整的数据储存方案只需要不到3000元，这和市面上动辄上万的数据管理方案来比，基本上等于不要钱。\n最后，感谢笔者导师对本文的硬件支持。\n审读：吴温泉 编辑：吴温泉\n",
+  "wordCount" : "111",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E6%94%BF%E8%A7%82%E4%B8%93%E6%A0%8F-%E5%AD%99%E5%AE%87%E9%A3%9E%E6%94%BF%E6%B2%BB%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%80%85%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="政观专栏--孙宇飞政治科学研究者的数据管理">政观专栏 | 孙宇飞：政治科学研究者的数据管理<a hidden class="anchor" aria-hidden="true" href="#政观专栏--孙宇飞政治科学研究者的数据管理">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p>#专栏文章 11 个</p>
+<p>#实用技术 19 个</p>
+<p><strong>作者简介：</strong> 孙宇飞，清华大学定量俱乐部讲师，清华大学社会科学学院政治学系博士生，研究方向为语言政治、身份政治和互联网政治。</p>
+<p>计算社会科学的发展对作为研究者的我们提出更多的要求，我们不仅需要掌握数据分析方法和工具，还需要管理数据分析所用到的海量数据。数据管理包括备份、同步和还原等多个过程，业界已有完整但昂贵的管理方案，那作为花呗、信用卡和白条多重压力下的穷博士，我们应当如何设计和选择一条便宜但不简陋的数据管理方案呢？本文文章就是笔者在设计数据管理方案的心得，和诸君共勉。</p>
+<p><strong>什么是好的数据管理方案</strong></p>
+<p>明确需求有助于我们更好的设计方案，个人认为一个好的数据管理方案需要满足以下六个维度的要求。</p>
+<p><strong>第一点是安全</strong>
+。这一点对于数据管理毋庸置疑，文件会毁掉、储存的介质（硬盘）会毁掉、甚至储存的物理空间也会出问题，因此，一个好的备份计划是要有不同的备份文件、备份介质和备份的物理空间。没有一个备份计划是完美的，但可以从目前广为接受的
+3-2-1 备份策略开始：3 份副本、2 种不同备份媒体、1 个异地存储。</p>
+<p><strong>第二点是自动化</strong>
+。能够懒对于笔者来说来说十分重要，无论是备份还是同步，自动化对于所有数据科学的使用者来说不仅是节省时间，更是避免我们在进行重复工作时出现错误，毕竟人类一败涂地。</p>
+<p>第三点是尽可能小的占用储存空间。由于预算有限，因此备份文件能小则小。其实，减少备份文件占用的储存空间，提供备份来源端重复数据删除，简小化备份文件的备份方案，不仅是能够有效减少带宽使用，大幅降低云端备份空间使用，还能够大量减少数据备份及还原的时间，有效达成优异的灾难备援
+RPO （Recovery Point Objective） 及 RTO （Recovery Time Objective）指标。</p>
+<p><strong>第四点是一个忠告：不要相信任何主体</strong>
+。人可能会误删、企业可能会倒闭、云服务商一定会收超高的数据储存费、有些机构会把你的数据吃掉，因此跟3-2-1的数据备份策略的思路一样，我们不仅要将数据安全的储存在多个备份文件、储存介质、物理空间，这些备份文件最好还隶属于不同的人、机构。</p>
+<p><strong>第五点是还原方便</strong> 。这一点包括两个维度，一则是还原的速度快，一则是能够提供具有版本控制的备份文件。</p>
+<p><strong>第六点是能够将数据管理方案纳入一个能够进行多人协作的工作流</strong>
+。数据是拿来用的不是拿来存的。因此如何使我们的数据管理方案能够纳入我们的工作流，最好还是一个能够进行多人协作的工作流，数据分析产生的数据能够自动进入数据管理，数据管理方案自动备份数据分析产生的数据对于数据科学的研究者来说非常重要。</p>
+<p>因为篇幅原因工作流的搭建在此不表，如果大家有兴趣的话我们可以在之后的推文中讨论。</p>
+<p><strong>我们需要什么硬件和软件</strong></p>
+<hr>
+<p>在硬件和软件的选择上我们需要满足两个要求，第一个是价格合适；第二个是尽可能的能够满足上述六个维度的要求。因为并没有收到业配费，所以笔者只将笔者选配的设备和软件附在后边，仅供参考。</p>
+<p><strong>硬件</strong></p>
+<ul>
+<li>
+<p>笔记本电脑（MacBook）</p>
+</li>
+<li>
+<p>NAS（QNAP）</p>
+</li>
+<li>
+<p>大容量的移动硬盘（WD）</p>
+</li>
+</ul>
+<p><strong>软件</strong></p>
+<ul>
+<li>
+<p>电脑备份软件（Apple的时间机器）</p>
+</li>
+<li>
+<p>NAS的数据管理软件（Hybrid Backup Sync）</p>
+</li>
+<li>
+<p>文件同步软件（Sync Folders）</p>
+</li>
+<li>
+<p>一个免费、不限速、可挂在到本地的网盘（清华云盘）</p>
+</li>
+<li>
+<p>一个大容量的海外网盘（启用云上加州服务的iCloud）</p>
+</li>
+</ul>
+<p><strong>数据管理方案</strong></p>
+<p>本文以下图展示了笔者的数据管理计划，蓝色的箭头表示数据备份，黄色箭头表示数据同步。</p>
+<p><img loading="lazy" src="images/102/2.png" alt=""  />
+</p>
+<p>首先，笔者的数据处理终端是MacBook，在MacBook上笔者会进行数据添加、修改和删除的任务；</p>
+<p>笔者的 <strong>第一份备份</strong> 文件储存在NAS的第一个盘位，MacBook文件和借助WebDrive挂载在Mac上的第一份备份文件使用Sync
+Folders保持单向同步；</p>
+<p><strong>第二份备份</strong> 文件储存在NAS的第二个盘位，它和第一个盘位的备份文件按照数据管理计划，使用Hybrid Backup
+Sync软件每天晚上3点（笔者估计自己能写完作业睡觉的时间）进行增量备份，同时进行智版本控制；</p>
+<p><strong>第三份备份</strong> 文件储存在移动硬盘中，它使用Apple的时间机器定时进行备份，实现了两个不同的介质备份；</p>
+<p><strong>第四份备份</strong>
+文件借助iCloud订阅，储存在云上加州，实现了一个异地储存；因为笔者所在学校的清华云盘容量有限（200GB）且安全性存疑，因此我们不用它来备份完成的数据，而是把它作为数据管理方案的入口和出口，借助FTP协议和R
+Studio Server进行交互，同时这些活动文件也同样通过挂载盘和Sync Folders和MacBook进行双向同步，从而实现数据的输入和输出。</p>
+<p>至此，我们超额实现了3-2-1的备份计划，实现了 <strong>4.5份备份文件</strong>
+（NAS1，NAS2，桌面移动硬盘，iCloud，清华云盘（只同步活动的项目文件））， <strong>3个储存介质</strong> （NAS，桌面移动硬盘，iCloud），
+<strong>3个异地储存</strong> （宿舍，清华云盘服务器，加州），一定程度上实现了安全性的目标。</p>
+<p>其次，同时我们借助Apple的时间机器、Hybrid Backup Sync和Sync
+Folders在不同设备之间完成自动的同步和定时备份，设置完成后不用进行任何的多余操作。</p>
+<p>无论是Apple的时间机器还是Hybrid Backup Sync都是非常成熟的备份软件，因此无论是加密、还原还是增量备份都十分方便，Hybrid
+Backup Sync的智能版本控制还能大大缩小备份文件所占用的储存空间。</p>
+<p>很重要的是，我们的备份数据储存于三个不同的主体（笔者、QNAP中国区和iCloud云上加州）和两个不同的国家（中国、美国），一方面使用中国区的QNAP保证文件传输的速度，另一方面选择云上加州（亦可使用云上贵州），增强文件的安全性。</p>
+<p>与此同时，NAS天然的多人协作功能和多样化的分享设置，给团队的协作更添一层便利。</p>
+<p><strong>方案成本计算</strong></p>
+<p>那这样一套包括数据的备份、同步和还原的完整数据管理方案需要多少钱呢？因为笔者真的很穷，所以上述软件和硬件最大程度上的压缩了成本。</p>
+<p>软件方面除了iCloud之外全部免费，iCloud使用的是Apple One
+Premier的全家桶订阅方案，折合约30元/月。硬件方面也是入门版：因为整个工作流的计算核心在远程的服务器，所以笔记本终端的要求就是便携、好看和对用户友好。基于上述要求笔者选择是12寸的MacBook；NAS选择的是丐版的QNAP，配上4T的红盘，1500元有找；虽然一切工作流都在云端对储存介质便携的需求较少，但因为合作者背景的多元，一个大容量的移动设备也是必须的，结合这两点笔者选购的是西部数据的桌面储存设备My
+Book 6T，1000元有找。</p>
+<p>这样算下来，除了大多研究者都已有的笔电，这套完整的数据储存方案只需要不到3000元，这和市面上动辄上万的数据管理方案来比，基本上等于不要钱。</p>
+<p>最后，感谢笔者导师对本文的硬件支持。</p>
+<p>审读：吴温泉 编辑：吴温泉</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

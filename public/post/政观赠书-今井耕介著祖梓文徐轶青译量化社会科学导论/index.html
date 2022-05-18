@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="政观赠书 | 今井耕介著、祖梓文、徐轶青译：《量化社会科学导论》 政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+作者简介： 今井耕介（Kosuke Imai），哈佛大学政府系和统计系教授。今井教授曾在普林斯顿大学执教15年，并担任统计和机器学习项目主任，直到2018年加入哈佛大学。他深耕于开发以及运用统计方法、通过实验和观测数据进行因果推断。他在政治方法论方面的其他研究领域包括调查方法和大数据社会科学研究中的算法。今井教授在2017年到2019年担任美国政治学方法论学会主席。
+上图为本书作者今井耕介
+译者简介： 祖梓文，加州大学圣迭戈分校政治学系博士生，政文观止Poliview特邀作者；徐轶青，斯坦福大学政治学系助理教授。
+上图左起依次为本书译者祖梓文、徐轶青
+赠书简介
+《量化社会科学导论》是上海财经大学即将出版的匡时新方法系列中的最新一本方法专著。量化分析方法在社会科学研究中日益重要，但是社会科学以及相关领域的学生往往缺乏训练。即便有训练，他们接触到的也可能是对社学科学研究本身提供不了太多启发的纯统计课程。该书专门为社会科学如政治学、经济学、社会学、公共政策和数据科学专业的本科生以及低年级研究生量身定制，提供了关于数据分析和统计的实用入门方法。
+当下全世界在经济、政治、教育和公共卫生等各方面都面临着严峻挑战，而COVID-19的全球大流行危机更是凸显找寻以数据为导向的新的、有效的政策举措的紧迫性。该书中文版的出版也旨在吸引越来越多的年轻学生和研究者进入日新月异的量化社会科学领域。
+《量化社会科学导论》一书的写作源于今井教授在普林斯顿大学教授长达十余年之久的一门本科课程。该书英文版自2017年出版后，已经成为世界多所大学用来教授统计和数据科学课程的重要教材。在美国，包括斯坦福大学、耶鲁大学以及作者目前任教的哈佛大学在内的顶尖高校都在使用该书。《量化社会科学导论》的核心思想是学生需要在课程中尽早地接触真实的量化社会科学研究。与传统的统计入门教材不同，该书从一开始就直接采用已经发表的量化社会科学研究中的数据 。该书在介绍概率和统计理论之前为读者提供了深入的数据分析体验，等到读者往后读到难度进阶的章节，就会理解为什么需要这些理论来理解和开展量化社会研究。
+《量化社会科学导论》开篇以种族歧视和呼吁投票运动为例，从实验和观察性研究两个角度讨论了因果性；接着讲解了度量和预测这两个社会科学研究数据分析中的主要目标。该书还有一章讲述了对文本、网络和空间数据的分析，这为读者提供了当今量化社会科学研究的概览。概率和统计理论则在这些数据分析的章节之后呈现。《量化社会科学导论》一书所需的数学要求并不高，读者不一定需要掌握微积分和线性代数的知识。该书在介绍概率和统计理论时采用了一种缜密的概念方式 ，以便学生可以理解其背后的逻辑 。
+目录
+Quantitative Social Science
+中文版序言
+英文版序言
+译校者序
+一、引言
+1.1 本书概述
+1.2 如何使用本书
+1.3 R的简介
+1.4 总结
+1.5 练习
+二、因果关系
+2.1 劳工市场的种族歧视
+2.2 用R取得的数据子集
+2.3 因果效应与反事实
+2.4 随机对照试验
+2.5 观察性研究
+2.6 单变量的描述性统计量
+2.7 总结
+2.8 习题
+三、度量
+3.1 战争时期平民受伤情况的度量
+3.2 处理R中缺失的数据
+3.3 可视化单变量分布
+3.4 调查抽样">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E6%94%BF%E8%A7%82%E8%B5%A0%E4%B9%A6-%E4%BB%8A%E4%BA%95%E8%80%95%E4%BB%8B%E8%91%97%E7%A5%96%E6%A2%93%E6%96%87%E5%BE%90%E8%BD%B6%E9%9D%92%E8%AF%91%E9%87%8F%E5%8C%96%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="政观赠书 | 今井耕介著、祖梓文、徐轶青译：《量化社会科学导论》 政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+作者简介： 今井耕介（Kosuke Imai），哈佛大学政府系和统计系教授。今井教授曾在普林斯顿大学执教15年，并担任统计和机器学习项目主任，直到2018年加入哈佛大学。他深耕于开发以及运用统计方法、通过实验和观测数据进行因果推断。他在政治方法论方面的其他研究领域包括调查方法和大数据社会科学研究中的算法。今井教授在2017年到2019年担任美国政治学方法论学会主席。
+上图为本书作者今井耕介
+译者简介： 祖梓文，加州大学圣迭戈分校政治学系博士生，政文观止Poliview特邀作者；徐轶青，斯坦福大学政治学系助理教授。
+上图左起依次为本书译者祖梓文、徐轶青
+赠书简介
+《量化社会科学导论》是上海财经大学即将出版的匡时新方法系列中的最新一本方法专著。量化分析方法在社会科学研究中日益重要，但是社会科学以及相关领域的学生往往缺乏训练。即便有训练，他们接触到的也可能是对社学科学研究本身提供不了太多启发的纯统计课程。该书专门为社会科学如政治学、经济学、社会学、公共政策和数据科学专业的本科生以及低年级研究生量身定制，提供了关于数据分析和统计的实用入门方法。
+当下全世界在经济、政治、教育和公共卫生等各方面都面临着严峻挑战，而COVID-19的全球大流行危机更是凸显找寻以数据为导向的新的、有效的政策举措的紧迫性。该书中文版的出版也旨在吸引越来越多的年轻学生和研究者进入日新月异的量化社会科学领域。
+《量化社会科学导论》一书的写作源于今井教授在普林斯顿大学教授长达十余年之久的一门本科课程。该书英文版自2017年出版后，已经成为世界多所大学用来教授统计和数据科学课程的重要教材。在美国，包括斯坦福大学、耶鲁大学以及作者目前任教的哈佛大学在内的顶尖高校都在使用该书。《量化社会科学导论》的核心思想是学生需要在课程中尽早地接触真实的量化社会科学研究。与传统的统计入门教材不同，该书从一开始就直接采用已经发表的量化社会科学研究中的数据 。该书在介绍概率和统计理论之前为读者提供了深入的数据分析体验，等到读者往后读到难度进阶的章节，就会理解为什么需要这些理论来理解和开展量化社会研究。
+《量化社会科学导论》开篇以种族歧视和呼吁投票运动为例，从实验和观察性研究两个角度讨论了因果性；接着讲解了度量和预测这两个社会科学研究数据分析中的主要目标。该书还有一章讲述了对文本、网络和空间数据的分析，这为读者提供了当今量化社会科学研究的概览。概率和统计理论则在这些数据分析的章节之后呈现。《量化社会科学导论》一书所需的数学要求并不高，读者不一定需要掌握微积分和线性代数的知识。该书在介绍概率和统计理论时采用了一种缜密的概念方式 ，以便学生可以理解其背后的逻辑 。
+目录
+Quantitative Social Science
+中文版序言
+英文版序言
+译校者序
+一、引言
+1.1 本书概述
+1.2 如何使用本书
+1.3 R的简介
+1.4 总结
+1.5 练习
+二、因果关系
+2.1 劳工市场的种族歧视
+2.2 用R取得的数据子集
+2.3 因果效应与反事实
+2.4 随机对照试验
+2.5 观察性研究
+2.6 单变量的描述性统计量
+2.7 总结
+2.8 习题
+三、度量
+3.1 战争时期平民受伤情况的度量
+3.2 处理R中缺失的数据
+3.3 可视化单变量分布
+3.4 调查抽样" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E6%94%BF%E8%A7%82%E8%B5%A0%E4%B9%A6-%E4%BB%8A%E4%BA%95%E8%80%95%E4%BB%8B%E8%91%97%E7%A5%96%E6%A2%93%E6%96%87%E5%BE%90%E8%BD%B6%E9%9D%92%E8%AF%91%E9%87%8F%E5%8C%96%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="政观赠书 | 今井耕介著、祖梓文、徐轶青译：《量化社会科学导论》 政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+作者简介： 今井耕介（Kosuke Imai），哈佛大学政府系和统计系教授。今井教授曾在普林斯顿大学执教15年，并担任统计和机器学习项目主任，直到2018年加入哈佛大学。他深耕于开发以及运用统计方法、通过实验和观测数据进行因果推断。他在政治方法论方面的其他研究领域包括调查方法和大数据社会科学研究中的算法。今井教授在2017年到2019年担任美国政治学方法论学会主席。
+上图为本书作者今井耕介
+译者简介： 祖梓文，加州大学圣迭戈分校政治学系博士生，政文观止Poliview特邀作者；徐轶青，斯坦福大学政治学系助理教授。
+上图左起依次为本书译者祖梓文、徐轶青
+赠书简介
+《量化社会科学导论》是上海财经大学即将出版的匡时新方法系列中的最新一本方法专著。量化分析方法在社会科学研究中日益重要，但是社会科学以及相关领域的学生往往缺乏训练。即便有训练，他们接触到的也可能是对社学科学研究本身提供不了太多启发的纯统计课程。该书专门为社会科学如政治学、经济学、社会学、公共政策和数据科学专业的本科生以及低年级研究生量身定制，提供了关于数据分析和统计的实用入门方法。
+当下全世界在经济、政治、教育和公共卫生等各方面都面临着严峻挑战，而COVID-19的全球大流行危机更是凸显找寻以数据为导向的新的、有效的政策举措的紧迫性。该书中文版的出版也旨在吸引越来越多的年轻学生和研究者进入日新月异的量化社会科学领域。
+《量化社会科学导论》一书的写作源于今井教授在普林斯顿大学教授长达十余年之久的一门本科课程。该书英文版自2017年出版后，已经成为世界多所大学用来教授统计和数据科学课程的重要教材。在美国，包括斯坦福大学、耶鲁大学以及作者目前任教的哈佛大学在内的顶尖高校都在使用该书。《量化社会科学导论》的核心思想是学生需要在课程中尽早地接触真实的量化社会科学研究。与传统的统计入门教材不同，该书从一开始就直接采用已经发表的量化社会科学研究中的数据 。该书在介绍概率和统计理论之前为读者提供了深入的数据分析体验，等到读者往后读到难度进阶的章节，就会理解为什么需要这些理论来理解和开展量化社会研究。
+《量化社会科学导论》开篇以种族歧视和呼吁投票运动为例，从实验和观察性研究两个角度讨论了因果性；接着讲解了度量和预测这两个社会科学研究数据分析中的主要目标。该书还有一章讲述了对文本、网络和空间数据的分析，这为读者提供了当今量化社会科学研究的概览。概率和统计理论则在这些数据分析的章节之后呈现。《量化社会科学导论》一书所需的数学要求并不高，读者不一定需要掌握微积分和线性代数的知识。该书在介绍概率和统计理论时采用了一种缜密的概念方式 ，以便学生可以理解其背后的逻辑 。
+目录
+Quantitative Social Science
+中文版序言
+英文版序言
+译校者序
+一、引言
+1.1 本书概述
+1.2 如何使用本书
+1.3 R的简介
+1.4 总结
+1.5 练习
+二、因果关系
+2.1 劳工市场的种族歧视
+2.2 用R取得的数据子集
+2.3 因果效应与反事实
+2.4 随机对照试验
+2.5 观察性研究
+2.6 单变量的描述性统计量
+2.7 总结
+2.8 习题
+三、度量
+3.1 战争时期平民受伤情况的度量
+3.2 处理R中缺失的数据
+3.3 可视化单变量分布
+3.4 调查抽样"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E6%94%BF%E8%A7%82%E8%B5%A0%E4%B9%A6-%E4%BB%8A%E4%BA%95%E8%80%95%E4%BB%8B%E8%91%97%E7%A5%96%E6%A2%93%E6%96%87%E5%BE%90%E8%BD%B6%E9%9D%92%E8%AF%91%E9%87%8F%E5%8C%96%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "政观赠书 | 今井耕介著、祖梓文、徐轶青译：《量化社会科学导论》 政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n作者简介： 今井耕介（Kosuke Imai），哈佛大学政府系和统计系教授。今井教授曾在普林斯顿大学执教15年，并担任统计和机器学习项目主任，直到2018年加入哈佛大学。他深耕于开发以及运用统计方法、通过实验和观测数据进行因果推断。他在政治方法论方面的其他研究领域包括调查方法和大数据社会科学研究中的算法。今井教授在2017年到2019年担任美国政治学方法论学会主席。\n上图为本书作者今井耕介\n译者简介： 祖梓文，加州大学圣迭戈分校政治学系博士生，政文观止Poliview特邀作者；徐轶青，斯坦福大学政治学系助理教授。\n上图左起依次为本书译者祖梓文、徐轶青\n赠书简介\n《量化社会科学导论》是上海财经大学即将出版的匡时新方法系列中的最新一本方法专著。量化分析方法在社会科学研究中日益重要，但是社会科学以及相关领域的学生往往缺乏训练。即便有训练，他们接触到的也可能是对社学科学研究本身提供不了太多启发的纯统计课程。该书专门为社会科学如政治学、经济学、社会学、公共政策和数据科学专业的本科生以及低年级研究生量身定制，提供了关于数据分析和统计的实用入门方法。\n当下全世界在经济、政治、教育和公共卫生等各方面都面临着严峻挑战，而COVID-19的全球大流行危机更是凸显找寻以数据为导向的新的、有效的政策举措的紧迫性。该书中文版的出版也旨在吸引越来越多的年轻学生和研究者进入日新月异的量化社会科学领域。\n《量化社会科学导论》一书的写作源于今井教授在普林斯顿大学教授长达十余年之久的一门本科课程。该书英文版自2017年出版后，已经成为世界多所大学用来教授统计和数据科学课程的重要教材。在美国，包括斯坦福大学、耶鲁大学以及作者目前任教的哈佛大学在内的顶尖高校都在使用该书。《量化社会科学导论》的核心思想是学生需要在课程中尽早地接触真实的量化社会科学研究。与传统的统计入门教材不同，该书从一开始就直接采用已经发表的量化社会科学研究中的数据 。该书在介绍概率和统计理论之前为读者提供了深入的数据分析体验，等到读者往后读到难度进阶的章节，就会理解为什么需要这些理论来理解和开展量化社会研究。\n《量化社会科学导论》开篇以种族歧视和呼吁投票运动为例，从实验和观察性研究两个角度讨论了因果性；接着讲解了度量和预测这两个社会科学研究数据分析中的主要目标。该书还有一章讲述了对文本、网络和空间数据的分析，这为读者提供了当今量化社会科学研究的概览。概率和统计理论则在这些数据分析的章节之后呈现。《量化社会科学导论》一书所需的数学要求并不高，读者不一定需要掌握微积分和线性代数的知识。该书在介绍概率和统计理论时采用了一种缜密的概念方式 ，以便学生可以理解其背后的逻辑 。\n目录\nQuantitative Social Science\n中文版序言\n英文版序言\n译校者序\n一、引言\n1.1 本书概述\n1.2 如何使用本书\n1.3 R的简介\n1.4 总结\n1.5 练习\n二、因果关系\n2.1 劳工市场的种族歧视\n2.2 用R取得的数据子集\n2.3 因果效应与反事实\n2.4 随机对照试验\n2.5 观察性研究\n2.6 单变量的描述性统计量\n2.7 总结\n2.8 习题\n三、度量\n3.1 战争时期平民受伤情况的度量\n3.2 处理R中缺失的数据\n3.3 可视化单变量分布\n3.4 调查抽样",
+  "keywords": [
+    
+  ],
+  "articleBody": "政观赠书 | 今井耕介著、祖梓文、徐轶青译：《量化社会科学导论》 政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n作者简介： 今井耕介（Kosuke Imai），哈佛大学政府系和统计系教授。今井教授曾在普林斯顿大学执教15年，并担任统计和机器学习项目主任，直到2018年加入哈佛大学。他深耕于开发以及运用统计方法、通过实验和观测数据进行因果推断。他在政治方法论方面的其他研究领域包括调查方法和大数据社会科学研究中的算法。今井教授在2017年到2019年担任美国政治学方法论学会主席。\n上图为本书作者今井耕介\n译者简介： 祖梓文，加州大学圣迭戈分校政治学系博士生，政文观止Poliview特邀作者；徐轶青，斯坦福大学政治学系助理教授。\n上图左起依次为本书译者祖梓文、徐轶青\n赠书简介\n《量化社会科学导论》是上海财经大学即将出版的匡时新方法系列中的最新一本方法专著。量化分析方法在社会科学研究中日益重要，但是社会科学以及相关领域的学生往往缺乏训练。即便有训练，他们接触到的也可能是对社学科学研究本身提供不了太多启发的纯统计课程。该书专门为社会科学如政治学、经济学、社会学、公共政策和数据科学专业的本科生以及低年级研究生量身定制，提供了关于数据分析和统计的实用入门方法。\n当下全世界在经济、政治、教育和公共卫生等各方面都面临着严峻挑战，而COVID-19的全球大流行危机更是凸显找寻以数据为导向的新的、有效的政策举措的紧迫性。该书中文版的出版也旨在吸引越来越多的年轻学生和研究者进入日新月异的量化社会科学领域。\n《量化社会科学导论》一书的写作源于今井教授在普林斯顿大学教授长达十余年之久的一门本科课程。该书英文版自2017年出版后，已经成为世界多所大学用来教授统计和数据科学课程的重要教材。在美国，包括斯坦福大学、耶鲁大学以及作者目前任教的哈佛大学在内的顶尖高校都在使用该书。《量化社会科学导论》的核心思想是学生需要在课程中尽早地接触真实的量化社会科学研究。与传统的统计入门教材不同，该书从一开始就直接采用已经发表的量化社会科学研究中的数据 。该书在介绍概率和统计理论之前为读者提供了深入的数据分析体验，等到读者往后读到难度进阶的章节，就会理解为什么需要这些理论来理解和开展量化社会研究。\n《量化社会科学导论》开篇以种族歧视和呼吁投票运动为例，从实验和观察性研究两个角度讨论了因果性；接着讲解了度量和预测这两个社会科学研究数据分析中的主要目标。该书还有一章讲述了对文本、网络和空间数据的分析，这为读者提供了当今量化社会科学研究的概览。概率和统计理论则在这些数据分析的章节之后呈现。《量化社会科学导论》一书所需的数学要求并不高，读者不一定需要掌握微积分和线性代数的知识。该书在介绍概率和统计理论时采用了一种缜密的概念方式 ，以便学生可以理解其背后的逻辑 。\n目录\nQuantitative Social Science\n中文版序言\n英文版序言\n译校者序\n一、引言\n1.1 本书概述\n1.2 如何使用本书\n1.3 R的简介\n1.4 总结\n1.5 练习\n二、因果关系\n2.1 劳工市场的种族歧视\n2.2 用R取得的数据子集\n2.3 因果效应与反事实\n2.4 随机对照试验\n2.5 观察性研究\n2.6 单变量的描述性统计量\n2.7 总结\n2.8 习题\n三、度量\n3.1 战争时期平民受伤情况的度量\n3.2 处理R中缺失的数据\n3.3 可视化单变量分布\n3.4 调查抽样\n3.5 度量政治极化\n3.6 概括双变量关系\n3.7 聚类\n3.8 总结\n3.9 练习\n四、预测\n4.1 预测选举结果\n4.2 线性回归\n4.3 回归与因果关系\n4.4 总结\n4.5 练习\n五、数据探索\n5.1 文本数据\n5.2 网络数据\n5.3 空间数据\n5.4 总结\n5.5 练习\n六、概率\n6.1 概率\n6.2 条件概率\n6.3 随机变量和概率分布\n6.4 大样本定理\n6.5 总结\n6.6 练习\n七、不确定性\n7.1 估计\n7.2 假设检验\n7.3 含不确定性的线性回归模型\n7.4 总结\n7.5 练习\n下一步\n词汇表\n划重点：赠书\n北京时间11月6日23:59 之前留言您对今井耕介及其研究领域或者其他著作、政文观止Poliview或者政治学（包括国际/比较政治经济学）的想法或者建议 （不少于100字） ，我们将本着 公平公正 的原则抽出 四 位幸运读者寄送赠书 （限中国大陆地区） 。我们真挚地希望被抽中的幸运读者能在读完这本书后写下书评发给我们，共同交流，汇总成文。\n没有抽中的读者朋友也请勿伤心抑或担心，本书在淘宝等各大平台均有销售。\n政文观止Poliview今后还将继续举办赠书活动，欢迎继续关注、支持我们。\n点击“阅读原文”可直达购书链接\n编辑：康张城 杨端程\n",
+  "wordCount" : "143",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E6%94%BF%E8%A7%82%E8%B5%A0%E4%B9%A6-%E4%BB%8A%E4%BA%95%E8%80%95%E4%BB%8B%E8%91%97%E7%A5%96%E6%A2%93%E6%96%87%E5%BE%90%E8%BD%B6%E9%9D%92%E8%AF%91%E9%87%8F%E5%8C%96%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="政观赠书--今井耕介著祖梓文徐轶青译量化社会科学导论">政观赠书 | 今井耕介著、祖梓文、徐轶青译：《量化社会科学导论》<a hidden class="anchor" aria-hidden="true" href="#政观赠书--今井耕介著祖梓文徐轶青译量化社会科学导论">#</a></h1>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p><strong>作者简介：</strong> 今井耕介（Kosuke
+Imai），哈佛大学政府系和统计系教授。今井教授曾在普林斯顿大学执教15年，并担任统计和机器学习项目主任，直到2018年加入哈佛大学。他深耕于开发以及运用统计方法、通过实验和观测数据进行因果推断。他在政治方法论方面的其他研究领域包括调查方法和大数据社会科学研究中的算法。今井教授在2017年到2019年担任美国政治学方法论学会主席。</p>
+<p><img loading="lazy" src="images/222/2.png" alt=""  />
+</p>
+<p>上图为本书作者今井耕介</p>
+<p><strong>译者简介：</strong> 祖梓文，加州大学圣迭戈分校政治学系博士生，政文观止Poliview特邀作者；徐轶青，斯坦福大学政治学系助理教授。</p>
+<p><img loading="lazy" src="images/222/3.jpeg" alt=""  />
+</p>
+<p>上图左起依次为本书译者祖梓文、徐轶青</p>
+<p><img loading="lazy" src="images/222/4.jpeg" alt=""  />
+</p>
+<p><strong>赠书简介</strong></p>
+<p>《量化社会科学导论》是上海财经大学即将出版的匡时新方法系列中的最新一本方法专著。量化分析方法在社会科学研究中日益重要，但是社会科学以及相关领域的学生往往缺乏训练。即便有训练，他们接触到的也可能是对社学科学研究本身提供不了太多启发的纯统计课程。该书专门为社会科学如政治学、经济学、社会学、公共政策和数据科学专业的本科生以及低年级研究生量身定制，提供了关于数据分析和统计的实用入门方法。</p>
+<p>当下全世界在经济、政治、教育和公共卫生等各方面都面临着严峻挑战，而COVID-19的全球大流行危机更是凸显找寻以数据为导向的新的、有效的政策举措的紧迫性。该书中文版的出版也旨在吸引越来越多的年轻学生和研究者进入日新月异的量化社会科学领域。</p>
+<p>《量化社会科学导论》一书的写作源于今井教授在普林斯顿大学教授长达十余年之久的一门本科课程。该书英文版自2017年出版后，已经成为世界多所大学用来教授统计和数据科学课程的重要教材。在美国，包括斯坦福大学、耶鲁大学以及作者目前任教的哈佛大学在内的顶尖高校都在使用该书。《量化社会科学导论》的核心思想是学生需要在课程中尽早地接触真实的量化社会科学研究。与传统的统计入门教材不同，该书从一开始就直接采用已经发表的量化社会科学研究中的数据
+。该书在介绍概率和统计理论之前为读者提供了深入的数据分析体验，等到读者往后读到难度进阶的章节，就会理解为什么需要这些理论来理解和开展量化社会研究。</p>
+<p>《量化社会科学导论》开篇以种族歧视和呼吁投票运动为例，从实验和观察性研究两个角度讨论了因果性；接着讲解了度量和预测这两个社会科学研究数据分析中的主要目标。该书还有一章讲述了对文本、网络和空间数据的分析，这为读者提供了当今量化社会科学研究的概览。概率和统计理论则在这些数据分析的章节之后呈现。《量化社会科学导论》一书所需的数学要求并不高，读者不一定需要掌握微积分和线性代数的知识。该书在介绍概率和统计理论时采用了一种缜密的概念方式
+，以便学生可以理解其背后的逻辑 。</p>
+<p><strong>目录</strong></p>
+<p><strong>Quantitative Social Science</strong></p>
+<p><strong>中文版序言</strong></p>
+<p><strong>英文版序言</strong></p>
+<p><strong>译校者序</strong></p>
+<p><strong>一、引言</strong></p>
+<p>1.1 本书概述</p>
+<p>1.2 如何使用本书</p>
+<p>1.3 R的简介</p>
+<p>1.4 总结</p>
+<p>1.5 练习</p>
+<p><strong>二、因果关系</strong></p>
+<p>2.1 劳工市场的种族歧视</p>
+<p>2.2 用R取得的数据子集</p>
+<p>2.3 因果效应与反事实</p>
+<p>2.4 随机对照试验</p>
+<p>2.5 观察性研究</p>
+<p>2.6 单变量的描述性统计量</p>
+<p>2.7 总结</p>
+<p>2.8 习题</p>
+<p><strong>三、度量</strong></p>
+<p>3.1 战争时期平民受伤情况的度量</p>
+<p>3.2 处理R中缺失的数据</p>
+<p>3.3 可视化单变量分布</p>
+<p>3.4 调查抽样</p>
+<p>3.5 度量政治极化</p>
+<p>3.6 概括双变量关系</p>
+<p>3.7 聚类</p>
+<p>3.8 总结</p>
+<p>3.9 练习</p>
+<p><strong>四、预测</strong></p>
+<p>4.1 预测选举结果</p>
+<p>4.2 线性回归</p>
+<p>4.3 回归与因果关系</p>
+<p>4.4 总结</p>
+<p>4.5 练习</p>
+<p><strong>五、数据探索</strong></p>
+<p>5.1 文本数据</p>
+<p>5.2 网络数据</p>
+<p>5.3 空间数据</p>
+<p>5.4 总结</p>
+<p>5.5 练习</p>
+<p><strong>六、概率</strong></p>
+<p>6.1 概率</p>
+<p>6.2 条件概率</p>
+<p>6.3 随机变量和概率分布</p>
+<p>6.4 大样本定理</p>
+<p>6.5 总结</p>
+<p>6.6 练习</p>
+<p><strong>七、不确定性</strong></p>
+<p>7.1 估计</p>
+<p>7.2 假设检验</p>
+<p>7.3 含不确定性的线性回归模型</p>
+<p>7.4 总结</p>
+<p>7.5 练习</p>
+<p><strong>下一步</strong></p>
+<p><strong>词汇表</strong></p>
+<p><strong>划重点：赠书</strong></p>
+<p><strong>北京时间11月6日23:59</strong>
+之前留言您对今井耕介及其研究领域或者其他著作、政文观止Poliview或者政治学（包括国际/比较政治经济学）的想法或者建议 <strong>（不少于100字）</strong>
+，我们将本着 <strong>公平公正</strong> 的原则抽出 <strong>四</strong> 位幸运读者寄送赠书 <strong>（限中国大陆地区）</strong>
+。我们真挚地希望被抽中的幸运读者能在读完这本书后写下书评发给我们，共同交流，汇总成文。</p>
+<p>没有抽中的读者朋友也请勿伤心抑或担心，本书在淘宝等各大平台均有销售。</p>
+<p>政文观止Poliview今后还将继续举办赠书活动，欢迎继续关注、支持我们。</p>
+<p>点击“阅读原文”可直达购书链接</p>
+<p>编辑：康张城 杨端程</p>
+<p><img loading="lazy" src="images/222/5.jpeg" alt=""  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

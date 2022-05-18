@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="政观原创 | 对稀有事件数据分析的讨论 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集 #方法论 3个
+在社会科学的数据分析中，有那么一类变量比较常见，即0-1的二分变量。当它是自变量时，则称为虚拟变量回归模型，当它是因变量时，此时常用的模型是logistic或probit回归（这两种模型的区别在于对方差的假定不同，二者估计的结果差异不大，但是在更为复杂的模型中可能会有不同的功能）。二分变量可以诠释为有或无，发生或没有发生等。在流行病学或社会科学中，有一些事件会发生，但是出现的频次比较低，比如战争、罕见病症以及政体变迁等。很多时候定性研究在这种重要的罕见事情上大放光彩，通过深入的资料档案分析与小案例比较方法来探究这些事件的成因，总结出具有一定普适性的理论。
+在定量研究中，稀有事件的logistic分析往往存在困难，这点在数学上可以解释，即频率派方法求解待估计系数矩阵时（公式如下），如果事件发生概率过低，矩阵中就会有很多元素约等于0，那么在求矩阵的逆矩阵时就容易出问题，造成估计结果的可信度不高。现在的问题是：什么样的数据算是稀有事件数据？
+ 加里·金（Gary King）2000年左右与其合作者发表的两篇文章讨论了对稀有事件回归模型的估计修正。当然，他们也没有指出多小的比例算是稀有事件（不过他们文章中使用的数据集比例是0.34%，的确算比较小了）。他们文章的核心观点是，通过先验调整（prior correction）或者加权（weighting）的方式来调整估计系数使得样本估计更接近总体。核心的参数是样本的稀有事件比例和总体的稀少事件比例。因为他们认为稀有事件数据在数据收集过程中会面临样本量和变量数目的权衡，因此在估计上可能会低估了稀少事件的出现频次，因此这个调整方案目的和功能也只是让估计更接近真实参数而非优化估计。
+那么核心问题是，多少比例的稀有事件才需要修正呢？为此小编采用仿真模拟（simulation）的方法，构建了不同比例的稀少事件数据集，分别使用普通的logistic方法和Gary King的rare event logit方法来得到解答。数据分析使用R，基础包的glm()函数提供了logistic回归的程序，Zelig包中的relogit()函数提供了rare event logit的程序（这个包的其他函数出了问题，近期刚刚下架，但是错误报告里面没有提relogit()的问题，因此可以用之前版本的进行计算）。
+小编设定了从0.001到0.01的以0.001为步长的比例值和从0.01到0.20的以0.01为步长的比例值，最终共得到29个比例值，分别看这两种估计方法在不同稀少比例下的表现。由于logistic固定了常用阈值，因此设计阵xβ和比例p之间存在某种函数关系，这种函数关系没有解析解，只能通过仿真方法求得数值解进行比较。这里小编还设定了随机数种子666（希望获得好运）使得结果可重复，并虚拟了100000个样本量的数据集，变量服从最小值为0，最大值为10的均匀分布（正态分布最终会导致估计比例收敛到0.5，没有办法达到想要的比例）。下图是仿真模拟的结果。
+这幅图展示的是给定数据集的β和比例p之间的真实关系（红线）、logit回归的估计（绿线），rare event logit回归的估计（蓝线）。为了看得更清晰，截取上左图的部分结果放到右图，可以看到尽管估计上有差异，但是由于关键回归系数的标准误巨大，因此真实值也依然在估计的不确定范围（uncertainty）内。为了进一步观察，小编计算了估计值和真实值之间的差异占真实值的比例，结果如下图。
+ 这张图我们大概可以看出来，当p比较小的时候，估计值和真实值的差异非常大。而且更为关键的是，rare event logit表现也没比正常的回归方法要好到哪里去。所以至少目前的仿真模拟结果呈现出来的结果是，如果以偏差10%为标准，至少比例要达到1%，如果稀有事件数据比例低于1%，两种方法估计上比较不出谁优谁劣。
+所以目前能够初步得出的（未经系统检验的）结论是，如果稀有数据的比例达到1%，那么logit模型一般不会有非常大的估计偏差（形象地想一下，如果有3000个样本量的观测，某个二分变量只有30个不到的1，是不是很多人都有选择扔掉的冲动）。低于该比例的，目前尚无可信的估计方法。当然，小编也尝试了一下贝叶斯（Bayesian）方法，贝叶斯给出的结果同样有比较偏离的估计和较大的可信区间，由于一次贝叶斯估计的时间过长，因此小编没有把所有29个比例全部跑完。此外，贝叶斯的结果也取决于先验（prior）的设定，如果先验设定得好那拟合就非常棒，但是现实的结果是，我们并不知道待估计参数的真实值，即使将普通回归的结果作为一个弱先验给贝叶斯也没有明显的改善。不过这种仿真模拟还比较简单的，其中可能存在一些因个人水平有限而没有意识到的问题与错误，如果有愿意讨论的师友想要进一步讨论，还望不吝赐教！
+撰文：刘天祥 审校：吴温泉 编辑：郭静远">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E6%94%BF%E8%A7%82%E5%8E%9F%E5%88%9B-%E5%AF%B9%E7%A8%80%E6%9C%89%E4%BA%8B%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E8%AE%A8%E8%AE%BA/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="政观原创 | 对稀有事件数据分析的讨论 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集 #方法论 3个
+在社会科学的数据分析中，有那么一类变量比较常见，即0-1的二分变量。当它是自变量时，则称为虚拟变量回归模型，当它是因变量时，此时常用的模型是logistic或probit回归（这两种模型的区别在于对方差的假定不同，二者估计的结果差异不大，但是在更为复杂的模型中可能会有不同的功能）。二分变量可以诠释为有或无，发生或没有发生等。在流行病学或社会科学中，有一些事件会发生，但是出现的频次比较低，比如战争、罕见病症以及政体变迁等。很多时候定性研究在这种重要的罕见事情上大放光彩，通过深入的资料档案分析与小案例比较方法来探究这些事件的成因，总结出具有一定普适性的理论。
+在定量研究中，稀有事件的logistic分析往往存在困难，这点在数学上可以解释，即频率派方法求解待估计系数矩阵时（公式如下），如果事件发生概率过低，矩阵中就会有很多元素约等于0，那么在求矩阵的逆矩阵时就容易出问题，造成估计结果的可信度不高。现在的问题是：什么样的数据算是稀有事件数据？
+ 加里·金（Gary King）2000年左右与其合作者发表的两篇文章讨论了对稀有事件回归模型的估计修正。当然，他们也没有指出多小的比例算是稀有事件（不过他们文章中使用的数据集比例是0.34%，的确算比较小了）。他们文章的核心观点是，通过先验调整（prior correction）或者加权（weighting）的方式来调整估计系数使得样本估计更接近总体。核心的参数是样本的稀有事件比例和总体的稀少事件比例。因为他们认为稀有事件数据在数据收集过程中会面临样本量和变量数目的权衡，因此在估计上可能会低估了稀少事件的出现频次，因此这个调整方案目的和功能也只是让估计更接近真实参数而非优化估计。
+那么核心问题是，多少比例的稀有事件才需要修正呢？为此小编采用仿真模拟（simulation）的方法，构建了不同比例的稀少事件数据集，分别使用普通的logistic方法和Gary King的rare event logit方法来得到解答。数据分析使用R，基础包的glm()函数提供了logistic回归的程序，Zelig包中的relogit()函数提供了rare event logit的程序（这个包的其他函数出了问题，近期刚刚下架，但是错误报告里面没有提relogit()的问题，因此可以用之前版本的进行计算）。
+小编设定了从0.001到0.01的以0.001为步长的比例值和从0.01到0.20的以0.01为步长的比例值，最终共得到29个比例值，分别看这两种估计方法在不同稀少比例下的表现。由于logistic固定了常用阈值，因此设计阵xβ和比例p之间存在某种函数关系，这种函数关系没有解析解，只能通过仿真方法求得数值解进行比较。这里小编还设定了随机数种子666（希望获得好运）使得结果可重复，并虚拟了100000个样本量的数据集，变量服从最小值为0，最大值为10的均匀分布（正态分布最终会导致估计比例收敛到0.5，没有办法达到想要的比例）。下图是仿真模拟的结果。
+这幅图展示的是给定数据集的β和比例p之间的真实关系（红线）、logit回归的估计（绿线），rare event logit回归的估计（蓝线）。为了看得更清晰，截取上左图的部分结果放到右图，可以看到尽管估计上有差异，但是由于关键回归系数的标准误巨大，因此真实值也依然在估计的不确定范围（uncertainty）内。为了进一步观察，小编计算了估计值和真实值之间的差异占真实值的比例，结果如下图。
+ 这张图我们大概可以看出来，当p比较小的时候，估计值和真实值的差异非常大。而且更为关键的是，rare event logit表现也没比正常的回归方法要好到哪里去。所以至少目前的仿真模拟结果呈现出来的结果是，如果以偏差10%为标准，至少比例要达到1%，如果稀有事件数据比例低于1%，两种方法估计上比较不出谁优谁劣。
+所以目前能够初步得出的（未经系统检验的）结论是，如果稀有数据的比例达到1%，那么logit模型一般不会有非常大的估计偏差（形象地想一下，如果有3000个样本量的观测，某个二分变量只有30个不到的1，是不是很多人都有选择扔掉的冲动）。低于该比例的，目前尚无可信的估计方法。当然，小编也尝试了一下贝叶斯（Bayesian）方法，贝叶斯给出的结果同样有比较偏离的估计和较大的可信区间，由于一次贝叶斯估计的时间过长，因此小编没有把所有29个比例全部跑完。此外，贝叶斯的结果也取决于先验（prior）的设定，如果先验设定得好那拟合就非常棒，但是现实的结果是，我们并不知道待估计参数的真实值，即使将普通回归的结果作为一个弱先验给贝叶斯也没有明显的改善。不过这种仿真模拟还比较简单的，其中可能存在一些因个人水平有限而没有意识到的问题与错误，如果有愿意讨论的师友想要进一步讨论，还望不吝赐教！
+撰文：刘天祥 审校：吴温泉 编辑：郭静远" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E6%94%BF%E8%A7%82%E5%8E%9F%E5%88%9B-%E5%AF%B9%E7%A8%80%E6%9C%89%E4%BA%8B%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E8%AE%A8%E8%AE%BA/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="政观原创 | 对稀有事件数据分析的讨论 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集 #方法论 3个
+在社会科学的数据分析中，有那么一类变量比较常见，即0-1的二分变量。当它是自变量时，则称为虚拟变量回归模型，当它是因变量时，此时常用的模型是logistic或probit回归（这两种模型的区别在于对方差的假定不同，二者估计的结果差异不大，但是在更为复杂的模型中可能会有不同的功能）。二分变量可以诠释为有或无，发生或没有发生等。在流行病学或社会科学中，有一些事件会发生，但是出现的频次比较低，比如战争、罕见病症以及政体变迁等。很多时候定性研究在这种重要的罕见事情上大放光彩，通过深入的资料档案分析与小案例比较方法来探究这些事件的成因，总结出具有一定普适性的理论。
+在定量研究中，稀有事件的logistic分析往往存在困难，这点在数学上可以解释，即频率派方法求解待估计系数矩阵时（公式如下），如果事件发生概率过低，矩阵中就会有很多元素约等于0，那么在求矩阵的逆矩阵时就容易出问题，造成估计结果的可信度不高。现在的问题是：什么样的数据算是稀有事件数据？
+ 加里·金（Gary King）2000年左右与其合作者发表的两篇文章讨论了对稀有事件回归模型的估计修正。当然，他们也没有指出多小的比例算是稀有事件（不过他们文章中使用的数据集比例是0.34%，的确算比较小了）。他们文章的核心观点是，通过先验调整（prior correction）或者加权（weighting）的方式来调整估计系数使得样本估计更接近总体。核心的参数是样本的稀有事件比例和总体的稀少事件比例。因为他们认为稀有事件数据在数据收集过程中会面临样本量和变量数目的权衡，因此在估计上可能会低估了稀少事件的出现频次，因此这个调整方案目的和功能也只是让估计更接近真实参数而非优化估计。
+那么核心问题是，多少比例的稀有事件才需要修正呢？为此小编采用仿真模拟（simulation）的方法，构建了不同比例的稀少事件数据集，分别使用普通的logistic方法和Gary King的rare event logit方法来得到解答。数据分析使用R，基础包的glm()函数提供了logistic回归的程序，Zelig包中的relogit()函数提供了rare event logit的程序（这个包的其他函数出了问题，近期刚刚下架，但是错误报告里面没有提relogit()的问题，因此可以用之前版本的进行计算）。
+小编设定了从0.001到0.01的以0.001为步长的比例值和从0.01到0.20的以0.01为步长的比例值，最终共得到29个比例值，分别看这两种估计方法在不同稀少比例下的表现。由于logistic固定了常用阈值，因此设计阵xβ和比例p之间存在某种函数关系，这种函数关系没有解析解，只能通过仿真方法求得数值解进行比较。这里小编还设定了随机数种子666（希望获得好运）使得结果可重复，并虚拟了100000个样本量的数据集，变量服从最小值为0，最大值为10的均匀分布（正态分布最终会导致估计比例收敛到0.5，没有办法达到想要的比例）。下图是仿真模拟的结果。
+这幅图展示的是给定数据集的β和比例p之间的真实关系（红线）、logit回归的估计（绿线），rare event logit回归的估计（蓝线）。为了看得更清晰，截取上左图的部分结果放到右图，可以看到尽管估计上有差异，但是由于关键回归系数的标准误巨大，因此真实值也依然在估计的不确定范围（uncertainty）内。为了进一步观察，小编计算了估计值和真实值之间的差异占真实值的比例，结果如下图。
+ 这张图我们大概可以看出来，当p比较小的时候，估计值和真实值的差异非常大。而且更为关键的是，rare event logit表现也没比正常的回归方法要好到哪里去。所以至少目前的仿真模拟结果呈现出来的结果是，如果以偏差10%为标准，至少比例要达到1%，如果稀有事件数据比例低于1%，两种方法估计上比较不出谁优谁劣。
+所以目前能够初步得出的（未经系统检验的）结论是，如果稀有数据的比例达到1%，那么logit模型一般不会有非常大的估计偏差（形象地想一下，如果有3000个样本量的观测，某个二分变量只有30个不到的1，是不是很多人都有选择扔掉的冲动）。低于该比例的，目前尚无可信的估计方法。当然，小编也尝试了一下贝叶斯（Bayesian）方法，贝叶斯给出的结果同样有比较偏离的估计和较大的可信区间，由于一次贝叶斯估计的时间过长，因此小编没有把所有29个比例全部跑完。此外，贝叶斯的结果也取决于先验（prior）的设定，如果先验设定得好那拟合就非常棒，但是现实的结果是，我们并不知道待估计参数的真实值，即使将普通回归的结果作为一个弱先验给贝叶斯也没有明显的改善。不过这种仿真模拟还比较简单的，其中可能存在一些因个人水平有限而没有意识到的问题与错误，如果有愿意讨论的师友想要进一步讨论，还望不吝赐教！
+撰文：刘天祥 审校：吴温泉 编辑：郭静远"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E6%94%BF%E8%A7%82%E5%8E%9F%E5%88%9B-%E5%AF%B9%E7%A8%80%E6%9C%89%E4%BA%8B%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E8%AE%A8%E8%AE%BA/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "政观原创 | 对稀有事件数据分析的讨论 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集 #方法论 3个\n在社会科学的数据分析中，有那么一类变量比较常见，即0-1的二分变量。当它是自变量时，则称为虚拟变量回归模型，当它是因变量时，此时常用的模型是logistic或probit回归（这两种模型的区别在于对方差的假定不同，二者估计的结果差异不大，但是在更为复杂的模型中可能会有不同的功能）。二分变量可以诠释为有或无，发生或没有发生等。在流行病学或社会科学中，有一些事件会发生，但是出现的频次比较低，比如战争、罕见病症以及政体变迁等。很多时候定性研究在这种重要的罕见事情上大放光彩，通过深入的资料档案分析与小案例比较方法来探究这些事件的成因，总结出具有一定普适性的理论。\n在定量研究中，稀有事件的logistic分析往往存在困难，这点在数学上可以解释，即频率派方法求解待估计系数矩阵时（公式如下），如果事件发生概率过低，矩阵中就会有很多元素约等于0，那么在求矩阵的逆矩阵时就容易出问题，造成估计结果的可信度不高。现在的问题是：什么样的数据算是稀有事件数据？\n 加里·金（Gary King）2000年左右与其合作者发表的两篇文章讨论了对稀有事件回归模型的估计修正。当然，他们也没有指出多小的比例算是稀有事件（不过他们文章中使用的数据集比例是0.34%，的确算比较小了）。他们文章的核心观点是，通过先验调整（prior correction）或者加权（weighting）的方式来调整估计系数使得样本估计更接近总体。核心的参数是样本的稀有事件比例和总体的稀少事件比例。因为他们认为稀有事件数据在数据收集过程中会面临样本量和变量数目的权衡，因此在估计上可能会低估了稀少事件的出现频次，因此这个调整方案目的和功能也只是让估计更接近真实参数而非优化估计。\n那么核心问题是，多少比例的稀有事件才需要修正呢？为此小编采用仿真模拟（simulation）的方法，构建了不同比例的稀少事件数据集，分别使用普通的logistic方法和Gary King的rare event logit方法来得到解答。数据分析使用R，基础包的glm()函数提供了logistic回归的程序，Zelig包中的relogit()函数提供了rare event logit的程序（这个包的其他函数出了问题，近期刚刚下架，但是错误报告里面没有提relogit()的问题，因此可以用之前版本的进行计算）。\n小编设定了从0.001到0.01的以0.001为步长的比例值和从0.01到0.20的以0.01为步长的比例值，最终共得到29个比例值，分别看这两种估计方法在不同稀少比例下的表现。由于logistic固定了常用阈值，因此设计阵xβ和比例p之间存在某种函数关系，这种函数关系没有解析解，只能通过仿真方法求得数值解进行比较。这里小编还设定了随机数种子666（希望获得好运）使得结果可重复，并虚拟了100000个样本量的数据集，变量服从最小值为0，最大值为10的均匀分布（正态分布最终会导致估计比例收敛到0.5，没有办法达到想要的比例）。下图是仿真模拟的结果。\n这幅图展示的是给定数据集的β和比例p之间的真实关系（红线）、logit回归的估计（绿线），rare event logit回归的估计（蓝线）。为了看得更清晰，截取上左图的部分结果放到右图，可以看到尽管估计上有差异，但是由于关键回归系数的标准误巨大，因此真实值也依然在估计的不确定范围（uncertainty）内。为了进一步观察，小编计算了估计值和真实值之间的差异占真实值的比例，结果如下图。\n 这张图我们大概可以看出来，当p比较小的时候，估计值和真实值的差异非常大。而且更为关键的是，rare event logit表现也没比正常的回归方法要好到哪里去。所以至少目前的仿真模拟结果呈现出来的结果是，如果以偏差10%为标准，至少比例要达到1%，如果稀有事件数据比例低于1%，两种方法估计上比较不出谁优谁劣。\n所以目前能够初步得出的（未经系统检验的）结论是，如果稀有数据的比例达到1%，那么logit模型一般不会有非常大的估计偏差（形象地想一下，如果有3000个样本量的观测，某个二分变量只有30个不到的1，是不是很多人都有选择扔掉的冲动）。低于该比例的，目前尚无可信的估计方法。当然，小编也尝试了一下贝叶斯（Bayesian）方法，贝叶斯给出的结果同样有比较偏离的估计和较大的可信区间，由于一次贝叶斯估计的时间过长，因此小编没有把所有29个比例全部跑完。此外，贝叶斯的结果也取决于先验（prior）的设定，如果先验设定得好那拟合就非常棒，但是现实的结果是，我们并不知道待估计参数的真实值，即使将普通回归的结果作为一个弱先验给贝叶斯也没有明显的改善。不过这种仿真模拟还比较简单的，其中可能存在一些因个人水平有限而没有意识到的问题与错误，如果有愿意讨论的师友想要进一步讨论，还望不吝赐教！\n撰文：刘天祥 审校：吴温泉 编辑：郭静远",
+  "keywords": [
+    
+  ],
+  "articleBody": "政观原创 | 对稀有事件数据分析的讨论 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集 #方法论 3个\n在社会科学的数据分析中，有那么一类变量比较常见，即0-1的二分变量。当它是自变量时，则称为虚拟变量回归模型，当它是因变量时，此时常用的模型是logistic或probit回归（这两种模型的区别在于对方差的假定不同，二者估计的结果差异不大，但是在更为复杂的模型中可能会有不同的功能）。二分变量可以诠释为有或无，发生或没有发生等。在流行病学或社会科学中，有一些事件会发生，但是出现的频次比较低，比如战争、罕见病症以及政体变迁等。很多时候定性研究在这种重要的罕见事情上大放光彩，通过深入的资料档案分析与小案例比较方法来探究这些事件的成因，总结出具有一定普适性的理论。\n在定量研究中，稀有事件的logistic分析往往存在困难，这点在数学上可以解释，即频率派方法求解待估计系数矩阵时（公式如下），如果事件发生概率过低，矩阵中就会有很多元素约等于0，那么在求矩阵的逆矩阵时就容易出问题，造成估计结果的可信度不高。现在的问题是：什么样的数据算是稀有事件数据？\n 加里·金（Gary King）2000年左右与其合作者发表的两篇文章讨论了对稀有事件回归模型的估计修正。当然，他们也没有指出多小的比例算是稀有事件（不过他们文章中使用的数据集比例是0.34%，的确算比较小了）。他们文章的核心观点是，通过先验调整（prior correction）或者加权（weighting）的方式来调整估计系数使得样本估计更接近总体。核心的参数是样本的稀有事件比例和总体的稀少事件比例。因为他们认为稀有事件数据在数据收集过程中会面临样本量和变量数目的权衡，因此在估计上可能会低估了稀少事件的出现频次，因此这个调整方案目的和功能也只是让估计更接近真实参数而非优化估计。\n那么核心问题是，多少比例的稀有事件才需要修正呢？为此小编采用仿真模拟（simulation）的方法，构建了不同比例的稀少事件数据集，分别使用普通的logistic方法和Gary King的rare event logit方法来得到解答。数据分析使用R，基础包的glm()函数提供了logistic回归的程序，Zelig包中的relogit()函数提供了rare event logit的程序（这个包的其他函数出了问题，近期刚刚下架，但是错误报告里面没有提relogit()的问题，因此可以用之前版本的进行计算）。\n小编设定了从0.001到0.01的以0.001为步长的比例值和从0.01到0.20的以0.01为步长的比例值，最终共得到29个比例值，分别看这两种估计方法在不同稀少比例下的表现。由于logistic固定了常用阈值，因此设计阵xβ和比例p之间存在某种函数关系，这种函数关系没有解析解，只能通过仿真方法求得数值解进行比较。这里小编还设定了随机数种子666（希望获得好运）使得结果可重复，并虚拟了100000个样本量的数据集，变量服从最小值为0，最大值为10的均匀分布（正态分布最终会导致估计比例收敛到0.5，没有办法达到想要的比例）。下图是仿真模拟的结果。\n这幅图展示的是给定数据集的β和比例p之间的真实关系（红线）、logit回归的估计（绿线），rare event logit回归的估计（蓝线）。为了看得更清晰，截取上左图的部分结果放到右图，可以看到尽管估计上有差异，但是由于关键回归系数的标准误巨大，因此真实值也依然在估计的不确定范围（uncertainty）内。为了进一步观察，小编计算了估计值和真实值之间的差异占真实值的比例，结果如下图。\n 这张图我们大概可以看出来，当p比较小的时候，估计值和真实值的差异非常大。而且更为关键的是，rare event logit表现也没比正常的回归方法要好到哪里去。所以至少目前的仿真模拟结果呈现出来的结果是，如果以偏差10%为标准，至少比例要达到1%，如果稀有事件数据比例低于1%，两种方法估计上比较不出谁优谁劣。\n所以目前能够初步得出的（未经系统检验的）结论是，如果稀有数据的比例达到1%，那么logit模型一般不会有非常大的估计偏差（形象地想一下，如果有3000个样本量的观测，某个二分变量只有30个不到的1，是不是很多人都有选择扔掉的冲动）。低于该比例的，目前尚无可信的估计方法。当然，小编也尝试了一下贝叶斯（Bayesian）方法，贝叶斯给出的结果同样有比较偏离的估计和较大的可信区间，由于一次贝叶斯估计的时间过长，因此小编没有把所有29个比例全部跑完。此外，贝叶斯的结果也取决于先验（prior）的设定，如果先验设定得好那拟合就非常棒，但是现实的结果是，我们并不知道待估计参数的真实值，即使将普通回归的结果作为一个弱先验给贝叶斯也没有明显的改善。不过这种仿真模拟还比较简单的，其中可能存在一些因个人水平有限而没有意识到的问题与错误，如果有愿意讨论的师友想要进一步讨论，还望不吝赐教！\n撰文：刘天祥 审校：吴温泉 编辑：郭静远\n",
+  "wordCount" : "36",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E6%94%BF%E8%A7%82%E5%8E%9F%E5%88%9B-%E5%AF%B9%E7%A8%80%E6%9C%89%E4%BA%8B%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E8%AE%A8%E8%AE%BA/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="政观原创--对稀有事件数据分析的讨论">政观原创 | 对稀有事件数据分析的讨论<a hidden class="anchor" aria-hidden="true" href="#政观原创--对稀有事件数据分析的讨论">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集 #方法论 3个</p>
+<p>在社会科学的数据分析中，有那么一类变量比较常见，即0-1的二分变量。当它是自变量时，则称为虚拟变量回归模型，当它是因变量时，此时常用的模型是logistic或probit回归（这两种模型的区别在于对方差的假定不同，二者估计的结果差异不大，但是在更为复杂的模型中可能会有不同的功能）。二分变量可以诠释为有或无，发生或没有发生等。在流行病学或社会科学中，有一些事件会发生，但是出现的频次比较低，比如战争、罕见病症以及政体变迁等。很多时候定性研究在这种重要的罕见事情上大放光彩，通过深入的资料档案分析与小案例比较方法来探究这些事件的成因，总结出具有一定普适性的理论。</p>
+<p>在定量研究中，稀有事件的logistic分析往往存在困难，这点在数学上可以解释，即频率派方法求解待估计系数矩阵时（公式如下），如果事件发生概率过低，矩阵中就会有很多元素约等于0，那么在求矩阵的逆矩阵时就容易出问题，造成估计结果的可信度不高。现在的问题是：什么样的数据算是稀有事件数据？</p>
+<hr>
+<p><img loading="lazy" src="images/6/2.jpeg" alt=""  />
+</p>
+<p>加里·金（Gary
+King）2000年左右与其合作者发表的两篇文章讨论了对稀有事件回归模型的估计修正。当然，他们也没有指出多小的比例算是稀有事件（不过他们文章中使用的数据集比例是0.34%，的确算比较小了）。他们文章的核心观点是，通过先验调整（prior
+correction）或者加权（weighting）的方式来调整估计系数使得样本估计更接近总体。核心的参数是样本的稀有事件比例和总体的稀少事件比例。因为他们认为稀有事件数据在数据收集过程中会面临样本量和变量数目的权衡，因此在估计上可能会低估了稀少事件的出现频次，因此这个调整方案目的和功能也只是让估计更接近真实参数而非优化估计。</p>
+<p>那么核心问题是，多少比例的稀有事件才需要修正呢？为此小编采用仿真模拟（simulation）的方法，构建了不同比例的稀少事件数据集，分别使用普通的logistic方法和Gary
+King的rare event
+logit方法来得到解答。数据分析使用R，基础包的glm()函数提供了logistic回归的程序，Zelig包中的relogit()函数提供了rare
+event logit的程序（这个包的其他函数出了问题，近期刚刚下架，但是错误报告里面没有提relogit()的问题，因此可以用之前版本的进行计算）。</p>
+<p>小编设定了从0.001到0.01的以0.001为步长的比例值和从0.01到0.20的以0.01为步长的比例值，最终共得到29个比例值，分别看这两种估计方法在不同稀少比例下的表现。由于logistic固定了常用阈值，因此设计阵xβ和比例p之间存在某种函数关系，这种函数关系没有解析解，只能通过仿真方法求得数值解进行比较。这里小编还设定了随机数种子666（希望获得好运）使得结果可重复，并虚拟了100000个样本量的数据集，变量服从最小值为0，最大值为10的均匀分布（正态分布最终会导致估计比例收敛到0.5，没有办法达到想要的比例）。下图是仿真模拟的结果。</p>
+<p><img loading="lazy" src="images/6/3.png" alt=""  />
+<img loading="lazy" src="images/6/4.png" alt=""  />
+</p>
+<p>这幅图展示的是给定数据集的β和比例p之间的真实关系（红线）、logit回归的估计（绿线），rare event
+logit回归的估计（蓝线）。为了看得更清晰，截取上左图的部分结果放到右图，可以看到尽管估计上有差异，但是由于关键回归系数的标准误巨大，因此真实值也依然在估计的不确定范围（uncertainty）内。为了进一步观察，小编计算了估计值和真实值之间的差异占真实值的比例，结果如下图。</p>
+<hr>
+<p><img loading="lazy" src="images/6/5.png" alt=""  />
+</p>
+<p>这张图我们大概可以看出来，当p比较小的时候，估计值和真实值的差异非常大。而且更为关键的是，rare event
+logit表现也没比正常的回归方法要好到哪里去。所以至少目前的仿真模拟结果呈现出来的结果是，如果以偏差10%为标准，至少比例要达到1%，如果稀有事件数据比例低于1%，两种方法估计上比较不出谁优谁劣。</p>
+<p>所以目前能够初步得出的（未经系统检验的）结论是，如果稀有数据的比例达到1%，那么logit模型一般不会有非常大的估计偏差（形象地想一下，如果有3000个样本量的观测，某个二分变量只有30个不到的1，是不是很多人都有选择扔掉的冲动）。低于该比例的，目前尚无可信的估计方法。当然，小编也尝试了一下贝叶斯（Bayesian）方法，贝叶斯给出的结果同样有比较偏离的估计和较大的可信区间，由于一次贝叶斯估计的时间过长，因此小编没有把所有29个比例全部跑完。此外，贝叶斯的结果也取决于先验（prior）的设定，如果先验设定得好那拟合就非常棒，但是现实的结果是，我们并不知道待估计参数的真实值，即使将普通回归的结果作为一个弱先验给贝叶斯也没有明显的改善。不过这种仿真模拟还比较简单的，其中可能存在一些因个人水平有限而没有意识到的问题与错误，如果有愿意讨论的师友想要进一步讨论，还望不吝赐教！</p>
+<p>撰文：刘天祥 审校：吴温泉 编辑：郭静远</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

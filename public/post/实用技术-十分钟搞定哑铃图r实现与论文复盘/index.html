@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="实用技术 | 十分钟搞定哑铃图——R实现与论文复盘 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+2019年，一篇发在《自然》（Science）上的论文刷爆了中国网民的朋友圈。来自美国和瑞士的学者宣称，他们通过“丢钱包”的实地实验考察了全球数十个国家的民众诚信情况。数据表明，无论捡到的钱包里是否有钱，都极少有中国民众会主动联系失主，这反映中国民众的诚信情况在全球各国排名垫底。正如很多学者已经指出的那样，这篇文章的研究设计有很大的问题。特别是，他们在钱包中留下了失主姓名和电子邮件地址，这完全不符合中国普通民众的通讯习惯。在此，我们不再重复对这篇文章价值立场的批评。
+我们的关注点是，这篇文章使用了一种非常直观的可视化方法——哑铃图（Dumbbell Plot），这在很大程度上推动了文章的广泛传播。事实上，哑铃图只是用直线连接了两组常规的点图，但却实现非常传神的数据表现效果。首先，阶梯状的排序清晰地展示了不同国家之间的差异。其次，两组数据点颜色和位置又直观刻画了变量在各国内部的关系。最后，连线显著减轻了读者在坐标系中匹配两个变量的视觉负担。
+那么如何实现这种人见人爱的哑铃图呢？本文将为您逐步揭晓。
+首先我们先根据文章末尾的提示找到原作者公开的资料。按要求填一下申请信息就可以下载数据和代码了。“behavior data”记录了“丢钱包”的详细数据。可以看到，原作者是Stata选手，而且已经贴心地给出了do文件。因此，我们就不重复Stata操作了，直接进入万物皆可R的环节（需要tidyverse包集群）。
+作者给出的数据记录了每一次“丢钱包”的时间地点和结果，我们重点关注三个变量：国家Country、情形cond（放钱=1）、应答response（联系失主=100）。
+方便起见，我们直接丢掉不关心的变量和样本。清洗后，我们需要将cond拆成两个变量然后将数据汇总到国家层面。这里有很多的简便方法和辅助工具，但我们仍然展示最基本的操作过程：
+ behavioral_data_csv_file_ &lt;- read_csv(&quot;behavioral data (csv file).csv&quot;)test &lt;- select(behavioral_data_csv_file_, Country, cond, response) %&gt;% filter(cond &lt; 2)test0 &lt;- filter(test, cond == 0) %&gt;% group_by(Country) %&gt;% summarise(re0 = mean(response))test1 &lt;- filter(test, cond == 1) %&gt;% group_by(Country) %&gt;% summarise(re1 = mean(response))test01 &lt;- left_join(test0,test1)  现在我们已经得到了可以用来画图的汇总数据了。其中的变量分别为国家Country，钱包不放钱的应答率re0，钱包放钱的re1。
+下面介绍最简单粗暴的一种作图方式，直接加载ggplot2的增强包ggalt（tidyverse不包含，需额外安装），此时以geom开头的几何层作图语法就多出了geom_dumbbell的选项。根据geom_dumbbell的逻辑，我们需要先根据一个连续变量和一个分类变量建立坐标系，然后再在坐标系中延伸出另一个连续变量。在我们的数据中，y理所当然的就是国家名。x则需要从re0和re1中选一个，这就是哑铃连线的起点，然后我们再把另一个变量定义给xend，这就是哑铃连线的终点。下面就是最基本的代码和惨不忍睹的第一张图。">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%8D%81%E5%88%86%E9%92%9F%E6%90%9E%E5%AE%9A%E5%93%91%E9%93%83%E5%9B%BEr%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="实用技术 | 十分钟搞定哑铃图——R实现与论文复盘 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+2019年，一篇发在《自然》（Science）上的论文刷爆了中国网民的朋友圈。来自美国和瑞士的学者宣称，他们通过“丢钱包”的实地实验考察了全球数十个国家的民众诚信情况。数据表明，无论捡到的钱包里是否有钱，都极少有中国民众会主动联系失主，这反映中国民众的诚信情况在全球各国排名垫底。正如很多学者已经指出的那样，这篇文章的研究设计有很大的问题。特别是，他们在钱包中留下了失主姓名和电子邮件地址，这完全不符合中国普通民众的通讯习惯。在此，我们不再重复对这篇文章价值立场的批评。
+我们的关注点是，这篇文章使用了一种非常直观的可视化方法——哑铃图（Dumbbell Plot），这在很大程度上推动了文章的广泛传播。事实上，哑铃图只是用直线连接了两组常规的点图，但却实现非常传神的数据表现效果。首先，阶梯状的排序清晰地展示了不同国家之间的差异。其次，两组数据点颜色和位置又直观刻画了变量在各国内部的关系。最后，连线显著减轻了读者在坐标系中匹配两个变量的视觉负担。
+那么如何实现这种人见人爱的哑铃图呢？本文将为您逐步揭晓。
+首先我们先根据文章末尾的提示找到原作者公开的资料。按要求填一下申请信息就可以下载数据和代码了。“behavior data”记录了“丢钱包”的详细数据。可以看到，原作者是Stata选手，而且已经贴心地给出了do文件。因此，我们就不重复Stata操作了，直接进入万物皆可R的环节（需要tidyverse包集群）。
+作者给出的数据记录了每一次“丢钱包”的时间地点和结果，我们重点关注三个变量：国家Country、情形cond（放钱=1）、应答response（联系失主=100）。
+方便起见，我们直接丢掉不关心的变量和样本。清洗后，我们需要将cond拆成两个变量然后将数据汇总到国家层面。这里有很多的简便方法和辅助工具，但我们仍然展示最基本的操作过程：
+ behavioral_data_csv_file_ &lt;- read_csv(&quot;behavioral data (csv file).csv&quot;)test &lt;- select(behavioral_data_csv_file_, Country, cond, response) %&gt;% filter(cond &lt; 2)test0 &lt;- filter(test, cond == 0) %&gt;% group_by(Country) %&gt;% summarise(re0 = mean(response))test1 &lt;- filter(test, cond == 1) %&gt;% group_by(Country) %&gt;% summarise(re1 = mean(response))test01 &lt;- left_join(test0,test1)  现在我们已经得到了可以用来画图的汇总数据了。其中的变量分别为国家Country，钱包不放钱的应答率re0，钱包放钱的re1。
+下面介绍最简单粗暴的一种作图方式，直接加载ggplot2的增强包ggalt（tidyverse不包含，需额外安装），此时以geom开头的几何层作图语法就多出了geom_dumbbell的选项。根据geom_dumbbell的逻辑，我们需要先根据一个连续变量和一个分类变量建立坐标系，然后再在坐标系中延伸出另一个连续变量。在我们的数据中，y理所当然的就是国家名。x则需要从re0和re1中选一个，这就是哑铃连线的起点，然后我们再把另一个变量定义给xend，这就是哑铃连线的终点。下面就是最基本的代码和惨不忍睹的第一张图。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%8D%81%E5%88%86%E9%92%9F%E6%90%9E%E5%AE%9A%E5%93%91%E9%93%83%E5%9B%BEr%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用技术 | 十分钟搞定哑铃图——R实现与论文复盘 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+2019年，一篇发在《自然》（Science）上的论文刷爆了中国网民的朋友圈。来自美国和瑞士的学者宣称，他们通过“丢钱包”的实地实验考察了全球数十个国家的民众诚信情况。数据表明，无论捡到的钱包里是否有钱，都极少有中国民众会主动联系失主，这反映中国民众的诚信情况在全球各国排名垫底。正如很多学者已经指出的那样，这篇文章的研究设计有很大的问题。特别是，他们在钱包中留下了失主姓名和电子邮件地址，这完全不符合中国普通民众的通讯习惯。在此，我们不再重复对这篇文章价值立场的批评。
+我们的关注点是，这篇文章使用了一种非常直观的可视化方法——哑铃图（Dumbbell Plot），这在很大程度上推动了文章的广泛传播。事实上，哑铃图只是用直线连接了两组常规的点图，但却实现非常传神的数据表现效果。首先，阶梯状的排序清晰地展示了不同国家之间的差异。其次，两组数据点颜色和位置又直观刻画了变量在各国内部的关系。最后，连线显著减轻了读者在坐标系中匹配两个变量的视觉负担。
+那么如何实现这种人见人爱的哑铃图呢？本文将为您逐步揭晓。
+首先我们先根据文章末尾的提示找到原作者公开的资料。按要求填一下申请信息就可以下载数据和代码了。“behavior data”记录了“丢钱包”的详细数据。可以看到，原作者是Stata选手，而且已经贴心地给出了do文件。因此，我们就不重复Stata操作了，直接进入万物皆可R的环节（需要tidyverse包集群）。
+作者给出的数据记录了每一次“丢钱包”的时间地点和结果，我们重点关注三个变量：国家Country、情形cond（放钱=1）、应答response（联系失主=100）。
+方便起见，我们直接丢掉不关心的变量和样本。清洗后，我们需要将cond拆成两个变量然后将数据汇总到国家层面。这里有很多的简便方法和辅助工具，但我们仍然展示最基本的操作过程：
+ behavioral_data_csv_file_ &lt;- read_csv(&quot;behavioral data (csv file).csv&quot;)test &lt;- select(behavioral_data_csv_file_, Country, cond, response) %&gt;% filter(cond &lt; 2)test0 &lt;- filter(test, cond == 0) %&gt;% group_by(Country) %&gt;% summarise(re0 = mean(response))test1 &lt;- filter(test, cond == 1) %&gt;% group_by(Country) %&gt;% summarise(re1 = mean(response))test01 &lt;- left_join(test0,test1)  现在我们已经得到了可以用来画图的汇总数据了。其中的变量分别为国家Country，钱包不放钱的应答率re0，钱包放钱的re1。
+下面介绍最简单粗暴的一种作图方式，直接加载ggplot2的增强包ggalt（tidyverse不包含，需额外安装），此时以geom开头的几何层作图语法就多出了geom_dumbbell的选项。根据geom_dumbbell的逻辑，我们需要先根据一个连续变量和一个分类变量建立坐标系，然后再在坐标系中延伸出另一个连续变量。在我们的数据中，y理所当然的就是国家名。x则需要从re0和re1中选一个，这就是哑铃连线的起点，然后我们再把另一个变量定义给xend，这就是哑铃连线的终点。下面就是最基本的代码和惨不忍睹的第一张图。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%8D%81%E5%88%86%E9%92%9F%E6%90%9E%E5%AE%9A%E5%93%91%E9%93%83%E5%9B%BEr%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "实用技术 | 十分钟搞定哑铃图——R实现与论文复盘 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n2019年，一篇发在《自然》（Science）上的论文刷爆了中国网民的朋友圈。来自美国和瑞士的学者宣称，他们通过“丢钱包”的实地实验考察了全球数十个国家的民众诚信情况。数据表明，无论捡到的钱包里是否有钱，都极少有中国民众会主动联系失主，这反映中国民众的诚信情况在全球各国排名垫底。正如很多学者已经指出的那样，这篇文章的研究设计有很大的问题。特别是，他们在钱包中留下了失主姓名和电子邮件地址，这完全不符合中国普通民众的通讯习惯。在此，我们不再重复对这篇文章价值立场的批评。\n我们的关注点是，这篇文章使用了一种非常直观的可视化方法——哑铃图（Dumbbell Plot），这在很大程度上推动了文章的广泛传播。事实上，哑铃图只是用直线连接了两组常规的点图，但却实现非常传神的数据表现效果。首先，阶梯状的排序清晰地展示了不同国家之间的差异。其次，两组数据点颜色和位置又直观刻画了变量在各国内部的关系。最后，连线显著减轻了读者在坐标系中匹配两个变量的视觉负担。\n那么如何实现这种人见人爱的哑铃图呢？本文将为您逐步揭晓。\n首先我们先根据文章末尾的提示找到原作者公开的资料。按要求填一下申请信息就可以下载数据和代码了。“behavior data”记录了“丢钱包”的详细数据。可以看到，原作者是Stata选手，而且已经贴心地给出了do文件。因此，我们就不重复Stata操作了，直接进入万物皆可R的环节（需要tidyverse包集群）。\n作者给出的数据记录了每一次“丢钱包”的时间地点和结果，我们重点关注三个变量：国家Country、情形cond（放钱=1）、应答response（联系失主=100）。\n方便起见，我们直接丢掉不关心的变量和样本。清洗后，我们需要将cond拆成两个变量然后将数据汇总到国家层面。这里有很多的简便方法和辅助工具，但我们仍然展示最基本的操作过程：\n behavioral_data_csv_file_ \u0026lt;- read_csv(\u0026quot;behavioral data (csv file).csv\u0026quot;)test \u0026lt;- select(behavioral_data_csv_file_, Country, cond, response) %\u0026gt;% filter(cond \u0026lt; 2)test0 \u0026lt;- filter(test, cond == 0) %\u0026gt;% group_by(Country) %\u0026gt;% summarise(re0 = mean(response))test1 \u0026lt;- filter(test, cond == 1) %\u0026gt;% group_by(Country) %\u0026gt;% summarise(re1 = mean(response))test01 \u0026lt;- left_join(test0,test1)  现在我们已经得到了可以用来画图的汇总数据了。其中的变量分别为国家Country，钱包不放钱的应答率re0，钱包放钱的re1。\n下面介绍最简单粗暴的一种作图方式，直接加载ggplot2的增强包ggalt（tidyverse不包含，需额外安装），此时以geom开头的几何层作图语法就多出了geom_dumbbell的选项。根据geom_dumbbell的逻辑，我们需要先根据一个连续变量和一个分类变量建立坐标系，然后再在坐标系中延伸出另一个连续变量。在我们的数据中，y理所当然的就是国家名。x则需要从re0和re1中选一个，这就是哑铃连线的起点，然后我们再把另一个变量定义给xend，这就是哑铃连线的终点。下面就是最基本的代码和惨不忍睹的第一张图。",
+  "keywords": [
+    
+  ],
+  "articleBody": "实用技术 | 十分钟搞定哑铃图——R实现与论文复盘 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n2019年，一篇发在《自然》（Science）上的论文刷爆了中国网民的朋友圈。来自美国和瑞士的学者宣称，他们通过“丢钱包”的实地实验考察了全球数十个国家的民众诚信情况。数据表明，无论捡到的钱包里是否有钱，都极少有中国民众会主动联系失主，这反映中国民众的诚信情况在全球各国排名垫底。正如很多学者已经指出的那样，这篇文章的研究设计有很大的问题。特别是，他们在钱包中留下了失主姓名和电子邮件地址，这完全不符合中国普通民众的通讯习惯。在此，我们不再重复对这篇文章价值立场的批评。\n我们的关注点是，这篇文章使用了一种非常直观的可视化方法——哑铃图（Dumbbell Plot），这在很大程度上推动了文章的广泛传播。事实上，哑铃图只是用直线连接了两组常规的点图，但却实现非常传神的数据表现效果。首先，阶梯状的排序清晰地展示了不同国家之间的差异。其次，两组数据点颜色和位置又直观刻画了变量在各国内部的关系。最后，连线显著减轻了读者在坐标系中匹配两个变量的视觉负担。\n那么如何实现这种人见人爱的哑铃图呢？本文将为您逐步揭晓。\n首先我们先根据文章末尾的提示找到原作者公开的资料。按要求填一下申请信息就可以下载数据和代码了。“behavior data”记录了“丢钱包”的详细数据。可以看到，原作者是Stata选手，而且已经贴心地给出了do文件。因此，我们就不重复Stata操作了，直接进入万物皆可R的环节（需要tidyverse包集群）。\n作者给出的数据记录了每一次“丢钱包”的时间地点和结果，我们重点关注三个变量：国家Country、情形cond（放钱=1）、应答response（联系失主=100）。\n方便起见，我们直接丢掉不关心的变量和样本。清洗后，我们需要将cond拆成两个变量然后将数据汇总到国家层面。这里有很多的简便方法和辅助工具，但我们仍然展示最基本的操作过程：\n behavioral_data_csv_file_ % filter(cond % group_by(Country) %% summarise(re0 = mean(response))test1 % group_by(Country) %% summarise(re1 = mean(response))test01  现在我们已经得到了可以用来画图的汇总数据了。其中的变量分别为国家Country，钱包不放钱的应答率re0，钱包放钱的re1。\n下面介绍最简单粗暴的一种作图方式，直接加载ggplot2的增强包ggalt（tidyverse不包含，需额外安装），此时以geom开头的几何层作图语法就多出了geom_dumbbell的选项。根据geom_dumbbell的逻辑，我们需要先根据一个连续变量和一个分类变量建立坐标系，然后再在坐标系中延伸出另一个连续变量。在我们的数据中，y理所当然的就是国家名。x则需要从re0和re1中选一个，这就是哑铃连线的起点，然后我们再把另一个变量定义给xend，这就是哑铃连线的终点。下面就是最基本的代码和惨不忍睹的第一张图。\n library(ggalt)ggplot(test01,aes( y = Country,x = re0, xend = re1)) + geom_dumbbell()  下面开始调整图形。首先，我们要将国家有序排列，这就需要在ggplot的aes美学层命令中嵌入reorder函数。其次，我们需要用颜色将re0和re1分开。最后，我们希望哑铃能更饱满一些，然后希望背景不要喧宾夺主。\n ggplot(test01,aes( y = reorder(Country, re0),x = re0, xend = re1)) +geom_dumbbell(size_x=2.5, size_xend = 2.5, colour_x=\"orange\",colour_xend = \"red\") +theme_classic() + xlab(\"\") +ylab(\"\")  现在看起来是不是舒服、清晰了很多？下面我们不妨进一步思考，哑铃图无非是点图和线图的组合，我们能不能只用最基本的ggplot命令来实现呢？答案是肯定的，而且在最基本的ggplot命令中，我们可以更加方便地批量化调整颜色、形状等属性。\n下面贴出一种思路供大家参考：\n test0101  最后，我们再看一个新的例子，读者可以自行从下面的思路和代码中体会细节。在《精英与大众双重视角下的当代欧洲民粹主义》一文中，作者希望描述欧洲各国民众对于移民的负面情绪。作者的数据中包括国家Cname，第四波调查结果immisum4，第五波调查结果immisum5，还有已经提前算好的国家排序X。\n下面贴出同样提出两种实现哑铃图的代码和效果。\n首先是ggalt选手：\n e2  然后是最基本的ggplot命令：\n  e3  我们将本文的代码和相关数据打包上传到了网盘，感兴趣的读者朋友可以扫描下面二维码下载复验。 ****\n 参考文献：\n1. A. Cohn, et al., “Civic Honesty around the Globe,” Science , Vol. 365, No. 6448, 2019, pp. 70-73.\n2. 陆屹洲、马得勇：《精英与大众双重视角下的当代欧洲民粹主义》，《中央社会主义学院学报》，2020年第6期，第47-60页。\n撰文：陆屹洲 审读：杨端程 编辑：张天一\n",
+  "wordCount" : "250",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%8D%81%E5%88%86%E9%92%9F%E6%90%9E%E5%AE%9A%E5%93%91%E9%93%83%E5%9B%BEr%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="实用技术--十分钟搞定哑铃图r实现与论文复盘">实用技术 | 十分钟搞定哑铃图——R实现与论文复盘<a hidden class="anchor" aria-hidden="true" href="#实用技术--十分钟搞定哑铃图r实现与论文复盘">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p>#数据可视化 15 个</p>
+<p>#实用技术 19 个</p>
+<p>2019年，一篇发在《自然》（Science）上的论文刷爆了中国网民的朋友圈。来自美国和瑞士的学者宣称，他们通过“丢钱包”的实地实验考察了全球数十个国家的民众诚信情况。数据表明，无论捡到的钱包里是否有钱，都极少有中国民众会主动联系失主，这反映中国民众的诚信情况在全球各国排名垫底。正如很多学者已经指出的那样，这篇文章的研究设计有很大的问题。特别是，他们在钱包中留下了失主姓名和电子邮件地址，这完全不符合中国普通民众的通讯习惯。在此，我们不再重复对这篇文章价值立场的批评。</p>
+<p><img loading="lazy" src="images/175/2.png" alt=""  />
+</p>
+<p>我们的关注点是，这篇文章使用了一种非常直观的可视化方法——哑铃图（Dumbbell
+Plot），这在很大程度上推动了文章的广泛传播。事实上，哑铃图只是用直线连接了两组常规的点图，但却实现非常传神的数据表现效果。首先，阶梯状的排序清晰地展示了不同国家之间的差异。其次，两组数据点颜色和位置又直观刻画了变量在各国内部的关系。最后，连线显著减轻了读者在坐标系中匹配两个变量的视觉负担。</p>
+<p>那么如何实现这种人见人爱的哑铃图呢？本文将为您逐步揭晓。</p>
+<p>首先我们先根据文章末尾的提示找到原作者公开的资料。按要求填一下申请信息就可以下载数据和代码了。“behavior
+data”记录了“丢钱包”的详细数据。可以看到，原作者是Stata选手，而且已经贴心地给出了do文件。因此，我们就不重复Stata操作了，直接进入万物皆可R的环节（需要tidyverse包集群）。</p>
+<p><img loading="lazy" src="images/175/3.png" alt=""  />
+<img loading="lazy" src="images/175/4.png" alt=""  />
+</p>
+<p>作者给出的数据记录了每一次“丢钱包”的时间地点和结果，我们重点关注三个变量：国家Country、情形cond（放钱=1）、应答response（联系失主=100）。</p>
+<p><img loading="lazy" src="images/175/5.png" alt=""  />
+</p>
+<p>方便起见，我们直接丢掉不关心的变量和样本。清洗后，我们需要将cond拆成两个变量然后将数据汇总到国家层面。这里有很多的简便方法和辅助工具，但我们仍然展示最基本的操作过程：</p>
+<hr>
+<pre><code>behavioral_data_csv_file_ &lt;- read_csv(&quot;behavioral data (csv file).csv&quot;)test &lt;- select(behavioral_data_csv_file_, Country, cond, response) %&gt;% filter(cond &lt; 2)test0 &lt;- filter(test, cond == 0) %&gt;% group_by(Country) %&gt;% summarise(re0 = mean(response))test1 &lt;- filter(test, cond == 1) %&gt;% group_by(Country) %&gt;% summarise(re1 = mean(response))test01 &lt;- left_join(test0,test1)
+</code></pre>
+<p>现在我们已经得到了可以用来画图的汇总数据了。其中的变量分别为国家Country，钱包不放钱的应答率re0，钱包放钱的re1。</p>
+<p><img loading="lazy" src="images/175/6.png" alt=""  />
+</p>
+<p>下面介绍最简单粗暴的一种作图方式，直接加载ggplot2的增强包ggalt（tidyverse不包含，需额外安装），此时以geom开头的几何层作图语法就多出了geom_dumbbell的选项。根据geom_dumbbell的逻辑，我们需要先根据一个连续变量和一个分类变量建立坐标系，然后再在坐标系中延伸出另一个连续变量。在我们的数据中，y理所当然的就是国家名。x则需要从re0和re1中选一个，这就是哑铃连线的起点，然后我们再把另一个变量定义给xend，这就是哑铃连线的终点。下面就是最基本的代码和惨不忍睹的第一张图。</p>
+<hr>
+<pre><code>library(ggalt)ggplot(test01,aes( y = Country,x = re0, xend = re1)) + geom_dumbbell()
+</code></pre>
+<p><img loading="lazy" src="images/175/7.png" alt=""  />
+</p>
+<p>下面开始调整图形。首先，我们要将国家有序排列，这就需要在ggplot的aes美学层命令中嵌入reorder函数。其次，我们需要用颜色将re0和re1分开。最后，我们希望哑铃能更饱满一些，然后希望背景不要喧宾夺主。</p>
+<hr>
+<pre><code>ggplot(test01,aes( y = reorder(Country, re0),x = re0, xend = re1)) +geom_dumbbell(size_x=2.5, size_xend = 2.5, colour_x=&quot;orange&quot;,colour_xend = &quot;red&quot;) +theme_classic() + xlab(&quot;&quot;) +ylab(&quot;&quot;)     
+</code></pre>
+<p><img loading="lazy" src="images/175/8.png" alt=""  />
+</p>
+<p>现在看起来是不是舒服、清晰了很多？下面我们不妨进一步思考，哑铃图无非是点图和线图的组合，我们能不能只用最基本的ggplot命令来实现呢？答案是肯定的，而且在最基本的ggplot命令中，我们可以更加方便地批量化调整颜色、形状等属性。</p>
+<p>下面贴出一种思路供大家参考：</p>
+<hr>
+<pre><code>test0101 &lt;- arrange(test01, re0)test0101$o &lt;- 1:40test0101 &lt;- gather(test0101, key= cond, value = re, -c(&quot;Country&quot;,&quot;o&quot;))ggplot(test0101, aes(y = reorder(Country,o), x = re, colour = cond, shape = cond )) +geom_line(aes(group = Country), colour = &quot;black&quot; ) +geom_point(size = 2.5) + theme_classic() + xlab(&quot;&quot;) +ylab(&quot;&quot;) 
+</code></pre>
+<p><img loading="lazy" src="images/175/9.png" alt=""  />
+</p>
+<p>最后，我们再看一个新的例子，读者可以自行从下面的思路和代码中体会细节。在《精英与大众双重视角下的当代欧洲民粹主义》一文中，作者希望描述欧洲各国民众对于移民的负面情绪。作者的数据中包括国家Cname，第四波调查结果immisum4，第五波调查结果immisum5，还有已经提前算好的国家排序X。</p>
+<p><img loading="lazy" src="images/175/10.png" alt=""  />
+</p>
+<p>下面贴出同样提出两种实现哑铃图的代码和效果。</p>
+<p>首先是ggalt选手：</p>
+<hr>
+<pre><code>e2 &lt;- read_csv(&quot;e2.csv&quot;)ggplot(e2,aes(y = reorder(Cname, X), x = immisum4, xend = immisum5)) +geom_dumbbell(size_x=3.5, size_xend = 3.5, colour_x=&quot;skyblue&quot;,colour_xend = &quot;red&quot;) +theme_bw() + xlab(&quot;&quot;) +ylab(&quot;&quot;)  + coord_flip() +theme(axis.text=element_text(angle = 90, colour = &quot;black&quot;)) +theme(axis.text.y=element_text(size=0))
+</code></pre>
+<p><img loading="lazy" src="images/175/11.png" alt=""  />
+</p>
+<p>然后是最基本的ggplot命令：</p>
+<hr>
+<pre><code> e3 &lt;- gather(e2, key = colour, value = immi, -c(&quot;X&quot;,&quot;Cname&quot;)) ggplot(e3,aes(x = reorder(Cname,X), y = immi, colour = colour, shape = colour))+ geom_line(aes(group = Cname),colour = &quot;black&quot; ) + geom_point(size = 3.3)+ theme_bw()+xlab(&quot;&quot;) +ylab(&quot;&quot;)+ theme(axis.text.y=element_text(size=0)) + theme(legend.position=&quot;none&quot;)+ theme(axis.text=element_text(angle = 90, colour = &quot;black&quot;))
+</code></pre>
+<p><img loading="lazy" src="images/175/12.png" alt=""  />
+</p>
+<p>我们将本文的代码和相关数据打包上传到了网盘，感兴趣的读者朋友可以扫描下面二维码下载复验。 ****</p>
+<p><img loading="lazy" src="images/175/13.png" alt=""  />
+</p>
+<hr>
+<p><strong>参考文献：</strong></p>
+<p>1. A. Cohn, et al., “Civic Honesty around the Globe,” <em>Science</em> , Vol. 365,
+No. 6448, 2019, pp. 70-73.</p>
+<p>2. 陆屹洲、马得勇：《精英与大众双重视角下的当代欧洲民粹主义》，《中央社会主义学院学报》，2020年第6期，第47-60页。</p>
+<p>撰文：陆屹洲 审读：杨端程 编辑：张天一</p>
+<p><img loading="lazy" src="images/175/14.jpeg" alt=""  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

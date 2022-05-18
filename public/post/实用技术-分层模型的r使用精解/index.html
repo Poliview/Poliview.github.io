@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="实用技术 | 分层模型的R使用精解 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集 #实用技术 19个
+最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。
+引言（非原文内容）
+分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。
+而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)
+图一
+图二
+这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。
+分层模型精解
+仅有随机截距的两层模型
+这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：
+   lmer(y ~ 1 &#43; (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型
+如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：
+   lmer(y ~ var &#43; (var | level_2), data = data)   存在调节变量的模型
+有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：
+   lmer(y ~ var*mod &#43; (var | level_2), data = data)  解释变量和截距项的调整">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84r%E4%BD%BF%E7%94%A8%E7%B2%BE%E8%A7%A3/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="实用技术 | 分层模型的R使用精解 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集 #实用技术 19个
+最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。
+引言（非原文内容）
+分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。
+而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)
+图一
+图二
+这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。
+分层模型精解
+仅有随机截距的两层模型
+这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：
+   lmer(y ~ 1 &#43; (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型
+如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：
+   lmer(y ~ var &#43; (var | level_2), data = data)   存在调节变量的模型
+有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：
+   lmer(y ~ var*mod &#43; (var | level_2), data = data)  解释变量和截距项的调整" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84r%E4%BD%BF%E7%94%A8%E7%B2%BE%E8%A7%A3/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用技术 | 分层模型的R使用精解 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集 #实用技术 19个
+最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。
+引言（非原文内容）
+分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。
+而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)
+图一
+图二
+这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。
+分层模型精解
+仅有随机截距的两层模型
+这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：
+   lmer(y ~ 1 &#43; (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型
+如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：
+   lmer(y ~ var &#43; (var | level_2), data = data)   存在调节变量的模型
+有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：
+   lmer(y ~ var*mod &#43; (var | level_2), data = data)  解释变量和截距项的调整"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84r%E4%BD%BF%E7%94%A8%E7%B2%BE%E8%A7%A3/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "实用技术 | 分层模型的R使用精解 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集 #实用技术 19个\n最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。\n引言（非原文内容）\n分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。\n而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)\n图一\n图二\n这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。\n分层模型精解\n仅有随机截距的两层模型\n这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：\n   lmer(y ~ 1 + (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型\n如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：\n   lmer(y ~ var + (var | level_2), data = data)   存在调节变量的模型\n有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：\n   lmer(y ~ var*mod + (var | level_2), data = data)  解释变量和截距项的调整",
+  "keywords": [
+    
+  ],
+  "articleBody": "实用技术 | 分层模型的R使用精解 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集 #实用技术 19个\n最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。\n引言（非原文内容）\n分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。\n而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)\n图一\n图二\n这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。\n分层模型精解\n仅有随机截距的两层模型\n这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：\n   lmer(y ~ 1 + (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型\n如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：\n   lmer(y ~ var + (var | level_2), data = data)   存在调节变量的模型\n有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：\n   lmer(y ~ var*mod + (var | level_2), data = data)  解释变量和截距项的调整\n如果认为仅有解释变量存在随机效应，而截距项没有随机效应，那么模型设定如下：\n   lmer(y ~ var + (var + 0 | level_2), data = data)  反之，如果认为仅有截距项存在随机效应，而解释变量没有随机效应，那么模型设定如下：\n   lmer(y ~ var + (1 | level_2), data = data)  此外，如果认为解释变量和截距项都有随机效应，且二者不相关，那么模型设定有两种方式：\n lmer(y ~ var + (var || level_2), data = data) 或lmer(y ~ var + (1 | level_2) + (var + 0 | level_2), data = data)  仅有随机截距的三层模型\n如果数据结构更为复杂，例如学生隶属于不同学校，学校坐立于不同城市，那么这时候就需要更高层次的组别进行嵌套：\n lmer(y ~ 1 + (1 | level_2/level_3), data = data)或lmer(y ~ 1 + (1 | level_3:level_2) + (1 | level_3), data = data)  第一层级解释变量的随机效应模型\n如果认为最底层的解释变量在第二层和第三层的不同组别中对结果变量的影响大小不同，类似于两层模型的随机效应设定：\n lmer(y ~ var + (var | level_2/level_3), data = data)或lmer(y ~ var + (var | level_3:level_2) + (var | level_3), data = data)  第二层级解释变量的随机效应模型\n由于第二层级的解释变量Var不可能在第二层存在随机效应，随机效应仅存在于第三层，那么模型设定就需要进行拆分：\n   lmer(y ~ Var + (1 | level_3:level_2) + (Var | level_3), data = data)  跨层交互效应在三层的随机效应\n有时候模型会设定跨层交互效应，如果这种跨层交互效应在第三层的不同组别也是不同的，模型设定如下：\n   lmer(y ~ var*Mod + (var | level_3:level_2) + (var*Mod | level_3), data = data)  其他可能存在但是不常见的情况\n以上模型拟合都是假定不同组别的方差是相等的，如果方差不相等，那lmer()函数可能就无法拟合，需要使用lme()进行拟合。此外，还有部分模型涉及到时间上的自相关、时间上的断点以及二次项的非线性关系拟合等问题，帖子上只做了简介。在这里也只是方便大家快速的查阅使用啦。\n撰文：刘天祥 审读：吴温泉 编辑：康张城\n",
+  "wordCount" : "206",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84r%E4%BD%BF%E7%94%A8%E7%B2%BE%E8%A7%A3/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="实用技术--分层模型的r使用精解">实用技术 | 分层模型的R使用精解<a hidden class="anchor" aria-hidden="true" href="#实用技术--分层模型的r使用精解">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集 #实用技术 19个</p>
+<p>最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“
+<strong>阅读原文</strong> ”）
+由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。</p>
+<p><strong>引言（非原文内容）</strong></p>
+<p>分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random
+intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。</p>
+<p><img loading="lazy" src="images/30/2.jpeg" alt=""  />
+</p>
+<p>而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)</p>
+<p><img loading="lazy" src="images/30/3.jpeg" alt=""  />
+<br>
+图一</p>
+<p><img loading="lazy" src="images/30/4.jpeg" alt=""  />
+</p>
+<p>图二</p>
+<p>这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill
+2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。</p>
+<p><strong>分层模型精解</strong></p>
+<p><strong>仅有随机截距的两层模型</strong></p>
+<p>这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>lmer(y ~ 1 + (1 | level_2), data = data)
+</code></pre>
+<p><strong>包含第一层变量随机斜率的两层模型</strong></p>
+<p>如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>lmer(y ~ var + (var | level_2), data = data)
+</code></pre>
+<hr>
+<p><strong>存在调节变量的模型</strong></p>
+<p>有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>lmer(y ~ var*mod + (var | level_2), data = data)
+</code></pre>
+<p><strong>解释变量和截距项的调整</strong></p>
+<p>如果认为仅有解释变量存在随机效应，而截距项没有随机效应，那么模型设定如下：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>lmer(y ~ var + (var + 0 | level_2), data = data)
+</code></pre>
+<p>反之，如果认为仅有截距项存在随机效应，而解释变量没有随机效应，那么模型设定如下：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>lmer(y ~ var + (1 | level_2), data = data)
+</code></pre>
+<p>此外，如果认为解释变量和截距项都有随机效应，且二者不相关，那么模型设定有两种方式：</p>
+<hr>
+<pre><code>lmer(y ~ var + (var || level_2), data = data) 或lmer(y ~ var + (1 | level_2) + (var + 0 | level_2), data = data)
+</code></pre>
+<p><strong>仅有随机截距的三层模型</strong></p>
+<p>如果数据结构更为复杂，例如学生隶属于不同学校，学校坐立于不同城市，那么这时候就需要更高层次的组别进行嵌套：</p>
+<hr>
+<pre><code>lmer(y ~ 1 + (1 | level_2/level_3), data = data)或lmer(y ~ 1 + (1 | level_3:level_2) + (1 | level_3), data = data)
+</code></pre>
+<p><strong>第一层级解释变量的随机效应模型</strong></p>
+<p>如果认为最底层的解释变量在第二层和第三层的不同组别中对结果变量的影响大小不同，类似于两层模型的随机效应设定：</p>
+<hr>
+<pre><code>lmer(y ~ var + (var | level_2/level_3), data = data)或lmer(y ~ var + (var | level_3:level_2) + (var | level_3), data = data)
+</code></pre>
+<p><strong>第二层级解释变量的随机效应模型</strong></p>
+<p>由于第二层级的解释变量Var不可能在第二层存在随机效应，随机效应仅存在于第三层，那么模型设定就需要进行拆分：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>lmer(y ~ Var + (1 | level_3:level_2) + (Var | level_3), data = data)
+</code></pre>
+<p><strong>跨层交互效应在三层的随机效应</strong></p>
+<p>有时候模型会设定跨层交互效应，如果这种跨层交互效应在第三层的不同组别也是不同的，模型设定如下：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>lmer(y ~ var*Mod + (var | level_3:level_2) + (var*Mod | level_3), data = data)
+</code></pre>
+<p><strong>其他可能存在但是不常见的情况</strong></p>
+<p>以上模型拟合都是假定不同组别的方差是相等的，如果方差不相等，那lmer()函数可能就无法拟合，需要使用lme()进行拟合。此外，还有部分模型涉及到时间上的自相关、时间上的断点以及二次项的非线性关系拟合等问题，帖子上只做了简介。在这里也只是方便大家快速的查阅使用啦。</p>
+<p>撰文：刘天祥 审读：吴温泉 编辑：康张城</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

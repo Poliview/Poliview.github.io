@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.98.0" /><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://example.org/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="My New Hugo Site" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My New Hugo Site"/>
+<meta name="twitter:description" content=""/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "My New Hugo Site",
+  "url": "http://example.org/",
+  "description": "",
+  "thumbnailUrl": "http://example.org/favicon.ico",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 分层模型的R使用精解 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集 #实用技术 19个
+最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。
+引言（非原文内容）
+分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。
+而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)
+图一
+图二
+这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。
+分层模型精解
+仅有随机截距的两层模型
+这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：
+   lmer(y ~ 1 &#43; (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型
+如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：
+   lmer(y ~ var &#43; (var | level_2), data = data)   存在调节变量的模型
+有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：
+   lmer(y ~ var*mod &#43; (var | level_2), data = data)  解释变量和截距项的调整...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84r%E4%BD%BF%E7%94%A8%E7%B2%BE%E8%A7%A3/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 十分钟搞定哑铃图——R实现与论文复盘 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+2019年，一篇发在《自然》（Science）上的论文刷爆了中国网民的朋友圈。来自美国和瑞士的学者宣称，他们通过“丢钱包”的实地实验考察了全球数十个国家的民众诚信情况。数据表明，无论捡到的钱包里是否有钱，都极少有中国民众会主动联系失主，这反映中国民众的诚信情况在全球各国排名垫底。正如很多学者已经指出的那样，这篇文章的研究设计有很大的问题。特别是，他们在钱包中留下了失主姓名和电子邮件地址，这完全不符合中国普通民众的通讯习惯。在此，我们不再重复对这篇文章价值立场的批评。
+我们的关注点是，这篇文章使用了一种非常直观的可视化方法——哑铃图（Dumbbell Plot），这在很大程度上推动了文章的广泛传播。事实上，哑铃图只是用直线连接了两组常规的点图，但却实现非常传神的数据表现效果。首先，阶梯状的排序清晰地展示了不同国家之间的差异。其次，两组数据点颜色和位置又直观刻画了变量在各国内部的关系。最后，连线显著减轻了读者在坐标系中匹配两个变量的视觉负担。
+那么如何实现这种人见人爱的哑铃图呢？本文将为您逐步揭晓。
+首先我们先根据文章末尾的提示找到原作者公开的资料。按要求填一下申请信息就可以下载数据和代码了。“behavior data”记录了“丢钱包”的详细数据。可以看到，原作者是Stata选手，而且已经贴心地给出了do文件。因此，我们就不重复Stata操作了，直接进入万物皆可R的环节（需要tidyverse包集群）。
+作者给出的数据记录了每一次“丢钱包”的时间地点和结果，我们重点关注三个变量：国家Country、情形cond（放钱=1）、应答response（联系失主=100）。
+方便起见，我们直接丢掉不关心的变量和样本。清洗后，我们需要将cond拆成两个变量然后将数据汇总到国家层面。这里有很多的简便方法和辅助工具，但我们仍然展示最基本的操作过程：
+ behavioral_data_csv_file_ &lt;- read_csv(&#34;behavioral data (csv file).csv&#34;)test &lt;- select(behavioral_data_csv_file_, Country, cond, response) %&gt;% filter(cond &lt; 2)test0 &lt;- filter(test, cond == 0) %&gt;% group_by(Country) %&gt;% summarise(re0 = mean(response))test1 &lt;- filter(test, cond == 1) %&gt;% group_by(Country) %&gt;% summarise(re1 = mean(response))test01 &lt;- left_join(test0,test1)  现在我们已经得到了可以用来画图的汇总数据了。其中的变量分别为国家Country，钱包不放钱的应答率re0，钱包放钱的re1。
+下面介绍最简单粗暴的一种作图方式，直接加载ggplot2的增强包ggalt（tidyverse不包含，需额外安装），此时以geom开头的几何层作图语法就多出了geom_dumbbell的选项。根据geom_dumbbell的逻辑，我们需要先根据一个连续变量和一个分类变量建立坐标系，然后再在坐标系中延伸出另一个连续变量。在我们的数据中，y理所当然的就是国家名。x则需要从re0和re1中选一个，这就是哑铃连线的起点，然后我们再把另一个变量定义给xend，这就是哑铃连线的终点。下面就是最基本的代码和惨不忍睹的第一张图。...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%8D%81%E5%88%86%E9%92%9F%E6%90%9E%E5%AE%9A%E5%93%91%E9%93%83%E5%9B%BEr%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 如何用R基本复现《经济学人》杂志中的地图插图 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+#实用技术 19 个
+2020年初，突如其来的新型冠状病毒（COVID-2019）席卷全世界。这场全球大流行病不仅给世界各国人民的生命健康带来了严重威胁，也给全球经济运行带来了严重冲击。中国自然也不能置身事外，其GDP在一季度更是同比下降了6.8%。但由于中国及时采取了十分严格的疫情防控措施，不但及时遏制住了疫情的进一步蔓延，而且也为经济的迅速重启创造了条件。不仅如此，重启后的中国经济取得了亮眼的进步，从第二季度开始连续增长，最终全年GDP比上一年增长2.3%，成为当年经济唯一实现增长的主要经济体。
+事实上，早在2018年10月27日，英国著名杂志《经济学人》（The Economist）在其网站就曾刊载出一篇题为《一个新兴的霸权：中国世纪正在来临》（A New Hegemon: The Chinese century is well under way）的文章，文章征引了包括著名英国经济史学家安格斯·麦迪逊（Angus Maddison）的估算以及世界银行发布的数据库在内的多家数据，生动形象地展现了全球经济重心从公元元年到2018年的转移过程，并给出从2018年向2025年的预测。文章指出：全球经济重心在历经2000年的变迁后将重新向中国迈进，如图1所示：
+图1 错误示例
+持允而论，图1中的这张地图虽然直观形象，但是细究会发现该图存在多处错误，特别是黄框处存在对中国地图边界错绘（沿非法的“麦克马洪线”错绘中国西藏与印度东北部的边界）、漏绘（海南岛、台湾岛、南海诸岛以及钓鱼岛及其附属岛屿）的情况。如果我们国内的读者想借用该图进行展示或者想在自己写作过程中引用，势必要加以修改。在不用PS技术处理图像的情况下，如果我们自己想要重制这张图，那么利用手上的资料该如何做呢？本期实用技术就与大家分享如何大致复现这一地图插图。具体而言，这一地图绘制的复现过程会牵涉到两个方面的小问题，分别是如何将地图上的点连接起来以及如何进行投影变换以避免将包含原始经纬度的点投影在经过投影变换后的地图上进而出现错位的问题。
+《经济学人》网站在文末提供了这篇文章所需要的原始数据和复现的步骤，对此有需要的读者可以自行前往GitHub页面（地址：https://github.com/TheEconomist/graphic- detail-data/tree/master/data/2018-10-27_chinese-century）进行下载，其主页给出的最终效果如图2所示：
+图2
+可以看出图2给出的样图只是将带有地理信息坐标的点投射到默认投影的图中，并没有将各个点连接起来。关于如何实现将带有经纬度的点投射到地图上我们在上一期推送《实用技术 | 如何用R绘制中国历史地图》中已经提到过，它就是利用geom_point()加以实现。那么我们接下来看如何将地图上的点连接起来。
+在下载数据库后，我们对经济中心的数据进行了整理，提取了经纬度并且进行了重新归类。之所以要这样做是为了使用geom_path()对投影到地图上的点与点进行连线。再次，细心的读者会发现因为从2018到2025之间的经济转向是估算，因此原图（图1）中从2018到2025间的点的连线为虚线，因此，我们将原数据库拆成分别是公元元年到2018年的eco_centre以及2018年到2025年的eco_centrea这2个数据库分别绘制。由于本文需要的数据比较少，我们可以采取直接对csv表进行修改的方法，但如果数据量比较大则需要借助函数进行实现。
+我们打开R，这里需要加载的依然是tidyverse和sf两个包，我们先复现平面投影，这也是GitHub上代码最终给我们呈现的效果图（图2），代码如下：
+library(tidyverse) library(sf) World &lt;- st_read(&#34;world.json&#34;) China &lt;- st_read(&#34;Chinaditu.json&#34;) eco_centre &lt;- read_csv(&#34;eco.centre.csv&#34;, col_types = cols(lat = col_number(), long = col_number(), year = col_character(),group=col_number())) eco_centrea &lt;- read_csv(&#34;eco....</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%9F%BA%E6%9C%AC%E5%A4%8D%E7%8E%B0%E7%BB%8F%E6%B5%8E%E5%AD%A6%E4%BA%BA%E6%9D%82%E5%BF%97%E4%B8%AD%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%8F%92%E5%9B%BE/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 如何用R快速计算进军距离？以汉丞相诸葛武侯南征为例 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#历史政治学 58 个
+研究国家建构的读者对如何测量国家能力、寻找合适的代理变量一定是不陌生的。我们之前在推送的（《如何测量国家能力？》）一文中也有过较为详细的介绍。但是如果从历史社会学和所谓的历史政治学角度去研究古代中国或者其他国家的国家发展，在面对数据有限的结构性限制时，给出有说服力的测量国家能力的方法则是一个颇为棘手的问题。尽管棘手，但是不代表不可能实现。如果读者朋友对春秋战国时期国家形成的历史社会学研究感兴趣，那么对用“进军距离”测量国家能力的巧妙做法一定有所耳闻。采用“进军距离”作为代理变量的做法源自于赵鼎新教授在中英文著作《东周战争与儒法国家的诞生》（第72-74页）以及 The Confucian-Legalist State: A New Theory of Chinese History （第123-125页）中对争霸国国家能力的测量，这一做法的巧妙之处在于善于发掘出隐藏在文言文中的非结构化数据并将其结构化，而且密切契合了与全书的研究议题，成为运用代理变量测量的经典案例，对我们研究历史上国家能力的学生来说具有重要的启发和借鉴意义。
+现在各大地图的电脑端以及手机端功能十分强大，只要我们知道历史上的进军路线，我们便可以通过输入起止点的方式很便捷的测算出来。那么如何用R软件进行计算呢？下面我们将结合历史上的一个案例和相关的R包进行介绍。
+我们选取的历史案例是三国时期汉丞相诸葛武侯发起的南征之战。武侯在闻名遐迩的《出师表》中写道“今南方已定”即是对南征之战胜利的描述，而小说《三国演义》中家喻户晓的“七擒孟获”故事同样也是发生在这一战争期间。它的大致经过是这样的：章武三年（公元223年），在夷陵之战中遭遇大败的先主刘备在永安宫崩殂，遗诏太子刘禅即位、丞相亮辅政。消息传到西南边境，当地豪强雍闓、牂牁太守朱褒以及越雋首领高定即举兵反叛蜀汉，正所谓“高定恣睢于越雋，雍闓跋扈于建宁，朱褒反叛于牂牁”（《三国志·蜀书·黄李吕马王张传》）。建兴三年（公元225年），丞相武侯决定发兵征讨。武侯除令李恢、马忠部分行外，自率大军从成都出发，先到越雋（治在今四川西昌东南）擒杀高定，后与马忠部会和，五月渡泸，再与李恢部合兵益州（治在今云南晋宁东），最终平定益州、永昌（治在云南保山东北）等地，西南平定，武侯遂班师回朝，南征之战取得最终胜利，巩固了蜀汉的后方。
+在对历史案例回顾完之后，接下来我们引出本文介绍的计算方法，我们提供在R中实现的两种方法，其中一个是之前在推文中一直介绍使用的sf包，另外一个则是geosphere包。无论是使用sf包还是geosphere包，都依赖经纬度，所以我结合《中国历代战争年表》的对武侯主力行军路线的记载对关键地点的经纬度（以历史地名对应当今行政区划的所在地）做了记录。在此基础上利用sf包计算进军距离的命令如下：
+ library(tidyverse)library(sf)location &lt;- read.csv(&#39;location.csv&#39;)distance &lt;- select(location, Long, Latitude)distanceNew &lt;- st_as_sf(x = distance, coords = c(&#34;Long&#34;, &#34;Latitude&#34;), crs = &#34;&#43;proj=longlat &#43;datum = WGS84&#34;)st_distance(distanceNew)  这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：
+图1
+如果要以km为单位进行计算，则需要输入：
+       st_distance(distanceNew) %&gt;% units::set_units(km)  结果如图2所示：...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E8%BF%9B%E5%86%9B%E8%B7%9D%E7%A6%BB%E4%BB%A5%E6%B1%89%E4%B8%9E%E7%9B%B8%E8%AF%B8%E8%91%9B%E6%AD%A6%E4%BE%AF%E5%8D%97%E5%BE%81%E4%B8%BA%E4%BE%8B/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 如何用R绘制中国历史地图 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+#实用技术 19 个
+在前几期的实用技术推送中，我们与大家分享了《如何用R绘制并填充相对正确的世界地图》和《如何用R绘制并填充相对正确的中国地图》两篇技术贴，获得了圈内读者朋友的好评与支持。随着学习和研究的深入，在阅读偏向经济史和政治史的文献时，我们会发现这些领域的文献有时附上了作者绘制的历史地图，这让读者觉得耳目一新，甚至心生羡慕。事实上，对于可供R/Python/Stata读取的历史地图文件而言，其并没有什么神秘之处，它和绘制现代地图所需要的shp/json等文件一样，在本质上就是储存地理信息的多边形。
+对于我们从事历史政治学/社会学研究的学生来说，如果在撰写论文或者做展示的时候插入一些有关历史地图的可视化往往会起到“一图胜千言”的效果。因此，只要能找到相关的历史地图文件，我们就能用R等统计软件将其绘制出来。因此，在今天的实用技术贴中，我们就与大家分享如何用R来绘制中国历史地图。我们希望这篇贴子能达成两个目的：首先是教大家如何寻找历史地图素材，其次是用R将它们绘制出来。
+对于如何寻找历史地图素材这一问题很好解决，哈佛大学运行的世界地图网站（地址：http://worldmap.harvard.edu/maps/search?sort=last_modified&amp;dir=DESC）提供了丰富且免费的不同时期的中外电子地图素材，读者可以前往这里搜索下载需要的地图素材（大部分的地图文件是可以找到的）。值得说明的是，该网站也收录了哈佛大学东亚系包弼德（Peter K. Bol）教授团队制作的中国历史地图文件。该系列地图以中国资深历史地理专家谭其骧院士主编的《中国历史地图集》地图为蓝本，对中国部分历史时期的地图进行了电子化处理。当然这一系列的电子地图并不全面，如并未对南北朝和五代十国等重要时期的历史地图进行全部电子化。
+接下来，我将结合手头正在进行的博士论文章节写作，以宋元嘉二十六年，魏太平真君十年（449年）的全局地图绘制为例进行说明。这一年的次年在中国历史上具有重要的意义，因为开创“元嘉之治”的宋文帝刘义隆发起第二次北伐，结果大败，从此南朝由盛转衰，而北朝则开始转盛。需要指明的是，对照《中国历史地图集》可见，这一时期的中国境内还存在如柔然、吐谷浑、室韦、契丹、库莫奚以及西域等政权，但是电子地图文件并未包含。
+首先，我们在哈佛世界地图网站的页面搜索栏中输入“Northern and Southern”，选择第二行进入，如图1所示：
+图1
+然后我们勾选左侧选项中的448 CE Northern Wei and (Liu) Song，再点击红框处的Share Map进入，如图2所示：
+图2
+如图3所示，进入后我们再按照红框处选择448 CE Northern Wei and (Liu) Song进入：
+图3
+这样我们在图4中的红框处就能下载我们偏好的格式了（如shp、json或tiff等），本文选用的是json格式文件，它具有小巧轻便的优势。
+图4
+既然找到了历史地图资源，那么如何将其绘制出来呢？这一步其实与之前推送的实用技术贴中绘制当代中国/世界地图的方法一致。为了避免本文的历史地图绘制显得过于单薄，我们同时加载了世界地图和当代中国地图的json格式文件作为底图。为了方便大家理解，我们尽量将每一步绘制历史地图的步骤都完整呈现。
+首先，我们打开R载入绘制地图必不可少的两个基本包tidyverse和sf并读取相应的json格式文件：
+library(tidyverse) library(sf) World &lt;- st_read(&#34;world.json&#34;) China &lt;- st_read(&#34;Chinaditu.json&#34;) WeiSong &lt;- st_read(&#34;WeiSong.json&#34;)  然后绘制宋魏时期的地图，如图5所示：
+ggplot()&#43; geom_sf(data = World, colour = &#34;#d9d9d9&#34;,fill=&#34;#d9d9d9&#34;)&#43; #之所以将边界和填充颜色设为相同是因为不能用当下世界地图的行政边界来表示当时历史上国家的行政边界 geom_sf(data = WeiSong, colour = &#34;#d9d9d9&#34;,fill=&#34;white&#34;)&#43; coord_sf(xlim = c(80, 145), ylim = c(16, 50), expand = TRUE, clip = &#34;on&#34;)&#43; ggtitle(&#34;宋魏时期全图（宋元嘉二十六年，魏太平真君十年（449年）&#34;)&#43; theme(panel....</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%9C%B0%E5%9B%BE/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 如何用R绘制地图中的未定国界（含停火线） 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+我们在之前推送的《实用技术 | 如何用R绘制并填充相对正确的中国地图》和《实用技术 | 如何用R绘制并填充相对正确的世界地图》两篇文章中曾经提及在用R生成地图后在送审前需要注意未定国界的绘制问题，我们当时给出的处理建议是在生成高dpi的原图后用Adobe Illustrator或者Photoshop等专业制图软件统一将其修改为未定国界式样。但作为一个重度强迫症患者，在做完几期推送后，笔者也一直在琢磨如何在R里绘制未定国界。笔者曾经以为一劳永逸的方法是申请国家地理信息公共服务平台的官方地图——天地图tk，然后在QGIS和ArcGIS里通过WMTS调用天地图的中国地图和世界地图的瓦片，下载后将其导出为shape文件再用R读取，但是后续操作极其复杂，且效率和成功率都很低（经常出现无法下载的情况）。作为非GIS专业的学生，这一问题曾经困扰了笔者很长一段时间，直到最近笔者在散步的时候脑海里突然灵光一现，于是在回到宿舍后打开电脑查了资料，在此基础上一试，发现刚才在脑海里灵光一现的处理方法确实可以有效解决之前的困惑，当即决定写一篇帖子来与大家分享。在正式行文开始前需要说明两点：首先，这样做并不是多此一举，更不是钻牛角尖，其现实目的是 更好地绘制出接近自然资源部发布的标准地图的地图，以提高含有国界线（行政边界）地图的论文/著作在发表/出版前将地图送审的通过率。其次，本文介绍的方法肯定不是最简单的，欢迎广大读者朋友批评指正。
+由于目前市面上出版的中国地图仍以1989年的国界线为准，因此即便之后中国与周边国家陆续签订了边界协定，完成了边界划定工作，但是有些边界划定并未在现行出版的地图上进行反映或更新，所以我们迄今会看到国内出版的中国地图（无论是纸质地图还是电子地图）在与塔吉克斯坦交界处有一段未定国界（如图1所示）：
+图1
+从本质上来说，在R中实现未定国界的绘制就是解决多边形中共享边（或共享边中的一部分）的设置问题，如果我们有现成的共享边（或共享边中的一部分）的文件，则可以在此基础上快速绘出未定国界（将其设置成虚线或其他非实线的形式即可），这当然是最理想的情况。但如果我们一时间无法拿到这些文件，则需要综合利用多种手段，最后再用Adobe Illustrator或Photoshop之类的软件加以完善。在今天推送的实用技术贴中，我们将给出两种基本解决方案，分别适合绘制标准中国地图中的未定国界和其他国家的未定国界。
+首先，对于绘制标准中国地图的未定国界而言，完整通过代码处理起来手续比较复杂。因为现行出版地图中中塔两国的未定国界只占中塔全部边界的一部分，如果全部要用代码实现，那么我们必须从头到尾弄清楚未定国界的起止范围。机缘巧合的是，笔者费了很长时间终于找到了未定国界的shp，这样就为快速实现中塔边界中未定国界段的绘制奠定了基础。对此，我们在R中主要用到tidyverse和sf两个包来完成绘制，具体步骤如下：
+ # 载入绘制地图必备的tidyverse和sf两个包library(tidyverse)library(sf)# 载入中国地图和未定国界文件China &lt;- read_sf(&#34;Chinaditu.json&#34;)ChinaUndeterminedBorder &lt;- read_sf(&#34;ChinaUndeterminedBorder&#34;)# 绘制带有未定国界的标准中国地图ggplot()&#43; geom_sf(data = China, colour = &#34;black&#34;, fill = &#34;white&#34;)&#43; geom_sf(data = ChinaUndeterminedBorder, colour = &#34;white&#34;, linetype = &#34;dotted&#34;)&#43; coord_sf(crs = &#34;&#43;proj=laea &#43;lat_0=40 &#43;lon_0=104&#34;)&#43; theme(panel.background = element_blank())  图2
+这里绘制未定国界的原理很简单，就是利用将交错显示的原理，通过将未定国界设色成与其他边界（黑色）不同的颜色（白色）并设置其形状为点，叠加到原来的主图层上即可。
+但是如果我们没有拿到共享边（部分共享边）的文件时该怎么做呢？下面我们分别以朝鲜韩国两国以及埃及、苏丹和南苏丹三国之间的未定国界为例进行说明。众所周知，朝韩两国迄今以军事停火线（也就是著名的“三八线”）划定边界，因此两国边界不可以直接按照实线绘制，但是可以参照未定国界的表述方式进行标注，具体步骤如下：...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%AA%E5%AE%9A%E5%9B%BD%E7%95%8C%E5%90%AB%E5%81%9C%E7%81%AB%E7%BA%BF/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 如何用R绘制并填充相对正确的世界地图 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+#实用技术 19 个
+近几年来，随着负笈海外特别是美国的政治学博士陆续学成回国，R逐渐在高校从事政治学量化研究的师生群体中流行起来，形成了与Stata并驾齐驱的局面。与需要付费购买才能使用的商业统计软件Stata不同，R可以终身免费使用。不仅如此，作为开源、共享、共建的社群，R具备非常强大的功能，在各项运算上都不逊于Stata，在可视化方面则更胜一筹。具体来说，R中各种各样的包（package）为我们处理包括地理信息（Geographic Information）数据在内的各种数据的可视化提供了便利。换言之，即便我们在没有或者不会ArcGIS/QGIS等专业地理信息处理软件的情况下，只要我们稍微学习一下R，拿到相关的文件，就能顺利地处理这些地理信息数据。由于笔者最近一直在接触地理信息可视化的相关知识，对这一领域逐渐起了兴趣，心想在阅读实操的时候不如做一做笔记总结经验。因此，今天的推送与以往的文献编译、方法论衡、学人小传及新刊快递等栏目有所不同，它是一篇为了方便作者向国内期刊投稿而介绍的实用技术小文。在这篇小文章里，我们将同读者朋友分享如何用R绘制并填充相对正确的世界地图。
+目前网上已经有大量现成的教授大家如何用R绘制各种类型地图的教程，小到绘制一个街区地图，大到绘制全世界的地图教程应有尽有。但本文强调的是“相对正确的世界地图”。看到这里，读者朋友可能会好奇我们为什么还要在“正确”二字前加上“相对”的字样，是多此一举还是故弄玄虚，其实都不然。这是因为即便用R绘制并输出比较正确的地图也需要结合相关软件进行进一步的修改。
+众所周知，地图是一国国家主权和领土的象征，使用完整正确的地图也是国内科研工作者应尽的责任与义务，因此我们在对待地图绘制时应当十分审慎。令人欣慰的是，近年来，不少技术贴的作者在谈及如何绘制中国地图时，都格外强调使用正确、完整的中国地图的重要性，其在帖中绘制的中国地图也基本正确。之所以说这些制图是“基本正确”是因为按照现行地图出版的标准，用R直接绘制并输出的地图与通过自然资源部审查正式出版的地图还有一些细微的区别。如下图所示，尽管中国与塔吉克斯坦已经正式完成了划界工作，但由于现行出版的纸质或电子地图均未做改动，因此该交界处（帕米尔高原东部倾斜坡）仍应使用未定国界线表示：
+当然这不是特别严重的问题，在用R输出高DPI（每英寸点数）的中国地图图片后，可以请美工编辑或排版编辑利用Adobe Illustrator、Photoshop等专业制图软件将其修改成虚线即可。
+但是在不少介绍绘制世界地图的帖子中，我们会发现其中使用的地图存在大量的错误。持允而论，出现这些错误并不能被归咎到撰写相关技术贴的作者，他们本身是出于好心与大家分享技术经验。但由于他们使用的R包或者shape文件通常都是国外作者开发并且在国际上通行的包，因此难免会出现与国内出版规定不相符合甚至错误的情形。举例来说：这些包或者shp文件中多以0°经线（本初子午线）为地图中心，不符合国内出版的关于世界地图的规定，如果进行投影变换也可能导致出现错误（如在绘制地图上出现冗余线条和色块，这并非是投影变换不对所致，而是原作者在制作shape文件中已经锁定了投影）。当然这些问题倒不是最严重的，最严重的错误是在国家边界划分上的错误。其中R中常用的包和世界地图文件中关于中国地图部分的最严重错误是违背国际社会普遍承认的“一个中国”原则、将中国大陆和中国台湾地区分别作为地位相同的不同“政治实体”对待。其次，这些地图包普遍按照非法的“麦克马洪线”将中国藏南地区划入印度，有些还按照非法的“约翰逊线”将中国阿克赛钦划入印度以及缺乏南海诸岛等等。此外，在这些地图包中，关于印度和巴基斯坦之间的争议地区——克什米尔地区以及埃及和苏丹间的争议地区等地也未按照正确的形式进行绘制。这些错误使得作者绘制出的地图在投稿时极有可能达不到自然资源部审核通过的标准，最后导致精彩的可视化部分被删除，甚为可惜。
+为了进一步说明，我们以R中常用的地图包maps为例，用红色圆圈标识出一些常见的错误划界，它们分别是：在图A中，红圈1处表示地图按照非法的“麦克马洪线”将中国藏南地区划入印度；在图B中，红圈2处指地图未以未定国界线标识中国与塔吉克斯坦之间的边界；红圈3处表示地图未标识出印度和巴基斯坦之间的争议地区——克什米尔地区；而在图C中，红圈4表示地图未标识出埃及与苏丹之间的争议地区——哈拉伊卜三角区。
+这些错误只是其中的一些代表性错误，此外还有别的错误。由于此类地图在绘制输出后需要修改的地方很多，程序十分繁琐，非常不适合向国内的期刊杂志投稿。为了方便大家在今后的日常科研学习过程中使用，我们花了好几天时间搜遍了各大网站，甚至还付费购买了CSDN的一个月会员，终于找到了一个相对适合的shape文件。与前述的种种shape文件相比，我们找到的这一shape文件相对而言需要修改的地方要少很多（缺少的南海诸岛和九段线，需要单独加上，这可以利用ggplot制图层层叠加的原理进行补全），而且基本符合作者向国内期刊投稿时使用东经150°经线为中心的制图要求，但美中不足的是缺乏南极洲。
+既然找到了shape文件，那么我们该怎么来处理它呢？事实上，shape文件在本质上就是储存地理空间信息的多边形，我们可以在R中安装并加载可以读取多边形的sf包，这样我们可以很容易看到shape文件中储存的数据结构和形式。本文使用的世界地图shape文件的结构并不复杂，它由name, childNum以及geometry三类变量分别储存对应的信息。其中name和geometry两个字段特别重要，因为如果我们想要在世界地图上实现相关数据的可视化，使用的数据中的国家名称字段一定要和本地图中的name相匹配，这需要大家在使用时仔细校对，而geometry字段中则储存了多边形的信息，反映在地图中就是各个国家的形状。
+接下来我们以世界银行发布的世界治理指数（Worldwide Governance Index）为例，在校对各个国家名的基础上，绘制世界地图并按照Regulatory Quality（各国制定与执行促进私营部门发展能力）的指标进行颜色填充。在此，我们略去了设置工作路径的步骤，读者朋友可以根据平时的工作习惯自行设置，加载并读取数据的代码如下所示：
+ library(tidyverse)library(sf)library(readxl)# 读取以东经150度经线为中心的世界地图shape文件WorldMap &lt;- st_read(&#34;worldmap&#34;)# 读取南海诸岛shape文件SCSislands &lt;- st_read(&#34;SCSislands&#34;)# 读取九段线shape文件NineDashLine &lt;- st_read(&#34;NineDashLine&#34;)# 读取世界银行发布的各国制定与执行促进私营部门发展能力的评估数据库WGIdata &lt;- read_excel(&#34;ex.xlsx&#34;, col_types = c(&#34;text&#34;, &#34;numeric&#34;))# 将上述数据与世界地图数据按照相同的“name”字段合并worlddata &lt;- left_join(WorldMap, WGIdata, by = &#34;name&#34;)  看到这里，有些读者可能会疑惑，既然我们已经加载了集ggplot2和readr等包为一体的tidyverse包，那么为什么我们不将世行的数据存储成体积更小、读取更快的csv格式文件呢？事实上，正如下图所示，由于该版本地图shape数据中name字段中一些国家的名字采用的是非英文，在对照国家名时如果用csv格式保存世行数据可能会导致特殊字符遗失，从而导致R中数据框中的国家名匹配不上，进而在绘制出来的地图上可能显示不少处深灰色的状态，这意味着缺失相关数据。
+绘制地图部分的代码如下所示：
+ ggplot() &#43; geom_sf(data = worlddata, aes(fill = estimate), colour = &#34;#525252&#34;,size=0....</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%B9%B6%E5%A1%AB%E5%85%85%E7%9B%B8%E5%AF%B9%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 如何用R绘制并填充相对正确的中国地图 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#地图绘制 6 个
+#数据可视化 15 个
+#实用技术 19 个
+标准地图象征着国家主权和领土完整。作为非地理信息专业但又要在研究过程中涉及地图绘制的政治学专业学生，我们必须在绘制中国地图并用作公开学术发表/出版时格外注意。诚然与需要付费才能使用的地理信息软件ArcGIS相比，免费、开源的R软件结合相对强大的tidyverse和sf等包在处理一些地理信息数据的可视化时可以不落下风，但是由于现有可供R软件读取的很多地图json/shp文件都由外国作者创作，因此在涉及中国边界的绘制过程中经常会有意无意的出现错绘、漏绘的情况。
+我们曾经在《实用技术 | 如何用R绘制并填充相对正确的世界地图》一文里提过上述问题。为了进一步说明这一问题，下面我们读取了国际上比较流行的地图json/shp文件，列出了其中一些涉及中国地图边界绘制时容易出现的典型错误以供大家参考（在此需要澄清的是，我们读取的世界地图和中国地图的json/shp文件在绘制过程中出现了“咬合分离”的现象——共享边不一致、线条交错，这是由于每个区域单独描边所致，它们本身并不是存在所谓“主权争议”的地区）。
+具体来说，图1所示的红色区域是中国的藏南地区（行政上分别隶属西藏自治区山南市错那县、隆子县以及林芝市墨脱县、察隅县），它经常被按照非法的“麦克马洪线”而错误地划入印度当局设立的所谓“阿鲁纳恰尔邦”中。
+图1
+图2中自上向下的几块红色区域依次为中国的阿克赛钦地区、巴里加斯地区、巨哇、曲惹地区、什布奇山口、桑、葱莎、波林三多地区以及乌热、然冲、拉不底地区），其中位于中国新疆和西藏交界的阿克赛钦地区经常被错误地绘入印度当局设立的所谓“拉达克中央直辖区”（原印度宣称的查谟和克什米尔地区东部）中。
+图2
+此外还有的地图json/shp文件本身未遵循“一个中国”原则（经读取文件或随机给地图上色可见）、未包含南海诸岛等等。因此，如果在绘制地图时没有注意到这些细节，那么在国内提交发表或出版前可能会遇到审读不通过进而被删除甚至退稿的问题，在国际上发表则可能会对国家主权和领土完整造成伤害，此外还可能日后给作者本人带来不便。
+相反，只要有相对正确的地图json/shp文件，我们就可以利用其绘制相对正确的中国地图。因此，本期实用技术贴的目标主要是两个，第一是用R读取并绘制相对正确的中国地图，它是前提和基础；第二是按照某种指标给相对正确的中国地图填充颜色，进行可视化。具体步骤如下：
+首先我们打开R，在工作路径中载入tidyverse和sf两个包，然后再读取相对正确的中国地图json文件：
+ library(tidyverse)library(sf)China &lt;- st_read(&#34;China.json&#34;)  值得说明的是，本文使用的地图底图虽然来自高德地图的开放平台（链接http://datav.aliyun.com/tools/atlas/#&amp;lat=30.334491405102664&amp;lng=106.72420352760892&amp;zoom=3.5），但是其边界并无明显问题，而且自带南海诸岛、钓鱼岛及其附属岛屿，无需额外添加南海诸岛和九段线图层。同时该平台提供的是json格式的地图，如果读者对json格式的文件不熟悉，也可以通过MyGeodata Converter网站将其在线转换成shp格式的文件再使用（链接：https://mygeodata.cloud/converter/json-to- shp）。
+接下来是绘制中国地图全图并保存为图3：
+ ggplot() &#43; geom_sf(data = China, colour = &#34;#525252&#34;, fill = &#34;white&#34;)&#43; theme(panel.grid = element_blank(), panel.background = element_blank(), axis.text = element_blank(), axis.ticks = element_blank(), axis.title = element_blank())ggsave(&#34;图3.jpg&#34;, dpi = 500, width = 15, height = 12)  图3...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%B9%B6%E5%A1%AB%E5%85%85%E7%9B%B8%E5%AF%B9%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 如何用Stata将实验结果可视化——附论文复盘和R实现 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+长期以来，Stata都被视为一款中规中矩的“中阶”统计应用。一方面，Stata内置了能够满足大多数统计要求的算法，控制界面的友好程度也能够接受。因此很多初学者都能平滑地完成从Excel/SPSS到Stata的“进阶”过程。但另一方面，Stata在一些领域的发展已经明显落后于实际应用的前沿，譬如对多个数据集的同时处理（直到16版本才出现了Multitask的飞越），以及本文将要探讨的、被无数用户吐槽的“又丑又慢”的可视化功能。当然，Stata具有一定的开源性，因此又有很多外部包可以补足Stata在可视化方面的短板，甚至出现了将ggplot2移植到Stata平台的“邪教”。
+好了，本文的吐槽就到此为止，下面来看看今天要探讨的具体议题——社会科学实验的可视化。社会科学实验主要包括实验室实验、实地实验和问卷实验三种，它们的共性也即它们和观察性研究的区别就在于，研究中变量的&#34;变异&#34;是受到人为处理的结果。一般来说，最简单的实验研究产生的数据集只有两个核心变量，一个记录因不同处理的分组情况（处理- 控制的虚拟变量或不同处理组和控制组的多分类变量），另一个则记录实验结果（理论上是连续变量）。这种简单的实验被称为被试间设计。顾名思义，实验结果是通过不同处理下不同被试之间的差异来呈现的。显然，将这种实验结果可视化的思路也非常简单，就是展示不同组别的平均值和标准误/置信区间。肉眼可见的组间差异可以很有力地向读者传达实验成功的信息，当然，更为严谨的统计检验也是必不可少的。
+下面我们来看一个具体的案例。在《复杂舆论议题中的媒体框架效应》一文中，马得勇教授等人在问卷调查中设置了四个情境。在随机分组后，被试有可能会阅读到&#34;强硬反美&#34;、“温和反美&#34;和&#34;温和中立&#34;这三种媒体框架之一，也有可能被分配进入没有阅读材料的控制组。因此，这里记录不同处理分组的就是一个四分类变量。在人为处理后，问卷通过一系列问题记录了被试的对美好感度、对贸易战的强硬程度和对中国政府的信任程度。这些结果变量在理论上都是连续的。
+假设现在作者的可视化任务就是展示四个组别的在对美好感度上的均值和标准误/置信区间，那么怎样高效准确地实现目标？事实上，在Stata中只需要两行命令就能实现可视化，下图使用Stata15.1版本演示。
+首先看一下两个核心变量的情况。
+然后计算各组的均值和标准误/置信区间。
+最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。
+从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。
+当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot, vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…
+是不是不敢相信这是来自Stata的作品呢？
+下面再探讨一下稍微进阶一点的实验设计和相应的可视化方法。简单的被试间设计依赖于一个非常强的前提假设——被试是真的被完全随机地分组。如果被试分组的随机性被证伪（或者无法证明），那么整个实验结果就会化为泡影。证明随机性的方法有多种，这里介绍最简单的一种，即前测- 后测设计。同样举上文的例子，作者可以在随机分组之前就先测量一次被试的对美好感度，在分组- 处理后再测量一次被试的对美好感度。这就实现了兼具被试内设计（前后比较）和被试间设计（组别差异）的实验方法。这种实验设计的另一个好处是可以直观地反映被试在人为处理前后的变化。在理想的情况下，处理组和控制组被试在前测上差异不大，处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。
+那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。
+下面直接贴出核心代码
+ mean pretest, over(group)est sto Premean posttest, over(group)est sto Postcoefplot (Pre,label(前测)) (Post, label(后测)),vertical  同样加入“一点”细节，我们就可以得到…
+这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。
+值得注意的上，上述可视化流程很好地反映了Stata“一张表到头”的设计理念。这样虽然快捷，但其中间步骤并没有被保存，因而很可能被使用者忽视。此外，显而易见Stata可视化的自由度并不高。作为对照，下面我们来看看，在以处理多数据集和自由可视化著称的R语言中如何实现上述任务。必须说明的是，R语言中有很多的包可以直接实现可视化目的，但为了展现中间步骤，下面将只依赖传统的tidyverse包集群。
+首先我们用RStudio读取数据。
+下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：
+   standard_error &lt;- function(x) sd(x) / sqrt(length(x))  然后汇总各组的均值和标准误：
+       test....</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8stata%E5%B0%86%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%86%E5%8C%96%E9%99%84%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98%E5%92%8Cr%E5%AE%9E%E7%8E%B0/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实用技术 | 手把手演示用ArcGIS计算点线之间的最短直线距离及输出 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#数据可视化 15 个
+2020年10月，香港大学龚启圣（James Kung）教授与另外两位合作者陈婷、马驰骋两位教授在经济学顶级期刊《经济学杂志》（ The Economic Journal ）上发表了一篇重要的量化历史研究论文《科举万岁！中国文官考试制度的持久效应》（Long Live Keju! The Persistent Effects of China’s Civil Examination System），该文探讨科举考试对当代中国人力资本的长期影响，文中使用了非常精巧的工具变量，给人留下了极为深刻的印象。
+具体说来，因为考生在科举考试备考时需要用到大量的书籍，因此书籍获得的方便程度在很大程度上就成为考生在科举考试中成败的关键。在这层意义上，决定书籍获得与否的关键便在于印刷中心。但是印刷中心的分布可能是人为选择的结果，因为在作者的样本中，278个府中只有19个印刷中心分布。如果将其各个府到印刷中心的最短距离作为工具变量，那么可能会受到完全外生的质疑。那么究竟是什么原因决定了印刷中心的分布呢？作者想到，由于书籍的制作需要用到大量的竹子和松树，在书籍制作完成后，一定会选择交通便捷的方式进行运输。因此，在古代交通不发达的条件下，为了运输的便利与降低运输成本，印刷厂的选址一定是选在临近河流的位置。这样，由于竹子和松树的分布是自然形成的，满足了工具变量中最重要的外生要求，因此将各个府到竹子和松木的最短河流距离作为工具变量就被精巧地构造出来了。那么这一距离如何计算呢？我们之前曾经在《实用技术|如何用R快速计算进军距离距离？以汉丞相诸葛武侯南征为例》为例说明在R中如何使用sf包计算点与点之间的最短距离，今天则以《科举万岁！》一文提供的复验数据（Replication Data）详细地介绍一下在ArcGIS中计算点与线之间的最短距离。
+我们首先下载本文的复验数据（下载地址请见文末参考，同时该地址也可以在线浏览论文），解压之后的Figure3文件夹内文件是本文需要使用的数据，它包括了竹子产地、松木产地、河流分布、印刷中心分布、福建经济中心与清代所谓的“中国本部”（China Proper）等shp文件。
+我们首先打开ArcGIS文件夹中的ArcMap，选择File，选择Add Data，再选择Add Data，便弹出了载入数据的对话窗口。
+由于本文是以竹子（点）到河流（线）的最短直线距离作为示例，因此在载入后我们相应勾选bamboo、MainRiver和qing_china_proper三项，接着选择右侧ArcToolBox中的Analysis Tools工具，点击Proximity，再双击Near，便会弹出一个界面。我们在弹出的界面中Input一栏输入bamboo，再在Near Features一栏中选择MainRiver，同时将单位从Metres改为Kilometres再单击OK，以上操作如下图所示：
+在计算完成后，我们会收到相应的提示（如下图右下角红框所示），这时候我们双击右下角弹出的Near提示：
+在此基础上，我们右击工具栏Near下方Output Feature Class: Bamboo，右击弹出菜单后选择Add to Display：
+我们针对左侧Layers中的bamboo单击右键，选择Open Attribute Table：
+之后会弹出如下表格，其中最后一列NEAR_DIST便是我们通过ArcGIS计算的最短距离：
+然后我们可以单击最左侧的下拉菜单点Export将其输出，这一步过程如下图所示：
+软件默认的输出方式是dbf，我们将其改成txt格式以方便用Excel打开：
+在输出后，我们新建一个Excel表格，单击“数据”，选择“自文本”打开刚才输出的txt表格：
+我们依次按照弹出的“文本导入向导”进行选择，首先是在第一步勾选“数据包含标题”：
+然后是在第二步勾选“Tab键”、“逗号”：
+在进入第三页后，我们单击“完成”即可：
+最后我们会看到Excel弹出下图所示的“导入数据”对话框，单击“确定”即可。
+至此，我们用ArcGIS计算竹子产地与河流之间的最短距离并输出的任务就完成了。计算松树产地到河流之间的最短距离并输出的方法与上述介绍的完全一致。这些距离可以在后续的回归分析中用作工具变量或者控制变量。当然，如果我们有关于海岸线的shp，我们还可以计算城市等到海岸线的距离，以作为开放对经济发展影响研究当中的变量等等。
+总之，本文只是介绍了ArcGIS中的一个小功能，该软件还有其他强大的地理信息处理功能，我们也将在后续的学习过程中继续与大家分享这些心得体会，欢迎各位读者继续关注、支持我们。
+参考文献：
+Ting Chen, James Kai-sing Kung, Chicheng Ma, Long Live Keju!...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%BC%94%E7%A4%BA%E7%94%A8arcgis%E8%AE%A1%E7%AE%97%E7%82%B9%E7%BA%BF%E4%B9%8B%E9%97%B4%E7%9A%84%E6%9C%80%E7%9F%AD%E7%9B%B4%E7%BA%BF%E8%B7%9D%E7%A6%BB%E5%8F%8A%E8%BE%93%E5%87%BA/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://example.org/page/14/">« Prev Page</a>
+    <a class="next" href="http://example.org/page/16/">Next Page »</a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

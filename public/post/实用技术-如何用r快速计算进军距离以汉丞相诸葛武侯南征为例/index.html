@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="实用技术 | 如何用R快速计算进军距离？以汉丞相诸葛武侯南征为例 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#历史政治学 58 个
+研究国家建构的读者对如何测量国家能力、寻找合适的代理变量一定是不陌生的。我们之前在推送的（《如何测量国家能力？》）一文中也有过较为详细的介绍。但是如果从历史社会学和所谓的历史政治学角度去研究古代中国或者其他国家的国家发展，在面对数据有限的结构性限制时，给出有说服力的测量国家能力的方法则是一个颇为棘手的问题。尽管棘手，但是不代表不可能实现。如果读者朋友对春秋战国时期国家形成的历史社会学研究感兴趣，那么对用“进军距离”测量国家能力的巧妙做法一定有所耳闻。采用“进军距离”作为代理变量的做法源自于赵鼎新教授在中英文著作《东周战争与儒法国家的诞生》（第72-74页）以及 The Confucian-Legalist State: A New Theory of Chinese History （第123-125页）中对争霸国国家能力的测量，这一做法的巧妙之处在于善于发掘出隐藏在文言文中的非结构化数据并将其结构化，而且密切契合了与全书的研究议题，成为运用代理变量测量的经典案例，对我们研究历史上国家能力的学生来说具有重要的启发和借鉴意义。
+现在各大地图的电脑端以及手机端功能十分强大，只要我们知道历史上的进军路线，我们便可以通过输入起止点的方式很便捷的测算出来。那么如何用R软件进行计算呢？下面我们将结合历史上的一个案例和相关的R包进行介绍。
+我们选取的历史案例是三国时期汉丞相诸葛武侯发起的南征之战。武侯在闻名遐迩的《出师表》中写道“今南方已定”即是对南征之战胜利的描述，而小说《三国演义》中家喻户晓的“七擒孟获”故事同样也是发生在这一战争期间。它的大致经过是这样的：章武三年（公元223年），在夷陵之战中遭遇大败的先主刘备在永安宫崩殂，遗诏太子刘禅即位、丞相亮辅政。消息传到西南边境，当地豪强雍闓、牂牁太守朱褒以及越雋首领高定即举兵反叛蜀汉，正所谓“高定恣睢于越雋，雍闓跋扈于建宁，朱褒反叛于牂牁”（《三国志·蜀书·黄李吕马王张传》）。建兴三年（公元225年），丞相武侯决定发兵征讨。武侯除令李恢、马忠部分行外，自率大军从成都出发，先到越雋（治在今四川西昌东南）擒杀高定，后与马忠部会和，五月渡泸，再与李恢部合兵益州（治在今云南晋宁东），最终平定益州、永昌（治在云南保山东北）等地，西南平定，武侯遂班师回朝，南征之战取得最终胜利，巩固了蜀汉的后方。
+在对历史案例回顾完之后，接下来我们引出本文介绍的计算方法，我们提供在R中实现的两种方法，其中一个是之前在推文中一直介绍使用的sf包，另外一个则是geosphere包。无论是使用sf包还是geosphere包，都依赖经纬度，所以我结合《中国历代战争年表》的对武侯主力行军路线的记载对关键地点的经纬度（以历史地名对应当今行政区划的所在地）做了记录。在此基础上利用sf包计算进军距离的命令如下：
+ library(tidyverse)library(sf)location &lt;- read.csv(&#39;location.csv&#39;)distance &lt;- select(location, Long, Latitude)distanceNew &lt;- st_as_sf(x = distance, coords = c(&quot;Long&quot;, &quot;Latitude&quot;), crs = &quot;&#43;proj=longlat &#43;datum = WGS84&quot;)st_distance(distanceNew)  这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：
+图1
+如果要以km为单位进行计算，则需要输入：
+       st_distance(distanceNew) %&gt;% units::set_units(km)  结果如图2所示：">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E8%BF%9B%E5%86%9B%E8%B7%9D%E7%A6%BB%E4%BB%A5%E6%B1%89%E4%B8%9E%E7%9B%B8%E8%AF%B8%E8%91%9B%E6%AD%A6%E4%BE%AF%E5%8D%97%E5%BE%81%E4%B8%BA%E4%BE%8B/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="实用技术 | 如何用R快速计算进军距离？以汉丞相诸葛武侯南征为例 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#历史政治学 58 个
+研究国家建构的读者对如何测量国家能力、寻找合适的代理变量一定是不陌生的。我们之前在推送的（《如何测量国家能力？》）一文中也有过较为详细的介绍。但是如果从历史社会学和所谓的历史政治学角度去研究古代中国或者其他国家的国家发展，在面对数据有限的结构性限制时，给出有说服力的测量国家能力的方法则是一个颇为棘手的问题。尽管棘手，但是不代表不可能实现。如果读者朋友对春秋战国时期国家形成的历史社会学研究感兴趣，那么对用“进军距离”测量国家能力的巧妙做法一定有所耳闻。采用“进军距离”作为代理变量的做法源自于赵鼎新教授在中英文著作《东周战争与儒法国家的诞生》（第72-74页）以及 The Confucian-Legalist State: A New Theory of Chinese History （第123-125页）中对争霸国国家能力的测量，这一做法的巧妙之处在于善于发掘出隐藏在文言文中的非结构化数据并将其结构化，而且密切契合了与全书的研究议题，成为运用代理变量测量的经典案例，对我们研究历史上国家能力的学生来说具有重要的启发和借鉴意义。
+现在各大地图的电脑端以及手机端功能十分强大，只要我们知道历史上的进军路线，我们便可以通过输入起止点的方式很便捷的测算出来。那么如何用R软件进行计算呢？下面我们将结合历史上的一个案例和相关的R包进行介绍。
+我们选取的历史案例是三国时期汉丞相诸葛武侯发起的南征之战。武侯在闻名遐迩的《出师表》中写道“今南方已定”即是对南征之战胜利的描述，而小说《三国演义》中家喻户晓的“七擒孟获”故事同样也是发生在这一战争期间。它的大致经过是这样的：章武三年（公元223年），在夷陵之战中遭遇大败的先主刘备在永安宫崩殂，遗诏太子刘禅即位、丞相亮辅政。消息传到西南边境，当地豪强雍闓、牂牁太守朱褒以及越雋首领高定即举兵反叛蜀汉，正所谓“高定恣睢于越雋，雍闓跋扈于建宁，朱褒反叛于牂牁”（《三国志·蜀书·黄李吕马王张传》）。建兴三年（公元225年），丞相武侯决定发兵征讨。武侯除令李恢、马忠部分行外，自率大军从成都出发，先到越雋（治在今四川西昌东南）擒杀高定，后与马忠部会和，五月渡泸，再与李恢部合兵益州（治在今云南晋宁东），最终平定益州、永昌（治在云南保山东北）等地，西南平定，武侯遂班师回朝，南征之战取得最终胜利，巩固了蜀汉的后方。
+在对历史案例回顾完之后，接下来我们引出本文介绍的计算方法，我们提供在R中实现的两种方法，其中一个是之前在推文中一直介绍使用的sf包，另外一个则是geosphere包。无论是使用sf包还是geosphere包，都依赖经纬度，所以我结合《中国历代战争年表》的对武侯主力行军路线的记载对关键地点的经纬度（以历史地名对应当今行政区划的所在地）做了记录。在此基础上利用sf包计算进军距离的命令如下：
+ library(tidyverse)library(sf)location &lt;- read.csv(&#39;location.csv&#39;)distance &lt;- select(location, Long, Latitude)distanceNew &lt;- st_as_sf(x = distance, coords = c(&quot;Long&quot;, &quot;Latitude&quot;), crs = &quot;&#43;proj=longlat &#43;datum = WGS84&quot;)st_distance(distanceNew)  这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：
+图1
+如果要以km为单位进行计算，则需要输入：
+       st_distance(distanceNew) %&gt;% units::set_units(km)  结果如图2所示：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E8%BF%9B%E5%86%9B%E8%B7%9D%E7%A6%BB%E4%BB%A5%E6%B1%89%E4%B8%9E%E7%9B%B8%E8%AF%B8%E8%91%9B%E6%AD%A6%E4%BE%AF%E5%8D%97%E5%BE%81%E4%B8%BA%E4%BE%8B/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用技术 | 如何用R快速计算进军距离？以汉丞相诸葛武侯南征为例 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#实用技术 19 个
+#历史政治学 58 个
+研究国家建构的读者对如何测量国家能力、寻找合适的代理变量一定是不陌生的。我们之前在推送的（《如何测量国家能力？》）一文中也有过较为详细的介绍。但是如果从历史社会学和所谓的历史政治学角度去研究古代中国或者其他国家的国家发展，在面对数据有限的结构性限制时，给出有说服力的测量国家能力的方法则是一个颇为棘手的问题。尽管棘手，但是不代表不可能实现。如果读者朋友对春秋战国时期国家形成的历史社会学研究感兴趣，那么对用“进军距离”测量国家能力的巧妙做法一定有所耳闻。采用“进军距离”作为代理变量的做法源自于赵鼎新教授在中英文著作《东周战争与儒法国家的诞生》（第72-74页）以及 The Confucian-Legalist State: A New Theory of Chinese History （第123-125页）中对争霸国国家能力的测量，这一做法的巧妙之处在于善于发掘出隐藏在文言文中的非结构化数据并将其结构化，而且密切契合了与全书的研究议题，成为运用代理变量测量的经典案例，对我们研究历史上国家能力的学生来说具有重要的启发和借鉴意义。
+现在各大地图的电脑端以及手机端功能十分强大，只要我们知道历史上的进军路线，我们便可以通过输入起止点的方式很便捷的测算出来。那么如何用R软件进行计算呢？下面我们将结合历史上的一个案例和相关的R包进行介绍。
+我们选取的历史案例是三国时期汉丞相诸葛武侯发起的南征之战。武侯在闻名遐迩的《出师表》中写道“今南方已定”即是对南征之战胜利的描述，而小说《三国演义》中家喻户晓的“七擒孟获”故事同样也是发生在这一战争期间。它的大致经过是这样的：章武三年（公元223年），在夷陵之战中遭遇大败的先主刘备在永安宫崩殂，遗诏太子刘禅即位、丞相亮辅政。消息传到西南边境，当地豪强雍闓、牂牁太守朱褒以及越雋首领高定即举兵反叛蜀汉，正所谓“高定恣睢于越雋，雍闓跋扈于建宁，朱褒反叛于牂牁”（《三国志·蜀书·黄李吕马王张传》）。建兴三年（公元225年），丞相武侯决定发兵征讨。武侯除令李恢、马忠部分行外，自率大军从成都出发，先到越雋（治在今四川西昌东南）擒杀高定，后与马忠部会和，五月渡泸，再与李恢部合兵益州（治在今云南晋宁东），最终平定益州、永昌（治在云南保山东北）等地，西南平定，武侯遂班师回朝，南征之战取得最终胜利，巩固了蜀汉的后方。
+在对历史案例回顾完之后，接下来我们引出本文介绍的计算方法，我们提供在R中实现的两种方法，其中一个是之前在推文中一直介绍使用的sf包，另外一个则是geosphere包。无论是使用sf包还是geosphere包，都依赖经纬度，所以我结合《中国历代战争年表》的对武侯主力行军路线的记载对关键地点的经纬度（以历史地名对应当今行政区划的所在地）做了记录。在此基础上利用sf包计算进军距离的命令如下：
+ library(tidyverse)library(sf)location &lt;- read.csv(&#39;location.csv&#39;)distance &lt;- select(location, Long, Latitude)distanceNew &lt;- st_as_sf(x = distance, coords = c(&quot;Long&quot;, &quot;Latitude&quot;), crs = &quot;&#43;proj=longlat &#43;datum = WGS84&quot;)st_distance(distanceNew)  这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：
+图1
+如果要以km为单位进行计算，则需要输入：
+       st_distance(distanceNew) %&gt;% units::set_units(km)  结果如图2所示："/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E8%BF%9B%E5%86%9B%E8%B7%9D%E7%A6%BB%E4%BB%A5%E6%B1%89%E4%B8%9E%E7%9B%B8%E8%AF%B8%E8%91%9B%E6%AD%A6%E4%BE%AF%E5%8D%97%E5%BE%81%E4%B8%BA%E4%BE%8B/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "实用技术 | 如何用R快速计算进军距离？以汉丞相诸葛武侯南征为例 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#实用技术 19 个\n#历史政治学 58 个\n研究国家建构的读者对如何测量国家能力、寻找合适的代理变量一定是不陌生的。我们之前在推送的（《如何测量国家能力？》）一文中也有过较为详细的介绍。但是如果从历史社会学和所谓的历史政治学角度去研究古代中国或者其他国家的国家发展，在面对数据有限的结构性限制时，给出有说服力的测量国家能力的方法则是一个颇为棘手的问题。尽管棘手，但是不代表不可能实现。如果读者朋友对春秋战国时期国家形成的历史社会学研究感兴趣，那么对用“进军距离”测量国家能力的巧妙做法一定有所耳闻。采用“进军距离”作为代理变量的做法源自于赵鼎新教授在中英文著作《东周战争与儒法国家的诞生》（第72-74页）以及 The Confucian-Legalist State: A New Theory of Chinese History （第123-125页）中对争霸国国家能力的测量，这一做法的巧妙之处在于善于发掘出隐藏在文言文中的非结构化数据并将其结构化，而且密切契合了与全书的研究议题，成为运用代理变量测量的经典案例，对我们研究历史上国家能力的学生来说具有重要的启发和借鉴意义。\n现在各大地图的电脑端以及手机端功能十分强大，只要我们知道历史上的进军路线，我们便可以通过输入起止点的方式很便捷的测算出来。那么如何用R软件进行计算呢？下面我们将结合历史上的一个案例和相关的R包进行介绍。\n我们选取的历史案例是三国时期汉丞相诸葛武侯发起的南征之战。武侯在闻名遐迩的《出师表》中写道“今南方已定”即是对南征之战胜利的描述，而小说《三国演义》中家喻户晓的“七擒孟获”故事同样也是发生在这一战争期间。它的大致经过是这样的：章武三年（公元223年），在夷陵之战中遭遇大败的先主刘备在永安宫崩殂，遗诏太子刘禅即位、丞相亮辅政。消息传到西南边境，当地豪强雍闓、牂牁太守朱褒以及越雋首领高定即举兵反叛蜀汉，正所谓“高定恣睢于越雋，雍闓跋扈于建宁，朱褒反叛于牂牁”（《三国志·蜀书·黄李吕马王张传》）。建兴三年（公元225年），丞相武侯决定发兵征讨。武侯除令李恢、马忠部分行外，自率大军从成都出发，先到越雋（治在今四川西昌东南）擒杀高定，后与马忠部会和，五月渡泸，再与李恢部合兵益州（治在今云南晋宁东），最终平定益州、永昌（治在云南保山东北）等地，西南平定，武侯遂班师回朝，南征之战取得最终胜利，巩固了蜀汉的后方。\n在对历史案例回顾完之后，接下来我们引出本文介绍的计算方法，我们提供在R中实现的两种方法，其中一个是之前在推文中一直介绍使用的sf包，另外一个则是geosphere包。无论是使用sf包还是geosphere包，都依赖经纬度，所以我结合《中国历代战争年表》的对武侯主力行军路线的记载对关键地点的经纬度（以历史地名对应当今行政区划的所在地）做了记录。在此基础上利用sf包计算进军距离的命令如下：\n library(tidyverse)library(sf)location \u0026lt;- read.csv('location.csv')distance \u0026lt;- select(location, Long, Latitude)distanceNew \u0026lt;- st_as_sf(x = distance, coords = c(\u0026quot;Long\u0026quot;, \u0026quot;Latitude\u0026quot;), crs = \u0026quot;+proj=longlat +datum = WGS84\u0026quot;)st_distance(distanceNew)  这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：\n图1\n如果要以km为单位进行计算，则需要输入：\n       st_distance(distanceNew) %\u0026gt;% units::set_units(km)  结果如图2所示：",
+  "keywords": [
+    
+  ],
+  "articleBody": "实用技术 | 如何用R快速计算进军距离？以汉丞相诸葛武侯南征为例 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#实用技术 19 个\n#历史政治学 58 个\n研究国家建构的读者对如何测量国家能力、寻找合适的代理变量一定是不陌生的。我们之前在推送的（《如何测量国家能力？》）一文中也有过较为详细的介绍。但是如果从历史社会学和所谓的历史政治学角度去研究古代中国或者其他国家的国家发展，在面对数据有限的结构性限制时，给出有说服力的测量国家能力的方法则是一个颇为棘手的问题。尽管棘手，但是不代表不可能实现。如果读者朋友对春秋战国时期国家形成的历史社会学研究感兴趣，那么对用“进军距离”测量国家能力的巧妙做法一定有所耳闻。采用“进军距离”作为代理变量的做法源自于赵鼎新教授在中英文著作《东周战争与儒法国家的诞生》（第72-74页）以及 The Confucian-Legalist State: A New Theory of Chinese History （第123-125页）中对争霸国国家能力的测量，这一做法的巧妙之处在于善于发掘出隐藏在文言文中的非结构化数据并将其结构化，而且密切契合了与全书的研究议题，成为运用代理变量测量的经典案例，对我们研究历史上国家能力的学生来说具有重要的启发和借鉴意义。\n现在各大地图的电脑端以及手机端功能十分强大，只要我们知道历史上的进军路线，我们便可以通过输入起止点的方式很便捷的测算出来。那么如何用R软件进行计算呢？下面我们将结合历史上的一个案例和相关的R包进行介绍。\n我们选取的历史案例是三国时期汉丞相诸葛武侯发起的南征之战。武侯在闻名遐迩的《出师表》中写道“今南方已定”即是对南征之战胜利的描述，而小说《三国演义》中家喻户晓的“七擒孟获”故事同样也是发生在这一战争期间。它的大致经过是这样的：章武三年（公元223年），在夷陵之战中遭遇大败的先主刘备在永安宫崩殂，遗诏太子刘禅即位、丞相亮辅政。消息传到西南边境，当地豪强雍闓、牂牁太守朱褒以及越雋首领高定即举兵反叛蜀汉，正所谓“高定恣睢于越雋，雍闓跋扈于建宁，朱褒反叛于牂牁”（《三国志·蜀书·黄李吕马王张传》）。建兴三年（公元225年），丞相武侯决定发兵征讨。武侯除令李恢、马忠部分行外，自率大军从成都出发，先到越雋（治在今四川西昌东南）擒杀高定，后与马忠部会和，五月渡泸，再与李恢部合兵益州（治在今云南晋宁东），最终平定益州、永昌（治在云南保山东北）等地，西南平定，武侯遂班师回朝，南征之战取得最终胜利，巩固了蜀汉的后方。\n在对历史案例回顾完之后，接下来我们引出本文介绍的计算方法，我们提供在R中实现的两种方法，其中一个是之前在推文中一直介绍使用的sf包，另外一个则是geosphere包。无论是使用sf包还是geosphere包，都依赖经纬度，所以我结合《中国历代战争年表》的对武侯主力行军路线的记载对关键地点的经纬度（以历史地名对应当今行政区划的所在地）做了记录。在此基础上利用sf包计算进军距离的命令如下：\n library(tidyverse)library(sf)location  这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：\n图1\n如果要以km为单位进行计算，则需要输入：\n       st_distance(distanceNew) %% units::set_units(km)  结果如图2所示：\n图2\n除了sf包外，geosphere包也可以快速实现进军距离的计算，具体步骤如下： ****\n install.packages(“geosphere”) #如没安装该包首先需要先行安装，如已安装可以略过 library(geosphere)distm(distance)  这样R仍然会以矩阵的形式显示每个节点之间的距离，如图3所示：\n图3\n这里每个节点之间的距离依然是以m为单位，如果要按照km计算的话在最后一条命令除以1000即可，即：\n   distm(distance)/1000  结果如下图所示：\n图4\n比较一下sf和geosphere两个包的计算结果，我们可以发现两者是一致的，至于选择全凭读者偏好。需要指出的是，本文提供的距离是两点间的直线距离，虽然统一使用直线距离不会对最终结果产生严重的偏差，但我们需要知道它是被简化过的，而历史上真实发生的距离往往比这一直线距离要更长，读者们在使用时可以根据详细历史的记载做出更精确的计算。\n最后按照惯例，我们将本文使用的数据和代码打包上传，感兴趣的读者朋友可以点击文末“阅读原文”（提取码：jjjl）下载复验。\n参考文献：\n[1] [晋]陈寿著、[宋]裴松之注.三国志[M].北京：中华书局，1982.\n[2] 赵鼎新著.东周战争与儒法国家的诞生[M].夏江旗译，北京：北京联合出版公司，2020.\n[3] 《中国军事史》编写组编.中国历代战争年表[M].北京：解放军出版社，2003.\n[4] Zhao, Dingxin. The Confucian-Legalist State: A New Theory of Chinese History. New York: Oxford University Press, 2015.\n撰文：杨端程 审读：吴温泉 编辑：蒋晟\n",
+  "wordCount" : "102",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97%E8%BF%9B%E5%86%9B%E8%B7%9D%E7%A6%BB%E4%BB%A5%E6%B1%89%E4%B8%9E%E7%9B%B8%E8%AF%B8%E8%91%9B%E6%AD%A6%E4%BE%AF%E5%8D%97%E5%BE%81%E4%B8%BA%E4%BE%8B/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="实用技术--如何用r快速计算进军距离以汉丞相诸葛武侯南征为例">实用技术 | 如何用R快速计算进军距离？以汉丞相诸葛武侯南征为例<a hidden class="anchor" aria-hidden="true" href="#实用技术--如何用r快速计算进军距离以汉丞相诸葛武侯南征为例">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p>#实用技术 19 个</p>
+<p>#历史政治学 58 个</p>
+<p>研究国家建构的读者对如何测量国家能力、寻找合适的代理变量一定是不陌生的。我们之前在推送的（《<a href="http://mp.weixin.qq.com/s?__biz=MzI5ODY0MTQ1OA==&amp;mid=2247489485&amp;idx=1&amp;sn=72cc0c938a0ba41c26aec76ee2b28a88&amp;chksm=eca3e690dbd46f860f6ccd34857dd8756ee95e609329a8a2c31a400fb864de74a73b1287afef&amp;scene=21#wechat_redirect">如何测量国家能力？</a>》）一文中也有过较为详细的介绍。但是如果从历史社会学和所谓的历史政治学角度去研究古代中国或者其他国家的国家发展，在面对数据有限的结构性限制时，给出有说服力的测量国家能力的方法则是一个颇为棘手的问题。尽管棘手，但是不代表不可能实现。如果读者朋友对春秋战国时期国家形成的历史社会学研究感兴趣，那么对用“进军距离”测量国家能力的巧妙做法一定有所耳闻。采用“进军距离”作为代理变量的做法源自于赵鼎新教授在中英文著作《东周战争与儒法国家的诞生》（第72-74页）以及
+<em>The Confucian-Legalist State: A New Theory of Chinese History</em>
+（第123-125页）中对争霸国国家能力的测量，这一做法的巧妙之处在于善于发掘出隐藏在文言文中的非结构化数据并将其结构化，而且密切契合了与全书的研究议题，成为运用代理变量测量的经典案例，对我们研究历史上国家能力的学生来说具有重要的启发和借鉴意义。</p>
+<p>现在各大地图的电脑端以及手机端功能十分强大，只要我们知道历史上的进军路线，我们便可以通过输入起止点的方式很便捷的测算出来。那么如何用R软件进行计算呢？下面我们将结合历史上的一个案例和相关的R包进行介绍。</p>
+<p>我们选取的历史案例是三国时期汉丞相诸葛武侯发起的南征之战。武侯在闻名遐迩的《出师表》中写道“今南方已定”即是对南征之战胜利的描述，而小说《三国演义》中家喻户晓的“七擒孟获”故事同样也是发生在这一战争期间。它的大致经过是这样的：章武三年（公元223年），在夷陵之战中遭遇大败的先主刘备在永安宫崩殂，遗诏太子刘禅即位、丞相亮辅政。消息传到西南边境，当地豪强雍闓、牂牁太守朱褒以及越雋首领高定即举兵反叛蜀汉，正所谓“高定恣睢于越雋，雍闓跋扈于建宁，朱褒反叛于牂牁”（《三国志·蜀书·黄李吕马王张传》）。建兴三年（公元225年），丞相武侯决定发兵征讨。武侯除令李恢、马忠部分行外，自率大军从成都出发，先到越雋（治在今四川西昌东南）擒杀高定，后与马忠部会和，五月渡泸，再与李恢部合兵益州（治在今云南晋宁东），最终平定益州、永昌（治在云南保山东北）等地，西南平定，武侯遂班师回朝，南征之战取得最终胜利，巩固了蜀汉的后方。</p>
+<p>在对历史案例回顾完之后，接下来我们引出本文介绍的计算方法，我们提供在R中实现的两种方法，其中一个是之前在推文中一直介绍使用的sf包，另外一个则是geosphere包。无论是使用sf包还是geosphere包，都依赖经纬度，所以我结合《中国历代战争年表》的对武侯主力行军路线的记载对关键地点的经纬度（以历史地名对应当今行政区划的所在地）做了记录。在此基础上利用sf包计算进军距离的命令如下：</p>
+<hr>
+<pre><code>library(tidyverse)library(sf)location &lt;- read.csv('location.csv')distance &lt;- select(location, Long, Latitude)distanceNew &lt;- st_as_sf(x = distance,                        coords = c(&quot;Long&quot;, &quot;Latitude&quot;),                        crs = &quot;+proj=longlat +datum = WGS84&quot;)st_distance(distanceNew)
+</code></pre>
+<p>这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：</p>
+<p><img loading="lazy" src="images/112/2.png" alt=""  />
+</p>
+<p>图1</p>
+<p>如果要以km为单位进行计算，则需要输入：</p>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<pre><code>st_distance(distanceNew) %&gt;%  units::set_units(km)
+</code></pre>
+<p>结果如图2所示：</p>
+<p><img loading="lazy" src="images/112/3.png" alt=""  />
+</p>
+<p>图2</p>
+<p>除了sf包外，geosphere包也可以快速实现进军距离的计算，具体步骤如下： ****</p>
+<hr>
+<pre><code>install.packages(“geosphere”) #如没安装该包首先需要先行安装，如已安装可以略过 library(geosphere)distm(distance)
+</code></pre>
+<p>这样R仍然会以矩阵的形式显示每个节点之间的距离，如图3所示：</p>
+<p><img loading="lazy" src="images/112/4.png" alt=""  />
+</p>
+<p>图3</p>
+<p>这里每个节点之间的距离依然是以m为单位，如果要按照km计算的话在最后一条命令除以1000即可，即：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>distm(distance)/1000
+</code></pre>
+<p>结果如下图所示：</p>
+<p><img loading="lazy" src="images/112/5.png" alt=""  />
+</p>
+<p>图4</p>
+<p>比较一下sf和geosphere两个包的计算结果，我们可以发现两者是一致的，至于选择全凭读者偏好。需要指出的是，本文提供的距离是两点间的直线距离，虽然统一使用直线距离不会对最终结果产生严重的偏差，但我们需要知道它是被简化过的，而历史上真实发生的距离往往比这一直线距离要更长，读者们在使用时可以根据详细历史的记载做出更精确的计算。</p>
+<p>最后按照惯例，我们将本文使用的数据和代码打包上传，感兴趣的读者朋友可以点击文末“阅读原文”（提取码：jjjl）下载复验。</p>
+<p>参考文献：</p>
+<p>[1] [晋]陈寿著、[宋]裴松之注.三国志[M].北京：中华书局，1982.</p>
+<p>[2] 赵鼎新著.东周战争与儒法国家的诞生[M].夏江旗译，北京：北京联合出版公司，2020.</p>
+<p>[3] 《中国军事史》编写组编.中国历代战争年表[M].北京：解放军出版社，2003.</p>
+<p>[4] Zhao, Dingxin. <em>The Confucian-Legalist State: A New Theory of Chinese
+History</em>. New York: Oxford University Press, 2015.</p>
+<p>撰文：杨端程 审读：吴温泉 编辑：蒋晟</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

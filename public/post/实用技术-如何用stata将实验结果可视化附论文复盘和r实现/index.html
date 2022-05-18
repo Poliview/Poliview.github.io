@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My New Hugo Site</title>
+<meta name="keywords" content="">
+<meta name="description" content="实用技术 | 如何用Stata将实验结果可视化——附论文复盘和R实现 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+长期以来，Stata都被视为一款中规中矩的“中阶”统计应用。一方面，Stata内置了能够满足大多数统计要求的算法，控制界面的友好程度也能够接受。因此很多初学者都能平滑地完成从Excel/SPSS到Stata的“进阶”过程。但另一方面，Stata在一些领域的发展已经明显落后于实际应用的前沿，譬如对多个数据集的同时处理（直到16版本才出现了Multitask的飞越），以及本文将要探讨的、被无数用户吐槽的“又丑又慢”的可视化功能。当然，Stata具有一定的开源性，因此又有很多外部包可以补足Stata在可视化方面的短板，甚至出现了将ggplot2移植到Stata平台的“邪教”。
+好了，本文的吐槽就到此为止，下面来看看今天要探讨的具体议题——社会科学实验的可视化。社会科学实验主要包括实验室实验、实地实验和问卷实验三种，它们的共性也即它们和观察性研究的区别就在于，研究中变量的&quot;变异&quot;是受到人为处理的结果。一般来说，最简单的实验研究产生的数据集只有两个核心变量，一个记录因不同处理的分组情况（处理- 控制的虚拟变量或不同处理组和控制组的多分类变量），另一个则记录实验结果（理论上是连续变量）。这种简单的实验被称为被试间设计。顾名思义，实验结果是通过不同处理下不同被试之间的差异来呈现的。显然，将这种实验结果可视化的思路也非常简单，就是展示不同组别的平均值和标准误/置信区间。肉眼可见的组间差异可以很有力地向读者传达实验成功的信息，当然，更为严谨的统计检验也是必不可少的。
+下面我们来看一个具体的案例。在《复杂舆论议题中的媒体框架效应》一文中，马得勇教授等人在问卷调查中设置了四个情境。在随机分组后，被试有可能会阅读到&quot;强硬反美&quot;、&ldquo;温和反美&quot;和&quot;温和中立&quot;这三种媒体框架之一，也有可能被分配进入没有阅读材料的控制组。因此，这里记录不同处理分组的就是一个四分类变量。在人为处理后，问卷通过一系列问题记录了被试的对美好感度、对贸易战的强硬程度和对中国政府的信任程度。这些结果变量在理论上都是连续的。
+假设现在作者的可视化任务就是展示四个组别的在对美好感度上的均值和标准误/置信区间，那么怎样高效准确地实现目标？事实上，在Stata中只需要两行命令就能实现可视化，下图使用Stata15.1版本演示。
+首先看一下两个核心变量的情况。
+然后计算各组的均值和标准误/置信区间。
+最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。
+从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。
+当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot, vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…
+是不是不敢相信这是来自Stata的作品呢？
+下面再探讨一下稍微进阶一点的实验设计和相应的可视化方法。简单的被试间设计依赖于一个非常强的前提假设——被试是真的被完全随机地分组。如果被试分组的随机性被证伪（或者无法证明），那么整个实验结果就会化为泡影。证明随机性的方法有多种，这里介绍最简单的一种，即前测- 后测设计。同样举上文的例子，作者可以在随机分组之前就先测量一次被试的对美好感度，在分组- 处理后再测量一次被试的对美好感度。这就实现了兼具被试内设计（前后比较）和被试间设计（组别差异）的实验方法。这种实验设计的另一个好处是可以直观地反映被试在人为处理前后的变化。在理想的情况下，处理组和控制组被试在前测上差异不大，处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。
+那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。
+下面直接贴出核心代码
+ mean pretest, over(group)est sto Premean posttest, over(group)est sto Postcoefplot (Pre,label(前测)) (Post, label(后测)),vertical  同样加入“一点”细节，我们就可以得到…
+这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。
+值得注意的上，上述可视化流程很好地反映了Stata“一张表到头”的设计理念。这样虽然快捷，但其中间步骤并没有被保存，因而很可能被使用者忽视。此外，显而易见Stata可视化的自由度并不高。作为对照，下面我们来看看，在以处理多数据集和自由可视化著称的R语言中如何实现上述任务。必须说明的是，R语言中有很多的包可以直接实现可视化目的，但为了展现中间步骤，下面将只依赖传统的tidyverse包集群。
+首先我们用RStudio读取数据。
+下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：
+   standard_error &lt;- function(x) sd(x) / sqrt(length(x))  然后汇总各组的均值和标准误：
+       test.">
+<meta name="author" content="">
+<link rel="canonical" href="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8stata%E5%B0%86%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%86%E5%8C%96%E9%99%84%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98%E5%92%8Cr%E5%AE%9E%E7%8E%B0/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://example.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://example.org/apple-touch-icon.png">
+<link rel="mask-icon" href="http://example.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="实用技术 | 如何用Stata将实验结果可视化——附论文复盘和R实现 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+长期以来，Stata都被视为一款中规中矩的“中阶”统计应用。一方面，Stata内置了能够满足大多数统计要求的算法，控制界面的友好程度也能够接受。因此很多初学者都能平滑地完成从Excel/SPSS到Stata的“进阶”过程。但另一方面，Stata在一些领域的发展已经明显落后于实际应用的前沿，譬如对多个数据集的同时处理（直到16版本才出现了Multitask的飞越），以及本文将要探讨的、被无数用户吐槽的“又丑又慢”的可视化功能。当然，Stata具有一定的开源性，因此又有很多外部包可以补足Stata在可视化方面的短板，甚至出现了将ggplot2移植到Stata平台的“邪教”。
+好了，本文的吐槽就到此为止，下面来看看今天要探讨的具体议题——社会科学实验的可视化。社会科学实验主要包括实验室实验、实地实验和问卷实验三种，它们的共性也即它们和观察性研究的区别就在于，研究中变量的&quot;变异&quot;是受到人为处理的结果。一般来说，最简单的实验研究产生的数据集只有两个核心变量，一个记录因不同处理的分组情况（处理- 控制的虚拟变量或不同处理组和控制组的多分类变量），另一个则记录实验结果（理论上是连续变量）。这种简单的实验被称为被试间设计。顾名思义，实验结果是通过不同处理下不同被试之间的差异来呈现的。显然，将这种实验结果可视化的思路也非常简单，就是展示不同组别的平均值和标准误/置信区间。肉眼可见的组间差异可以很有力地向读者传达实验成功的信息，当然，更为严谨的统计检验也是必不可少的。
+下面我们来看一个具体的案例。在《复杂舆论议题中的媒体框架效应》一文中，马得勇教授等人在问卷调查中设置了四个情境。在随机分组后，被试有可能会阅读到&quot;强硬反美&quot;、&ldquo;温和反美&quot;和&quot;温和中立&quot;这三种媒体框架之一，也有可能被分配进入没有阅读材料的控制组。因此，这里记录不同处理分组的就是一个四分类变量。在人为处理后，问卷通过一系列问题记录了被试的对美好感度、对贸易战的强硬程度和对中国政府的信任程度。这些结果变量在理论上都是连续的。
+假设现在作者的可视化任务就是展示四个组别的在对美好感度上的均值和标准误/置信区间，那么怎样高效准确地实现目标？事实上，在Stata中只需要两行命令就能实现可视化，下图使用Stata15.1版本演示。
+首先看一下两个核心变量的情况。
+然后计算各组的均值和标准误/置信区间。
+最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。
+从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。
+当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot, vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…
+是不是不敢相信这是来自Stata的作品呢？
+下面再探讨一下稍微进阶一点的实验设计和相应的可视化方法。简单的被试间设计依赖于一个非常强的前提假设——被试是真的被完全随机地分组。如果被试分组的随机性被证伪（或者无法证明），那么整个实验结果就会化为泡影。证明随机性的方法有多种，这里介绍最简单的一种，即前测- 后测设计。同样举上文的例子，作者可以在随机分组之前就先测量一次被试的对美好感度，在分组- 处理后再测量一次被试的对美好感度。这就实现了兼具被试内设计（前后比较）和被试间设计（组别差异）的实验方法。这种实验设计的另一个好处是可以直观地反映被试在人为处理前后的变化。在理想的情况下，处理组和控制组被试在前测上差异不大，处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。
+那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。
+下面直接贴出核心代码
+ mean pretest, over(group)est sto Premean posttest, over(group)est sto Postcoefplot (Pre,label(前测)) (Post, label(后测)),vertical  同样加入“一点”细节，我们就可以得到…
+这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。
+值得注意的上，上述可视化流程很好地反映了Stata“一张表到头”的设计理念。这样虽然快捷，但其中间步骤并没有被保存，因而很可能被使用者忽视。此外，显而易见Stata可视化的自由度并不高。作为对照，下面我们来看看，在以处理多数据集和自由可视化著称的R语言中如何实现上述任务。必须说明的是，R语言中有很多的包可以直接实现可视化目的，但为了展现中间步骤，下面将只依赖传统的tidyverse包集群。
+首先我们用RStudio读取数据。
+下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：
+   standard_error &lt;- function(x) sd(x) / sqrt(length(x))  然后汇总各组的均值和标准误：
+       test." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8stata%E5%B0%86%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%86%E5%8C%96%E9%99%84%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98%E5%92%8Cr%E5%AE%9E%E7%8E%B0/" /><meta property="article:section" content="post" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用技术 | 如何用Stata将实验结果可视化——附论文复盘和R实现 原创 政文观止
+政文观止Poliview
+微信号 zhengwenguanzhi
+功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
+ __
+收录于合集
+#数据可视化 15 个
+#实用技术 19 个
+长期以来，Stata都被视为一款中规中矩的“中阶”统计应用。一方面，Stata内置了能够满足大多数统计要求的算法，控制界面的友好程度也能够接受。因此很多初学者都能平滑地完成从Excel/SPSS到Stata的“进阶”过程。但另一方面，Stata在一些领域的发展已经明显落后于实际应用的前沿，譬如对多个数据集的同时处理（直到16版本才出现了Multitask的飞越），以及本文将要探讨的、被无数用户吐槽的“又丑又慢”的可视化功能。当然，Stata具有一定的开源性，因此又有很多外部包可以补足Stata在可视化方面的短板，甚至出现了将ggplot2移植到Stata平台的“邪教”。
+好了，本文的吐槽就到此为止，下面来看看今天要探讨的具体议题——社会科学实验的可视化。社会科学实验主要包括实验室实验、实地实验和问卷实验三种，它们的共性也即它们和观察性研究的区别就在于，研究中变量的&quot;变异&quot;是受到人为处理的结果。一般来说，最简单的实验研究产生的数据集只有两个核心变量，一个记录因不同处理的分组情况（处理- 控制的虚拟变量或不同处理组和控制组的多分类变量），另一个则记录实验结果（理论上是连续变量）。这种简单的实验被称为被试间设计。顾名思义，实验结果是通过不同处理下不同被试之间的差异来呈现的。显然，将这种实验结果可视化的思路也非常简单，就是展示不同组别的平均值和标准误/置信区间。肉眼可见的组间差异可以很有力地向读者传达实验成功的信息，当然，更为严谨的统计检验也是必不可少的。
+下面我们来看一个具体的案例。在《复杂舆论议题中的媒体框架效应》一文中，马得勇教授等人在问卷调查中设置了四个情境。在随机分组后，被试有可能会阅读到&quot;强硬反美&quot;、&ldquo;温和反美&quot;和&quot;温和中立&quot;这三种媒体框架之一，也有可能被分配进入没有阅读材料的控制组。因此，这里记录不同处理分组的就是一个四分类变量。在人为处理后，问卷通过一系列问题记录了被试的对美好感度、对贸易战的强硬程度和对中国政府的信任程度。这些结果变量在理论上都是连续的。
+假设现在作者的可视化任务就是展示四个组别的在对美好感度上的均值和标准误/置信区间，那么怎样高效准确地实现目标？事实上，在Stata中只需要两行命令就能实现可视化，下图使用Stata15.1版本演示。
+首先看一下两个核心变量的情况。
+然后计算各组的均值和标准误/置信区间。
+最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。
+从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。
+当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot, vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…
+是不是不敢相信这是来自Stata的作品呢？
+下面再探讨一下稍微进阶一点的实验设计和相应的可视化方法。简单的被试间设计依赖于一个非常强的前提假设——被试是真的被完全随机地分组。如果被试分组的随机性被证伪（或者无法证明），那么整个实验结果就会化为泡影。证明随机性的方法有多种，这里介绍最简单的一种，即前测- 后测设计。同样举上文的例子，作者可以在随机分组之前就先测量一次被试的对美好感度，在分组- 处理后再测量一次被试的对美好感度。这就实现了兼具被试内设计（前后比较）和被试间设计（组别差异）的实验方法。这种实验设计的另一个好处是可以直观地反映被试在人为处理前后的变化。在理想的情况下，处理组和控制组被试在前测上差异不大，处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。
+那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。
+下面直接贴出核心代码
+ mean pretest, over(group)est sto Premean posttest, over(group)est sto Postcoefplot (Pre,label(前测)) (Post, label(后测)),vertical  同样加入“一点”细节，我们就可以得到…
+这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。
+值得注意的上，上述可视化流程很好地反映了Stata“一张表到头”的设计理念。这样虽然快捷，但其中间步骤并没有被保存，因而很可能被使用者忽视。此外，显而易见Stata可视化的自由度并不高。作为对照，下面我们来看看，在以处理多数据集和自由可视化著称的R语言中如何实现上述任务。必须说明的是，R语言中有很多的包可以直接实现可视化目的，但为了展现中间步骤，下面将只依赖传统的tidyverse包集群。
+首先我们用RStudio读取数据。
+下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：
+   standard_error &lt;- function(x) sd(x) / sqrt(length(x))  然后汇总各组的均值和标准误：
+       test."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://example.org/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8stata%E5%B0%86%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%86%E5%8C%96%E9%99%84%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98%E5%92%8Cr%E5%AE%9E%E7%8E%B0/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "实用技术 | 如何用Stata将实验结果可视化——附论文复盘和R实现 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n长期以来，Stata都被视为一款中规中矩的“中阶”统计应用。一方面，Stata内置了能够满足大多数统计要求的算法，控制界面的友好程度也能够接受。因此很多初学者都能平滑地完成从Excel/SPSS到Stata的“进阶”过程。但另一方面，Stata在一些领域的发展已经明显落后于实际应用的前沿，譬如对多个数据集的同时处理（直到16版本才出现了Multitask的飞越），以及本文将要探讨的、被无数用户吐槽的“又丑又慢”的可视化功能。当然，Stata具有一定的开源性，因此又有很多外部包可以补足Stata在可视化方面的短板，甚至出现了将ggplot2移植到Stata平台的“邪教”。\n好了，本文的吐槽就到此为止，下面来看看今天要探讨的具体议题——社会科学实验的可视化。社会科学实验主要包括实验室实验、实地实验和问卷实验三种，它们的共性也即它们和观察性研究的区别就在于，研究中变量的\u0026quot;变异\u0026quot;是受到人为处理的结果。一般来说，最简单的实验研究产生的数据集只有两个核心变量，一个记录因不同处理的分组情况（处理- 控制的虚拟变量或不同处理组和控制组的多分类变量），另一个则记录实验结果（理论上是连续变量）。这种简单的实验被称为被试间设计。顾名思义，实验结果是通过不同处理下不同被试之间的差异来呈现的。显然，将这种实验结果可视化的思路也非常简单，就是展示不同组别的平均值和标准误/置信区间。肉眼可见的组间差异可以很有力地向读者传达实验成功的信息，当然，更为严谨的统计检验也是必不可少的。\n下面我们来看一个具体的案例。在《复杂舆论议题中的媒体框架效应》一文中，马得勇教授等人在问卷调查中设置了四个情境。在随机分组后，被试有可能会阅读到\u0026quot;强硬反美\u0026quot;、\u0026ldquo;温和反美\u0026quot;和\u0026quot;温和中立\u0026quot;这三种媒体框架之一，也有可能被分配进入没有阅读材料的控制组。因此，这里记录不同处理分组的就是一个四分类变量。在人为处理后，问卷通过一系列问题记录了被试的对美好感度、对贸易战的强硬程度和对中国政府的信任程度。这些结果变量在理论上都是连续的。\n假设现在作者的可视化任务就是展示四个组别的在对美好感度上的均值和标准误/置信区间，那么怎样高效准确地实现目标？事实上，在Stata中只需要两行命令就能实现可视化，下图使用Stata15.1版本演示。\n首先看一下两个核心变量的情况。\n然后计算各组的均值和标准误/置信区间。\n最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。\n从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。\n当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot, vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…\n是不是不敢相信这是来自Stata的作品呢？\n下面再探讨一下稍微进阶一点的实验设计和相应的可视化方法。简单的被试间设计依赖于一个非常强的前提假设——被试是真的被完全随机地分组。如果被试分组的随机性被证伪（或者无法证明），那么整个实验结果就会化为泡影。证明随机性的方法有多种，这里介绍最简单的一种，即前测- 后测设计。同样举上文的例子，作者可以在随机分组之前就先测量一次被试的对美好感度，在分组- 处理后再测量一次被试的对美好感度。这就实现了兼具被试内设计（前后比较）和被试间设计（组别差异）的实验方法。这种实验设计的另一个好处是可以直观地反映被试在人为处理前后的变化。在理想的情况下，处理组和控制组被试在前测上差异不大，处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。\n那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。\n下面直接贴出核心代码\n mean pretest, over(group)est sto Premean posttest, over(group)est sto Postcoefplot (Pre,label(前测)) (Post, label(后测)),vertical  同样加入“一点”细节，我们就可以得到…\n这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。\n值得注意的上，上述可视化流程很好地反映了Stata“一张表到头”的设计理念。这样虽然快捷，但其中间步骤并没有被保存，因而很可能被使用者忽视。此外，显而易见Stata可视化的自由度并不高。作为对照，下面我们来看看，在以处理多数据集和自由可视化著称的R语言中如何实现上述任务。必须说明的是，R语言中有很多的包可以直接实现可视化目的，但为了展现中间步骤，下面将只依赖传统的tidyverse包集群。\n首先我们用RStudio读取数据。\n下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：\n   standard_error \u0026lt;- function(x) sd(x) / sqrt(length(x))  然后汇总各组的均值和标准误：\n       test.",
+  "keywords": [
+    
+  ],
+  "articleBody": "实用技术 | 如何用Stata将实验结果可视化——附论文复盘和R实现 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n长期以来，Stata都被视为一款中规中矩的“中阶”统计应用。一方面，Stata内置了能够满足大多数统计要求的算法，控制界面的友好程度也能够接受。因此很多初学者都能平滑地完成从Excel/SPSS到Stata的“进阶”过程。但另一方面，Stata在一些领域的发展已经明显落后于实际应用的前沿，譬如对多个数据集的同时处理（直到16版本才出现了Multitask的飞越），以及本文将要探讨的、被无数用户吐槽的“又丑又慢”的可视化功能。当然，Stata具有一定的开源性，因此又有很多外部包可以补足Stata在可视化方面的短板，甚至出现了将ggplot2移植到Stata平台的“邪教”。\n好了，本文的吐槽就到此为止，下面来看看今天要探讨的具体议题——社会科学实验的可视化。社会科学实验主要包括实验室实验、实地实验和问卷实验三种，它们的共性也即它们和观察性研究的区别就在于，研究中变量的\"变异\"是受到人为处理的结果。一般来说，最简单的实验研究产生的数据集只有两个核心变量，一个记录因不同处理的分组情况（处理- 控制的虚拟变量或不同处理组和控制组的多分类变量），另一个则记录实验结果（理论上是连续变量）。这种简单的实验被称为被试间设计。顾名思义，实验结果是通过不同处理下不同被试之间的差异来呈现的。显然，将这种实验结果可视化的思路也非常简单，就是展示不同组别的平均值和标准误/置信区间。肉眼可见的组间差异可以很有力地向读者传达实验成功的信息，当然，更为严谨的统计检验也是必不可少的。\n下面我们来看一个具体的案例。在《复杂舆论议题中的媒体框架效应》一文中，马得勇教授等人在问卷调查中设置了四个情境。在随机分组后，被试有可能会阅读到\"强硬反美\"、“温和反美\"和\"温和中立\"这三种媒体框架之一，也有可能被分配进入没有阅读材料的控制组。因此，这里记录不同处理分组的就是一个四分类变量。在人为处理后，问卷通过一系列问题记录了被试的对美好感度、对贸易战的强硬程度和对中国政府的信任程度。这些结果变量在理论上都是连续的。\n假设现在作者的可视化任务就是展示四个组别的在对美好感度上的均值和标准误/置信区间，那么怎样高效准确地实现目标？事实上，在Stata中只需要两行命令就能实现可视化，下图使用Stata15.1版本演示。\n首先看一下两个核心变量的情况。\n然后计算各组的均值和标准误/置信区间。\n最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。\n从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。\n当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot, vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…\n是不是不敢相信这是来自Stata的作品呢？\n下面再探讨一下稍微进阶一点的实验设计和相应的可视化方法。简单的被试间设计依赖于一个非常强的前提假设——被试是真的被完全随机地分组。如果被试分组的随机性被证伪（或者无法证明），那么整个实验结果就会化为泡影。证明随机性的方法有多种，这里介绍最简单的一种，即前测- 后测设计。同样举上文的例子，作者可以在随机分组之前就先测量一次被试的对美好感度，在分组- 处理后再测量一次被试的对美好感度。这就实现了兼具被试内设计（前后比较）和被试间设计（组别差异）的实验方法。这种实验设计的另一个好处是可以直观地反映被试在人为处理前后的变化。在理想的情况下，处理组和控制组被试在前测上差异不大，处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。\n那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。\n下面直接贴出核心代码\n mean pretest, over(group)est sto Premean posttest, over(group)est sto Postcoefplot (Pre,label(前测)) (Post, label(后测)),vertical  同样加入“一点”细节，我们就可以得到…\n这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。\n值得注意的上，上述可视化流程很好地反映了Stata“一张表到头”的设计理念。这样虽然快捷，但其中间步骤并没有被保存，因而很可能被使用者忽视。此外，显而易见Stata可视化的自由度并不高。作为对照，下面我们来看看，在以处理多数据集和自由可视化著称的R语言中如何实现上述任务。必须说明的是，R语言中有很多的包可以直接实现可视化目的，但为了展现中间步骤，下面将只依赖传统的tidyverse包集群。\n首先我们用RStudio读取数据。\n下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：\n   standard_error  然后汇总各组的均值和标准误：\n       test.1  最后使用无所不能的ggplot2\n ggplot(test.2) + geom_point(aes(x = group,y = premean),color = \"red\",shape = 17,size = 3.5)+ geom_point(aes(x = group+0.5, y = postmean), color = \"blue\",shape = 15,size = 3.5) + geom_errorbar(aes(x = group, ymin = premean - 1.96*prese, ymax = premean + 1.96*prese), width = 0.2, color = \"red\") + geom_errorbar(aes(x = group + 0.5,ymin = postmean - 1.96*postse, ymax = postmean + 1.96*postse), width = 0.2,color = \"blue\")+ theme_bw()  至此，我们大致实现了和Stata一样的效果。当然，如果要让R自动生成前测和后测的图例，我们需要通过更为复杂的操作将原数据集堆叠起来。这里同样留待读者朋友自行探索。\n最后，我们将本文的相关数据（dta格式）都存入网盘，感兴趣的读者朋友可以点击“ 阅读原文 ”进行下载（提取码为qytv）。\n注：\n由中国人民大学马得勇教授主持的中国网民社会心态调查（2012-2017）已全部公布，详见“中国学术调查数据资料库”（http://cnsda.ruc.edu.cn/index.php?r=projects/view\u0026id=69084413）\n参考文献：\n1.马得勇,陆屹洲.复杂舆论议题中的媒体框架效应——以中美贸易争端为案例的实验研究[J].国际新闻界,2020,42(05):99-120.\n2.Jann B., Plotting regression coefficients and other estimates. The Stata Journal. Vol.14.No.4(2014), pp.708-737.\n撰文：陆屹洲 审读：杨端程 编辑：康张城\n【政文观止Poliview】系头条号签约作者\n",
+  "wordCount" : "164",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://example.org/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8stata%E5%B0%86%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%86%E5%8C%96%E9%99%84%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98%E5%92%8Cr%E5%AE%9E%E7%8E%B0/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "My New Hugo Site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://example.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://example.org/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="实用技术--如何用stata将实验结果可视化附论文复盘和r实现">实用技术 | 如何用Stata将实验结果可视化——附论文复盘和R实现<a hidden class="anchor" aria-hidden="true" href="#实用技术--如何用stata将实验结果可视化附论文复盘和r实现">#</a></h1>
+<p>原创 政文观止</p>
+<p><strong>政文观止Poliview</strong></p>
+<p>微信号 zhengwenguanzhi</p>
+<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
+<hr>
+<p>__</p>
+<p>收录于合集</p>
+<p>#数据可视化 15 个</p>
+<p>#实用技术 19 个</p>
+<p>长期以来，Stata都被视为一款中规中矩的“中阶”统计应用。一方面，Stata内置了能够满足大多数统计要求的算法，控制界面的友好程度也能够接受。因此很多初学者都能平滑地完成从Excel/SPSS到Stata的“进阶”过程。但另一方面，Stata在一些领域的发展已经明显落后于实际应用的前沿，譬如对多个数据集的同时处理（直到16版本才出现了Multitask的飞越），以及本文将要探讨的、被无数用户吐槽的“又丑又慢”的可视化功能。当然，Stata具有一定的开源性，因此又有很多外部包可以补足Stata在可视化方面的短板，甚至出现了将ggplot2移植到Stata平台的“邪教”。</p>
+<p>好了，本文的吐槽就到此为止，下面来看看今天要探讨的具体议题——社会科学实验的可视化。社会科学实验主要包括实验室实验、实地实验和问卷实验三种，它们的共性也即它们和观察性研究的区别就在于，研究中变量的&quot;变异&quot;是受到人为处理的结果。一般来说，最简单的实验研究产生的数据集只有两个核心变量，一个记录因不同处理的分组情况（处理-
+控制的虚拟变量或不同处理组和控制组的多分类变量），另一个则记录实验结果（理论上是连续变量）。这种简单的实验被称为被试间设计。顾名思义，实验结果是通过不同处理下不同被试之间的差异来呈现的。显然，将这种实验结果可视化的思路也非常简单，就是展示不同组别的平均值和标准误/置信区间。肉眼可见的组间差异可以很有力地向读者传达实验成功的信息，当然，更为严谨的统计检验也是必不可少的。</p>
+<p>下面我们来看一个具体的案例。在《复杂舆论议题中的媒体框架效应》一文中，马得勇教授等人在问卷调查中设置了四个情境。在随机分组后，被试有可能会阅读到&quot;强硬反美&quot;、&ldquo;温和反美&quot;和&quot;温和中立&quot;这三种媒体框架之一，也有可能被分配进入没有阅读材料的控制组。因此，这里记录不同处理分组的就是一个四分类变量。在人为处理后，问卷通过一系列问题记录了被试的对美好感度、对贸易战的强硬程度和对中国政府的信任程度。这些结果变量在理论上都是连续的。</p>
+<p>假设现在作者的可视化任务就是展示四个组别的在对美好感度上的均值和标准误/置信区间，那么怎样高效准确地实现目标？事实上，在Stata中只需要两行命令就能实现可视化，下图使用Stata15.1版本演示。</p>
+<p>首先看一下两个核心变量的情况。</p>
+<p><img loading="lazy" src="images/208/2.png" alt=""  />
+</p>
+<p>然后计算各组的均值和标准误/置信区间。</p>
+<p><img loading="lazy" src="images/208/3.png" alt=""  />
+</p>
+<p>最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。</p>
+<p><img loading="lazy" src="images/208/4.png" alt=""  />
+</p>
+<p>从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。</p>
+<p>当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot,
+vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…</p>
+<p><img loading="lazy" src="images/208/5.png" alt=""  />
+</p>
+<p>是不是不敢相信这是来自Stata的作品呢？</p>
+<p>下面再探讨一下稍微进阶一点的实验设计和相应的可视化方法。简单的被试间设计依赖于一个非常强的前提假设——被试是真的被完全随机地分组。如果被试分组的随机性被证伪（或者无法证明），那么整个实验结果就会化为泡影。证明随机性的方法有多种，这里介绍最简单的一种，即前测-
+后测设计。同样举上文的例子，作者可以在随机分组之前就先测量一次被试的对美好感度，在分组-
+处理后再测量一次被试的对美好感度。这就实现了兼具被试内设计（前后比较）和被试间设计（组别差异）的实验方法。这种实验设计的另一个好处是可以直观地反映被试在人为处理前后的变化。在理想的情况下，处理组和控制组被试在前测上差异不大，处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。</p>
+<p>那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。</p>
+<p><img loading="lazy" src="images/208/6.png" alt=""  />
+</p>
+<p>下面直接贴出核心代码</p>
+<hr>
+<pre><code>mean pretest, over(group)est sto Premean posttest, over(group)est sto Postcoefplot (Pre,label(前测)) (Post, label(后测)),vertical
+</code></pre>
+<p>同样加入“一点”细节，我们就可以得到…</p>
+<p><img loading="lazy" src="images/208/7.png" alt=""  />
+</p>
+<p>这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。</p>
+<p>值得注意的上，上述可视化流程很好地反映了Stata“一张表到头”的设计理念。这样虽然快捷，但其中间步骤并没有被保存，因而很可能被使用者忽视。此外，显而易见Stata可视化的自由度并不高。作为对照，下面我们来看看，在以处理多数据集和自由可视化著称的R语言中如何实现上述任务。必须说明的是，R语言中有很多的包可以直接实现可视化目的，但为了展现中间步骤，下面将只依赖传统的tidyverse包集群。</p>
+<p>首先我们用RStudio读取数据。</p>
+<p><img loading="lazy" src="images/208/8.png" alt=""  />
+</p>
+<p>下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：</p>
+<ul>
+<li></li>
+</ul>
+<pre><code>standard_error &lt;- function(x) sd(x) / sqrt(length(x))
+</code></pre>
+<p>然后汇总各组的均值和标准误：</p>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<pre><code>test.1 &lt;-group_by(test,group)test.2 &lt;- summarise(test.1,premean = mean(pretest),postmean = mean(posttest),prese = standard_error(pretest),postse = standard_error(posttest))
+</code></pre>
+<p>最后使用无所不能的ggplot2</p>
+<hr>
+<pre><code>ggplot(test.2) +   geom_point(aes(x = group,y = premean),color = &quot;red&quot;,shape = 17,size = 3.5)+  geom_point(aes(x = group+0.5, y = postmean), color = &quot;blue&quot;,shape = 15,size = 3.5) +  geom_errorbar(aes(x = group, ymin = premean - 1.96*prese, ymax = premean + 1.96*prese),  width = 0.2, color = &quot;red&quot;) +   geom_errorbar(aes(x = group + 0.5,ymin = postmean - 1.96*postse,   ymax = postmean +  1.96*postse),  width = 0.2,color = &quot;blue&quot;)+   theme_bw()
+</code></pre>
+<p><img loading="lazy" src="images/208/9.png" alt=""  />
+</p>
+<p>至此，我们大致实现了和Stata一样的效果。当然，如果要让R自动生成前测和后测的图例，我们需要通过更为复杂的操作将原数据集堆叠起来。这里同样留待读者朋友自行探索。</p>
+<p>最后，我们将本文的相关数据（dta格式）都存入网盘，感兴趣的读者朋友可以点击“ <strong>阅读原文</strong> ”进行下载（提取码为qytv）。</p>
+<p><strong>注：</strong></p>
+<p>由中国人民大学马得勇教授主持的中国网民社会心态调查（2012-2017）已全部公布，详见“中国学术调查数据资料库”（http://cnsda.ruc.edu.cn/index.php?r=projects/view&amp;id=69084413）</p>
+<p><strong>参考文献：</strong></p>
+<p>1.马得勇,陆屹洲.复杂舆论议题中的媒体框架效应——以中美贸易争端为案例的实验研究[J].国际新闻界,2020,42(05):99-120.</p>
+<p>2.Jann B., Plotting regression coefficients and other estimates. <em>The Stata
+Journal</em>. Vol.14.No.4(2014), pp.708-737.</p>
+<p>撰文：陆屹洲 审读：杨端程 编辑：康张城</p>
+<p>【政文观止Poliview】系头条号签约作者</p>
+<p><img loading="lazy" src="images/208/10.jpeg" alt=""  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="http://example.org/">My New Hugo Site</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
