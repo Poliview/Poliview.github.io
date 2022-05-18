@@ -5,4 +5,5 @@ theme = "PaperMod"
 enableEmoji = true
 publishDir = "docs"
 hasCJKLanguage = true
-canonifyURLs= true
+relativeURLs = true
+canonifyURLs= false
