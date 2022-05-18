@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #地图绘制 6 个
 
@@ -35,7 +34,7 @@ __
 
   
 
-![](images/174/2.jpeg)
+![](/images/174/2.jpeg)
 
 图1
 
@@ -45,7 +44,7 @@ __
 
   
 
-![](images/174/3.jpeg)
+![](/images/174/3.jpeg)
 
 图2
 
@@ -81,7 +80,7 @@ shp）。
     
     ggplot() +  geom_sf(data = China, colour = "#525252", fill = "white")+  theme(panel.grid = element_blank(),  panel.background = element_blank(),  axis.text = element_blank(),  axis.ticks = element_blank(),  axis.title = element_blank())ggsave("图3.jpg", dpi = 500, width = 15, height = 12)
 
-![](images/174/4.jpeg)图3
+![](/images/174/4.jpeg)图3
 
   
 
@@ -94,7 +93,7 @@ azimuthal equal-area projection）并保存为图4即可：
     
     ggplot() +geom_sf(data = China, colour = "#525252", fill = "white")+coord_sf(crs = "+ proj = laea + lat_0 = 40 + lon_0 = 104")+theme(panel.grid = element_blank(),    panel.background = element_blank(),    axis.text = element_blank(),    axis.ticks = element_blank(),    axis.title = element_blank())ggsave("图4.jpg", dpi = 500, width = 15, height = 12)
 
-![](images/174/5.jpeg)图4
+![](/images/174/5.jpeg)图4
 
   
 
@@ -106,7 +105,7 @@ azimuthal equal-area projection）并保存为图4即可：
     
     #加载ggspatial包library(ggspatial) ggplot() +  geom_sf(data = China, colour = "#525252",fill = "white")+  coord_sf(crs = "+ proj = laea + lat_0 = 40 + lon_0 = 104")+  annotation_scale(location = "bl") +  annotation_north_arrow(location = "tl", which_north = "false", style = north_arrow_fancy_orienteering)+  theme(panel.grid = element_blank(),    panel.background = element_blank(),    axis.text = element_blank(),    axis.ticks = element_blank(),    axis.title = element_blank())# 保存为图5ggsave("图5.jpg", dpi = 500, width = 15, height = 12)
 
-![](images/174/6.jpeg)图5
+![](/images/174/6.jpeg)图5
 
   
 
@@ -126,7 +125,7 @@ azimuthal equal-area projection）并保存为图4即可：
 
   
 
-![](images/174/7.png)
+![](/images/174/7.png)
 
 图6  
 
@@ -148,7 +147,7 @@ azimuthal equal-area projection）并保存为图4即可：
     
     ggplot() +  geom_sf(data = ChinaGDP, aes(fill = GDP),colour = "#525252")+  scale_fill_gradient(low = "white", high = "steelblue", breaks = seq(5000, 80000, by = 10000))+  annotation_scale(location = "bl") +  coord_sf(crs = "+ proj = laea + lat_0 = 40 + lon_0 = 104")+  annotation_north_arrow(location = "tl", which_north = "false", style = north_arrow_fancy_orienteering)+  ggtitle("2020年前3季度全国各省、自治区和直辖市GDP（港澳台资料暂缺）")+  guides(fill = guide_legend(title = 'GDP(单位：亿元)'))+  theme(panel.grid = element_blank(),    panel.background = element_blank(),    axis.text = element_blank(),    axis.ticks = element_blank(),    axis.title = element_blank(),    plot.title = element_text(size = 12, hjust = 0.5,vjust = 1))# 保存为图7ggsave("图7.jpg", dpi = 500, width = 15, height = 12)
 
-![](images/174/8.jpeg)
+![](/images/174/8.jpeg)
 
 图7  
 
@@ -164,7 +163,7 @@ azimuthal equal-area projection）并保存为图4即可：
 
   
 
-![](images/174/9.jpeg)
+![](/images/174/9.jpeg)
 
 图8  
 
@@ -172,7 +171,7 @@ azimuthal equal-area projection）并保存为图4即可：
 
 但是到这一步切记不要以为大功告成了，正如我们在文章标题中指出的那样，目前由R绘制出来的中国地图只是相对正确的地图，因为在一些细节地方仍然需要修改。参照已经公开出版的地图我们可以发现，尽管中国与塔吉克斯坦已完成划界工作，但是其交界处（新疆维吾尔自治区阿克陶县和塔什库尔干塔吉克自治县）仍然应以未定国界线表示，如图9所示：  
 
-![](images/174/10.jpeg)
+![](/images/174/10.jpeg)
 
 图9  
 
@@ -191,7 +190,7 @@ Illustrator、Photoshop之类的专业图片处理软件做进一步修改了。
 
   
 
-![](images/174/11.png)
+![](/images/174/11.png)
 
   
 
@@ -220,7 +219,7 @@ https://blog.csdn.net/u014531714/article/details/85623130
 
   
 
-![](images/174/12.jpeg)
+![](/images/174/12.jpeg)
 
   
 

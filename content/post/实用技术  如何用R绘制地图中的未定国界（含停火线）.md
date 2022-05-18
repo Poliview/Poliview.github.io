@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #地图绘制 6 个
 
@@ -31,7 +30,7 @@ Illustrator或者Photoshop等专业制图软件统一将其修改为未定国界
 
 由于目前市面上出版的中国地图仍以1989年的国界线为准，因此即便之后中国与周边国家陆续签订了边界协定，完成了边界划定工作，但是有些边界划定并未在现行出版的地图上进行反映或更新，所以我们迄今会看到国内出版的中国地图（无论是纸质地图还是电子地图）在与塔吉克斯坦交界处有一段未定国界（如图1所示）：
 
-![](images/140/2.png)图1
+![](/images/140/2.png)图1
 
 从本质上来说，在R中实现未定国界的绘制就是解决多边形中共享边（或共享边中的一部分）的设置问题，如果我们有现成的共享边（或共享边中的一部分）的文件，则可以在此基础上快速绘出未定国界（将其设置成虚线或其他非实线的形式即可），这当然是最理想的情况。但如果我们一时间无法拿到这些文件，则需要综合利用多种手段，最后再用Adobe
 Illustrator或Photoshop之类的软件加以完善。在今天推送的实用技术贴中，我们将给出两种基本解决方案，分别适合绘制标准中国地图中的未定国界和其他国家的未定国界。  
@@ -46,7 +45,7 @@ Illustrator或Photoshop之类的软件加以完善。在今天推送的实用技
     
     # 载入绘制地图必备的tidyverse和sf两个包library(tidyverse)library(sf)# 载入中国地图和未定国界文件China <- read_sf("Chinaditu.json")ChinaUndeterminedBorder <- read_sf("ChinaUndeterminedBorder")# 绘制带有未定国界的标准中国地图ggplot()+  geom_sf(data = China, colour = "black", fill = "white")+  geom_sf(data = ChinaUndeterminedBorder, colour = "white", linetype = "dotted")+  coord_sf(crs = "+proj=laea +lat_0=40 +lon_0=104")+  theme(panel.background = element_blank())
 
-![](images/140/3.png)图2
+![](/images/140/3.png)图2
 
 这里绘制未定国界的原理很简单，就是利用将交错显示的原理，通过将未定国界设色成与其他边界（黑色）不同的颜色（白色）并设置其形状为点，叠加到原来的主图层上即可。
 
@@ -62,7 +61,7 @@ Illustrator或Photoshop之类的软件加以完善。在今天推送的实用技
 
 生成的效果如图3所示：  
 
-![](images/140/4.png)
+![](/images/140/4.png)
 
 图3
 
@@ -76,7 +75,7 @@ Illustrator或Photoshop之类的软件加以完善。在今天推送的实用技
     
     ggplot()+  geom_sf(data = TKnew, colour = "black", alpha = 0)+  geom_sf(data = world %>% filter(country2 %in% "South Korea"), colour = "black", alpha = 0, linetype = "dotted")+  theme(panel.background = element_blank())
 
-![](images/140/5.png)
+![](/images/140/5.png)
 
 图4  
 
@@ -90,13 +89,13 @@ Illustrator或Photoshop之类的软件加以完善。在今天推送的实用技
     
     # Sudan and South SudanSSS <- world %>% filter(country2 %in% c("Sudan", "South Sudan"))borders <- st_cast(st_geometry(SSS), 'MULTILINESTRING')border1 <- st_difference(borders[1], borders[2])border2 <- st_difference(borders[2], borders[1])shared <- st_intersection(borders[1], borders[2])# 将苏丹和南苏丹两国的多边形文件合并SSSnew <- st_union(SSS)ggplot()+  geom_sf(data = SSSnew, colour = "black", alpha = 0)+  geom_sf(data = shared, colour = 'black', linetype = "dotted")+  theme(panel.background = element_blank())
 
-![](images/140/6.png)图5
+![](/images/140/6.png)图5
 
 当然这幅地图上的苏丹地图还不是完整的，如下图所示：它和埃及还存在几处争议地区，分别是下图中的瓦迪哈勒法（Wadi Halfa）尖角和哈拉伊卜（Hala’ib
 Triangle）三角区，这些因为英国殖民统治导致的两国之间的领土争端一直持续至今。此外还有两国都未提出主权要求的无主地——比尔泰维勒（Bi’r
 Tawīl）。  
 
-![](images/140/7.png)
+![](/images/140/7.png)
 
 图6  
 
@@ -115,7 +114,7 @@ en.png
     
     # 读取从GADM上下载的苏丹和埃及地图文件Sudan <- read_sf("Sudan")Egypt <- read_sf("Egypt")# 将其叠加到原来的南北苏丹的边界图上ggplot()+  geom_sf(data = world %>% filter(country2 %in% "Egypt"), alpha = 0)+  geom_sf(data = Sudan, linetype = "dotted", alpha = 0)+  geom_sf(data = SSSnew, colour = "black", alpha = 0)+  geom_sf(data = Egypt, colour = "black", alpha = 0, linetype = "dotted")+  geom_sf(data = shared, colour = "black", linetype = "dotted", alpha = 0)+  theme(panel.background = element_blank())
 
-![](images/140/8.png)图7
+![](/images/140/8.png)图7
 
 至此我们可以看到争议地区已经被比较完整地标注出来了。但需要坦诚的是，由于我们还没有找到两处争议领土范围的精确经纬度，因此依据手头现有的材料对瓦迪哈勒法尖角以及从比尔泰维勒到哈拉伊卜三角洲的北纬22度线按照未定国界处理比较困难，这里可以在生成图片后利用Adobe
 Illustrator或者Photoshop文件做灵活处理。当然如果我们有这两处的精确范围，则可以参考绘制中国地图中未定国界的方式通过交互设色的方式加以呈现。  
@@ -150,7 +149,7 @@ outline-w[4] 唐继赞.困扰埃及苏丹的哈拉伊卜纠纷[J].瞭望周刊�
 
   
 
-![](images/140/9.jpeg)
+![](/images/140/9.jpeg)
 
   
 

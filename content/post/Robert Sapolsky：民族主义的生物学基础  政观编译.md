@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #政治心理 9个
+政治心理 9个
 
 **文献来源：** Robert Sapolsky, “This Is Your Brain on Nationalism: The Biology of
 Us and Them,” _Foreign Affairs_ , Vol.98, No.2(March/April 2019),pp.42-47.  
@@ -26,7 +26,7 @@ Sapolsky，美国著名神经内分泌学家、畅销书作家、斯坦福大学
 
   
 
-![](images/264/2.png)
+![](/images/264/2.png)
 
   
 
@@ -128,7 +128,7 @@ America Great Again”的帽子也能产生强大的群体认同。群体认同�
 
   
 
-![](images/264/3.jpeg)
+![](/images/264/3.jpeg)
 
   
 

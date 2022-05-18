@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #比较政治学 121个
+比较政治学 121个
 
 **文献来源：** Riedl, Rachel Beatty, Dan Slater, Joseph Wong and Daniel Ziblatt,
 "Authoritarian-Led Democratization," _Annual Review of Political Science_
@@ -91,7 +91,7 @@ Menaldo 2018）。因此，很大程度上基于执政党的历史和组织力�
 
   
 
-![](images/29/2.png)  
+![](/images/29/2.png)  
 
   
   

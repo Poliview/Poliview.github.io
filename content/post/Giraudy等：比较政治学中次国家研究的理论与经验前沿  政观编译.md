@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #比较政治学 121个
+比较政治学 121个
 
 **文献来源：** Agustina Giraudy, Eduardo Moncada, and Richard Snyder. "Empirical
 and Theoretical Frontiers of Subnational Research in Comparative Politics." in
@@ -27,7 +27,7 @@ University Press, 2019, pp.353-366.
  **作者简介：** Agustina Giraudy，美利坚大学政治学系副教授；Eduardo
 Moncada，哥伦比亚大学政治学系助理教授；Richard Snyder，布朗大学政治学系教授。
 
-![](images/186/2.png)
+![](/images/186/2.png)
 
   
 
@@ -115,7 +115,7 @@ countries/CEBCCFE10E8EB4BC93A7773A72868456
 
   
 
-![](images/186/3.jpeg)
+![](/images/186/3.jpeg)
 
   
 

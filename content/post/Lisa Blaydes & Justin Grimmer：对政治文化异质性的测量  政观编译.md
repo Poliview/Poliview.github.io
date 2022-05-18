@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #比较政治学 121 个
 
@@ -28,7 +27,7 @@ values heterogeneity”. _Political Science Research and Methods_ , 2020(8), pp.
 
  **作者简介：** Lisa Blaydes，斯坦福大学政治学系教授；Justin Grimmer，斯坦福大学政治学系教授。
 
-![](images/261/2.jpeg)
+![](/images/261/2.jpeg)
 
 本文作者 Lisa Blaydes（左）和 Justin Grimmer（右）
 
@@ -117,7 +116,7 @@ approximation）方法来估计模型中的后验。为了避免模型在聚类�
 
 那么，如何来描述各个国家和地区的文化相似性呢？对此，作者对不同类别的亚文化做了一个矩阵图来表示各亚文化间的“距离”。颜色越深代表距离越远。（这其实类似一个相关系数的热度图）
 
-![](images/261/3.jpeg)  
+![](/images/261/3.jpeg)  
   
 
  **潜在应用**
@@ -158,7 +157,7 @@ approximation）方法来估计模型中的后验。为了避免模型在聚类�
 
   
 
-![](images/261/4.jpeg)
+![](/images/261/4.jpeg)
 
   
 

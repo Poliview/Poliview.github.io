@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #比较政治学 121 个
 
@@ -29,7 +28,7 @@ Journal of Politics_ , Vol. 83, No. 4, 2021, pp. 1399-1416.
  **作者简介：** Darin Christensen，加州大学洛杉矶分校政治与公共政策系助理教授；Francisco
 Garfias，加州大学圣迭戈分校政治学系助理教授。
 
-![](images/46/2.png)
+![](/images/46/2.png)
 
   
 

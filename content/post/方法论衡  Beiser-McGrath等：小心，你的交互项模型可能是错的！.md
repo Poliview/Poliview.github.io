@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #方法论衡 4个
+方法论衡 4个
 
 **文献来源：** Janina Beiser-McGrath and Liam F. Beiser-McGrath. (2020). Problems
 with products? Control strategies for models with interaction and quadratic
@@ -25,7 +25,7 @@ effects, _Political Science Research and Methods_ , 8:707–730.
  **作者简介：** Janina Beiser-McGrath，康斯坦兹大学政治学与公共行政系博士后研究员；Liam F. Beiser-
 McGrath，康斯坦兹大学政治学与公共行政系高级研究员，英国皇家霍洛威学院政治学讲师。
 
-![](images/203/2.jpeg)
+![](/images/203/2.jpeg)
 
   
 
@@ -51,8 +51,8 @@ Stevenson：交互与因果：相同模型的不同概念](http://mp.weixin.qq.c
 
 此类错误有两种情况，其一，使用了错误的交互项，而必要的交互项却没有被纳入模型中（见图一）；其二，交互项缺失，造成交互项的估计在一定程度上有偏差（见图二）。
 
-![](images/203/3.jpeg)图一  
-![](images/203/4.jpeg)图二
+![](/images/203/3.jpeg)图一  
+![](/images/203/4.jpeg)图二
 
 有人可能认为为了避免缺失，那就将所有可能的交互项全部放到模型中。但是这种操作方式非常不合理，因为这种操作不仅仅为模型增加了大量的额外项，而且也有研究表明这种操作并不能改善模型，甚至可能会提高模型的估计偏差。因此，研究者需要选取适当的变量而忽略那些不相关的变量。作者建议采用三种带有惩罚的回归方法来解决这类问题：the
 adaptive Lasso, KRLS (Kernel Regularized Least Squares), and BART (Bayesian
@@ -104,7 +104,7 @@ Lasso估计的表现要更好，尽管三种方法的差异并不是十分明显
 
   
 
-![](images/203/5.jpeg)
+![](/images/203/5.jpeg)
 
   
 

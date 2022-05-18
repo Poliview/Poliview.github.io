@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 **文献来源：** Harbers, I. (2015). Taxation and the Unequal Reach of the State:
 Mapping State Capacity in Ecuador. _Governance_ , 28(3), 373-391.
@@ -24,7 +23,7 @@ Mapping State Capacity in Ecuador. _Governance_ , 28(3), 373-391.
  **作者简介：**
 阿姆斯特丹大学政治学系副教授，个人网站：https://www.uva.nl/profiel/h/a/i.harbers/i.harbers.html?cb，其个人发表的所有论文数据都已公开，社交媒体@HarbersImke。
 
-![](images/256/2.jpeg)  
+![](/images/256/2.jpeg)  
   
 
   
@@ -64,7 +63,7 @@ Mapping State Capacity in Ecuador. _Governance_ , 28(3), 373-391.
 
   
 
-![](images/256/3.png)
+![](/images/256/3.png)
 
   
 
@@ -101,7 +100,7 @@ Project)。在厄瓜多尔，受访者来自220个基层市镇中的50个。问�
 
   
 
-![](images/256/4.jpeg)
+![](/images/256/4.jpeg)
 
   
 

@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #比较政治学 121个
+比较政治学 121个
 
 **文献来源：** Hugh Heclo, “Thinking Institutionally”，in R. A. W. Rhodes, Sarah A.
 Binder and Bert A. Rockman, ed., The Oxford Handbook of Political
@@ -32,7 +32,7 @@ Institutions, Oxford: Oxford University Press, 2006, pp. 731-742.
 
   
 
-![](images/106/2.png)
+![](/images/106/2.png)
 
   
 

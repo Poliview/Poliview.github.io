@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #政治心理 9个
+政治心理 9个
 
 **文献来源：** Joshua Searle-White, _The Psychology of Nationalism_ , New York:
 Palgrave Macmillan, 2001. Chapter 1.
@@ -23,7 +23,7 @@ Palgrave Macmillan, 2001. Chapter 1.
 
  **作者简介：** 美国克拉克大学博士，阿勒格尼学院心理学荣休教授。
 
-![](images/241/2.jpeg)
+![](/images/241/2.jpeg)
 
   
 
@@ -108,7 +108,7 @@ Testing a Dual Process Model,” _Journal of Personality and Social Psychology_
 
   
 
-![](images/241/3.jpeg)
+![](/images/241/3.jpeg)
 
   
 

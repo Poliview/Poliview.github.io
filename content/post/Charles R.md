@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 **文献来源：** Charles R. Epp, “law as an instrument of social reform”, in Keith E.
 Whittington, R. Daniel Kelemen, Gregory A. Caldeira (ed.), The Oxford Handbook
@@ -26,7 +25,7 @@ of Law and Politics, Oxford University Press, 2008, pp. 595——613.
 
   
 
-![](images/232/2.jpeg)
+![](/images/232/2.jpeg)
 
   
 
@@ -276,7 +275,7 @@ LDF]发起的诉讼）、均等就业机会委员会（EEOC）的建议以及最
 
   
 
-![](images/232/3.jpeg)
+![](/images/232/3.jpeg)
 
   
 

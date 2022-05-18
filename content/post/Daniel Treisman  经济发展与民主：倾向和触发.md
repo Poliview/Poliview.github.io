@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #比较政治学 121个
+比较政治学 121个
 
 **文献来源：** Daniel Treisman, “Economic Development and Democracy:
 Predispositions and Triggers”, _Annual Review of Political Science_ , Vol.23,
@@ -26,7 +26,7 @@ Predispositions and Triggers”, _Annual Review of Political Science_ , Vol.23,
 Treisman，美国加州大学洛杉矶分校（UCLA）政治学系教授，主要研究领域是比较政治经济学、俄罗斯政治与经济，个人介绍见https://polisci.ucla.edu/person/daniel-
 treisman/。
 
-![](images/41/2.jpeg)
+![](/images/41/2.jpeg)
 
   
 

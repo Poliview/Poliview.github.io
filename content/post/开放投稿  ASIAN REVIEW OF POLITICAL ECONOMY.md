@@ -12,9 +12,9 @@ Springer
 
 ____
 
-__
+___发表于_
 
-收录于合集 #政观书讯 16个
+政观书讯 16个
 
   
 
@@ -169,7 +169,7 @@ Li-An Zhou, Peking University, China
 
   
 
-![](images/9/2.png)
+![](/images/9/2.png)
 
  **欢迎扫码进入期刊页面， 了解更多期刊详情！**
 
@@ -179,7 +179,7 @@ Li-An Zhou, Peking University, China
 
 预览时标签不可点
 
-收录于合集 #
+
 
 个
 

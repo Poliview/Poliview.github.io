@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #方法论 3个
+方法论 3个
 
 **文献来源：** Mark Bevir, “What is Genealogy?,” _Journal of the Philosophy of
 History_ , Vol. 2, No. 3, 2008, pp. 263-275.
@@ -28,7 +28,7 @@ _Democratic Governance_ (Princeton University Press, 2010), _Interpretive
 Social Science: An Anti-Naturalist Approach_ (with Jason Blakely, Oxford
 University Press, 2018).
 
-![](images/80/2.jpeg)
+![](/images/80/2.jpeg)
 
   
 

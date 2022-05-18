@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #实用技术 19 个
 
@@ -42,7 +41,7 @@ _The Confucian-Legalist State: A New Theory of Chinese History_
 
 这里R是以矩阵的形式呈现出每个节点之间的距离，单位是m，如图1所示：  
 
-![](images/112/2.png)
+![](/images/112/2.png)
 
 图1
 
@@ -58,7 +57,7 @@ _The Confucian-Legalist State: A New Theory of Chinese History_
 
 结果如图2所示：
 
-![](images/112/3.png)
+![](/images/112/3.png)
 
 图2  
 
@@ -74,7 +73,7 @@ _The Confucian-Legalist State: A New Theory of Chinese History_
 
 这样R仍然会以矩阵的形式显示每个节点之间的距离，如图3所示：
 
-![](images/112/4.png)
+![](/images/112/4.png)
 
 图3
 
@@ -92,7 +91,7 @@ _The Confucian-Legalist State: A New Theory of Chinese History_
 
 结果如下图所示：
 
-![](images/112/5.png)
+![](/images/112/5.png)
 
 图4
 

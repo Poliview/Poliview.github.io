@@ -12,14 +12,15 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #专栏文章 11个
+专栏文章 11个
 
 **作者简介：**
 兰星辰，政文观止Poliview特邀作者，北京大学外国语学院文学学士和国际关系学院法学双学士，斯坦福大学东亚研究中心硕士生，主要研究兴趣为（比较）政治经济学和政治学定量方法。
 
-![](images/212/2.png) 图片来自ICPSR项目主页cpsr.umich.edu/web/pages/sumprog/index.html
+![](/images/212/2.png)
+图片来自ICPSR项目主页cpsr.umich.edu/web/pages/sumprog/index.html
 
   
 
@@ -78,7 +79,7 @@ Theorem）、围绕线性模型的假设检验的证明等也应加以掌握，�
 
   
 
-![](images/212/3.jpeg)
+![](/images/212/3.jpeg)
 
   
 

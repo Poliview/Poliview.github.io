@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 **定量中国研究研讨会 -2021**
 
@@ -56,7 +55,7 @@ NingHe, Sophie Xiangqian Yi, Haohan Chen, Ye Wang
 
   
 
-![](images/209/2.jpeg)
+![](/images/209/2.jpeg)
 
   
 

@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #实用技术 19 个
 
@@ -39,57 +38,57 @@ Proper）等shp文件。
 
 我们首先打开ArcGIS文件夹中的ArcMap，选择File，选择Add Data，再选择Add Data，便弹出了载入数据的对话窗口。
 
-![](images/63/2.png)
+![](/images/63/2.png)
 
 由于本文是以竹子（点）到河流（线）的最短直线距离作为示例，因此在载入后我们相应勾选bamboo、MainRiver和qing_china_proper三项，接着选择右侧ArcToolBox中的Analysis
 Tools工具，点击Proximity，再双击Near，便会弹出一个界面。我们在弹出的界面中Input一栏输入bamboo，再在Near
 Features一栏中选择MainRiver，同时将单位从Metres改为Kilometres再单击OK，以上操作如下图所示：
 
-![](images/63/3.png)
+![](/images/63/3.png)
 
 在计算完成后，我们会收到相应的提示（如下图右下角红框所示），这时候我们双击右下角弹出的Near提示：
 
-![](images/63/4.jpeg)
+![](/images/63/4.jpeg)
 
 在此基础上，我们右击工具栏Near下方Output Feature Class: Bamboo，右击弹出菜单后选择Add to Display：
 
-![](images/63/5.jpeg)
+![](/images/63/5.jpeg)
 
 我们针对左侧Layers中的bamboo单击右键，选择Open Attribute Table：
 
-![](images/63/6.jpeg)
+![](/images/63/6.jpeg)
 
 之后会弹出如下表格，其中最后一列NEAR_DIST便是我们通过ArcGIS计算的最短距离：
 
-![](images/63/7.png)
+![](/images/63/7.png)
 
 然后我们可以单击最左侧的下拉菜单点Export将其输出，这一步过程如下图所示：
 
-![](images/63/8.png)
+![](/images/63/8.png)
 
 软件默认的输出方式是dbf，我们将其改成txt格式以方便用Excel打开：  
 
-![](images/63/9.png)
+![](/images/63/9.png)
 
 在输出后，我们新建一个Excel表格，单击“数据”，选择“自文本”打开刚才输出的txt表格：
 
-![](images/63/10.png)
+![](/images/63/10.png)
 
 我们依次按照弹出的“文本导入向导”进行选择，首先是在第一步勾选“数据包含标题”：
 
-![](images/63/11.png)
+![](/images/63/11.png)
 
 然后是在第二步勾选“Tab键”、“逗号”：
 
-![](images/63/12.png)
+![](/images/63/12.png)
 
 在进入第三页后，我们单击“完成”即可：
 
-![](images/63/13.png)
+![](/images/63/13.png)
 
 最后我们会看到Excel弹出下图所示的“导入数据”对话框，单击“确定”即可。
 
-![](images/63/14.png)
+![](/images/63/14.png)
 
 至此，我们用ArcGIS计算竹子产地与河流之间的最短距离并输出的任务就完成了。计算松树产地到河流之间的最短距离并输出的方法与上述介绍的完全一致。这些距离可以在后续的回归分析中用作工具变量或者控制变量。当然，如果我们有关于海岸线的shp，我们还可以计算城市等到海岸线的距离，以作为开放对经济发展影响研究当中的变量等等。
 

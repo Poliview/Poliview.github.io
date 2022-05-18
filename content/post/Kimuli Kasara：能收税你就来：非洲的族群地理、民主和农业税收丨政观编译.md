@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #比较政治学 121 个
 
@@ -28,7 +27,7 @@ and the taxation of agriculture in Africa. _American Political Science Review_
 
  **作者简介：** Kimuli Kasara, 哥伦比亚大学政治学系副教授。主要研究兴趣为族群地理、政治暴力和分配政治。
 
-![](images/178/2.png)
+![](/images/178/2.png)
 
   
 
@@ -97,7 +96,7 @@ Coefficient）。名义保护系数即生产者价格和边境交易价格的比
 
   
 
-![](images/178/3.jpeg)
+![](/images/178/3.jpeg)
 
   
 

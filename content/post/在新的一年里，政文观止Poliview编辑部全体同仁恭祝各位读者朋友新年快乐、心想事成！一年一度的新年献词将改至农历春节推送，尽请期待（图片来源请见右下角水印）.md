@@ -1,12 +1,12 @@
 
 
-![政文观止Poliview](images/31/1.png)
+![政文观止Poliview](/images/31/1.png)
 
 **政文观止Poliview**
 
-2022-01-01 07:00
+2022-01-01 07:00 发表于
 
-![](images/31/2.png)
+![](/images/31/2.png)
 
 [知道了](javascript:;)
 

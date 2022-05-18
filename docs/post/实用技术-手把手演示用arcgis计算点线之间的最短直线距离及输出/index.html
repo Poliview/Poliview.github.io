@@ -98,8 +98,8 @@
   "keywords": [
     
   ],
-  "articleBody": "实用技术 | 手把手演示用ArcGIS计算点线之间的最短直线距离及输出 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __\n收录于合集\n#实用技术 19 个\n#数据可视化 15 个\n2020年10月，香港大学龚启圣（James Kung）教授与另外两位合作者陈婷、马驰骋两位教授在经济学顶级期刊《经济学杂志》（ The Economic Journal ）上发表了一篇重要的量化历史研究论文《科举万岁！中国文官考试制度的持久效应》（Long Live Keju! The Persistent Effects of China’s Civil Examination System），该文探讨科举考试对当代中国人力资本的长期影响，文中使用了非常精巧的工具变量，给人留下了极为深刻的印象。\n具体说来，因为考生在科举考试备考时需要用到大量的书籍，因此书籍获得的方便程度在很大程度上就成为考生在科举考试中成败的关键。在这层意义上，决定书籍获得与否的关键便在于印刷中心。但是印刷中心的分布可能是人为选择的结果，因为在作者的样本中，278个府中只有19个印刷中心分布。如果将其各个府到印刷中心的最短距离作为工具变量，那么可能会受到完全外生的质疑。那么究竟是什么原因决定了印刷中心的分布呢？作者想到，由于书籍的制作需要用到大量的竹子和松树，在书籍制作完成后，一定会选择交通便捷的方式进行运输。因此，在古代交通不发达的条件下，为了运输的便利与降低运输成本，印刷厂的选址一定是选在临近河流的位置。这样，由于竹子和松树的分布是自然形成的，满足了工具变量中最重要的外生要求，因此将各个府到竹子和松木的最短河流距离作为工具变量就被精巧地构造出来了。那么这一距离如何计算呢？我们之前曾经在《实用技术|如何用R快速计算进军距离距离？以汉丞相诸葛武侯南征为例》为例说明在R中如何使用sf包计算点与点之间的最短距离，今天则以《科举万岁！》一文提供的复验数据（Replication Data）详细地介绍一下在ArcGIS中计算点与线之间的最短距离。\n我们首先下载本文的复验数据（下载地址请见文末参考，同时该地址也可以在线浏览论文），解压之后的Figure3文件夹内文件是本文需要使用的数据，它包括了竹子产地、松木产地、河流分布、印刷中心分布、福建经济中心与清代所谓的“中国本部”（China Proper）等shp文件。\n我们首先打开ArcGIS文件夹中的ArcMap，选择File，选择Add Data，再选择Add Data，便弹出了载入数据的对话窗口。\n由于本文是以竹子（点）到河流（线）的最短直线距离作为示例，因此在载入后我们相应勾选bamboo、MainRiver和qing_china_proper三项，接着选择右侧ArcToolBox中的Analysis Tools工具，点击Proximity，再双击Near，便会弹出一个界面。我们在弹出的界面中Input一栏输入bamboo，再在Near Features一栏中选择MainRiver，同时将单位从Metres改为Kilometres再单击OK，以上操作如下图所示：\n在计算完成后，我们会收到相应的提示（如下图右下角红框所示），这时候我们双击右下角弹出的Near提示：\n在此基础上，我们右击工具栏Near下方Output Feature Class: Bamboo，右击弹出菜单后选择Add to Display：\n我们针对左侧Layers中的bamboo单击右键，选择Open Attribute Table：\n之后会弹出如下表格，其中最后一列NEAR_DIST便是我们通过ArcGIS计算的最短距离：\n然后我们可以单击最左侧的下拉菜单点Export将其输出，这一步过程如下图所示：\n软件默认的输出方式是dbf，我们将其改成txt格式以方便用Excel打开：\n在输出后，我们新建一个Excel表格，单击“数据”，选择“自文本”打开刚才输出的txt表格：\n我们依次按照弹出的“文本导入向导”进行选择，首先是在第一步勾选“数据包含标题”：\n然后是在第二步勾选“Tab键”、“逗号”：\n在进入第三页后，我们单击“完成”即可：\n最后我们会看到Excel弹出下图所示的“导入数据”对话框，单击“确定”即可。\n至此，我们用ArcGIS计算竹子产地与河流之间的最短距离并输出的任务就完成了。计算松树产地到河流之间的最短距离并输出的方法与上述介绍的完全一致。这些距离可以在后续的回归分析中用作工具变量或者控制变量。当然，如果我们有关于海岸线的shp，我们还可以计算城市等到海岸线的距离，以作为开放对经济发展影响研究当中的变量等等。\n总之，本文只是介绍了ArcGIS中的一个小功能，该软件还有其他强大的地理信息处理功能，我们也将在后续的学习过程中继续与大家分享这些心得体会，欢迎各位读者继续关注、支持我们。\n参考文献：\nTing Chen, James Kai-sing Kung, Chicheng Ma, Long Live Keju! The Persistent Effects of China’s Civil Examination System, The Economic Journal , Volume 130, Issue 631, October 2020, Pages 2030–2064, https://doi.org/10.1093/ej/ueaa043\n复验数据下载地址：\nhttps://academic.oup.com/ej/article/130/631/2030/5819954?login=true\n撰文：杨端程 审读：吴温泉 编辑：康张城\n",
-  "wordCount" : "2000",
+  "articleBody": "实用技术 | 手把手演示用ArcGIS计算点线之间的最短直线距离及输出 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __发表于\n#实用技术 19 个\n#数据可视化 15 个\n2020年10月，香港大学龚启圣（James Kung）教授与另外两位合作者陈婷、马驰骋两位教授在经济学顶级期刊《经济学杂志》（ The Economic Journal ）上发表了一篇重要的量化历史研究论文《科举万岁！中国文官考试制度的持久效应》（Long Live Keju! The Persistent Effects of China’s Civil Examination System），该文探讨科举考试对当代中国人力资本的长期影响，文中使用了非常精巧的工具变量，给人留下了极为深刻的印象。\n具体说来，因为考生在科举考试备考时需要用到大量的书籍，因此书籍获得的方便程度在很大程度上就成为考生在科举考试中成败的关键。在这层意义上，决定书籍获得与否的关键便在于印刷中心。但是印刷中心的分布可能是人为选择的结果，因为在作者的样本中，278个府中只有19个印刷中心分布。如果将其各个府到印刷中心的最短距离作为工具变量，那么可能会受到完全外生的质疑。那么究竟是什么原因决定了印刷中心的分布呢？作者想到，由于书籍的制作需要用到大量的竹子和松树，在书籍制作完成后，一定会选择交通便捷的方式进行运输。因此，在古代交通不发达的条件下，为了运输的便利与降低运输成本，印刷厂的选址一定是选在临近河流的位置。这样，由于竹子和松树的分布是自然形成的，满足了工具变量中最重要的外生要求，因此将各个府到竹子和松木的最短河流距离作为工具变量就被精巧地构造出来了。那么这一距离如何计算呢？我们之前曾经在《实用技术|如何用R快速计算进军距离距离？以汉丞相诸葛武侯南征为例》为例说明在R中如何使用sf包计算点与点之间的最短距离，今天则以《科举万岁！》一文提供的复验数据（Replication Data）详细地介绍一下在ArcGIS中计算点与线之间的最短距离。\n我们首先下载本文的复验数据（下载地址请见文末参考，同时该地址也可以在线浏览论文），解压之后的Figure3文件夹内文件是本文需要使用的数据，它包括了竹子产地、松木产地、河流分布、印刷中心分布、福建经济中心与清代所谓的“中国本部”（China Proper）等shp文件。\n我们首先打开ArcGIS文件夹中的ArcMap，选择File，选择Add Data，再选择Add Data，便弹出了载入数据的对话窗口。\n由于本文是以竹子（点）到河流（线）的最短直线距离作为示例，因此在载入后我们相应勾选bamboo、MainRiver和qing_china_proper三项，接着选择右侧ArcToolBox中的Analysis Tools工具，点击Proximity，再双击Near，便会弹出一个界面。我们在弹出的界面中Input一栏输入bamboo，再在Near Features一栏中选择MainRiver，同时将单位从Metres改为Kilometres再单击OK，以上操作如下图所示：\n在计算完成后，我们会收到相应的提示（如下图右下角红框所示），这时候我们双击右下角弹出的Near提示：\n在此基础上，我们右击工具栏Near下方Output Feature Class: Bamboo，右击弹出菜单后选择Add to Display：\n我们针对左侧Layers中的bamboo单击右键，选择Open Attribute Table：\n之后会弹出如下表格，其中最后一列NEAR_DIST便是我们通过ArcGIS计算的最短距离：\n然后我们可以单击最左侧的下拉菜单点Export将其输出，这一步过程如下图所示：\n软件默认的输出方式是dbf，我们将其改成txt格式以方便用Excel打开：\n在输出后，我们新建一个Excel表格，单击“数据”，选择“自文本”打开刚才输出的txt表格：\n我们依次按照弹出的“文本导入向导”进行选择，首先是在第一步勾选“数据包含标题”：\n然后是在第二步勾选“Tab键”、“逗号”：\n在进入第三页后，我们单击“完成”即可：\n最后我们会看到Excel弹出下图所示的“导入数据”对话框，单击“确定”即可。\n至此，我们用ArcGIS计算竹子产地与河流之间的最短距离并输出的任务就完成了。计算松树产地到河流之间的最短距离并输出的方法与上述介绍的完全一致。这些距离可以在后续的回归分析中用作工具变量或者控制变量。当然，如果我们有关于海岸线的shp，我们还可以计算城市等到海岸线的距离，以作为开放对经济发展影响研究当中的变量等等。\n总之，本文只是介绍了ArcGIS中的一个小功能，该软件还有其他强大的地理信息处理功能，我们也将在后续的学习过程中继续与大家分享这些心得体会，欢迎各位读者继续关注、支持我们。\n参考文献：\nTing Chen, James Kai-sing Kung, Chicheng Ma, Long Live Keju! The Persistent Effects of China’s Civil Examination System, The Economic Journal , Volume 130, Issue 631, October 2020, Pages 2030–2064, https://doi.org/10.1093/ej/ueaa043\n复验数据下载地址：\nhttps://academic.oup.com/ej/article/130/631/2030/5819954?login=true\n撰文：杨端程 审读：吴温泉 编辑：康张城\n",
+  "wordCount" : "1999",
   "inLanguage": "en",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -193,11 +193,6 @@
                     <span>🙋🏻‍♂️关于</span>
                 </a>
             </li>
-            <li>
-                <a href="https://poliview.github.io/links" title="🤝友链">
-                    <span>🤝友链</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -233,8 +228,7 @@
 <p>微信号 zhengwenguanzhi</p>
 <p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
 <hr>
-<p>__</p>
-<p>收录于合集</p>
+<p>__<em>发表于</em></p>
 <p>#实用技术 19 个</p>
 <p>#数据可视化 15 个</p>
 <p>2020年10月，香港大学龚启圣（James Kung）教授与另外两位合作者陈婷、马驰骋两位教授在经济学顶级期刊《经济学杂志》（ <em>The Economic
@@ -246,45 +240,45 @@ Data）详细地介绍一下在ArcGIS中计算点与线之间的最短距离。<
 <p>我们首先下载本文的复验数据（下载地址请见文末参考，同时该地址也可以在线浏览论文），解压之后的Figure3文件夹内文件是本文需要使用的数据，它包括了竹子产地、松木产地、河流分布、印刷中心分布、福建经济中心与清代所谓的“中国本部”（China
 Proper）等shp文件。</p>
 <p>我们首先打开ArcGIS文件夹中的ArcMap，选择File，选择Add Data，再选择Add Data，便弹出了载入数据的对话窗口。</p>
-<p><img loading="lazy" src="images/63/2.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/2.png" alt=""  />
 </p>
 <p>由于本文是以竹子（点）到河流（线）的最短直线距离作为示例，因此在载入后我们相应勾选bamboo、MainRiver和qing_china_proper三项，接着选择右侧ArcToolBox中的Analysis
 Tools工具，点击Proximity，再双击Near，便会弹出一个界面。我们在弹出的界面中Input一栏输入bamboo，再在Near
 Features一栏中选择MainRiver，同时将单位从Metres改为Kilometres再单击OK，以上操作如下图所示：</p>
-<p><img loading="lazy" src="images/63/3.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/3.png" alt=""  />
 </p>
 <p>在计算完成后，我们会收到相应的提示（如下图右下角红框所示），这时候我们双击右下角弹出的Near提示：</p>
-<p><img loading="lazy" src="images/63/4.jpeg" alt=""  />
+<p><img loading="lazy" src="../../images/63/4.jpeg" alt=""  />
 </p>
 <p>在此基础上，我们右击工具栏Near下方Output Feature Class: Bamboo，右击弹出菜单后选择Add to Display：</p>
-<p><img loading="lazy" src="images/63/5.jpeg" alt=""  />
+<p><img loading="lazy" src="../../images/63/5.jpeg" alt=""  />
 </p>
 <p>我们针对左侧Layers中的bamboo单击右键，选择Open Attribute Table：</p>
-<p><img loading="lazy" src="images/63/6.jpeg" alt=""  />
+<p><img loading="lazy" src="../../images/63/6.jpeg" alt=""  />
 </p>
 <p>之后会弹出如下表格，其中最后一列NEAR_DIST便是我们通过ArcGIS计算的最短距离：</p>
-<p><img loading="lazy" src="images/63/7.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/7.png" alt=""  />
 </p>
 <p>然后我们可以单击最左侧的下拉菜单点Export将其输出，这一步过程如下图所示：</p>
-<p><img loading="lazy" src="images/63/8.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/8.png" alt=""  />
 </p>
 <p>软件默认的输出方式是dbf，我们将其改成txt格式以方便用Excel打开：</p>
-<p><img loading="lazy" src="images/63/9.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/9.png" alt=""  />
 </p>
 <p>在输出后，我们新建一个Excel表格，单击“数据”，选择“自文本”打开刚才输出的txt表格：</p>
-<p><img loading="lazy" src="images/63/10.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/10.png" alt=""  />
 </p>
 <p>我们依次按照弹出的“文本导入向导”进行选择，首先是在第一步勾选“数据包含标题”：</p>
-<p><img loading="lazy" src="images/63/11.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/11.png" alt=""  />
 </p>
 <p>然后是在第二步勾选“Tab键”、“逗号”：</p>
-<p><img loading="lazy" src="images/63/12.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/12.png" alt=""  />
 </p>
 <p>在进入第三页后，我们单击“完成”即可：</p>
-<p><img loading="lazy" src="images/63/13.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/13.png" alt=""  />
 </p>
 <p>最后我们会看到Excel弹出下图所示的“导入数据”对话框，单击“确定”即可。</p>
-<p><img loading="lazy" src="images/63/14.png" alt=""  />
+<p><img loading="lazy" src="../../images/63/14.png" alt=""  />
 </p>
 <p>至此，我们用ArcGIS计算竹子产地与河流之间的最短距离并输出的任务就完成了。计算松树产地到河流之间的最短距离并输出的方法与上述介绍的完全一致。这些距离可以在后续的回归分析中用作工具变量或者控制变量。当然，如果我们有关于海岸线的shp，我们还可以计算城市等到海岸线的距离，以作为开放对经济发展影响研究当中的变量等等。</p>
 <p>总之，本文只是介绍了ArcGIS中的一个小功能，该软件还有其他强大的地理信息处理功能，我们也将在后续的学习过程中继续与大家分享这些心得体会，欢迎各位读者继续关注、支持我们。</p>
@@ -309,7 +303,7 @@ Effects of China’s Civil Examination System, <em>The Economic Journal</em> , V
     <br>
     <span></span>
   </a>
-  <a class="next" href="https://poliview.github.io/post/%E5%B0%B9%E4%BC%9F%E6%96%87%E6%B0%94%E5%80%99%E5%86%B2%E5%87%BB%E6%94%BF%E6%B2%BB%E5%88%B6%E5%BA%A6%E4%B8%8E%E6%97%A9%E6%9C%9F%E7%8E%B0%E4%BB%A3%E4%B8%9C%E4%BA%9A%E7%9A%84%E6%B8%B8%E7%89%A7%E6%B0%91%E6%97%8F%E5%85%A5%E4%BE%B5-%E6%94%BF%E8%A7%82%E7%BC%96%E8%AF%91/">
+  <a class="next" href="https://poliview.github.io/post/%E5%AE%BE%E5%B7%9E%E5%B7%9E%E7%AB%8B%E5%A4%A7%E5%AD%A6%E9%9D%9E%E6%B4%B2%E6%94%BF%E6%B2%BB%E8%AF%BE%E7%BA%B2%E4%B9%A6%E5%8D%95/">
     <span class="title">Next Page »</span>
     <br>
     <span></span>

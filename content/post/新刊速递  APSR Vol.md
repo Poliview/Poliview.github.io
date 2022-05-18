@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #新刊速递 2个
+新刊速递 2个
 
 ****
 
@@ -85,7 +85,7 @@ APSA）旗下最知名的季刊。自1906年创刊并由剑桥大学出版社出
 
   
 
-![](images/201/2.jpeg)
+![](/images/201/2.jpeg)
 
   
 
@@ -595,7 +595,7 @@ preferences of organized interests.
 
 【政文观止Poliview】系头条号签约作者
 
-![](images/201/3.jpeg)
+![](/images/201/3.jpeg)
 
   
 

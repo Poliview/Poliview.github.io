@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #历史政治学 58个
+历史政治学 58个
 
 **文献来源：** Giuliano, Paola & Matranga, Andrea, 2020. “Historical Data: Where to
 Find Them, How to Use Them,” IZA Discussion Papers 13788, Institute of Labor
@@ -28,7 +28,7 @@ Paola Giuliano, 加州大学洛杉矶分校安德森管理学院（Anderson Scho
 
 Andrea Matranga，查普曼大学（Chapman University）史密斯研究所（Smith Institute）助理教授。
 
-![](images/123/2.png)  
+![](/images/123/2.png)  
   
   
 

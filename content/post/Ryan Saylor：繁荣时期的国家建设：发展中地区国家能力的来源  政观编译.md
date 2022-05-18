@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 **文献来源：** Saylor, R. (2012). Sources of state capacity in Latin America:
 commodity booms and state building motives in Chile. Theory and society,
@@ -24,7 +23,7 @@ commodity booms and state building motives in Chile. Theory and society,
 
  **作者简介：** Ryan Saylor，塔尔萨大学政治学系副教授，主要研究兴趣为国家建设与政治发展；非洲和拉美政治以及研究方法。
 
-![](images/260/2.png)  
+![](/images/260/2.png)  
   
 
   
@@ -108,7 +107,7 @@ commodity booms and state building motives in Chile. Theory and society,
 
   
 
-![](images/260/3.jpeg)
+![](/images/260/3.jpeg)
 
   
 

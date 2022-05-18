@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #全球治理 1个
+全球治理 1个
 
 **文献来源：** David Coen and Tom Pegram, “Towards a Third Generation of Global
 Governance Scholarship,” _Global Policy_ , Vol.9, No.1, 2018, pp.107-113.
@@ -24,7 +24,7 @@ Governance Scholarship,” _Global Policy_ , Vol.9, No.1, 2018, pp.107-113.
  **作者简介：** David Coen是伦敦大学学院教授，研究领域为政商关系，特别是欧盟的商业游说战略和欧盟制度发展的后果；Tom
 Pegram是伦敦大学学院副教授，研究领域为世界政治的理论及实证研究、全球政策落地以及复杂性系统，关注气候变化、全球风险等具体领域。  
 
-![](images/39/2.jpeg)
+![](/images/39/2.jpeg)
 
   
 

@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #学人专访 13个
+学人专访 13个
 
 **文献来源：** Padgett, John F.; François, Pierre (2014): Interviews: John Padgett
 interviewed by Pierre François, _Economic Sociology_the European Electronic
@@ -30,7 +30,7 @@ Institute）工作过。他也曾在普林斯顿高等研究院、欧洲大学�
 Tatti）以及意大利卢卡（IMT-
 Lucca）、博科尼（Bocconi）、波隆那（Bologna）和莫德纳（Modena）多所大学的行为科学高等研究中心从事访问研究。他来自于马里兰州一个种植烟草的乡下。
 
-![](images/135/2.png)
+![](/images/135/2.png)
 
   
 
@@ -98,7 +98,7 @@ Quarterly_ ）和《现代历史杂志》（ _Journal of Modern History_
 
   
 
-![](images/135/3.jpeg)
+![](/images/135/3.jpeg)
 
   
 

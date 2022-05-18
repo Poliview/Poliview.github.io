@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #地图绘制 6 个
 
@@ -33,7 +32,7 @@ Information）数据在内的各种数据的可视化提供了便利。换言之
 
 众所周知，地图是一国国家主权和领土的象征，使用完整正确的地图也是国内科研工作者应尽的责任与义务，因此我们在对待地图绘制时应当十分审慎。令人欣慰的是，近年来，不少技术贴的作者在谈及如何绘制中国地图时，都格外强调使用正确、完整的中国地图的重要性，其在帖中绘制的中国地图也基本正确。之所以说这些制图是“基本正确”是因为按照现行地图出版的标准，用R直接绘制并输出的地图与通过自然资源部审查正式出版的地图还有一些细微的区别。如下图所示，尽管中国与塔吉克斯坦已经正式完成了划界工作，但由于现行出版的纸质或电子地图均未做改动，因此该交界处（帕米尔高原东部倾斜坡）仍应使用未定国界线表示：  
 
-![](images/211/2.jpeg)
+![](/images/211/2.jpeg)
 
 当然这不是特别严重的问题，在用R输出高DPI（每英寸点数）的中国地图图片后，可以请美工编辑或排版编辑利用Adobe
 Illustrator、Photoshop等专业制图软件将其修改成虚线即可。  
@@ -46,7 +45,7 @@ Illustrator、Photoshop等专业制图软件将其修改成虚线即可。
 
 为了进一步说明，我们以R中常用的地图包maps为例，用红色圆圈标识出一些常见的错误划界，它们分别是：在图A中，红圈1处表示地图按照非法的“麦克马洪线”将中国藏南地区划入印度；在图B中，红圈2处指地图未以未定国界线标识中国与塔吉克斯坦之间的边界；红圈3处表示地图未标识出印度和巴基斯坦之间的争议地区——克什米尔地区；而在图C中，红圈4表示地图未标识出埃及与苏丹之间的争议地区——哈拉伊卜三角区。
 
-![](images/211/3.jpeg)
+![](/images/211/3.jpeg)
 
 这些错误只是其中的一些代表性错误，此外还有别的错误。由于此类地图在绘制输出后需要修改的地方很多，程序十分繁琐，非常不适合向国内的期刊杂志投稿。为了方便大家在今后的日常科研学习过程中使用，我们花了好几天时间搜遍了各大网站，甚至还付费购买了CSDN的一个月会员，终于找到了一个相对适合的shape文件。与前述的种种shape文件相比，我们找到的这一shape文件相对而言需要修改的地方要少很多（缺少的南海诸岛和九段线，需要单独加上，这可以利用ggplot制图层层叠加的原理进行补全），而且基本符合作者向国内期刊投稿时使用东经150°经线为中心的制图要求，但美中不足的是缺乏南极洲。
 
@@ -69,7 +68,7 @@ Quality（各国制定与执行促进私营部门发展能力）的指标进行�
 
 看到这里，有些读者可能会疑惑，既然我们已经加载了集ggplot2和readr等包为一体的tidyverse包，那么为什么我们不将世行的数据存储成体积更小、读取更快的csv格式文件呢？事实上，正如下图所示，由于该版本地图shape数据中name字段中一些国家的名字采用的是非英文，在对照国家名时如果用csv格式保存世行数据可能会导致特殊字符遗失，从而导致R中数据框中的国家名匹配不上，进而在绘制出来的地图上可能显示不少处深灰色的状态，这意味着缺失相关数据。
 
-![](images/211/4.jpeg) 绘制地图部分的代码如下所示：
+![](/images/211/4.jpeg) 绘制地图部分的代码如下所示：
 
   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   * 
 
@@ -77,9 +76,9 @@ Quality（各国制定与执行促进私营部门发展能力）的指标进行�
     
     ggplot() +  geom_sf(data = worlddata, aes(fill = estimate), colour = "#525252",size=0.3)+ #绘制世界地图并按照estimate字段中的数据上色  geom_sf(data = SCSislands, colour = "#525252")+ #绘制南海诸岛  geom_sf(data = NineDashLine, color = "#525252", size=0.3)+ #绘制九段线  coord_sf() + #设置投影方式，本处为默认投影  scale_fill_gradient(low="#deebf7", high="#4292c6")+ #设置蓝色的颜色渐变  guides(fill = guide_legend(title="评估指数"))+ #修改图例标签，如在Mac中可能需要设置字体  ggtitle("2018年世界各国制定与执行促进私营部门发展能力的评估")+ #给图片命名，同样在Mac中可能需要设置字体  theme(panel.grid = element_blank(),        panel.background = element_rect(fill = "Aliceblue"), #将背景填充为Aliceblue色模仿大海        axis.text = element_blank(),        axis.ticks = element_blank(),        axis.title = element_blank(),        plot.title = element_text(size = 10, hjust = 0.5),        plot.margin = unit(c(-0.5, -0.5, -0.5, -0.5), "inches"), #设置图像输出的边缘距离        legend.position = "bottom")  #设置图例位于图像正下方  ggsave("2018年世界各国制定与执行促进私营部门发展能力的评估.jpg",dpi=1000,width=13,height=12)
 
-![](images/211/5.jpeg)由于这里的shape文件采用的是普通圆柱投影，看起来会比较扁。但是我们对比自然资源部提供的带审图号的例图可以发现此时输出的图像除了没有南极洲外，在总体上已经达到了和例图比较接近的程度。但是请注意，千万不要以为此时已经大功告成了，这里直接输出的地图只是在总体上接近，还远远没有达到通过审核的标准。
+![](/images/211/5.jpeg)由于这里的shape文件采用的是普通圆柱投影，看起来会比较扁。但是我们对比自然资源部提供的带审图号的例图可以发现此时输出的图像除了没有南极洲外，在总体上已经达到了和例图比较接近的程度。但是请注意，千万不要以为此时已经大功告成了，这里直接输出的地图只是在总体上接近，还远远没有达到通过审核的标准。
 
-![](images/211/6.png)为什么呢？这就呼应了我们反复强调的“相对正确”一词。请仔细阅读自然资源部例图中关于国家边界的划线，特别需要注意朝鲜半岛、克什米尔地区、中东以及非洲大陆国家边界的划线（通常都是未定界限）。这些细致的工作就需要在Adobe
+![](/images/211/6.png)为什么呢？这就呼应了我们反复强调的“相对正确”一词。请仔细阅读自然资源部例图中关于国家边界的划线，特别需要注意朝鲜半岛、克什米尔地区、中东以及非洲大陆国家边界的划线（通常都是未定界限）。这些细致的工作就需要在Adobe
 Illustrator等专业软件中完成了。
 
   
@@ -92,7 +91,7 @@ Illustrator等专业软件中完成了。
     
     ggplot() +  geom_sf(data = worlddata,aes(fill = estimate),colour = "#525252",size=0.3)+  geom_sf(data = SCSislands,colour = "#525252")+  geom_sf(data = NineDashLine,color = "#525252",size=0.3)+  scale_fill_gradient(low="#deebf7",high="#4292c6")+  coord_sf(crs= "+proj=ortho +lat_0=20 +lon_0=90")+  guides(fill=guide_legend(title='评估指数'))+  ggtitle("2018年世界各国制定与执行促进私营部门发展能力的评估（亚洲视角）")+  theme(panel.grid = element_blank(),        panel.background = element_rect(fill = "Aliceblue"),        axis.text = element_blank(),        axis.ticks = element_blank(),        axis.title = element_blank(),        plot.title = element_text(size = 15, hjust = 0.5),        legend.position = "right")ggsave("2018年世界各国制定与执行促进私营部门发展能力的评估（亚洲视角）.jpg",dpi=1000,width=15,height=12)
 
-![](images/211/7.jpeg)
+![](/images/211/7.jpeg)
 
 而这行代码显示的则是北极视角：  
 
@@ -102,7 +101,7 @@ Illustrator等专业软件中完成了。
     
     ggplot() +  geom_sf(data = worlddata,aes(fill = estimate),colour = "#525252",size=0.3)+  geom_sf(data = SCSislands,colour = "#525252")+  geom_sf(data = NineDashLine,color = "#525252",size=0.3)+  coord_sf(crs = "+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs ")+ # 变换投影视角为北极视角  scale_fill_gradient(low="#deebf7",high="#4292c6")+  guides(fill=guide_legend(title='评估指数'))+  ggtitle("2018年世界各国制定与执行促进私营部门发展能力的评估（北极视角）")+  theme(panel.grid = element_blank(),        panel.background = element_rect(fill = "Aliceblue"),        axis.text = element_blank(),        axis.ticks = element_blank(),        axis.title = element_blank(),        plot.title = element_text(size = 15, hjust = 0.5, vjust=0.5),        legend.position = "right")ggsave("2018年世界各国制定与执行促进私营部门发展能力的评估（北极视角）.jpg",dpi=1000,width=15,height=12)
 
-![](images/211/8.jpeg)
+![](/images/211/8.jpeg)
 
   
 
@@ -142,7 +141,7 @@ orthographic-projection-in-r
 
   
 
-![](images/211/9.jpeg)
+![](/images/211/9.jpeg)
 
   
 

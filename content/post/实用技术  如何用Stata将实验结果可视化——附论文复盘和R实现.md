@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #数据可视化 15 个
 
@@ -39,15 +38,15 @@ __
 
 首先看一下两个核心变量的情况。
 
-![](images/208/2.png)
+![](/images/208/2.png)
 
 然后计算各组的均值和标准误/置信区间。
 
-![](images/208/3.png)
+![](/images/208/3.png)
 
 最后使用大杀器，输入“coefplot”命令，各组的均值和置信区间就自动弹了出来。  
 
-![](images/208/4.png)
+![](/images/208/4.png)
 
 从图中我们可以明显地看到，控制组（无框架）被试的对美好感度明显高于三个处理组（强硬反美、温和反美、温和中立）。这初步说明实验成功了（再次强调严谨的统计检验必不可少）。
 
@@ -56,7 +55,7 @@ __
 当然Stata自动给出的图像还是那么一言难尽，下面我们手动加入“一点”细节。最重要的是把图像横竖翻转，更方便读者理解。此时的语句为“coefplot,
 vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和颜色。下面我们就得到了…
 
-![](images/208/5.png)
+![](/images/208/5.png)
 
 是不是不敢相信这是来自Stata的作品呢？
 
@@ -70,7 +69,7 @@ vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和
 
 那么如何将上述结果可视化呢。下面进入实战环节，首先我们获得了一个升级版的数据库，这里有对美好感度前测、对美好感度后测和分组这三个核心变量。其中，前测和后测都是连续变量，分组仍然是四分类变量。
 
-![](images/208/6.png)
+![](/images/208/6.png)
 
 下面直接贴出核心代码
 
@@ -82,7 +81,7 @@ vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和
 
 同样加入“一点”细节，我们就可以得到…  
 
-![](images/208/7.png)
+![](/images/208/7.png)
 
 这幅图较好地传递了我们理想中的信息：三个处理组和控制组被试在前测上差异不大，三个处理组被试在处理前后变化较大，控制组被试在处理前后变化不大。当然，Stata还可以实现更为复杂的实验结果可视化，这就留待读者自己去探索了。
 
@@ -94,7 +93,7 @@ vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和
 
 首先我们用RStudio读取数据。
 
-![](images/208/8.png)
+![](/images/208/8.png)
 
 下面我们在R中定义标准误函数，计算前测和后测的均值与标准误：
 
@@ -124,7 +123,7 @@ vertical”。然后我们再找一个好看的Scheme，再修饰一下图标和
     
     ggplot(test.2) +   geom_point(aes(x = group,y = premean),color = "red",shape = 17,size = 3.5)+  geom_point(aes(x = group+0.5, y = postmean), color = "blue",shape = 15,size = 3.5) +  geom_errorbar(aes(x = group, ymin = premean - 1.96*prese, ymax = premean + 1.96*prese),  width = 0.2, color = "red") +   geom_errorbar(aes(x = group + 0.5,ymin = postmean - 1.96*postse,   ymax = postmean +  1.96*postse),  width = 0.2,color = "blue")+   theme_bw()
 
-![](images/208/9.png)
+![](/images/208/9.png)
 
 至此，我们大致实现了和Stata一样的效果。当然，如果要让R自动生成前测和后测的图例，我们需要通过更为复杂的操作将原数据集堆叠起来。这里同样留待读者朋友自行探索。
 
@@ -155,7 +154,7 @@ Journal_. Vol.14.No.4(2014), pp.708-737.
 
   
 
-![](images/208/10.jpeg)
+![](/images/208/10.jpeg)
 
   
 

@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #历史政治学 58个
+历史政治学 58个
 
 **文献来源：** Xuan Zhao and Wolfgang Drechsler, “Wang Anshi’s economic reforms:
 proto-Keynesian economic policy in Song Dynasty China,” _Cambridge Journal of
@@ -26,7 +26,7 @@ Economics_ 2018, 42, 1239–1254.
 
   
 
-![](images/229/2.jpeg)  
+![](/images/229/2.jpeg)  
   
 曾任中书门下平章事（宰相职）的王安石  
   
@@ -162,7 +162,7 @@ China.https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3355692
 
   
 
-![](images/229/3.jpeg)
+![](/images/229/3.jpeg)
 
   
 

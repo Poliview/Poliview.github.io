@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #政治传播 12个
+政治传播 12个
 
 **文献来源：** Farrell, Henry. "The consequences of the internet for politics,"
 _Annual Review of Political Science_ 15(2012)，pp. 35-52.
@@ -26,7 +26,7 @@ Schiedel政治与技术奖得主。主要研究领域为互联网政治、民主
 
   
 
-![](images/263/2.jpeg)  
+![](/images/263/2.jpeg)  
   
 
   
@@ -208,7 +208,7 @@ Hussain（2011）发现，拥有大量Facebook用户的突尼斯和互联网用�
 
   
 
-![](images/263/3.jpeg)
+![](/images/263/3.jpeg)
 
   
 

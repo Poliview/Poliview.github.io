@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #民主与民主化 34 个
 
@@ -29,7 +28,7 @@ Manipulation." _Journal of Democracy_ 13(2): 36–50.
 Schedler是拉丁美洲社会科学学院（FLACSO）政治科学系教授，同时也是国际政治科学学会概念与研究方法委员会（www.concepts-
 methods.org）主席。目前他的研究方向主要为墨西哥的民主化过渡问题。
 
-![](images/253/2.png)  
+![](/images/253/2.png)  
   
 
   
@@ -170,7 +169,7 @@ impera）的政策后，独裁者们就一直在尝试从内部将敌人分裂�
 
   
 
-![](images/253/3.jpeg)
+![](/images/253/3.jpeg)
 
   
 

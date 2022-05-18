@@ -12,9 +12,8 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集
 
 #比较政治学 121 个
 
@@ -28,7 +27,7 @@ Modernism and Ethno‐Symbolism,” _Nations and Nationalism_ , Vol. 25, No. 1,
 
  **作者简介：** William Kerr，英国爱丁堡大学博士，德比大学社会学讲师。
 
-![](images/213/2.jpeg)
+![](/images/213/2.jpeg)
 
   
 
@@ -130,7 +129,7 @@ Transformed Human Evolution_. Chicago: University of Chicago press, 2008.
 
   
 
-![](images/213/3.jpeg)
+![](/images/213/3.jpeg)
 
   
 

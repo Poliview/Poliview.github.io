@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #比较政治学 121个
+比较政治学 121个
 
 ****
 
@@ -31,7 +31,7 @@ Capitalism _, American Journal of Political Science_ , "Vol. 65, No. 1(January
 Roni Hirsch，哈佛大学Edmond J. Safra族群中心访问研究员。  
 
   
-![](images/116/2.png)  
+![](/images/116/2.png)  
 
  **摘要**
 

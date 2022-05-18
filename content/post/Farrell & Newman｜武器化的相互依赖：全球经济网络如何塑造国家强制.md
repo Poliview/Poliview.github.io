@@ -12,9 +12,9 @@
 
 ____
 
-__
+___发表于_
 
-收录于合集 #比较政治学 121个
+比较政治学 121个
 
 **文献来源：** Henry Farrell and Abraham L. Newman, “Weaponized Interdependence:
 How Global Economic Networks Shape State Coercion,” _International Security_ ,
@@ -40,7 +40,7 @@ University Press), Protectors of Privacy: Regulating Personal Data in the
 Global Economy (2008, Cornell University Press)
 ；论文发表在《国际组织》《共同市场研究》《世界政治》等专业期刊。
 
-![](images/43/2.png)
+![](/images/43/2.png)
 
   
 
@@ -86,7 +86,7 @@ over）。而这些国家则会将其在某一领域将其掌握的“凌驾权�
 
 在全球金融领域内，环球银行金融电信协会（SWIFT）运营着世界级的银行间结算系统（见图1.），是处于世界金融网络的“轮轴”节点上。但是2001年“9·11”事件后，美国为了进行全球反恐、切断恐怖主义组织的资金流动加大了对SWIFT的施压。美国财政部出台了“恐怖分子资金追踪项目”，并要SWIFT提供金融流动的相关数据。SWIFT担心其在美国境内数据中心的安危便便顺从了美国，美国也由此可以使用SWIFT的系统监视恐怖活动，“圆形监狱效应”也形成。同时，利用SWIFT的“轮轴”，美国也在伊朗核问题上发挥了“咽喉点效应”：美国意图将伊朗的金融实体排挤出SWIFT，以换取伊朗在核问题上的让步。2012年，为了让SWIFT遵从制裁伊朗，美国威胁如果SWIFT容许伊朗实体使用其系统，则要对SWIFT进行制裁；同年，美国与欧盟同时发起了对SWIFT的制裁，要求其切断与伊朗的联系。这后续造成了对伊朗的影响。
 
-![](images/43/3.png) 图1 SWIFT交换电文数量
+![](/images/43/3.png) 图1 SWIFT交换电文数量
 
   
 
