@@ -1,5 +1,7 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://poliview.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = '政文观止Poliview'
 theme = "PaperMod"
+enableEmoji = true
 publishDir = "docs"
+hasCJKLanguage = true
