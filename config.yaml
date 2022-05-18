@@ -32,12 +32,12 @@ languages:
       weight: 1
       profileMode:
         enabled: true
-        title: (〃'▽'〃)
+        title: 政文观止Poliview
         subtitle: "从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。"
         imageUrl: "images/logo.jpg"
         imageTitle: 
-        imageWidth: 150
-        imageHeight: 150
+        imageWidth: 200
+        imageHeight: 200
         buttons:
           - name: 👨🏻‍💻新刊速递
             url: posts/tech
