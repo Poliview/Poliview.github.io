@@ -1,19 +1,6 @@
 
 
-#  Amber Hye-Yon Lee｜日常生活的政治化如何影响公共领域：党派刻板印象对交叉互动的影响
-
-政文观止  
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 文献来源：Lee, A. H. Y. (2020). How the Politicization of Everyday Activities
 Affects the Public Sphere: The Effects of Partisan Stereotypes on Cross-

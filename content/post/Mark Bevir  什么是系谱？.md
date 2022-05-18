@@ -1,20 +1,6 @@
 
 
-#  Mark Bevir | 什么是系谱？
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-方法论 3个
+收录于合集 #方法论 3个
 
 **文献来源：** Mark Bevir, “What is Genealogy?,” _Journal of the Philosophy of
 History_ , Vol. 2, No. 3, 2008, pp. 263-275.

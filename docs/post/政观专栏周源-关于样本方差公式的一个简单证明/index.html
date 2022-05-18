@@ -7,10 +7,10 @@
 <meta name="robots" content="index, follow">
 <title>政文观止Poliview</title>
 <meta name="keywords" content="">
-<meta name="description" content="政观专栏：周源 | 关于样本方差公式的一个简单证明 原创 政文观止 政文观止Poliview 微信号 zhengwenguanzhi 功能介绍 从一群年轻人的视角出发，专业、专注、专解海">
+<meta name="description" content="收录于合集 #专栏文章 11个 作者简介： 周源，政文观止Poliview特邀作者，日本神户大学法学研究科政治学专业研究生，主要研究兴趣为量化研究方">
 <meta name="author" content="政观编辑部">
 <link rel="canonical" href="https://poliview.github.io/post/%E6%94%BF%E8%A7%82%E4%B8%93%E6%A0%8F%E5%91%A8%E6%BA%90-%E5%85%B3%E4%BA%8E%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%85%AC%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E8%AF%81%E6%98%8E/">
-<link crossorigin="anonymous" href="../../assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.min.26a03aaebed848bcf4fd29e1fd968f84febc16fd6e77126eaa4d1969fdfb3503.css" integrity="sha256-JqA6rr7YSLz0/Snh/ZaPhP68Fv1udxJuqk0Zaf37NQM=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="../../assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://poliview.github.io/image/logo.gif">
@@ -57,7 +57,7 @@
 
     </style>
 </noscript><meta property="og:title" content="" />
-<meta property="og:description" content="政观专栏：周源 | 关于样本方差公式的一个简单证明 原创 政文观止 政文观止Poliview 微信号 zhengwenguanzhi 功能介绍 从一群年轻人的视角出发，专业、专注、专解海" />
+<meta property="og:description" content="收录于合集 #专栏文章 11个 作者简介： 周源，政文观止Poliview特邀作者，日本神户大学法学研究科政治学专业研究生，主要研究兴趣为量化研究方" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://poliview.github.io/post/%E6%94%BF%E8%A7%82%E4%B8%93%E6%A0%8F%E5%91%A8%E6%BA%90-%E5%85%B3%E4%BA%8E%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%85%AC%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E8%AF%81%E6%98%8E/" /><meta property="article:section" content="post" />
 
@@ -65,7 +65,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="政观专栏：周源 | 关于样本方差公式的一个简单证明 原创 政文观止 政文观止Poliview 微信号 zhengwenguanzhi 功能介绍 从一群年轻人的视角出发，专业、专注、专解海"/>
+<meta name="twitter:description" content="收录于合集 #专栏文章 11个 作者简介： 周源，政文观止Poliview特邀作者，日本神户大学法学研究科政治学专业研究生，主要研究兴趣为量化研究方"/>
 
 
 <script type="application/ld+json">
@@ -94,12 +94,12 @@
   "@type": "BlogPosting",
   "headline": "",
   "name": "",
-  "description": "政观专栏：周源 | 关于样本方差公式的一个简单证明 原创 政文观止 政文观止Poliview 微信号 zhengwenguanzhi 功能介绍 从一群年轻人的视角出发，专业、专注、专解海",
+  "description": "收录于合集 #专栏文章 11个 作者简介： 周源，政文观止Poliview特邀作者，日本神户大学法学研究科政治学专业研究生，主要研究兴趣为量化研究方",
   "keywords": [
     
   ],
-  "articleBody": "政观专栏：周源 | 关于样本方差公式的一个简单证明 原创 政文观止\n政文观止Poliview\n微信号 zhengwenguanzhi\n功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。\n __发表于\n专栏文章 11个\n作者简介： 周源，政文观止Poliview特邀作者，日本神户大学法学研究科政治学专业研究生，主要研究兴趣为量化研究方法、文本分析与政治心理学。\n对于刚刚学习统计学的同学，遇到的第一个比较难以理解的问题可能就是为什么样本方差公式的分母是n-1。一般对这个问题的解释都是从自由度的角度，认为公式中使用了样本平均值，因此失去了一个自由度。去年政观公众号曾转载美国德克萨斯大学奥斯汀分校政府系林泽民教授一篇文章，从“贝索校正”的角度对这一问题进行了证明（林泽民 | 统计学中算变异量为什么要除以n-1？什么是「自由度」？）。笔者近期在阅读一本日本学者编写的统计学教科书时，发现了一种更加简单明了的证明方法，即利用数学期望来证明为什么从统计学的观点来说用n-1 做样本方差公式的分母是更合适的。\n参考文献\n森棟公夫・照井伸彦・中川満・西埜晴久・黒住英司（2015）『統計学（改訂版）』、有斐閣。\n审读：陆屹洲\n编辑：杨端程\n政文观止\n微信扫一扫赞赏作者 __赞赏\n已喜欢，对作者说句悄悄话\n取消 __\n发送给作者 发送\n最多40字，当前共字\n 人赞赏\n上一页 1/3 下一页\n长按二维码向我转账\n受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。\n预览时标签不可点\n个\n上一篇 下一篇\n微信扫一扫\n关注该公众号\n知道了\n微信扫一扫\n使用小程序\n 取消 允许\n 取消 允许\n： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看\n",
-  "wordCount" : "676",
+  "articleBody": "收录于合集 #专栏文章 11个\n作者简介： 周源，政文观止Poliview特邀作者，日本神户大学法学研究科政治学专业研究生，主要研究兴趣为量化研究方法、文本分析与政治心理学。\n对于刚刚学习统计学的同学，遇到的第一个比较难以理解的问题可能就是为什么样本方差公式的分母是n-1。一般对这个问题的解释都是从自由度的角度，认为公式中使用了样本平均值，因此失去了一个自由度。去年政观公众号曾转载美国德克萨斯大学奥斯汀分校政府系林泽民教授一篇文章，从“贝索校正”的角度对这一问题进行了证明（林泽民 | 统计学中算变异量为什么要除以n-1？什么是「自由度」？）。笔者近期在阅读一本日本学者编写的统计学教科书时，发现了一种更加简单明了的证明方法，即利用数学期望来证明为什么从统计学的观点来说用n-1 做样本方差公式的分母是更合适的。\n参考文献\n森棟公夫・照井伸彦・中川満・西埜晴久・黒住英司（2015）『統計学（改訂版）』、有斐閣。\n审读：陆屹洲\n编辑：杨端程\n政文观止\n微信扫一扫赞赏作者 __赞赏\n已喜欢，对作者说句悄悄话\n取消 __\n发送给作者 发送\n最多40字，当前共字\n 人赞赏\n上一页 1/3 下一页\n长按二维码向我转账\n受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。\n",
+  "wordCount" : "516",
   "inLanguage": "en",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -164,7 +164,7 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://poliview.github.io/search" title="🔍搜索">
+                <a href="https://poliview.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
                     <span>🔍搜索</span>
                 </a>
             </li>
@@ -174,7 +174,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://poliview.github.io/posts" title="📚文章">
+                <a href="https://poliview.github.io/post" title="📚文章">
                     <span>📚文章</span>
                 </a>
             </li>
@@ -207,38 +207,83 @@
     <div class="post-meta">2 min&nbsp;·&nbsp;政观编辑部
 
 </div>
-  </header> <div class="toc">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e6%94%bf%e8%a7%82%e4%b8%93%e6%a0%8f%e5%91%a8%e6%ba%90--%e5%85%b3%e4%ba%8e%e6%a0%b7%e6%9c%ac%e6%96%b9%e5%b7%ae%e5%85%ac%e5%bc%8f%e7%9a%84%e4%b8%80%e4%b8%aa%e7%ae%80%e5%8d%95%e8%af%81%e6%98%8e" aria-label="政观专栏：周源 | 关于样本方差公式的一个简单证明">政观专栏：周源 | 关于样本方差公式的一个简单证明</a><ul>
-                        <ul>
-                        <ul>
-                        
-                <li>
-                    <a href="#%e5%8f%91%e9%80%81%e7%bb%99%e4%bd%9c%e8%80%85" aria-label="发送给作者">发送给作者</a>
-                </li>
-            </ul>
-            </ul>
-            </ul>
-            </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%8f%91%e9%80%81%e7%bb%99%e4%bd%9c%e8%80%85" aria-label="发送给作者">发送给作者</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
 
-  <div class="post-content"><h1 id="政观专栏周源--关于样本方差公式的一个简单证明">政观专栏：周源 | 关于样本方差公式的一个简单证明<a hidden class="anchor" aria-hidden="true" href="#政观专栏周源--关于样本方差公式的一个简单证明">#</a></h1>
-<p>原创 政文观止</p>
-<p><strong>政文观止Poliview</strong></p>
-<p>微信号 zhengwenguanzhi</p>
-<p>功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。</p>
-<hr>
-<p>__<em>发表于</em></p>
-<p>专栏文章 11个</p>
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>收录于合集 #专栏文章 11个</p>
 <p><strong>作者简介：</strong>
 <strong>周源，政文观止Poliview特邀作者，日本神户大学法学研究科政治学专业研究生，主要研究兴趣为量化研究方法、文本分析与政治心理学。</strong></p>
 <p>对于刚刚学习统计学的同学，遇到的第一个比较难以理解的问题可能就是为什么样本方差公式的分母是n-1。一般对这个问题的解释都是从自由度的角度，认为公式中使用了样本平均值，因此失去了一个自由度。去年政观公众号曾转载美国德克萨斯大学奥斯汀分校政府系林泽民教授一篇文章，从“贝索校正”的角度对这一问题进行了证明（<a href="http://mp.weixin.qq.com/s?__biz=MzI5ODY0MTQ1OA==&amp;mid=2247484959&amp;idx=1&amp;sn=84dede8e2f8e7d7f6408d494f6da669a&amp;chksm=eca3f742dbd47e541461a779913c77ad2a5b95e98ac4c5943682f0e8bba65a6ad10a98ffdbee&amp;scene=21#wechat_redirect">林泽民
@@ -260,6 +305,8 @@
 <p><img loading="lazy" src="../../images/441/6.jpeg" alt=""  />
 <img loading="lazy" src="../../images/441/7.jpeg" alt=""  />
 </p>
+<p><img loading="lazy" src="" alt=""  />
+</p>
 <p>政文观止</p>
 <p><img loading="lazy" src="" alt="赞赏二维码"  />
  <strong>微信扫一扫赞赏作者</strong> __赞赏</p>
@@ -274,19 +321,6 @@
 <p><img loading="lazy" src="" alt="赞赏二维码"  />
 </p>
 <p>受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。</p>
-<p>预览时标签不可点</p>
-<p>个</p>
-<p>上一篇 下一篇</p>
-<p>微信扫一扫<br>
-关注该公众号</p>
-<p><a href="">知道了</a></p>
-<p>微信扫一扫<br>
-使用小程序</p>
-<hr>
-<p><a href="">取消</a> <a href="">允许</a></p>
-<hr>
-<p><a href="">取消</a> <a href="">允许</a></p>
-<p>： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看</p>
 
 
   </div>

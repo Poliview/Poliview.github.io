@@ -1,19 +1,6 @@
 
 
-#  PUP X 政文观止Poliview | 冲突与变革中的人类社会：资本主义、民主与发展
-
-
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 编者荐语：
 
@@ -144,32 +131,4 @@ Verdier** **ISBN ：9780691191218** **出版时间： 2020.1.21**
 [全球贸易与帝国崛起：茶叶、瓷器和罂粟花如何塑造历史？](http://mp.weixin.qq.com/s?__biz=MzU3NzI4MTAxNA==&mid=2247490514&idx=1&sn=3bddb5581cbe4943dcd0956f09d1d7b9&chksm=fd06554bca71dc5dfe5876ceaaea1d60512d2b89e5b6d023c80d18028557a2429bfb9aa9c379&scene=21#wechat_redirect)
 
   
-
-预览时标签不可点
-
-
-
-个
-
-上一篇 下一篇
-
-
-
-微信扫一扫  
-关注该公众号
-
-[知道了](javascript:;)
-
- 微信扫一扫  
-使用小程序
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看
 

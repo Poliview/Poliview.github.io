@@ -1,20 +1,6 @@
 
 
-#  Hassan, Mattingly and Nugent | 政治控制：策略与后果
-
-政文观止  
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-比较政治学 121个
+收录于合集 #比较政治学 121个
 
 **文献来源：** Hassan, Mai, Daniel Mattingly and Elizabeth R. Nugent, “Political
 Control,” _Annual Review of Political Science_ , Vol. 25, No.1 (2022):
@@ -142,32 +128,4 @@ optation）关系之外，探讨更多政治控制手段之间的联系。不同
 编译：曾良圆 审校：赵德昊 编辑：高小茜  
 
   
-
-预览时标签不可点
-
-
-
-个
-
-上一篇 下一篇
-
-
-
-微信扫一扫  
-关注该公众号
-
-[知道了](javascript:;)
-
- 微信扫一扫  
-使用小程序
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看
 

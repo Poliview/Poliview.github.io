@@ -1,20 +1,6 @@
 
 
-#  Zhao & Drechsler：王安石的经济改革：宋代中国的原始凯恩斯主义 | 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-历史政治学 58个
+收录于合集 #历史政治学 58个
 
 **文献来源：** Xuan Zhao and Wolfgang Drechsler, “Wang Anshi’s economic reforms:
 proto-Keynesian economic policy in Song Dynasty China,” _Cambridge Journal of

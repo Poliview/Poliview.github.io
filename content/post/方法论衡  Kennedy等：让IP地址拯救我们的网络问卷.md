@@ -1,20 +1,6 @@
 
 
-#  方法论衡 | Kennedy等：让IP地址拯救我们的网络问卷
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-方法论衡 4个
+收录于合集 #方法论衡 4个
 
 **文献来源：** Ryan Kennedy et al. (2020). The shape of and solutions to the MTurk
 quality crisis, Political Science Research and Methods, 8:614–629  

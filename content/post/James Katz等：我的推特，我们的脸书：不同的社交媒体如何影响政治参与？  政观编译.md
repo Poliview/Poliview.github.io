@@ -1,20 +1,6 @@
 
 
-#  James Katz等：我的推特，我们的脸书：不同的社交媒体如何影响政治参与？ | 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-政治传播 12个
+收录于合集 #政治传播 12个
 
 文献来源：Halpern, D., Valenzuela, S., & Katz, J. E. (2017). We face, I tweet: How
 different social media influence political participation through collective

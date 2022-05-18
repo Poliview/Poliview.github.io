@@ -1,20 +1,6 @@
 
 
-#  Paolo Gerbaudo：社交媒体和民粹主义是天生一对吗？| 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-政治传播 12个
+收录于合集 #政治传播 12个
 
 **文献来源：** Gerbaudo, P. (2018). Social media and populism: an elective
 affinity? Media, _Culture and Society_ , 40(5), 745–753.

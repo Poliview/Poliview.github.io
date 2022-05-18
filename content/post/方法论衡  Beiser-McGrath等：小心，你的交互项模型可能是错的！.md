@@ -1,20 +1,6 @@
 
 
-#  方法论衡 | Beiser-McGrath等：小心，你的交互项模型可能是错的！
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-方法论衡 4个
+收录于合集 #方法论衡 4个
 
 **文献来源：** Janina Beiser-McGrath and Liam F. Beiser-McGrath. (2020). Problems
 with products? Control strategies for models with interaction and quadratic

@@ -1,19 +1,6 @@
 
 
-#  政观荐书 | 诺奖得主vs.林毅夫：资本主义的缺陷如何摧毁美国工人阶级？
-
-
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 以下文章来源于普林斯顿读书汇 ，作者PUP China
 
@@ -185,32 +172,4 @@ Capitalism_** 、林毅夫教授经典著作，以及【学观中西】本场活
 
 [完整视频+文字｜林毅夫 VS
 诺奖得主：经济学视角下“褪色”的美国梦](http://mp.weixin.qq.com/s?__biz=MzU3NzI4MTAxNA==&mid=2247491877&idx=1&sn=3972b7e79fc9ea7c3a645dd274304eee&chksm=fd05afbcca7226aaf4765573a56e77825ed2938d9e7f05cea72b155a73373a03c8035b7b7977&scene=21#wechat_redirect)
-
-预览时标签不可点
-
-
-
-个
-
-上一篇 下一篇
-
-
-
-微信扫一扫  
-关注该公众号
-
-[知道了](javascript:;)
-
- 微信扫一扫  
-使用小程序
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看
 

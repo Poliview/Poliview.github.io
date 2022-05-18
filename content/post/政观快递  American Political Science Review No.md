@@ -1,19 +1,6 @@
 
 
-#  政观快递 | American Political Science Review No.1, 2020（中）
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 **期刊简介：** 《美国政治学评论》（American Political Science Review）是美国政治学会（American
 Political Science

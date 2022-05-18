@@ -1,19 +1,6 @@
 
 
-#  Polo & González：内战中动员与恐袭的逻辑 | 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 **文献来源：** Polo, Sara M. T., and Belén González. 2020. "The Power to Resist:
 Mobilization and the Logic of Terrorist Attacks in Civil War." Comparative

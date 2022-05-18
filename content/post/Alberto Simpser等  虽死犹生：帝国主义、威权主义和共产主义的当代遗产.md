@@ -1,19 +1,6 @@
 
 
-#  Alberto Simpser等 | 虽死犹生：帝国主义、威权主义和共产主义的当代遗产
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 **文献来源：** Alberto Simpser, Dan Slater, and Jason Wittenberg, “Dead But Not
 Gone: Contemporary Legacies of Communism, Imperialism, and Authoritarianism,”

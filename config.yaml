@@ -36,8 +36,8 @@ languages:
         subtitle: "从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。"
         imageUrl: "images/logo.jpg"
         imageTitle: 
-        imageWidth: 200
-        imageHeight: 200
+        imageWidth: 150
+        imageHeight: 150
         buttons:
           - name: 👨🏻‍💻新刊速递
             url: posts/tech
@@ -57,7 +57,7 @@ languages:
             weight: 2
           - identifier: posts
             name: 📚文章
-            url: posts
+            url: post
             weight: 3
           # - identifier: tech
           #   name: 👨🏻‍💻技术文章

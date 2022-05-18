@@ -1,19 +1,6 @@
 
 
-#  Charles R. Epp：作为社会改革工具的法律 | 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 **文献来源：** Charles R. Epp, “law as an instrument of social reform”, in Keith E.
 Whittington, R. Daniel Kelemen, Gregory A. Caldeira (ed.), The Oxford Handbook

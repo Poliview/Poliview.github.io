@@ -1,19 +1,6 @@
 
 
-#  加州大学圣芭芭拉分校（UCSB）比较政治阅读书单
-
-政观编辑部  
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 **<img src='/images/610/2.png' width='auto' />**
 
@@ -292,32 +279,4 @@ Thousand Oaks: Sage Publications, 1994.
 [告别Freestyle！耶鲁大学比较政治书单](http://mp.weixin.qq.com/s?__biz=MzI5ODY0MTQ1OA==&mid=2247483809&idx=1&sn=ff67b18bb82577e427cc8dbab9c6120c&chksm=eca3f0fcdbd479eab6d86cc1e4822e1b669fc8e37da6d53fb5be331028eaa2b265d080e007fb&scene=21#wechat_redirect)
 
   
-
-预览时标签不可点
-
-
-
-个
-
-上一篇 下一篇
-
-
-
-微信扫一扫  
-关注该公众号
-
-[知道了](javascript:;)
-
- 微信扫一扫  
-使用小程序
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看
 

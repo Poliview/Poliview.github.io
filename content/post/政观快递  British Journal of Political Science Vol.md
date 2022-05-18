@@ -1,19 +1,6 @@
 
 
-#  政观快递 | British Journal of Political Science Vol.49, No.04, 2019
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 **期刊简介 **:**** 《英国政治学杂志》（British Journal of Political
 Science，BJPS）是一本基础广泛的杂志，涵盖了政治科学的所有领域（包括政治理论、政治行为、公共政策和国际关系），并且相关学科（社会学、社会理学、经济学和哲学）学者的文章也经常出现。根据2018年Journal

@@ -1,20 +1,6 @@
 
 
-#  Richard R. Lau等：受众选择时代的媒介效果 | 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-政治传播 12个
+收录于合集 #政治传播 12个
 
 **文献来源：** Lau, Richard R., Kathleen Rogers, and Jamel Love. "Media Effects in
 the Viewer’s Choice Era: Testing Revised Agenda-Setting and Priming

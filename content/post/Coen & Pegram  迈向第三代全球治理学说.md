@@ -1,20 +1,6 @@
 
 
-#  Coen & Pegram | 迈向第三代全球治理学说
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-全球治理 1个
+收录于合集 #全球治理 1个
 
 **文献来源：** David Coen and Tom Pegram, “Towards a Third Generation of Global
 Governance Scholarship,” _Global Policy_ , Vol.9, No.1, 2018, pp.107-113.

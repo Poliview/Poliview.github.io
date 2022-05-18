@@ -1,19 +1,6 @@
 
 
-#  Sokoloff & Engerman | 历史经验：新大陆的制度、要素禀赋和发展路径
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
+收录于合集
 
 **文献来源：** Sokoloff, K. L. , & Engerman, S. L. (2000). History Lessons:
 Institutions, Factor Endowments, and Paths of Development in the New World.
@@ -107,7 +94,7 @@ Prize in American History and Diplomacy）。
 
   
 
-
+![]()
 
 政文观止
 
@@ -132,32 +119,4 @@ Prize in American History and Diplomacy）。
 ![赞赏二维码]()
 
 受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。
-
-预览时标签不可点
-
-
-
-个
-
-上一篇 下一篇
-
-
-
-微信扫一扫  
-关注该公众号
-
-[知道了](javascript:;)
-
- 微信扫一扫  
-使用小程序
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看
 

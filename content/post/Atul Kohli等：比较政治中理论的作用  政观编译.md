@@ -1,20 +1,6 @@
 
 
-#  Atul Kohli等：比较政治中理论的作用 | 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-比较政治学 121个
+收录于合集 #比较政治学 121个
 
 **文献来源：** Atul Kohli, Peter Evans, Peter J. Katzenstein, Adam Przeworski,
 Susanne Hoeber Rudolph, James C. Scott and Theda Skocpol., “The Role of Theory

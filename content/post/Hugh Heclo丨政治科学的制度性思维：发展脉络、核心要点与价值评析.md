@@ -1,20 +1,6 @@
 
 
-#  Hugh Heclo丨政治科学的制度性思维：发展脉络、核心要点与价值评析
-
-政文观止  
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-比较政治学 121个
+收录于合集 #比较政治学 121个
 
 **文献来源：** Hugh Heclo, “Thinking Institutionally”，in R. A. W. Rhodes, Sarah A.
 Binder and Bert A. Rockman, ed., The Oxford Handbook of Political

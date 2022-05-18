@@ -1,20 +1,6 @@
 
 
-#  Giraudy等：比较政治学中次国家研究的理论与经验前沿 | 政观编译
-
-原创 政文观止 
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-比较政治学 121个
+收录于合集 #比较政治学 121个
 
 **文献来源：** Agustina Giraudy, Eduardo Moncada, and Richard Snyder. "Empirical
 and Theoretical Frontiers of Subnational Research in Comparative Politics." in

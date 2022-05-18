@@ -10,7 +10,7 @@
 <meta name="description" content="关于政文观止 政文观止是由人大、吉大、北大及清华政治学系的几位同学创办的微信公众号，专注于翻译政治学及政治经济学的文章。虽然偶尔发发广告恰饭，">
 <meta name="author" content="政观编辑部">
 <link rel="canonical" href="https://poliview.github.io/about/">
-<link crossorigin="anonymous" href="../assets/css/stylesheet.min.ec8da366ca2fb647537ccb7a8f6fa5b4e9cd3c7a0d3171dd2d3baad1e49c8bfc.css" integrity="sha256-7I2jZsovtkdTfMt6j2&#43;ltOnNPHoNMXHdLTuq0eSci/w=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="../assets/css/stylesheet.min.26a03aaebed848bcf4fd29e1fd968f84febc16fd6e77126eaa4d1969fdfb3503.css" integrity="sha256-JqA6rr7YSLz0/Snh/ZaPhP68Fv1udxJuqk0Zaf37NQM=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="../assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js" integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://poliview.github.io/image/logo.gif">
@@ -158,7 +158,7 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://poliview.github.io/search" title="🔍搜索">
+                <a href="https://poliview.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
                     <span>🔍搜索</span>
                 </a>
             </li>
@@ -168,7 +168,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://poliview.github.io/posts" title="📚文章">
+                <a href="https://poliview.github.io/post" title="📚文章">
                     <span>📚文章</span>
                 </a>
             </li>
@@ -201,22 +201,83 @@
     <div class="post-meta"><span title='2022-05-04 00:04:32 +0800 CST'>2022-05-04</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;政观编辑部
 
 </div>
-  </header> <div class="toc">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e5%85%b3%e4%ba%8e%e6%94%bf%e6%96%87%e8%a7%82%e6%ad%a2" aria-label="关于政文观止">关于政文观止</a></li>
-                <li>
-                    <a href="#%e5%85%b3%e4%ba%8epoliviewgithubio" aria-label="关于poliview.github.io">关于<code>poliview.github.io</code></a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%85%b3%e4%ba%8e%e6%94%bf%e6%96%87%e8%a7%82%e6%ad%a2" aria-label="关于政文观止">关于政文观止</a></li>
+                    <li>
+                        <a href="#%e5%85%b3%e4%ba%8epoliviewgithubio" aria-label="关于poliview.github.io">关于<code>poliview.github.io</code></a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h2 id="关于政文观止">关于政文观止<a hidden class="anchor" aria-hidden="true" href="#关于政文观止">#</a></h2>
 <p>政文观止是由人大、吉大、北大及清华政治学系的几位同学创办的微信公众号，专注于翻译政治学及政治经济学的文章。虽然偶尔发发广告恰饭，但基本上是公益性质的公众号。可在微信搜索<code>政文观止Poliview</code>关注。</p>

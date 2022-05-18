@@ -1,20 +1,6 @@
 
 
-#  开放投稿 | ASIAN REVIEW OF POLITICAL ECONOMY
-
-Springer  
-
-**政文观止Poliview** 
-
-微信号 zhengwenguanzhi
-
-功能介绍 从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。
-
-____
-
-___发表于_
-
-政观书讯 16个
+收录于合集 #政观书讯 16个
 
   
 
@@ -176,32 +162,4 @@ Li-An Zhou, Peking University, China
   
 
  **点击“阅读原文”，查看期刊投稿详情**
-
-预览时标签不可点
-
-
-
-个
-
-上一篇 下一篇
-
-
-
-微信扫一扫  
-关注该公众号
-
-[知道了](javascript:;)
-
- 微信扫一扫  
-使用小程序
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-****
-
-[取消](javascript:void\(0\);) [允许](javascript:void\(0\);)
-
-： ， 。 视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看
 
