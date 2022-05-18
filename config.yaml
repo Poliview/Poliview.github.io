@@ -1,0 +1,71 @@
+baseURL: https://poliview.github.io
+languageCode: zh-cn 
+title: 政文观止Poliview
+theme: PaperMod 
+enableEmoji : true
+publishDir : docs
+hasCJKLanguage : true
+relativeURLs : true
+canonifyURLs : false
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+paginate: 15  
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+
+minify:
+    disableXML: true
+    # minifyOutput: true
+
+params:
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    author: 政观编辑部
+
+  
+    defaultTheme: auto  # defaultTheme: light or  dark 
+    disableThemeToggle: false
+    DateFormat: "2006-01-02"
+    ShowShareButtons: true
+    ShowReadingTime: true
+    # disableSpecialistPost: true
+    displayFullLangName: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    hideFooter: false # 隐藏页脚
+    ShowWordCounts: true
+    VisitCount: true
+
+    ShowLastMod: true #显示文章更新时间
+
+    ShowToc: true # 显示目录
+    TocOpen: true # 自动展开目录
+
+    comments: true
+
+    assets:
+        favicon: "image/logo.gif"
+        apple_touch_icon: "image/logo.gif"
+        safari_pinned_tab: "image/logo.gif"
+
+markup:
+    highlight:
+        # anchorLineNos: true
+        codeFences: true  
+        guessSyntax: true
+        lineNos: true
+        # noClasses: false
+        # style: monokai
+        style: darcula
+
+        # codeFences：代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
+        # guessSyntax：猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
+        # hl_Lines：高亮的行号，一般这个不设置，因为每个代码块我们可能希望让高亮的地方不一样。
+        # lineNoStart：行号从编号几开始，一般从 1 开始。
+        # lineNos：是否显示行号，我比较喜欢显示，所以我设置的为 true.
+        # lineNumbersInTable：使用表来格式化行号和代码,而不是 标签。这个属性一般设置为 true.
+        # noClasses：使用 class 标签，而不是内嵌的内联样式
