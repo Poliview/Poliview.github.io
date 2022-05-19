@@ -1,3 +1,9 @@
+---
+title: 告别Freestyle!耶鲁大学比较政治学书单
+date: 
+author: 
+tags: 
+---
 # 告别Freestyle!耶鲁大学比较政治学书单
 
 

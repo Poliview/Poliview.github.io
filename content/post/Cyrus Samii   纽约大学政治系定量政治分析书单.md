@@ -1,3 +1,9 @@
+---
+title: CyrusSamii|纽约大学政治系定量政治分析书单
+date: 
+author: 
+tags: 
+---
 # CyrusSamii|纽约大学政治系定量政治分析书单
 
 

@@ -1,3 +1,9 @@
+---
+title: Dalton,Shin,andJou：用数据理解民主|政观编译
+date: 
+author: 政文观止
+tags: ['#政治态度', '#民主与民主化', '#比较政治学']
+---
 # Dalton,Shin,andJou：用数据理解民主|政观编译
 
 

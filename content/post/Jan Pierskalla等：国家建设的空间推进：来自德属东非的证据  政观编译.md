@@ -1,3 +1,9 @@
+---
+title: JanPierskalla等：国家建设的空间推进：来自德属东非的证据|政观编译
+date: 
+author: 政文观止
+tags: 
+---
 # JanPierskalla等：国家建设的空间推进：来自德属东非的证据|政观编译
 
 

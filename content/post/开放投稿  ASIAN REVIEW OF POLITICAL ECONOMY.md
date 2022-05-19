@@ -1,3 +1,9 @@
+---
+title: 开放投稿|ASIANREVIEWOFPOLITICALECONOMY
+date: 
+author: 
+tags: ['#政观书讯']
+---
 # 开放投稿|ASIANREVIEWOFPOLITICALECONOMY
 
 

@@ -1,3 +1,9 @@
+---
+title: PhilipRoessler|非洲的个人统治、政变和内战
+date: 
+author: 政文观止
+tags: 
+---
 # PhilipRoessler|非洲的个人统治、政变和内战
 
 

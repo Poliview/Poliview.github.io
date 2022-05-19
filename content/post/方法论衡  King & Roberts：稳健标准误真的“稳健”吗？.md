@@ -1,3 +1,9 @@
+---
+title: 方法论衡|King&Roberts：稳健标准误真的“稳健”吗？
+date: 
+author: 政文观止
+tags: ['#方法论衡']
+---
 # 方法论衡|King&Roberts：稳健标准误真的“稳健”吗？
 
 

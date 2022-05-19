@@ -1,3 +1,9 @@
+---
+title: RobertSapolsky：民族主义的生物学基础|政观编译
+date: 
+author: 政文观止
+tags: ['#政治心理']
+---
 # RobertSapolsky：民族主义的生物学基础|政观编译
 
 

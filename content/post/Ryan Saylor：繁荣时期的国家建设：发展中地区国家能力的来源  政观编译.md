@@ -1,3 +1,9 @@
+---
+title: RyanSaylor：繁荣时期的国家建设：发展中地区国家能力的来源|政观编译
+date: 
+author: 政文观止
+tags: 
+---
 # RyanSaylor：繁荣时期的国家建设：发展中地区国家能力的来源|政观编译
 
 

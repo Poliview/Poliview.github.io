@@ -1,3 +1,9 @@
+---
+title: AndreasWimmer|族群多样性会影响公共物品供给吗？
+date: 
+author: 政文观止
+tags: ['#国家建构与国家发展', '#比较政治学', '#历史政治学']
+---
 # AndreasWimmer|族群多样性会影响公共物品供给吗？
 
 

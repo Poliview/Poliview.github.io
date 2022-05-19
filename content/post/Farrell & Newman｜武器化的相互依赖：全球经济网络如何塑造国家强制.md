@@ -1,3 +1,9 @@
+---
+title: Farrell&Newman｜武器化的相互依赖：全球经济网络如何塑造国家强制
+date: 
+author: 政文观止
+tags: ['#比较政治学']
+---
 # Farrell&Newman｜武器化的相互依赖：全球经济网络如何塑造国家强制
 
 

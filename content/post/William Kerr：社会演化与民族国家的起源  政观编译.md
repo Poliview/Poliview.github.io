@@ -1,3 +1,9 @@
+---
+title: WilliamKerr：社会演化与民族国家的起源|政观编译
+date: 
+author: 政文观止
+tags: ['#比较政治学', '#国家建构与国家发展']
+---
 # WilliamKerr：社会演化与民族国家的起源|政观编译
 
 

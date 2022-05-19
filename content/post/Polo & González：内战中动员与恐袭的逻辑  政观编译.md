@@ -1,3 +1,9 @@
+---
+title: Polo&González：内战中动员与恐袭的逻辑|政观编译
+date: 
+author: 政文观止
+tags: 
+---
 # Polo&González：内战中动员与恐袭的逻辑|政观编译
 
 

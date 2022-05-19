@@ -1,3 +1,9 @@
+---
+title: Christensen&Garfias|房地产税的政治逻辑：巴西的财税基础设施与选举政治压力
+date: 
+author: 政文观止
+tags: ['#比较政治学', '#国家建构与国家发展']
+---
 # Christensen&Garfias|房地产税的政治逻辑：巴西的财税基础设施与选举政治压力
 
 

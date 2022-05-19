@@ -1,3 +1,9 @@
+---
+title: PUPX政文观止Poliview|冲突与变革中的人类社会：资本主义、民主与发展
+date: 
+author: 
+tags: 
+---
 # PUPX政文观止Poliview|冲突与变革中的人类社会：资本主义、民主与发展
 
 

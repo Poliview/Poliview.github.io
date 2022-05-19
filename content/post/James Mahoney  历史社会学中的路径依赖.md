@@ -1,3 +1,9 @@
+---
+title: JamesMahoney|历史社会学中的路径依赖
+date: 
+author: 政文观止
+tags: 
+---
 # JamesMahoney|历史社会学中的路径依赖
 
 

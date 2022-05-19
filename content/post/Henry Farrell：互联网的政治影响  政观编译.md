@@ -1,3 +1,9 @@
+---
+title: HenryFarrell：互联网的政治影响|政观编译
+date: 
+author: 政文观止
+tags: ['#政治传播']
+---
 # HenryFarrell：互联网的政治影响|政观编译
 
 

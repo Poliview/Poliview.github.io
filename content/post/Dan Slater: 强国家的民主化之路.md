@@ -1,3 +1,9 @@
+---
+title: DanSlater:强国家的民主化之路
+date: 
+author: 
+tags: 
+---
 # DanSlater:强国家的民主化之路
 
 

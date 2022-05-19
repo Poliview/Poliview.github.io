@@ -1,3 +1,9 @@
+---
+title: MartinElff等：分层模型的似然方法：无偏估计与准确推断|政观编译
+date: 
+author: 政文观止
+tags: 
+---
 # MartinElff等：分层模型的似然方法：无偏估计与准确推断|政观编译
 
 

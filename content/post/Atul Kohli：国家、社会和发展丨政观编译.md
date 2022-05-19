@@ -1,3 +1,9 @@
+---
+title: AtulKohli：国家、社会和发展丨政观编译
+date: 
+author: 政文观止
+tags: ['#国家建构与国家发展', '#比较政治学']
+---
 # AtulKohli：国家、社会和发展丨政观编译
 
 

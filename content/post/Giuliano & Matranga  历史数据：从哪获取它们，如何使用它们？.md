@@ -1,3 +1,9 @@
+---
+title: Giuliano&Matranga|历史数据：从哪获取它们，如何使用它们？
+date: 
+author: 
+tags: ['#历史政治学']
+---
 # Giuliano&Matranga|历史数据：从哪获取它们，如何使用它们？
 
 

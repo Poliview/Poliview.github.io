@@ -1,3 +1,9 @@
+---
+title: PeterBucchianeri|党派竞争与政治联盟的稳定性
+date: 
+author: 政文观止
+tags: ['#比较政治学']
+---
 # PeterBucchianeri|党派竞争与政治联盟的稳定性
 
 

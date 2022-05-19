@@ -1,3 +1,9 @@
+---
+title: Coen&Pegram|迈向第三代全球治理学说
+date: 
+author: 政文观止
+tags: ['#全球治理']
+---
 # Coen&Pegram|迈向第三代全球治理学说
 
 

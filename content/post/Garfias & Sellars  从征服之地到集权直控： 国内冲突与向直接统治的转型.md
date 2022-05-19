@@ -1,3 +1,9 @@
+---
+title: Garfias&Sellars|从征服之地到集权直控：国内冲突与向直接统治的转型
+date: 
+author: 政文观止
+tags: ['#国家建构与国家发展', '#历史政治学']
+---
 # Garfias&Sellars|从征服之地到集权直控：国内冲突与向直接统治的转型
 
 

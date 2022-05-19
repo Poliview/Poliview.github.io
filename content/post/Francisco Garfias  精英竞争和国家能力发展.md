@@ -1,3 +1,9 @@
+---
+title: FranciscoGarfias|精英竞争和国家能力发展
+date: 
+author: 政文观止
+tags: 
+---
 # FranciscoGarfias|精英竞争和国家能力发展
 
 

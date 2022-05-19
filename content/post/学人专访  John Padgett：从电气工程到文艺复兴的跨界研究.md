@@ -1,3 +1,9 @@
+---
+title: 学人专访|JohnPadgett：从电气工程到文艺复兴的跨界研究
+date: 
+author: 政文观止
+tags: ['#学人专访']
+---
 # 学人专访|JohnPadgett：从电气工程到文艺复兴的跨界研究
 
 

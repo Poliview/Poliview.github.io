@@ -1,3 +1,9 @@
+---
+title: JoanRicart-Huguet：比较政治精英研究的历史转向|政观编译
+date: 
+author: 政文观止
+tags: ['#历史政治学', '#比较政治学', '#民主与民主化', '#国家建构与国家发展']
+---
 # JoanRicart-Huguet：比较政治精英研究的历史转向|政观编译
 
 

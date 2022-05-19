@@ -1,3 +1,9 @@
+---
+title: Zhao&Drechsler：王安石的经济改革：宋代中国的原始凯恩斯主义|政观编译
+date: 
+author: 政文观止
+tags: ['#历史政治学']
+---
 # Zhao&Drechsler：王安石的经济改革：宋代中国的原始凯恩斯主义|政观编译
 
 

@@ -1,3 +1,9 @@
+---
+title: 还有这种操作？十分钟学会QCA，顺带复习Logistic回归
+date: 
+author: 
+tags: 
+---
 # 还有这种操作？十分钟学会QCA，顺带复习Logistic回归
 
 

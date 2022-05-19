@@ -1,3 +1,9 @@
+---
+title: Jeremyetal.|人们如何讨论武装冲突？
+date: 
+author: 
+tags: ['#比较政治学']
+---
 # Jeremyetal.|人们如何讨论武装冲突？
 
 

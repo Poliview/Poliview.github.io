@@ -1,3 +1,9 @@
+---
+title: 方法论衡|Kennedy等：让IP地址拯救我们的网络问卷
+date: 
+author: 政文观止
+tags: ['#方法论衡']
+---
 # 方法论衡|Kennedy等：让IP地址拯救我们的网络问卷
 
 

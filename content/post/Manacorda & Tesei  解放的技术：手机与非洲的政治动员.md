@@ -1,3 +1,9 @@
+---
+title: Manacorda&Tesei|解放的技术：手机与非洲的政治动员
+date: 
+author: 政文观止
+tags: ['#比较政治学']
+---
 # Manacorda&Tesei|解放的技术：手机与非洲的政治动员
 
 

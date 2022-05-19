@@ -1,3 +1,9 @@
+---
+title: AgustinaPaglayan|内战、政权巩固与大众教育普及
+date: 
+author: 政文观止
+tags: ['#历史政治学', '#国家建构与国家发展']
+---
 # AgustinaPaglayan|内战、政权巩固与大众教育普及
 
 

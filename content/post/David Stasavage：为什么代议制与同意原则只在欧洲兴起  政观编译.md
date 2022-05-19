@@ -1,3 +1,9 @@
+---
+title: DavidStasavage：为什么代议制与同意原则只在欧洲兴起|政观编译
+date: 
+author: 政文观止
+tags: ['#历史政治学', '#民主与民主化', '#比较政治学']
+---
 # DavidStasavage：为什么代议制与同意原则只在欧洲兴起|政观编译
 
 

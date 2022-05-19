@@ -1,3 +1,9 @@
+---
+title: PeterEsaiasson等：追求幸福：生活满意度驱动了政治支持|政观编译
+date: 
+author: 政文观止
+tags: ['#政治态度', '#比较政治学']
+---
 # PeterEsaiasson等：追求幸福：生活满意度驱动了政治支持|政观编译
 
 

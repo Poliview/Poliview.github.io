@@ -1,3 +1,9 @@
+---
+title: JamesMahoney：比较历史分析的三项原则——在第五期历史政治学工作坊上的开幕演讲
+date: 
+author: 
+tags: 
+---
 # JamesMahoney：比较历史分析的三项原则——在第五期历史政治学工作坊上的开幕演讲
 
 

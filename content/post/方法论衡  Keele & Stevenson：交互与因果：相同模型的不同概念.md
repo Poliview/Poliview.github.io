@@ -1,3 +1,9 @@
+---
+title: 方法论衡|Keele&Stevenson：交互与因果：相同模型的不同概念
+date: 
+author: 政文观止
+tags: 
+---
 # 方法论衡|Keele&Stevenson：交互与因果：相同模型的不同概念
 
 

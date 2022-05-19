@@ -1,3 +1,9 @@
+---
+title: MarkDincecco：国家能力、经济发展与历史角色|政观编译
+date: 
+author: 政文观止
+tags: ['#历史政治学', '#国家建构与国家发展']
+---
 # MarkDincecco：国家能力、经济发展与历史角色|政观编译
 
 

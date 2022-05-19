@@ -1,3 +1,9 @@
+---
+title: DanielTreisman|经济发展与民主：倾向和触发
+date: 
+author: 政文观止
+tags: ['#比较政治学']
+---
 # DanielTreisman|经济发展与民主：倾向和触发
 
 

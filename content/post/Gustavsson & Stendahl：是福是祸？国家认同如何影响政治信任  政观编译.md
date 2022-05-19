@@ -1,3 +1,9 @@
+---
+title: Gustavsson&Stendahl：是福是祸？国家认同如何影响政治信任|政观编译
+date: 
+author: 政文观止
+tags: 
+---
 # Gustavsson&Stendahl：是福是祸？国家认同如何影响政治信任|政观编译
 
 

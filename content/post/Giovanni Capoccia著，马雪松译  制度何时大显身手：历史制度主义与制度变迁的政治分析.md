@@ -1,3 +1,9 @@
+---
+title: GiovanniCapoccia著，马雪松译|制度何时大显身手：历史制度主义与制度变迁的政治分析
+date: 
+author: 
+tags: 
+---
 # GiovanniCapoccia著，马雪松译|制度何时大显身手：历史制度主义与制度变迁的政治分析
 
 

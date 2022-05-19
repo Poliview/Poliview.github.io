@@ -1,3 +1,9 @@
+---
+title: 方法论衡|Baumgartner等：广义一致分析：QCA的替代方案
+date: 
+author: 政文观止
+tags: 
+---
 # 方法论衡|Baumgartner等：广义一致分析：QCA的替代方案
 
 

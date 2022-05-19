@@ -1,3 +1,9 @@
+---
+title: 新刊速递|APSRVol.144,No.4,2020
+date: 
+author: 政文观止
+tags: ['#新刊速递']
+---
 # 新刊速递|APSRVol.144,No.4,2020
 
 

@@ -1,3 +1,9 @@
+---
+title: Gingerich&Vogler|大流行与政治发展：黑死病的政治遗产
+date: 
+author: 政文观止
+tags: ['#国家建构与国家发展', '#历史政治学']
+---
 # Gingerich&Vogler|大流行与政治发展：黑死病的政治遗产
 
 

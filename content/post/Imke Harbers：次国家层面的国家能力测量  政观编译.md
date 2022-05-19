@@ -1,3 +1,9 @@
+---
+title: ImkeHarbers：次国家层面的国家能力测量|政观编译
+date: 
+author: 政文观止
+tags: 
+---
 # ImkeHarbers：次国家层面的国家能力测量|政观编译
 
 

@@ -1,3 +1,9 @@
+---
+title: Viterna&Robertson|发展社会学的新方向
+date: 
+author: 政文观止
+tags: 
+---
 # Viterna&Robertson|发展社会学的新方向
 
 

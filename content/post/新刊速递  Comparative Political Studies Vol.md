@@ -1,3 +1,9 @@
+---
+title: 新刊速递|ComparativePoliticalStudiesVol.52,No.13-14,2019
+date: 
+author: 政文观止
+tags: 
+---
 # 新刊速递|ComparativePoliticalStudiesVol.52,No.13-14,2019
 
 

@@ -1,3 +1,9 @@
+---
+title: JoshuaSearle-White：民族主义的心理学基础|政观编译
+date: 
+author: 政文观止
+tags: ['#政治心理']
+---
 # JoshuaSearle-White：民族主义的心理学基础|政观编译
 
 

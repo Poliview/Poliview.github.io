@@ -1,3 +1,9 @@
+---
+title: Levitsky&Murillo|制度力量的变化
+date: 
+author: 政文观止
+tags: 
+---
 # Levitsky&Murillo|制度力量的变化
 
 

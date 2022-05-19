@@ -1,3 +1,9 @@
+---
+title: BeatrizMagaloni|选举在威权政体中的作用
+date: 
+author: 
+tags: 
+---
 # BeatrizMagaloni|选举在威权政体中的作用
 
 

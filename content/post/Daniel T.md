@@ -1,3 +1,9 @@
+---
+title: DanielT.Gilbert：人天生是轻信的动物|政观编译
+date: 
+author: 政文观止
+tags: ['#政治心理']
+---
 # DanielT.Gilbert：人天生是轻信的动物|政观编译
 
 

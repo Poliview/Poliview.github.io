@@ -1,3 +1,9 @@
+---
+title: RachelBeattyRiedl等|威权领导下的政治转型
+date: 
+author: 政文观止
+tags: ['#比较政治学']
+---
 # RachelBeattyRiedl等|威权领导下的政治转型
 
 

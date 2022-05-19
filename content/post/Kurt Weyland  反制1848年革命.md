@@ -1,3 +1,9 @@
+---
+title: KurtWeyland|反制1848年革命
+date: 
+author: 政文观止
+tags: ['#历史政治学', '#民主与民主化', '#比较政治学']
+---
 # KurtWeyland|反制1848年革命
 
 

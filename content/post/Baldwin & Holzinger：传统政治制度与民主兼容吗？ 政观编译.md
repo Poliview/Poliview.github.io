@@ -1,3 +1,9 @@
+---
+title: Baldwin&Holzinger：传统政治制度与民主兼容吗？|政观编译
+date: 
+author: 政文观止
+tags: ['#民主与民主化', '#比较政治学']
+---
 # Baldwin&Holzinger：传统政治制度与民主兼容吗？|政观编译
 
 

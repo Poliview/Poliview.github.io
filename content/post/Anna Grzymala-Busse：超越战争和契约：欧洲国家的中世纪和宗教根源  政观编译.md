@@ -1,3 +1,9 @@
+---
+title: AnnaGrzymala-Busse：超越战争和契约：欧洲国家的中世纪和宗教根源|政观编译
+date: 
+author: 政文观止
+tags: ['#国家建构与国家发展', '#比较政治学', '#历史政治学']
+---
 # AnnaGrzymala-Busse：超越战争和契约：欧洲国家的中世纪和宗教根源|政观编译
 
 

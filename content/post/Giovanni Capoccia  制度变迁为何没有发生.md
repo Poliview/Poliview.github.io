@@ -1,3 +1,9 @@
+---
+title: GiovanniCapoccia|制度变迁为何没有发生
+date: 
+author: 政文观止
+tags: ['#历史政治学', '#民主与民主化', '#比较政治学']
+---
 # GiovanniCapoccia|制度变迁为何没有发生
 
 

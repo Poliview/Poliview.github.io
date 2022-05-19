@@ -1,3 +1,9 @@
+---
+title: CallforPapers|2021年定量中国研究研讨会征稿启事
+date: 
+author: 
+tags: 
+---
 # CallforPapers|2021年定量中国研究研讨会征稿启事
 
 

@@ -1,3 +1,9 @@
+---
+title: ChristianWelzel：重访亚洲价值观|政观编译
+date: 
+author: 政文观止
+tags: ['#比较政治学', '#政治文化']
+---
 # ChristianWelzel：重访亚洲价值观|政观编译
 
 

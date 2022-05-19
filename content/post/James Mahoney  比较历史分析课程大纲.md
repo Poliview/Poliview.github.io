@@ -1,3 +1,9 @@
+---
+title: JamesMahoney|比较历史分析课程大纲
+date: 
+author: 
+tags: 
+---
 # JamesMahoney|比较历史分析课程大纲
 
 

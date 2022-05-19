@@ -1,3 +1,9 @@
+---
+title: StephenKrasner：国家权力和国际贸易结构|政观编译
+date: 
+author: 政文观止
+tags: ['#比较政治学', '#国家建构与国家发展']
+---
 # StephenKrasner：国家权力和国际贸易结构|政观编译
 
 

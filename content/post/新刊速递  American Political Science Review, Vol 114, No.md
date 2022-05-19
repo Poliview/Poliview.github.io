@@ -1,3 +1,9 @@
+---
+title: 新刊速递|AmericanPoliticalScienceReview,Vol114,No.2（上）
+date: 
+author: 政文观止
+tags: 
+---
 # 新刊速递|AmericanPoliticalScienceReview,Vol114,No.2（上）
 
 

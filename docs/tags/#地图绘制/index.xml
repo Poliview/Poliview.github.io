@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>#地图绘制 on 政文观止Poliview</title>
+    <link>https://poliview.github.io/tags/#%E5%9C%B0%E5%9B%BE%E7%BB%98%E5%88%B6/</link>
+    <description>Recent content in #地图绘制 on 政文观止Poliview</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://poliview.github.io/tags/#%E5%9C%B0%E5%9B%BE%E7%BB%98%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>实用技术|关于世界地图文件的更新</title>
+      <link>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%96%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%96%B0/</guid>
+      <description>实用技术|关于世界地图文件的更新 收录于合集 #实用技术 19 个 #地图绘制 6 个 #数据可视化 15 个 我们在推出有关世界地图绘制和数据化（实用技术 | 如何用R</description>
+    </item>
+    
+    <item>
+      <title>实用技术|如何用R基本复现《经济学人》杂志中的地图插图</title>
+      <link>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%9F%BA%E6%9C%AC%E5%A4%8D%E7%8E%B0%E7%BB%8F%E6%B5%8E%E5%AD%A6%E4%BA%BA%E6%9D%82%E5%BF%97%E4%B8%AD%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%8F%92%E5%9B%BE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E5%9F%BA%E6%9C%AC%E5%A4%8D%E7%8E%B0%E7%BB%8F%E6%B5%8E%E5%AD%A6%E4%BA%BA%E6%9D%82%E5%BF%97%E4%B8%AD%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%8F%92%E5%9B%BE/</guid>
+      <description>实用技术|如何用R基本复现《经济学人》杂志中的地图插图 收录于合集 #地图绘制 6 个 #数据可视化 15 个 #实用技术 19 个 2020年初，突如其来的新型冠状</description>
+    </item>
+    
+    <item>
+      <title>实用技术|如何用R绘制中国历史地图</title>
+      <link>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%9C%B0%E5%9B%BE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E5%9C%B0%E5%9B%BE/</guid>
+      <description>实用技术|如何用R绘制中国历史地图 收录于合集 #地图绘制 6 个 #数据可视化 15 个 #实用技术 19 个 在前几期的实用技术推送中，我们与大家分享了《如何用R</description>
+    </item>
+    
+    <item>
+      <title>实用技术|如何用R绘制地图中的未定国界（含停火线）</title>
+      <link>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%AA%E5%AE%9A%E5%9B%BD%E7%95%8C%E5%90%AB%E5%81%9C%E7%81%AB%E7%BA%BF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%AA%E5%AE%9A%E5%9B%BD%E7%95%8C%E5%90%AB%E5%81%9C%E7%81%AB%E7%BA%BF/</guid>
+      <description>实用技术|如何用R绘制地图中的未定国界（含停火线） 收录于合集 #地图绘制 6 个 #数据可视化 15 个 我们在之前推送的《实用技术 | 如何用R绘制并填充相对</description>
+    </item>
+    
+    <item>
+      <title>实用技术|如何用R绘制并填充相对正确的世界地图</title>
+      <link>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%B9%B6%E5%A1%AB%E5%85%85%E7%9B%B8%E5%AF%B9%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%B9%B6%E5%A1%AB%E5%85%85%E7%9B%B8%E5%AF%B9%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE/</guid>
+      <description>实用技术|如何用R绘制并填充相对正确的世界地图 收录于合集 #地图绘制 6 个 #数据可视化 15 个 #实用技术 19 个 近几年来，随着负笈海外特别是美国的政治学</description>
+    </item>
+    
+    <item>
+      <title>实用技术|如何用R绘制并填充相对正确的中国地图</title>
+      <link>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%B9%B6%E5%A1%AB%E5%85%85%E7%9B%B8%E5%AF%B9%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%A6%82%E4%BD%95%E7%94%A8r%E7%BB%98%E5%88%B6%E5%B9%B6%E5%A1%AB%E5%85%85%E7%9B%B8%E5%AF%B9%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE/</guid>
+      <description>实用技术|如何用R绘制并填充相对正确的中国地图 收录于合集 #地图绘制 6 个 #数据可视化 15 个 #实用技术 19 个 标准地图象征着国家主权和领土完整。作为非</description>
+    </item>
+    
+  </channel>
+</rss>

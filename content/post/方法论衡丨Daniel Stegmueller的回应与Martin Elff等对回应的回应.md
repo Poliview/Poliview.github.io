@@ -1,3 +1,9 @@
+---
+title: 方法论衡丨DanielStegmueller的回应与MartinElff等对回应的回应
+date: 
+author: 政文观止
+tags: 
+---
 # 方法论衡丨DanielStegmueller的回应与MartinElff等对回应的回应
 
 

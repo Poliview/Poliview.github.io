@@ -1,3 +1,9 @@
+---
+title: ThomasOatley|复杂相互依赖的政治经济学
+date: 
+author: 
+tags: ['#比较政治学', '#政治经济学']
+---
 # ThomasOatley|复杂相互依赖的政治经济学
 
 

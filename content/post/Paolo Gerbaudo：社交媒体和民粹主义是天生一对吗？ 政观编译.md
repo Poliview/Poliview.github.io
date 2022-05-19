@@ -1,3 +1,9 @@
+---
+title: PaoloGerbaudo：社交媒体和民粹主义是天生一对吗？|政观编译
+date: 
+author: 政文观止
+tags: ['#政治传播']
+---
 # PaoloGerbaudo：社交媒体和民粹主义是天生一对吗？|政观编译
 
 

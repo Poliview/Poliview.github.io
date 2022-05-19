@@ -1,3 +1,9 @@
+---
+title: 实用技术|regioncode:中国跨年份行政编码转换工具
+date: 
+author: 政文观止
+tags: ['#实用技术', '#数据可视化']
+---
 # 实用技术|regioncode:中国跨年份行政编码转换工具
 
 

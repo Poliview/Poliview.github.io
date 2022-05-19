@@ -1,3 +1,9 @@
+---
+title: EmilyErikson等：社会网络与宏观社会变迁|政观编译
+date: 
+author: 政文观止
+tags: ['#比较政治学', '#国家建构与国家发展']
+---
 # EmilyErikson等：社会网络与宏观社会变迁|政观编译
 
 

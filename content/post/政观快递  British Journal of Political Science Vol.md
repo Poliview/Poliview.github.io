@@ -1,3 +1,9 @@
+---
+title: 政观快递|BritishJournalofPoliticalScienceVol.49,No.04,2019
+date: 
+author: 政文观止
+tags: 
+---
 # 政观快递|BritishJournalofPoliticalScienceVol.49,No.04,2019
 
 

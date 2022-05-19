@@ -1,3 +1,9 @@
+---
+title: 受权发布|蒋俊彦：ChinesePoliticalEliteDatabase(CPED)1.0版
+date: 
+author: 政文观止
+tags: 
+---
 # 受权发布|蒋俊彦：ChinesePoliticalEliteDatabase(CPED)1.0版
 
 

@@ -1,3 +1,9 @@
+---
+title: 方法论衡|LukeKeele等：回归模型参数的因果解释
+date: 
+author: 政文观止
+tags: 
+---
 # 方法论衡|LukeKeele等：回归模型参数的因果解释
 
 

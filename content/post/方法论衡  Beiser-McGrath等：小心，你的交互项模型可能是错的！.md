@@ -1,3 +1,9 @@
+---
+title: 方法论衡|Beiser-McGrath等：小心，你的交互项模型可能是错的！
+date: 
+author: 政文观止
+tags: ['#方法论衡']
+---
 # 方法论衡|Beiser-McGrath等：小心，你的交互项模型可能是错的！
 
 

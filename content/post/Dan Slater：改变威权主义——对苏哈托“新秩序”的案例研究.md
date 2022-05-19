@@ -1,3 +1,9 @@
+---
+title: DanSlater：改变威权主义——对苏哈托“新秩序”的案例研究
+date: 
+author: 
+tags: 
+---
 # DanSlater：改变威权主义——对苏哈托“新秩序”的案例研究
 
 

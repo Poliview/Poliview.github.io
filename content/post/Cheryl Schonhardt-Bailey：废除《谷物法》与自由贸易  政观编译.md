@@ -1,3 +1,9 @@
+---
+title: CherylSchonhardt-Bailey：废除《谷物法》与自由贸易|政观编译
+date: 
+author: 政文观止
+tags: 
+---
 # CherylSchonhardt-Bailey：废除《谷物法》与自由贸易|政观编译
 
 

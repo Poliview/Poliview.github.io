@@ -1,3 +1,9 @@
+---
+title: Hassan,MattinglyandNugent|政治控制：策略与后果
+date: 
+author: 
+tags: ['#比较政治学']
+---
 # Hassan,MattinglyandNugent|政治控制：策略与后果
 
 

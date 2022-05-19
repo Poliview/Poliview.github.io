@@ -1,3 +1,9 @@
+---
+title: 政观快递|ComparativePoliticalStudies,Volume53,No6,2020
+date: 
+author: 政文观止
+tags: 
+---
 # 政观快递|ComparativePoliticalStudies,Volume53,No6,2020
 
 

@@ -1,3 +1,9 @@
+---
+title: MarkBevir|什么是系谱？
+date: 
+author: 政文观止
+tags: ['#方法论']
+---
 # MarkBevir|什么是系谱？
 
 

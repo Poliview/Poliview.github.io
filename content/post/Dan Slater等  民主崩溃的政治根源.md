@@ -1,3 +1,9 @@
+---
+title: DanSlater等|民主崩溃的政治根源
+date: 
+author: 政文观止
+tags: 
+---
 # DanSlater等|民主崩溃的政治根源
 
 

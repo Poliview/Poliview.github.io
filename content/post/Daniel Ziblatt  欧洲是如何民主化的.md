@@ -1,3 +1,9 @@
+---
+title: DanielZiblatt|欧洲是如何民主化的
+date: 
+author: 政文观止
+tags: ['#历史政治学', '#民主与民主化', '#比较政治学']
+---
 # DanielZiblatt|欧洲是如何民主化的
 
 

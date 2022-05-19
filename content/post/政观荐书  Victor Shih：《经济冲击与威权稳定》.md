@@ -1,3 +1,9 @@
+---
+title: 政观荐书|VictorShih：《经济冲击与威权稳定》
+date: 
+author: 政文观止
+tags: ['#民主与民主化', '#比较政治学']
+---
 # 政观荐书|VictorShih：《经济冲击与威权稳定》
 
 

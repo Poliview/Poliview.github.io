@@ -1,3 +1,9 @@
+---
+title: AtulKohli等：比较政治中理论的作用|政观编译
+date: 
+author: 政文观止
+tags: ['#比较政治学']
+---
 # AtulKohli等：比较政治中理论的作用|政观编译
 
 

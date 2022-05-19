@@ -1,3 +1,9 @@
+---
+title: WilliamHurst|诊治中国政治研究
+date: 
+author: 政文观止
+tags: ['#比较政治学']
+---
 # WilliamHurst|诊治中国政治研究
 
 

@@ -1,3 +1,9 @@
+---
+title: SamuelBeer，马雪松译|与现代性相遇
+date: 
+author: 
+tags: 
+---
 # SamuelBeer，马雪松译|与现代性相遇
 
 
