@@ -1,10 +1,9 @@
 ---
 title: 政观快递|BritishJournalofPoliticalScienceVol.49,No.04,2019
-date: 
+date: 2019-11-15 09:40:39
 author: 政文观止
 tags: 
 ---
-# 政观快递|BritishJournalofPoliticalScienceVol.49,No.04,2019
 
 
 收录于合集

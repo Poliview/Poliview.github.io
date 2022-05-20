@@ -1,10 +1,9 @@
 ---
 title: 方法论衡|DanielStegmueller：跨文化比较研究中的可比性问题
-date: 
+date: 2020-06-18 08:00:07
 author: 政文观止
 tags: 
 ---
-# 方法论衡|DanielStegmueller：跨文化比较研究中的可比性问题
 
 
 收录于合集

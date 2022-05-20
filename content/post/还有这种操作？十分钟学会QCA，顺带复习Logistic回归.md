@@ -1,10 +1,9 @@
 ---
 title: 还有这种操作？十分钟学会QCA，顺带复习Logistic回归
-date: 
+date: 2017-07-01 12:37:19
 author: 
 tags: 
 ---
-# 还有这种操作？十分钟学会QCA，顺带复习Logistic回归
 
 
 收录于合集

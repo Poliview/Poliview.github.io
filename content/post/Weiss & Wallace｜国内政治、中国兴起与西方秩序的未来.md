@@ -1,10 +1,9 @@
 ---
 title: Weiss&Wallace｜国内政治、中国兴起与西方秩序的未来
-date: 
+date: 2022-01-19 09:00:58
 author: 
 tags: 
 ---
-# Weiss&Wallace｜国内政治、中国兴起与西方秩序的未来
 
 
 收录于合集

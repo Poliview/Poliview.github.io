@@ -1,10 +1,9 @@
 ---
 title: Zubrzycki&Woźny：比较政治中的集体记忆与国家认同|政观编译
-date: 
+date: 2020-09-16 09:00:00
 author: 政文观止
 tags: 
 ---
-# Zubrzycki&Woźny：比较政治中的集体记忆与国家认同|政观编译
 
 
 收录于合集

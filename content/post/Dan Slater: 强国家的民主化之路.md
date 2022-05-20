@@ -1,10 +1,9 @@
 ---
 title: DanSlater:强国家的民主化之路
-date: 
+date: 2017-07-20 14:24:38
 author: 
 tags: 
 ---
-# DanSlater:强国家的民主化之路
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: SamuelBeer，马雪松译|与现代性相遇
-date: 
+date: 2018-08-29 09:54:57
 author: 
 tags: 
 ---
-# SamuelBeer，马雪松译|与现代性相遇
 
 
 收录于合集

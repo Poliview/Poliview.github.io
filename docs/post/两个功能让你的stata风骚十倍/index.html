@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>两个功能让你的Stata风骚十倍 | 政文观止Poliview</title>
 <meta name="keywords" content="#数据可视化, #实用技术">
-<meta name="description" content="两个功能让你的Stata风骚十倍 收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的">
+<meta name="description" content="收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的界面越来越友善，操作难度一降再降">
 <meta name="author" content="政观编辑部">
 <link rel="canonical" href="https://poliview.github.io/post/%E4%B8%A4%E4%B8%AA%E5%8A%9F%E8%83%BD%E8%AE%A9%E4%BD%A0%E7%9A%84stata%E9%A3%8E%E9%AA%9A%E5%8D%81%E5%80%8D/">
 <link crossorigin="anonymous" href="../../assets/css/stylesheet.min.26a03aaebed848bcf4fd29e1fd968f84febc16fd6e77126eaa4d1969fdfb3503.css" integrity="sha256-JqA6rr7YSLz0/Snh/ZaPhP68Fv1udxJuqk0Zaf37NQM=" rel="preload stylesheet" as="style">
@@ -57,15 +57,15 @@
 
     </style>
 </noscript><meta property="og:title" content="两个功能让你的Stata风骚十倍" />
-<meta property="og:description" content="两个功能让你的Stata风骚十倍 收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的" />
+<meta property="og:description" content="收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的界面越来越友善，操作难度一降再降" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://poliview.github.io/post/%E4%B8%A4%E4%B8%AA%E5%8A%9F%E8%83%BD%E8%AE%A9%E4%BD%A0%E7%9A%84stata%E9%A3%8E%E9%AA%9A%E5%8D%81%E5%80%8D/" /><meta property="article:section" content="post" />
-
-
+<meta property="article:published_time" content="2017-09-15T20:12:00&#43;00:00" />
+<meta property="article:modified_time" content="2017-09-15T20:12:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="两个功能让你的Stata风骚十倍"/>
-<meta name="twitter:description" content="两个功能让你的Stata风骚十倍 收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的"/>
+<meta name="twitter:description" content="收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的界面越来越友善，操作难度一降再降"/>
 
 
 <script type="application/ld+json">
@@ -94,15 +94,15 @@
   "@type": "BlogPosting",
   "headline": "两个功能让你的Stata风骚十倍",
   "name": "两个功能让你的Stata风骚十倍",
-  "description": "两个功能让你的Stata风骚十倍 收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的",
+  "description": "收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的界面越来越友善，操作难度一降再降",
   "keywords": [
     "#数据可视化", "#实用技术"
   ],
-  "articleBody": "两个功能让你的Stata风骚十倍 收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n从小编的直观感受来看，Stata这几年过得并不好。\n一方面，SPSS的界面越来越友善，操作难度一降再降，让零基础的用户爱不释手，甚至反过来帮助许多人学会了统计。另一方面，R语言的魅力逐渐在不同群体中扩散，强大到逆天的功能（尤其是数据可视化）让越来越多的文青变成了码农。相比之下，Stata似乎总是不那么让人满意，初学者对它望洋兴叹，老司机则对它不屑一顾。幸运的是，Stata有着良好的开放性，大神们源源不断地供应着package，而我们则可以简单粗暴地拿来弥补自己的手残。今天，小编就为大家介绍两个实用而方便的package，学会之后记得分享哦。（本文操作软件为Stata 14.0，示例文件为Stata自带的auto.dta，下文功能均可通过findit-install安装。）\nOutreg2\n多个模型排排坐\n曾经的小编还不会做回归，但paper中漂亮的回归表格还是让人心驰神往。特别是那些小星星，多好看啊！\n后来，小编终于学会了Stata，兴冲冲地按下了reg，却发现：\n这是什么？？？？\n我的星星呢！！！\n我的星星呢！！！\n我一定用了假的reg！\n后来，小编经过沉思，\n自认为找到了真相：\n他们的系数和星星是\n一个一个贴上去的！！\n然而，他们只是装了outreg2而已。\n有了这个杀器，回归结果就直观多了。举个栗子，我们对auto文件中的若干变量进行了一顿毫无逻辑的回归（仅作参考，请勿模仿），并调用了outreg2命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom trunk weight length turndisplacement gear_ratio foreign\noutreg2 using reg, word\n就可以得到如下结果：\n可见，用星星表示的显著性、括号内的标准误和表格下的R方都已经乖乖排好了，再也不需要复制粘贴这种naïve的操作了。\n当然，单个模型还体现不出outreg2的优势，下面展示并列输出的命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom\nest store model1\nreg price mpg rep78 headroom trunk weight length\nest store model2\nreg price mpg rep78 headroom trunk weight length turndisplacement gear_ratio foreign\nest store model3\noutreg2 [model1 model2 model3] using regs, word replace\n得到如下结果:\n可见，上方的回归表格非常完整，不需要修改就可以直接插入自己的paper中。此外，生成的文件名（本例中为“reg”和“regs”）和文件格式（本例中为word）都可以根据需要来变更。\n Coefplot\n回归系数可视化\n当小编终于学会上述的操作时，发现paper里好像又不流行回归表了。大牛们会画出一些有点有线的图。类似下图：\n这些图是怎么来的？又是什么含义呢？小编同样通过一个栗子来为大家说明。我们再次对auto文件进行毫无逻辑的回归，并调用coefplot命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom trunk weight length turn\ncoefplot, drop(_cons) xline(0)\n结果如下：\n根据package中的说明信息，我们了解到，上图中蓝色的点为回归系数（未标准化），横线则为回归系数的置信区间。根据回归分析中βj=0的虚无假设，回归系数（含置信区间）在0点右侧表示影响为正，在0点左侧则表示影响为负，如果回归系数的置信区间穿越了0点，那么这个自变量对因变量的影响就不显著。可见，在本例中，大部分变量都不显著。\n与outreg2类似，coefplot也可以并列输出：\nreg price mpg rep78 headroom trunk weight length turn ifdisplacementest store low\nreg price mpg rep78 headroom trunk weight length turn if displacement=200\nest store high\ncoefplot high low,drop(_cons) xline(0)\n  以上就是小编为大家带来的介绍。这是政文观止创号以来第一篇纯技术贴，欢迎各位读者多多拍砖，也希望读者朋友能和政观分享你们学习计量工具过程中的心得与体会。\n政文观止编辑部\n微信扫一扫赞赏作者 __赞赏\n已喜欢，对作者说句悄悄话\n取消 __\n发送给作者 发送\n最多40字，当前共字\n 人赞赏\n上一页 1/3 下一页\n长按二维码向我转账\n受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。\n",
-  "wordCount" : "1444",
+  "articleBody": "收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n从小编的直观感受来看，Stata这几年过得并不好。\n一方面，SPSS的界面越来越友善，操作难度一降再降，让零基础的用户爱不释手，甚至反过来帮助许多人学会了统计。另一方面，R语言的魅力逐渐在不同群体中扩散，强大到逆天的功能（尤其是数据可视化）让越来越多的文青变成了码农。相比之下，Stata似乎总是不那么让人满意，初学者对它望洋兴叹，老司机则对它不屑一顾。幸运的是，Stata有着良好的开放性，大神们源源不断地供应着package，而我们则可以简单粗暴地拿来弥补自己的手残。今天，小编就为大家介绍两个实用而方便的package，学会之后记得分享哦。（本文操作软件为Stata 14.0，示例文件为Stata自带的auto.dta，下文功能均可通过findit-install安装。）\nOutreg2\n多个模型排排坐\n曾经的小编还不会做回归，但paper中漂亮的回归表格还是让人心驰神往。特别是那些小星星，多好看啊！\n后来，小编终于学会了Stata，兴冲冲地按下了reg，却发现：\n这是什么？？？？\n我的星星呢！！！\n我的星星呢！！！\n我一定用了假的reg！\n后来，小编经过沉思，\n自认为找到了真相：\n他们的系数和星星是\n一个一个贴上去的！！\n然而，他们只是装了outreg2而已。\n有了这个杀器，回归结果就直观多了。举个栗子，我们对auto文件中的若干变量进行了一顿毫无逻辑的回归（仅作参考，请勿模仿），并调用了outreg2命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom trunk weight length turndisplacement gear_ratio foreign\noutreg2 using reg, word\n就可以得到如下结果：\n可见，用星星表示的显著性、括号内的标准误和表格下的R方都已经乖乖排好了，再也不需要复制粘贴这种naïve的操作了。\n当然，单个模型还体现不出outreg2的优势，下面展示并列输出的命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom\nest store model1\nreg price mpg rep78 headroom trunk weight length\nest store model2\nreg price mpg rep78 headroom trunk weight length turndisplacement gear_ratio foreign\nest store model3\noutreg2 [model1 model2 model3] using regs, word replace\n得到如下结果:\n可见，上方的回归表格非常完整，不需要修改就可以直接插入自己的paper中。此外，生成的文件名（本例中为“reg”和“regs”）和文件格式（本例中为word）都可以根据需要来变更。\n Coefplot\n回归系数可视化\n当小编终于学会上述的操作时，发现paper里好像又不流行回归表了。大牛们会画出一些有点有线的图。类似下图：\n这些图是怎么来的？又是什么含义呢？小编同样通过一个栗子来为大家说明。我们再次对auto文件进行毫无逻辑的回归，并调用coefplot命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom trunk weight length turn\ncoefplot, drop(_cons) xline(0)\n结果如下：\n根据package中的说明信息，我们了解到，上图中蓝色的点为回归系数（未标准化），横线则为回归系数的置信区间。根据回归分析中βj=0的虚无假设，回归系数（含置信区间）在0点右侧表示影响为正，在0点左侧则表示影响为负，如果回归系数的置信区间穿越了0点，那么这个自变量对因变量的影响就不显著。可见，在本例中，大部分变量都不显著。\n与outreg2类似，coefplot也可以并列输出：\nreg price mpg rep78 headroom trunk weight length turn ifdisplacementest store low\nreg price mpg rep78 headroom trunk weight length turn if displacement=200\nest store high\ncoefplot high low,drop(_cons) xline(0)\n  以上就是小编为大家带来的介绍。这是政文观止创号以来第一篇纯技术贴，欢迎各位读者多多拍砖，也希望读者朋友能和政观分享你们学习计量工具过程中的心得与体会。\n政文观止编辑部\n微信扫一扫赞赏作者 __赞赏\n已喜欢，对作者说句悄悄话\n取消 __\n发送给作者 发送\n最多40字，当前共字\n 人赞赏\n上一页 1/3 下一页\n长按二维码向我转账\n受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。\n",
+  "wordCount" : "1428",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
+  "datePublished": "2017-09-15T20:12:00Z",
+  "dateModified": "2017-09-15T20:12:00Z",
   "author":{
     "@type": "Person",
     "name": "政观编辑部"
@@ -204,7 +204,7 @@
     <h1 class="post-title">
       两个功能让你的Stata风骚十倍
     </h1>
-    <div class="post-meta">3 min&nbsp;·&nbsp;政观编辑部
+    <div class="post-meta"><span title='2017-09-15 20:12:00 +0000 UTC'>2017-09-15</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;政观编辑部
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
@@ -216,17 +216,8 @@
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e4%b8%a4%e4%b8%aa%e5%8a%9f%e8%83%bd%e8%ae%a9%e4%bd%a0%e7%9a%84stata%e9%a3%8e%e9%aa%9a%e5%8d%81%e5%80%8d" aria-label="两个功能让你的Stata风骚十倍">两个功能让你的Stata风骚十倍</a><ul>
-                            <ul>
-                            <ul>
-                            
-                    <li>
                         <a href="#%e5%8f%91%e9%80%81%e7%bb%99%e4%bd%9c%e8%80%85" aria-label="发送给作者">发送给作者</a>
                     </li>
-                </ul>
-                </ul>
-                </ul>
-                </li>
                 </ul>
             </div>
         </details>
@@ -292,8 +283,7 @@
     }
 </script>
 
-  <div class="post-content"><h1 id="两个功能让你的stata风骚十倍">两个功能让你的Stata风骚十倍<a hidden class="anchor" aria-hidden="true" href="#两个功能让你的stata风骚十倍">#</a></h1>
-<p>收录于合集</p>
+  <div class="post-content"><p>收录于合集</p>
 <p>#数据可视化 15 个</p>
 <p>#实用技术 19 个</p>
 <p>从小编的直观感受来看，Stata这几年过得并不好。</p>
@@ -397,15 +387,15 @@ foreign</p>
       <li><a href="https://poliview.github.io/tags/#%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/">#实用技术</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://poliview.github.io/post/%E4%B8%9C%E5%8D%97%E4%BA%9A%E6%94%BF%E6%B2%BB%E6%94%AF%E6%8C%81%E7%9A%84%E6%9D%A5%E6%BA%90/">
+  <a class="prev" href="https://poliview.github.io/post/%E7%A7%91%E5%88%A9%E5%B0%94%E5%AF%B9%E8%AF%9Dkkv%E9%87%8D%E6%80%9D%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6/">
     <span class="title">« Prev Page</span>
     <br>
-    <span>东南亚政治支持的来源</span>
+    <span>科利尔对话KKV：重思社会科学研究</span>
   </a>
-  <a class="next" href="https://poliview.github.io/post/%E4%B8%AD%E5%8D%97%E8%B4%A2%E6%B3%95%E5%AD%A6%E9%99%A2%E9%99%A2%E9%95%BF%E9%99%88%E6%9F%8F%E5%B3%B0%E8%B0%88%E5%AF%92%E9%97%A8%E5%AD%90%E5%BC%9F%E5%8F%8C%E4%B8%80%E6%B5%81%E5%A4%A7%E5%AD%A6%E6%B2%A1%E6%9C%89%E5%BA%9F%E7%89%A9/">
+  <a class="next" href="https://poliview.github.io/post/%E6%B0%91%E4%B8%BB%E5%8C%96%E4%B8%8E%E5%9B%BD%E5%AE%B6%E6%9E%84%E5%BB%BA/">
     <span class="title">Next Page »</span>
     <br>
-    <span>中南财法学院院长陈柏峰谈寒门子弟：“双一流”大学没有“废物”</span>
+    <span>民主化与国家构建</span>
   </a>
 </nav>
 

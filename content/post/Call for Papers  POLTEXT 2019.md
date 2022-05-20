@@ -1,10 +1,9 @@
 ---
 title: CallforPapers|POLTEXT2019
-date: 
+date: 2019-03-30 11:43:31
 author: 
 tags: 
 ---
-# CallforPapers|POLTEXT2019
 
 
 收录于合集

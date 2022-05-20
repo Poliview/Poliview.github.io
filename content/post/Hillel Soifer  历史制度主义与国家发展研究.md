@@ -1,10 +1,9 @@
 ---
 title: HillelSoifer|历史制度主义与国家发展研究
-date: 
+date: 2018-08-15 10:29:00
 author: 政文观止
 tags: 
 ---
-# HillelSoifer|历史制度主义与国家发展研究
 
 
 收录于合集

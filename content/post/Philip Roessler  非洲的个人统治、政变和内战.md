@@ -1,10 +1,9 @@
 ---
 title: PhilipRoessler|非洲的个人统治、政变和内战
-date: 
+date: 2018-11-23 19:06:52
 author: 政文观止
 tags: 
 ---
-# PhilipRoessler|非洲的个人统治、政变和内战
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: RonaldInglehart|发展与民主：一种文化演化的视角
-date: 
+date: 2019-06-06 10:15:58
 author: 政文观止
 tags: ['#比较政治学', '#政治文化']
 ---
-# RonaldInglehart|发展与民主：一种文化演化的视角
 
 
 收录于合集

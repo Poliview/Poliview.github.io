@@ -1,10 +1,9 @@
 ---
 title: BeatrizMagaloni|选举在威权政体中的作用
-date: 
+date: 2018-10-25 09:21:34
 author: 
 tags: 
 ---
-# BeatrizMagaloni|选举在威权政体中的作用
 
 
 收录于合集

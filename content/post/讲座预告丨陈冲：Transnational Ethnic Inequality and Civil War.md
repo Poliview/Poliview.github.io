@@ -1,10 +1,9 @@
 ---
 title: 讲座预告丨陈冲：TransnationalEthnicInequalityandCivilWar
-date: 
+date: 2020-05-23 09:17:06
 author: 
 tags: 
 ---
-# 讲座预告丨陈冲：TransnationalEthnicInequalityandCivilWar
 
 
 收录于合集

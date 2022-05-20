@@ -1,10 +1,9 @@
 ---
 title: JamesMahoney|比较历史分析课程大纲
-date: 
+date: 2019-09-03 12:31:41
 author: 
 tags: 
 ---
-# JamesMahoney|比较历史分析课程大纲
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: 新刊速递|AmericanPoliticalScienceReview,Vol114,No.2（上）
-date: 
+date: 2020-05-22 09:30:03
 author: 政文观止
 tags: 
 ---
-# 新刊速递|AmericanPoliticalScienceReview,Vol114,No.2（上）
 
 
 收录于合集

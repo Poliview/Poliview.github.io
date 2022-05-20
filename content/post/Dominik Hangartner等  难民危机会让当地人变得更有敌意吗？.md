@@ -1,10 +1,9 @@
 ---
 title: DominikHangartner等|难民危机会让当地人变得更有敌意吗？
-date: 
+date: 2019-03-23 11:39:35
 author: 政文观止
 tags: ['#比较政治学', '#政治心理']
 ---
-# DominikHangartner等|难民危机会让当地人变得更有敌意吗？
 
 
 收录于合集

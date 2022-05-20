@@ -1,10 +1,9 @@
 ---
 title: EvanLieberman|社会科学到底有多少种研究方法?
-date: 
+date: 2018-08-05 16:13:10
 author: 政文观止
 tags: 
 ---
-# EvanLieberman|社会科学到底有多少种研究方法?
 
 
 收录于合集

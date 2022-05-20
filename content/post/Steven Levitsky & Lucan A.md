@@ -1,10 +1,9 @@
 ---
 title: StevenLevitsky&LucanA.Way|比较历史分析中的威权韧性
-date: 
+date: 2018-08-09 13:51:19
 author: 政文观止
 tags: ['#历史政治学', '#民主与民主化', '#比较政治学', '#国家建构与国家发展']
 ---
-# StevenLevitsky&LucanA.Way|比较历史分析中的威权韧性
 
 
 收录于合集

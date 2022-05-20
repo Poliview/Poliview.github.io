@@ -1,10 +1,9 @@
 ---
 title: JohnMcCauley等：敏感数据收集过程中的“葡萄藤效应”|政观编译
-date: 
+date: 2020-10-13 09:00:00
 author: 政文观止
 tags: 
 ---
-# JohnMcCauley等：敏感数据收集过程中的“葡萄藤效应”|政观编译
 
 
 收录于合集

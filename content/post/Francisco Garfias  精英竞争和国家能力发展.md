@@ -1,10 +1,9 @@
 ---
 title: FranciscoGarfias|精英竞争和国家能力发展
-date: 
+date: 2018-09-12 11:21:00
 author: 政文观止
 tags: 
 ---
-# FranciscoGarfias|精英竞争和国家能力发展
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: JamesN.Druckman|政治学实验：历史、种类与意义
-date: 
+date: 2018-07-11 11:39:14
 author: 政文观止
 tags: 
 ---
-# JamesN.Druckman|政治学实验：历史、种类与意义
 
 
 收录于合集

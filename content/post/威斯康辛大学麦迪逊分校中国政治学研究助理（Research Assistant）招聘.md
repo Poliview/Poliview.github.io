@@ -1,10 +1,9 @@
 ---
 title: 威斯康辛大学麦迪逊分校中国政治学研究助理（ResearchAssistant）招聘
-date: 
+date: 2020-12-22 12:00:00
 author: 
 tags: ['#学习与工作机会']
 ---
-# 威斯康辛大学麦迪逊分校中国政治学研究助理（ResearchAssistant）招聘
 
 
 收录于合集 #学习与工作机会 3个

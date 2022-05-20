@@ -1,10 +1,9 @@
 ---
 title: 开放投稿|ASIANREVIEWOFPOLITICALECONOMY
-date: 
+date: 2022-04-11 09:00:00
 author: 
 tags: ['#政观书讯']
 ---
-# 开放投稿|ASIANREVIEWOFPOLITICALECONOMY
 
 
 收录于合集 #政观书讯 16个

@@ -1,10 +1,9 @@
 ---
 title: Jeremyetal.|人们如何讨论武装冲突？
-date: 
+date: 2022-03-26 09:00:00
 author: 
 tags: ['#比较政治学']
 ---
-# Jeremyetal.|人们如何讨论武装冲突？
 
 
 收录于合集 #比较政治学 121个

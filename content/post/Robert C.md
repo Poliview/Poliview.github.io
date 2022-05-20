@@ -1,10 +1,9 @@
 ---
 title: RobertC.Lieberman，马雪松译|观念、制度与政治秩序：解释政治变迁的综合模型
-date: 
+date: 2019-04-30 00:02:40
 author: 
 tags: 
 ---
-# RobertC.Lieberman，马雪松译|观念、制度与政治秩序：解释政治变迁的综合模型
 
 
 收录于合集

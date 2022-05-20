@@ -1,10 +1,9 @@
 ---
 title: ImkeHarbers：次国家层面的国家能力测量|政观编译
-date: 
+date: 2020-08-27 09:01:23
 author: 政文观止
 tags: 
 ---
-# ImkeHarbers：次国家层面的国家能力测量|政观编译
 
 
 收录于合集

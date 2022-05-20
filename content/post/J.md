@@ -1,10 +1,9 @@
 ---
 title: J.PhilippeRushton：基因、演化与民族主义的真相|政观编译
-date: 
+date: 2020-11-27 09:00:00
 author: 政文观止
 tags: ['#民族主义', '#政治心理']
 ---
-# J.PhilippeRushton：基因、演化与民族主义的真相|政观编译
 
 
 收录于合集

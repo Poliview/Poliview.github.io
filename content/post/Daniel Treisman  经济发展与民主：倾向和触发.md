@@ -1,10 +1,9 @@
 ---
 title: DanielTreisman|经济发展与民主：倾向和触发
-date: 
+date: 2021-11-17 08:59:36
 author: 政文观止
 tags: ['#比较政治学']
 ---
-# DanielTreisman|经济发展与民主：倾向和触发
 
 
 收录于合集 #比较政治学 121个

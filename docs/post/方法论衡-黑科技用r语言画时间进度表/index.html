@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>方法论衡|黑科技：用R语言画时间进度表 | 政文观止Poliview</title>
 <meta name="keywords" content="">
-<meta name="description" content="方法论衡|黑科技：用R语言画时间进度表 收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的propo">
+<meta name="description" content="收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的proposal抓耳挠腮、心急如焚？又是否和小编">
 <meta name="author" content="政文观止">
 <link rel="canonical" href="https://poliview.github.io/post/%E6%96%B9%E6%B3%95%E8%AE%BA%E8%A1%A1-%E9%BB%91%E7%A7%91%E6%8A%80%E7%94%A8r%E8%AF%AD%E8%A8%80%E7%94%BB%E6%97%B6%E9%97%B4%E8%BF%9B%E5%BA%A6%E8%A1%A8/">
 <link crossorigin="anonymous" href="../../assets/css/stylesheet.min.26a03aaebed848bcf4fd29e1fd968f84febc16fd6e77126eaa4d1969fdfb3503.css" integrity="sha256-JqA6rr7YSLz0/Snh/ZaPhP68Fv1udxJuqk0Zaf37NQM=" rel="preload stylesheet" as="style">
@@ -57,15 +57,15 @@
 
     </style>
 </noscript><meta property="og:title" content="方法论衡|黑科技：用R语言画时间进度表" />
-<meta property="og:description" content="方法论衡|黑科技：用R语言画时间进度表 收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的propo" />
+<meta property="og:description" content="收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的proposal抓耳挠腮、心急如焚？又是否和小编" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://poliview.github.io/post/%E6%96%B9%E6%B3%95%E8%AE%BA%E8%A1%A1-%E9%BB%91%E7%A7%91%E6%8A%80%E7%94%A8r%E8%AF%AD%E8%A8%80%E7%94%BB%E6%97%B6%E9%97%B4%E8%BF%9B%E5%BA%A6%E8%A1%A8/" /><meta property="article:section" content="post" />
-
-
+<meta property="article:published_time" content="2019-10-23T09:04:30&#43;00:00" />
+<meta property="article:modified_time" content="2019-10-23T09:04:30&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="方法论衡|黑科技：用R语言画时间进度表"/>
-<meta name="twitter:description" content="方法论衡|黑科技：用R语言画时间进度表 收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的propo"/>
+<meta name="twitter:description" content="收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的proposal抓耳挠腮、心急如焚？又是否和小编"/>
 
 
 <script type="application/ld+json">
@@ -94,15 +94,15 @@
   "@type": "BlogPosting",
   "headline": "方法论衡|黑科技：用R语言画时间进度表",
   "name": "方法论衡|黑科技：用R语言画时间进度表",
-  "description": "方法论衡|黑科技：用R语言画时间进度表 收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的propo",
+  "description": "收录于合集 10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的proposal抓耳挠腮、心急如焚？又是否和小编",
   "keywords": [
     
   ],
-  "articleBody": "方法论衡|黑科技：用R语言画时间进度表 收录于合集\n10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的proposal抓耳挠腮、心急如焚？又是否和小编一样完全不知道研究设计的timetable如何规划？不要慌！\n本期政文观止Poliview送你一份黑科技，用R语言画出的时间进度表一定会让你的申请如虎添翼！\n首先，我们手工录入数据，把自己预期的研究进度分项列出来。为了方便R语言识别，我们多加了一列Ranks来和目标任务（Tasks）匹配起来。此处需要注意填写时间单元格时的格式。\n下一步，我们将所有单元格堆砌成tidy数据的要求。（小伙伴们可自行探索R语言中堆砌数据的功能，不会的朋友就和小编一起人工堆砌吧）\n接下来，用RStudio导入数据，调整一下Time变量的格式，检查一下有无错漏。看起来没有什么问题，那么接着载入需要用的ggplot2和scales包。\n接下来开始基本的作图。在时间进度表里，我们需要用直线来表示时间跨度，同时在末尾加一个箭头表示时间的方向。首先，我们指定映射关系和坐标图层。\n在此基础上，根据Ranks分组连线，形成基本的时间跨度。\n此处需要一个箭头，于是更新一下代码。\n修饰一下细节。大功告成！\n事实上，在上述操作中，Tasks和Type基本属于冗余信息。有兴趣的小伙伴可以自行探索如何利用这两列来简化代码或修饰图形。\n点击“在看”，再点击“阅读原文”可以拿到代码哦。\n撰文：陆屹洲\n审读：杨端程\n编辑：康张城\n",
-  "wordCount" : "622",
+  "articleBody": "收录于合集\n10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的proposal抓耳挠腮、心急如焚？又是否和小编一样完全不知道研究设计的timetable如何规划？不要慌！\n本期政文观止Poliview送你一份黑科技，用R语言画出的时间进度表一定会让你的申请如虎添翼！\n首先，我们手工录入数据，把自己预期的研究进度分项列出来。为了方便R语言识别，我们多加了一列Ranks来和目标任务（Tasks）匹配起来。此处需要注意填写时间单元格时的格式。\n下一步，我们将所有单元格堆砌成tidy数据的要求。（小伙伴们可自行探索R语言中堆砌数据的功能，不会的朋友就和小编一起人工堆砌吧）\n接下来，用RStudio导入数据，调整一下Time变量的格式，检查一下有无错漏。看起来没有什么问题，那么接着载入需要用的ggplot2和scales包。\n接下来开始基本的作图。在时间进度表里，我们需要用直线来表示时间跨度，同时在末尾加一个箭头表示时间的方向。首先，我们指定映射关系和坐标图层。\n在此基础上，根据Ranks分组连线，形成基本的时间跨度。\n此处需要一个箭头，于是更新一下代码。\n修饰一下细节。大功告成！\n事实上，在上述操作中，Tasks和Type基本属于冗余信息。有兴趣的小伙伴可以自行探索如何利用这两列来简化代码或修饰图形。\n点击“在看”，再点击“阅读原文”可以拿到代码哦。\n撰文：陆屹洲\n审读：杨端程\n编辑：康张城\n",
+  "wordCount" : "603",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
+  "datePublished": "2019-10-23T09:04:30Z",
+  "dateModified": "2019-10-23T09:04:30Z",
   "author":{
     "@type": "Person",
     "name": "政文观止"
@@ -204,87 +204,12 @@
     <h1 class="post-title">
       方法论衡|黑科技：用R语言画时间进度表
     </h1>
-    <div class="post-meta">2 min&nbsp;·&nbsp;政文观止
+    <div class="post-meta"><span title='2019-10-23 09:04:30 +0000 UTC'>2019-10-23</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;政文观止
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">Table of Contents</span>
-            </summary>
+  </header> 
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e6%96%b9%e6%b3%95%e8%ae%ba%e8%a1%a1%e9%bb%91%e7%a7%91%e6%8a%80%e7%94%a8r%e8%af%ad%e8%a8%80%e7%94%bb%e6%97%b6%e9%97%b4%e8%bf%9b%e5%ba%a6%e8%a1%a8" aria-label="方法论衡|黑科技：用R语言画时间进度表">方法论衡|黑科技：用R语言画时间进度表</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
-
-  <div class="post-content"><h1 id="方法论衡黑科技用r语言画时间进度表">方法论衡|黑科技：用R语言画时间进度表<a hidden class="anchor" aria-hidden="true" href="#方法论衡黑科技用r语言画时间进度表">#</a></h1>
-<p>收录于合集</p>
+  <div class="post-content"><p>收录于合集</p>
 <p>10月，保研的厮杀刚刚落幕，紧张的申请季又来临了。各位读者是否和小编一样对着手里的proposal抓耳挠腮、心急如焚？又是否和小编一样完全不知道研究设计的timetable如何规划？不要慌！</p>
 <p>本期政文观止Poliview送你一份黑科技，用R语言画出的时间进度表一定会让你的申请如虎添翼！</p>
 <p>首先，我们手工录入数据，把自己预期的研究进度分项列出来。为了方便R语言识别，我们多加了一列Ranks来和目标任务（Tasks）匹配起来。此处需要注意填写时间单元格时的格式。</p>
@@ -334,15 +259,15 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://poliview.github.io/post/%E6%96%B9%E6%B3%95%E8%AE%BA%E8%A1%A1-%E8%B5%B5%E9%BC%8E%E6%96%B0%E6%9C%BA%E5%88%B6%E8%A7%A3%E9%87%8A%E7%9A%84%E8%AF%A0%E9%87%8A%E5%AD%A6%E6%8C%91%E6%88%98%E5%92%8C%E5%9B%9E%E5%BA%94/">
+  <a class="prev" href="https://poliview.github.io/post/%E6%94%BF%E8%A7%82%E8%8D%90%E4%B9%A6-victor-shih%E7%BB%8F%E6%B5%8E%E5%86%B2%E5%87%BB%E4%B8%8E%E5%A8%81%E6%9D%83%E7%A8%B3%E5%AE%9A/">
     <span class="title">« Prev Page</span>
     <br>
-    <span>方法论衡|赵鼎新：机制解释的诠释学挑战和回应</span>
+    <span>政观荐书|VictorShih：《经济冲击与威权稳定》</span>
   </a>
-  <a class="next" href="https://poliview.github.io/post/%E6%96%B9%E6%B3%95%E8%AE%BA%E8%A1%A1%E4%B8%A8daniel-stegmueller%E7%9A%84%E5%9B%9E%E5%BA%94%E4%B8%8Emartin-elff%E7%AD%89%E5%AF%B9%E5%9B%9E%E5%BA%94%E7%9A%84%E5%9B%9E%E5%BA%94/">
+  <a class="next" href="https://poliview.github.io/post/%E6%94%BF%E8%A7%82%E5%BF%AB%E9%80%92-annual-review-of-political-science-vol/">
     <span class="title">Next Page »</span>
     <br>
-    <span>方法论衡丨DanielStegmueller的回应与MartinElff等对回应的回应</span>
+    <span>政观快递|AnnualReviewofPoliticalScienceVol.22,2019（上）</span>
   </a>
 </nav>
 

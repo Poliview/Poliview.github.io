@@ -1,10 +1,9 @@
 ---
 title: Viterna&Robertson|发展社会学的新方向
-date: 
+date: 2019-08-21 14:40:47
 author: 政文观止
 tags: 
 ---
-# Viterna&Robertson|发展社会学的新方向
 
 
 收录于合集

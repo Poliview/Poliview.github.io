@@ -1,10 +1,9 @@
 ---
 title: WilliamHurst|诊治中国政治研究
-date: 
+date: 2018-08-27 10:43:33
 author: 政文观止
 tags: ['#比较政治学']
 ---
-# WilliamHurst|诊治中国政治研究
 
 
 收录于合集 #比较政治学 121个

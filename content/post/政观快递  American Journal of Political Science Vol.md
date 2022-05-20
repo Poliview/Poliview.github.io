@@ -1,10 +1,9 @@
 ---
 title: 政观快递|AmericanJournalofPoliticalScienceVol.63,No.04,2019
-date: 
+date: 2019-10-31 09:34:41
 author: 政文观止
 tags: 
 ---
-# 政观快递|AmericanJournalofPoliticalScienceVol.63,No.04,2019
 
 
 收录于合集

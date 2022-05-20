@@ -1,10 +1,9 @@
 ---
 title: 方法论衡丨DanielStegmueller的回应与MartinElff等对回应的回应
-date: 
+date: 2020-07-24 09:31:06
 author: 政文观止
 tags: 
 ---
-# 方法论衡丨DanielStegmueller的回应与MartinElff等对回应的回应
 
 
 收录于合集

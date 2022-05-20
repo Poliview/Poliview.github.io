@@ -1,10 +1,9 @@
 ---
 title: Sokoloff&Engerman|历史经验：新大陆的制度、要素禀赋和发展路径
-date: 
+date: 2019-06-14 15:21:20
 author: 政文观止
 tags: 
 ---
-# Sokoloff&Engerman|历史经验：新大陆的制度、要素禀赋和发展路径
 
 
 收录于合集

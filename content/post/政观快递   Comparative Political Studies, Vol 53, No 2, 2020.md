@@ -1,10 +1,9 @@
 ---
 title: 政观快递|ComparativePoliticalStudies,Vol53,No2,2020
-date: 
+date: 2020-01-18 15:20:52
 author: 政文观止
 tags: 
 ---
-# 政观快递|ComparativePoliticalStudies,Vol53,No2,2020
 
 
 收录于合集

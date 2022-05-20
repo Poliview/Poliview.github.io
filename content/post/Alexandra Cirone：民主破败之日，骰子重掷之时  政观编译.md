@@ -1,10 +1,9 @@
 ---
 title: AlexandraCirone：民主破败之日，骰子重掷之时|政观编译
-date: 
+date: 2020-01-08 15:05:23
 author: 政文观止
 tags: ['#民主与民主化', '#比较政治学']
 ---
-# AlexandraCirone：民主破败之日，骰子重掷之时|政观编译
 
 
 收录于合集

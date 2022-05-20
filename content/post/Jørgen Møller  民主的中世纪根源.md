@@ -1,10 +1,9 @@
 ---
 title: JørgenMøller|民主的中世纪根源
-date: 
+date: 2021-06-02 09:00:00
 author: 政文观止
 tags: ['#比较政治学', '#历史政治学']
 ---
-# JørgenMøller|民主的中世纪根源
 
 
 收录于合集

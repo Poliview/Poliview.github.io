@@ -1,10 +1,9 @@
 ---
 title: 政观快递|AmericanJournalofPoliticalScienceVol.64,No.1,2020
-date: 
+date: 2020-03-11 09:00:22
 author: 政文观止
 tags: 
 ---
-# 政观快递|AmericanJournalofPoliticalScienceVol.64,No.1,2020
 
 
 收录于合集

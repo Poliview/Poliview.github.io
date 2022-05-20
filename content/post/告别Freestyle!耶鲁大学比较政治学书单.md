@@ -1,10 +1,9 @@
 ---
 title: 告别Freestyle!耶鲁大学比较政治学书单
-date: 
+date: 2017-07-02 13:32:07
 author: 
 tags: 
 ---
-# 告别Freestyle!耶鲁大学比较政治学书单
 
 
 收录于合集

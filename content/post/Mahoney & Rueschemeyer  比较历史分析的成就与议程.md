@@ -1,10 +1,9 @@
 ---
 title: Mahoney&Rueschemeyer|比较历史分析的成就与议程
-date: 
+date: 2018-08-23 14:51:02
 author: 政文观止
 tags: ['#历史政治学', '#比较政治学']
 ---
-# Mahoney&Rueschemeyer|比较历史分析的成就与议程
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: Polo&González：内战中动员与恐袭的逻辑|政观编译
-date: 
+date: 2020-08-19 09:00:39
 author: 政文观止
 tags: 
 ---
-# Polo&González：内战中动员与恐袭的逻辑|政观编译
 
 
 收录于合集

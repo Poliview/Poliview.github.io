@@ -1,10 +1,9 @@
 ---
 title: AndrewBennett：过程追踪和因果推论|政观编译
-date: 
+date: 2019-12-09 13:03:03
 author: 政文观止
 tags: 
 ---
-# AndrewBennett：过程追踪和因果推论|政观编译
 
 
 收录于合集

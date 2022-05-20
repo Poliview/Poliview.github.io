@@ -1,10 +1,9 @@
 ---
 title: 方法论衡|DanielStegmueller：国家—个人嵌套的多层模型——两种统计学派的视角
-date: 
+date: 2020-07-01 09:20:34
 author: 政文观止
 tags: 
 ---
-# 方法论衡|DanielStegmueller：国家—个人嵌套的多层模型——两种统计学派的视角
 
 
 收录于合集

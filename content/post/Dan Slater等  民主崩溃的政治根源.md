@@ -1,10 +1,9 @@
 ---
 title: DanSlater等|民主崩溃的政治根源
-date: 
+date: 2019-04-06 11:04:18
 author: 政文观止
 tags: 
 ---
-# DanSlater等|民主崩溃的政治根源
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: AlbertoSimpser等|虽死犹生：帝国主义、威权主义和共产主义的当代遗产
-date: 
+date: 2020-02-05 14:37:04
 author: 政文观止
 tags: 
 ---
-# AlbertoSimpser等|虽死犹生：帝国主义、威权主义和共产主义的当代遗产
 
 
 收录于合集

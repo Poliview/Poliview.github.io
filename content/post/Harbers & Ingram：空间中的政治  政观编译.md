@@ -1,10 +1,9 @@
 ---
 title: Harbers&Ingram：空间中的政治|政观编译
-date: 
+date: 2020-10-30 09:00:17
 author: 政文观止
 tags: ['#民主与民主化', '#比较政治学']
 ---
-# Harbers&Ingram：空间中的政治|政观编译
 
 
 收录于合集

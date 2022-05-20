@@ -1,10 +1,9 @@
 ---
 title: 强主权与弱国家：StatesandpowerinAfrica读书札记
-date: 
+date: 2018-06-23 13:13:42
 author: 政文观止
 tags: ['#比较政治学', '#国家建构与国家发展']
 ---
-# 强主权与弱国家：StatesandpowerinAfrica读书札记
 
 
 收录于合集

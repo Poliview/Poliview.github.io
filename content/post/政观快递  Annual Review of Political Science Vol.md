@@ -1,10 +1,9 @@
 ---
 title: 政观快递|AnnualReviewofPoliticalScienceVol.22,2019（上）
-date: 
+date: 2019-10-21 09:43:49
 author: 政文观止
 tags: 
 ---
-# 政观快递|AnnualReviewofPoliticalScienceVol.22,2019（上）
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: 政观快递|AmericanPoliticalScienceReviewVol.113,No.4,2019
-date: 
+date: 2019-12-18 09:14:24
 author: 政文观止
 tags: 
 ---
-# 政观快递|AmericanPoliticalScienceReviewVol.113,No.4,2019
 
 
 收录于合集

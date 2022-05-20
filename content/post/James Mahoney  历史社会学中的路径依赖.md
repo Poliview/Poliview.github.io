@@ -1,10 +1,9 @@
 ---
 title: JamesMahoney|历史社会学中的路径依赖
-date: 
+date: 2019-05-22 09:03:49
 author: 政文观止
 tags: 
 ---
-# JamesMahoney|历史社会学中的路径依赖
 
 
 收录于合集

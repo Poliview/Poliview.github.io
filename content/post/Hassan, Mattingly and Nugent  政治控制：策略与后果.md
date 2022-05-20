@@ -1,10 +1,9 @@
 ---
 title: Hassan,MattinglyandNugent|政治控制：策略与后果
-date: 
+date: 2022-02-09 10:06:56
 author: 
 tags: ['#比较政治学']
 ---
-# Hassan,MattinglyandNugent|政治控制：策略与后果
 
 
 收录于合集 #比较政治学 121个

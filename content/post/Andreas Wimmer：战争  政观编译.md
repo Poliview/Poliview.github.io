@@ -1,10 +1,9 @@
 ---
 title: AndreasWimmer：战争|政观编译
-date: 
+date: 2020-10-26 09:00:59
 author: 政文观止
 tags: ['#历史政治学', '#比较政治学', '#国家建构与国家发展']
 ---
-# AndreasWimmer：战争|政观编译
 
 
 收录于合集

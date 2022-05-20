@@ -1,10 +1,9 @@
 ---
 title: Mattingly&Yao:政治传播与民族主义|政观编译
-date: 
+date: 2020-02-10 18:18:01
 author: 政文观止
 tags: ['#政治传播', '#政治心理']
 ---
-# Mattingly&Yao:政治传播与民族主义|政观编译
 
 
 收录于合集

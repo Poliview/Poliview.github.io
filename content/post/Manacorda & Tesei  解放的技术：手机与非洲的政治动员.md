@@ -1,10 +1,9 @@
 ---
 title: Manacorda&Tesei|解放的技术：手机与非洲的政治动员
-date: 
+date: 2021-06-29 09:00:00
 author: 政文观止
 tags: ['#比较政治学']
 ---
-# Manacorda&Tesei|解放的技术：手机与非洲的政治动员
 
 
 收录于合集 #比较政治学 121个

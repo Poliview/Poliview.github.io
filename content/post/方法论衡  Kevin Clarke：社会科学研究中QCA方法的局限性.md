@@ -1,10 +1,9 @@
 ---
 title: 方法论衡|KevinClarke：社会科学研究中QCA方法的局限性
-date: 
+date: 2020-05-11 14:44:45
 author: 政文观止
 tags: 
 ---
-# 方法论衡|KevinClarke：社会科学研究中QCA方法的局限性
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: 政观快递|AmericanPoliticalScienceReviewNo.1,2020（中）
-date: 
+date: 2020-05-05 08:08:41
 author: 政文观止
 tags: 
 ---
-# 政观快递|AmericanPoliticalScienceReviewNo.1,2020（中）
 
 
 收录于合集

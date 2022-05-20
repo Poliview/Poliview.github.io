@@ -1,10 +1,9 @@
 ---
 title: JoshuaSearle-White：民族主义的心理学基础|政观编译
-date: 
+date: 2020-09-30 10:00:00
 author: 政文观止
 tags: ['#政治心理']
 ---
-# JoshuaSearle-White：民族主义的心理学基础|政观编译
 
 
 收录于合集 #政治心理 9个

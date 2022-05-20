@@ -1,10 +1,9 @@
 ---
 title: MatthijsBogaards：民主化的案例研究|政观编译
-date: 
+date: 2020-10-08 09:00:00
 author: 政文观止
 tags: ['#民主与民主化', '#比较政治学', '#历史政治学']
 ---
-# MatthijsBogaards：民主化的案例研究|政观编译
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: Stenner&Haidt|政治心理学视野中的民粹主义
-date: 
+date: 2019-01-14 15:22:33
 author: 政文观止
 tags: ['#政治心理', '#比较政治学']
 ---
-# Stenner&Haidt|政治心理学视野中的民粹主义
 
 
 收录于合集

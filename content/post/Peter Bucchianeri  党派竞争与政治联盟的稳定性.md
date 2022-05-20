@@ -1,10 +1,9 @@
 ---
 title: PeterBucchianeri|党派竞争与政治联盟的稳定性
-date: 
+date: 2021-07-21 09:00:00
 author: 政文观止
 tags: ['#比较政治学']
 ---
-# PeterBucchianeri|党派竞争与政治联盟的稳定性
 
 
 收录于合集 #比较政治学 121个

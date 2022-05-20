@@ -1,10 +1,9 @@
 ---
 title: Levitsky&Murillo|制度力量的变化
-date: 
+date: 2019-01-09 15:22:48
 author: 政文观止
 tags: 
 ---
-# Levitsky&Murillo|制度力量的变化
 
 
 收录于合集

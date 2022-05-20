@@ -1,10 +1,9 @@
 ---
 title: 政观快递|PerspectivesonPoliticsVol.17,No.4,2019
-date: 
+date: 2019-12-07 09:48:03
 author: 政文观止
 tags: 
 ---
-# 政观快递|PerspectivesonPoliticsVol.17,No.4,2019
 
 
 收录于合集

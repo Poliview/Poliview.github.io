@@ -1,10 +1,9 @@
 ---
 title: BarryDriscoll|为什么政治竞争能够强化庇护主义？
-date: 
+date: 2019-07-02 09:00:09
 author: 政文观止
 tags: 
 ---
-# BarryDriscoll|为什么政治竞争能够强化庇护主义？
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: PabloBarberá等：解读推特用户的政治代表性|政观编译
-date: 
+date: 2020-04-09 09:19:13
 author: 政文观止
 tags: 
 ---
-# PabloBarberá等：解读推特用户的政治代表性|政观编译
 
 
 收录于合集

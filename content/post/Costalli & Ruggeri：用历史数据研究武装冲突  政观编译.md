@@ -1,10 +1,9 @@
 ---
 title: Costalli&Ruggeri：用历史数据研究武装冲突|政观编译
-date: 
+date: 2019-12-24 09:00:04
 author: 政文观止
 tags: 
 ---
-# Costalli&Ruggeri：用历史数据研究武装冲突|政观编译
 
 
 收录于合集

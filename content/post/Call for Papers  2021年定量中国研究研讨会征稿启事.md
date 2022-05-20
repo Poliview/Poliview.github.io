@@ -1,10 +1,9 @@
 ---
 title: CallforPapers|2021年定量中国研究研讨会征稿启事
-date: 
+date: 2020-11-23 10:07:40
 author: 
 tags: 
 ---
-# CallforPapers|2021年定量中国研究研讨会征稿启事
 
 
 收录于合集

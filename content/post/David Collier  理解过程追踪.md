@@ -1,10 +1,9 @@
 ---
 title: DavidCollier|理解过程追踪
-date: 
+date: 2019-05-13 09:28:16
 author: 政文观止
 tags: 
 ---
-# DavidCollier|理解过程追踪
 
 
 收录于合集

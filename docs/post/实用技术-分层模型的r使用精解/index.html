@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>实用技术|分层模型的R使用精解 | 政文观止Poliview</title>
 <meta name="keywords" content="#实用技术">
-<meta name="description" content="实用技术|分层模型的R使用精解 收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现">
+<meta name="description" content="收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴">
 <meta name="author" content="政文观止">
 <link rel="canonical" href="https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84r%E4%BD%BF%E7%94%A8%E7%B2%BE%E8%A7%A3/">
 <link crossorigin="anonymous" href="../../assets/css/stylesheet.min.26a03aaebed848bcf4fd29e1fd968f84febc16fd6e77126eaa4d1969fdfb3503.css" integrity="sha256-JqA6rr7YSLz0/Snh/ZaPhP68Fv1udxJuqk0Zaf37NQM=" rel="preload stylesheet" as="style">
@@ -57,15 +57,15 @@
 
     </style>
 </noscript><meta property="og:title" content="实用技术|分层模型的R使用精解" />
-<meta property="og:description" content="实用技术|分层模型的R使用精解 收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现" />
+<meta property="og:description" content="收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84r%E4%BD%BF%E7%94%A8%E7%B2%BE%E8%A7%A3/" /><meta property="article:section" content="post" />
-
-
+<meta property="article:published_time" content="2022-01-06T09:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-01-06T09:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="实用技术|分层模型的R使用精解"/>
-<meta name="twitter:description" content="实用技术|分层模型的R使用精解 收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现"/>
+<meta name="twitter:description" content="收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴"/>
 
 
 <script type="application/ld+json">
@@ -94,15 +94,15 @@
   "@type": "BlogPosting",
   "headline": "实用技术|分层模型的R使用精解",
   "name": "实用技术|分层模型的R使用精解",
-  "description": "实用技术|分层模型的R使用精解 收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现",
+  "description": "收录于合集 #实用技术 19个 最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴",
   "keywords": [
     "#实用技术"
   ],
-  "articleBody": "实用技术|分层模型的R使用精解 收录于合集 #实用技术 19个\n最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。\n引言（非原文内容）\n分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。\n而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)\n图一\n图二\n这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。\n分层模型精解\n仅有随机截距的两层模型\n这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：\n   lmer(y ~ 1 + (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型\n如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：\n   lmer(y ~ var + (var | level_2), data = data)   存在调节变量的模型\n有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：\n   lmer(y ~ var*mod + (var | level_2), data = data)  解释变量和截距项的调整\n如果认为仅有解释变量存在随机效应，而截距项没有随机效应，那么模型设定如下：\n   lmer(y ~ var + (var + 0 | level_2), data = data)  反之，如果认为仅有截距项存在随机效应，而解释变量没有随机效应，那么模型设定如下：\n   lmer(y ~ var + (1 | level_2), data = data)  此外，如果认为解释变量和截距项都有随机效应，且二者不相关，那么模型设定有两种方式：\n lmer(y ~ var + (var || level_2), data = data) 或lmer(y ~ var + (1 | level_2) + (var + 0 | level_2), data = data)  仅有随机截距的三层模型\n如果数据结构更为复杂，例如学生隶属于不同学校，学校坐立于不同城市，那么这时候就需要更高层次的组别进行嵌套：\n lmer(y ~ 1 + (1 | level_2/level_3), data = data)或lmer(y ~ 1 + (1 | level_3:level_2) + (1 | level_3), data = data)  第一层级解释变量的随机效应模型\n如果认为最底层的解释变量在第二层和第三层的不同组别中对结果变量的影响大小不同，类似于两层模型的随机效应设定：\n lmer(y ~ var + (var | level_2/level_3), data = data)或lmer(y ~ var + (var | level_3:level_2) + (var | level_3), data = data)  第二层级解释变量的随机效应模型\n由于第二层级的解释变量Var不可能在第二层存在随机效应，随机效应仅存在于第三层，那么模型设定就需要进行拆分：\n   lmer(y ~ Var + (1 | level_3:level_2) + (Var | level_3), data = data)  跨层交互效应在三层的随机效应\n有时候模型会设定跨层交互效应，如果这种跨层交互效应在第三层的不同组别也是不同的，模型设定如下：\n   lmer(y ~ var*Mod + (var | level_3:level_2) + (var*Mod | level_3), data = data)  其他可能存在但是不常见的情况\n以上模型拟合都是假定不同组别的方差是相等的，如果方差不相等，那lmer()函数可能就无法拟合，需要使用lme()进行拟合。此外，还有部分模型涉及到时间上的自相关、时间上的断点以及二次项的非线性关系拟合等问题，帖子上只做了简介。在这里也只是方便大家快速的查阅使用啦。\n撰文：刘天祥 审读：吴温泉 编辑：康张城\n",
-  "wordCount" : "1488",
+  "articleBody": "收录于合集 #实用技术 19个\n最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“ 阅读原文 ”） 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。\n引言（非原文内容）\n分层线性模型是对线性回归模型的拓展（包括广义线性模型）分层模型可以通过对截距（intercept）和斜率（slope）的理解分为随机截距（random intercept）模型和随机斜率（random slope）模型。随机截距模型指的是不同组别之间的截距不一样，但是斜率是一样的，如下虚拟数据所呈现的。\n而随机斜率模型可以理解为截距一样，但是斜率不一样(如下图一)。然而现实情况往往是，如果斜率不一样，那么截距通常也是不一样的(如下图二)\n图一\n图二\n这种情况下再使用线性回归模型就会产生问题（关于为什么要使用分层模型更精细的解释可以参考Gelman and Hill 2007)。本文将展示各种分层模型设定的R代码，使用lme4 package来实现模型拟合。\n分层模型精解\n仅有随机截距的两层模型\n这个模型就是一个基础模型，设定了随机截距，没有其他变量。其中level_2是第二层组别变量：\n   lmer(y ~ 1 + (1 | level_2), data = data)  包含第一层变量随机斜率的两层模型\n如果认为第一层（比如学生个体）的解释变量var在第二层（比如学校）组别中对结果变量的影响不同，那么就可以设定这个变量的随机效应。此时，模型中的1（代表截距）可以省略：\n   lmer(y ~ var + (var | level_2), data = data)   存在调节变量的模型\n有时候理论认为解释变量对结果变量的作用受到调节变量mod的影响，这种调节效应在不同组别都一样，那么这时候可以加入交互项：\n   lmer(y ~ var*mod + (var | level_2), data = data)  解释变量和截距项的调整\n如果认为仅有解释变量存在随机效应，而截距项没有随机效应，那么模型设定如下：\n   lmer(y ~ var + (var + 0 | level_2), data = data)  反之，如果认为仅有截距项存在随机效应，而解释变量没有随机效应，那么模型设定如下：\n   lmer(y ~ var + (1 | level_2), data = data)  此外，如果认为解释变量和截距项都有随机效应，且二者不相关，那么模型设定有两种方式：\n lmer(y ~ var + (var || level_2), data = data) 或lmer(y ~ var + (1 | level_2) + (var + 0 | level_2), data = data)  仅有随机截距的三层模型\n如果数据结构更为复杂，例如学生隶属于不同学校，学校坐立于不同城市，那么这时候就需要更高层次的组别进行嵌套：\n lmer(y ~ 1 + (1 | level_2/level_3), data = data)或lmer(y ~ 1 + (1 | level_3:level_2) + (1 | level_3), data = data)  第一层级解释变量的随机效应模型\n如果认为最底层的解释变量在第二层和第三层的不同组别中对结果变量的影响大小不同，类似于两层模型的随机效应设定：\n lmer(y ~ var + (var | level_2/level_3), data = data)或lmer(y ~ var + (var | level_3:level_2) + (var | level_3), data = data)  第二层级解释变量的随机效应模型\n由于第二层级的解释变量Var不可能在第二层存在随机效应，随机效应仅存在于第三层，那么模型设定就需要进行拆分：\n   lmer(y ~ Var + (1 | level_3:level_2) + (Var | level_3), data = data)  跨层交互效应在三层的随机效应\n有时候模型会设定跨层交互效应，如果这种跨层交互效应在第三层的不同组别也是不同的，模型设定如下：\n   lmer(y ~ var*Mod + (var | level_3:level_2) + (var*Mod | level_3), data = data)  其他可能存在但是不常见的情况\n以上模型拟合都是假定不同组别的方差是相等的，如果方差不相等，那lmer()函数可能就无法拟合，需要使用lme()进行拟合。此外，还有部分模型涉及到时间上的自相关、时间上的断点以及二次项的非线性关系拟合等问题，帖子上只做了简介。在这里也只是方便大家快速的查阅使用啦。\n撰文：刘天祥 审读：吴温泉 编辑：康张城\n",
+  "wordCount" : "1473",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
+  "datePublished": "2022-01-06T09:00:00Z",
+  "dateModified": "2022-01-06T09:00:00Z",
   "author":{
     "@type": "Person",
     "name": "政文观止"
@@ -204,87 +204,12 @@
     <h1 class="post-title">
       实用技术|分层模型的R使用精解
     </h1>
-    <div class="post-meta">3 min&nbsp;·&nbsp;政文观止
+    <div class="post-meta"><span title='2022-01-06 09:00:00 +0000 UTC'>2022-01-06</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;政文观止
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">Table of Contents</span>
-            </summary>
+  </header> 
 
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e5%ae%9e%e7%94%a8%e6%8a%80%e6%9c%af%e5%88%86%e5%b1%82%e6%a8%a1%e5%9e%8b%e7%9a%84r%e4%bd%bf%e7%94%a8%e7%b2%be%e8%a7%a3" aria-label="实用技术|分层模型的R使用精解">实用技术|分层模型的R使用精解</a>
-                    </li>
-                </ul>
-            </div>
-        </details>
-    </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
-
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
-
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
-
-  <div class="post-content"><h1 id="实用技术分层模型的r使用精解">实用技术|分层模型的R使用精解<a hidden class="anchor" aria-hidden="true" href="#实用技术分层模型的r使用精解">#</a></h1>
-<p>收录于合集 #实用技术 19个</p>
+  <div class="post-content"><p>收录于合集 #实用技术 19个</p>
 <p>最近看到一篇帖子（实则导师发现的），比较精细化地展示了不同设定下分层模型的R语言实现。考虑到现在使用分层模型的伙伴们越来越多，因此也通过这里将这个帖子引介给大家。（原帖链接见“
 <strong>阅读原文</strong> ”）
 由于微信推送小编推送公式难度较大（截图太难受了），所以我尽量用简洁的文字来表述相应的模型设定。想要通过数学公式来了解具体的模型可以参考原文链接哦。</p>
@@ -378,15 +303,15 @@ intercept）模型和随机斜率（random slope）模型。随机截距模型�
       <li><a href="https://poliview.github.io/tags/#%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/">#实用技术</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%96%B0/">
+  <a class="prev" href="https://poliview.github.io/post/rachel-beatty-riedl%E7%AD%89-%E5%A8%81%E6%9D%83%E9%A2%86%E5%AF%BC%E4%B8%8B%E7%9A%84%E6%94%BF%E6%B2%BB%E8%BD%AC%E5%9E%8B/">
     <span class="title">« Prev Page</span>
     <br>
-    <span>实用技术|关于世界地图文件的更新</span>
+    <span>RachelBeattyRiedl等|威权领导下的政治转型</span>
   </a>
-  <a class="next" href="https://poliview.github.io/post/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF-%E5%8D%81%E5%88%86%E9%92%9F%E6%90%9E%E5%AE%9A%E5%93%91%E9%93%83%E5%9B%BEr%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/">
+  <a class="next" href="https://poliview.github.io/post/%E4%BC%9A%E8%AE%AE%E9%A2%84%E5%91%8A-%E6%94%BF%E7%9F%A5%E5%9D%8A%E7%BD%91%E7%BB%9C%E7%A0%94%E8%AE%A8%E4%BC%9A%E9%82%80%E8%AF%B7%E5%87%BD-%E6%9A%A8%E7%AC%AC%E4%B8%89%E5%8D%81%E6%9C%9F%E6%94%BF%E6%B2%BB%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E5%B7%A5%E4%BD%9C%E5%9D%8A/">
     <span class="title">Next Page »</span>
     <br>
-    <span>实用技术|十分钟搞定哑铃图——R实现与论文复盘</span>
+    <span>会议预告|“政知坊”网络研讨会邀请函——暨第三十期政治科学研究工作坊</span>
   </a>
 </nav>
 

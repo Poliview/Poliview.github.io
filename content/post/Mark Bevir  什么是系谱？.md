@@ -1,10 +1,9 @@
 ---
 title: MarkBevir|什么是系谱？
-date: 
+date: 2021-07-29 09:00:00
 author: 政文观止
 tags: ['#方法论']
 ---
-# MarkBevir|什么是系谱？
 
 
 收录于合集 #方法论 3个

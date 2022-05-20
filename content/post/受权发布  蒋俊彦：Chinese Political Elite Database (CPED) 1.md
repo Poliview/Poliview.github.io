@@ -1,10 +1,9 @@
 ---
 title: 受权发布|蒋俊彦：ChinesePoliticalEliteDatabase(CPED)1.0版
-date: 
+date: 2018-09-21 23:03:22
 author: 政文观止
 tags: 
 ---
-# 受权发布|蒋俊彦：ChinesePoliticalEliteDatabase(CPED)1.0版
 
 
 收录于合集

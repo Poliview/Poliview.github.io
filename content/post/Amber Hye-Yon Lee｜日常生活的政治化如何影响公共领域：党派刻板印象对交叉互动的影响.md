@@ -1,10 +1,9 @@
 ---
 title: AmberHye-YonLee｜日常生活的政治化如何影响公共领域：党派刻板印象对交叉互动的影响
-date: 
+date: 2021-10-11 09:00:00
 author: 
 tags: 
 ---
-# AmberHye-YonLee｜日常生活的政治化如何影响公共领域：党派刻板印象对交叉互动的影响
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: PUPX政文观止Poliview|冲突与变革中的人类社会：资本主义、民主与发展
-date: 
+date: 2021-08-02 09:00:00
 author: 
 tags: 
 ---
-# PUPX政文观止Poliview|冲突与变革中的人类社会：资本主义、民主与发展
 
 
 收录于合集

@@ -1,10 +1,9 @@
 ---
 title: AndreasSchedler：非民主选举和民主选举|政观编译
-date: 
+date: 2020-09-04 09:00:00
 author: 政文观止
 tags: ['#民主与民主化', '#比较政治学']
 ---
-# AndreasSchedler：非民主选举和民主选举|政观编译
 
 
 收录于合集

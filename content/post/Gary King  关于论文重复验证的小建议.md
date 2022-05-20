@@ -1,10 +1,9 @@
 ---
 title: GaryKing|关于论文重复验证的小建议
-date: 
+date: 2018-07-07 17:49:47
 author: 政文观止
 tags: 
 ---
-# GaryKing|关于论文重复验证的小建议
 
 
 收录于合集

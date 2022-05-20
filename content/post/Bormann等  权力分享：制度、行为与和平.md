@@ -1,10 +1,9 @@
 ---
 title: Bormann等|权力分享：制度、行为与和平
-date: 
+date: 2019-04-18 09:31:38
 author: 政文观止
 tags: 
 ---
-# Bormann等|权力分享：制度、行为与和平
 
 
 收录于合集

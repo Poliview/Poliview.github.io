@@ -1,10 +1,9 @@
 ---
 title: 政观专栏：周源|2019ICPSRSummerProgram参加侧记
-date: 
+date: 2019-09-24 22:57:45
 author: 政文观止
 tags: ['#专栏文章']
 ---
-# 政观专栏：周源|2019ICPSRSummerProgram参加侧记
 
 
 收录于合集 #专栏文章 11个

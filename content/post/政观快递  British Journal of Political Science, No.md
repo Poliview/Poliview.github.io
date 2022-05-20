@@ -1,10 +1,9 @@
 ---
 title: 政观快递|BritishJournalofPoliticalScience,No.1,2020（上）
-date: 
+date: 2020-02-18 10:01:50
 author: 政文观止
 tags: 
 ---
-# 政观快递|BritishJournalofPoliticalScience,No.1,2020（上）
 
 
 收录于合集
