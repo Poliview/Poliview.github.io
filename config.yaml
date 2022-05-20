@@ -39,12 +39,18 @@ languages:
         imageWidth: 150
         imageHeight: 150
         buttons:
-          - name: 👨🏻‍💻新刊速递
-            url: posts/tech
-          - name: 📕政观编译
-            url: posts/read
-          - name: 🏖政观原创
-            url: posts/life
+          - name: 🧧历史政治学
+            url: tags/历史政治学
+          - name: 📕国家建构与国家发展
+            url: tags/国家建构与国家发展
+          - name: 🌍比较政治学
+            url: tags/比较政治学
+          - name: 🗳️民主与民主化
+            url: tags/民主与民主化
+          - name: 🧑🏻‍🏫学人专访
+            url: tags/学人专访      
+          - name: 🧱实用技术
+            url: tags/学人专访                           
       menu:
         main:
           - identifier: search
@@ -120,10 +126,10 @@ params:
         - name: github
           url: "https://github.com/Poliview"
         - name: WeChat
-          url: "images/logo.jpg"
+          url: "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI5ODY0MTQ1OA==&scene=124#wechat_redirect"
 
     assets:
-        favicon: "image/logo.gif"
+        favicon: "image/logo.jpg"
         apple_touch_icon: "images/logo.jpg"
         safari_pinned_tab: "images/logo.jpg"
 
