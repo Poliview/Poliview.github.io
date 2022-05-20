@@ -48,13 +48,13 @@ languages:
       menu:
         main:
           - identifier: search
-            name: 🔍搜索
+            name: 🔍
             url: search
             weight: 1
-          - identifier: home
-            name: 🏠主页
-            url: /
-            weight: 2
+          # - identifier: home
+          #   name: 🏠主页
+          #   url: /
+          #   weight: 2
           - identifier: posts
             name: 📚文章
             url: post
