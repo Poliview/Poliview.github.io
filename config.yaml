@@ -34,7 +34,7 @@ languages:
         enabled: true
         title: 政文观止Poliview
         subtitle: "从一群年轻人的视角出发，专业、专注、专解海内外比较政治经济研究的前沿佳作。"
-        imageUrl: "images/logo.jpg"
+        imageUrl: "images/logo.jpeg"
         imageTitle: 
         imageWidth: 150
         imageHeight: 150
@@ -129,9 +129,9 @@ params:
           url: "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI5ODY0MTQ1OA==&scene=124#wechat_redirect"
 
     assets:
-        favicon: "image/logo.jpg"
-        apple_touch_icon: "images/logo.jpg"
-        safari_pinned_tab: "images/logo.jpg"
+        favicon: "image/logo.jpeg"
+        apple_touch_icon: "images/logo.jpeg"
+        safari_pinned_tab: "images/logo.jpeg"
 
     fuseOpts:
         isCaseSensitive: false
