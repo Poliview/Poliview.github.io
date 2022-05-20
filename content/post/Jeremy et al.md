@@ -2,7 +2,7 @@
 title: Jeremyetal.|人们如何讨论武装冲突？
 date: 2022-03-26 09:00:00
 author: 
-tags: ['#比较政治学']
+tags: ['比较政治学']
 ---
 
 

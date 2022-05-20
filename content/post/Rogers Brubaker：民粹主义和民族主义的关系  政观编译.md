@@ -2,7 +2,7 @@
 title: RogersBrubaker：民粹主义和民族主义的关系|政观编译
 date: 2020-04-01 09:00:32
 author: 政文观止
-tags: ['#比较政治学']
+tags: ['比较政治学']
 ---
 
 

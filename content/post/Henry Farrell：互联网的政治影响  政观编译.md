@@ -2,7 +2,7 @@
 title: HenryFarrell：互联网的政治影响|政观编译
 date: 2020-08-10 09:00:00
 author: 政文观止
-tags: ['#政治传播']
+tags: ['政治传播']
 ---
 
 

@@ -2,7 +2,7 @@
 title: RobertSapolsky：民族主义的生物学基础|政观编译
 date: 2020-08-07 09:30:11
 author: 政文观止
-tags: ['#政治心理']
+tags: ['政治心理']
 ---
 
 

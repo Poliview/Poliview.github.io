@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>R语言中实验数据的基本操作——看完还不会做政治学实验你就打我（二） | 政文观止Poliview</title>
-<meta name="keywords" content="#数据可视化, #实用技术">
+<meta name="keywords" content="数据可视化, 实用技术">
 <meta name="description" content="收录于合集 #数据可视化 15 个 #实用技术 19 个 文献来源： Imai, Kosuke. Quantitative social science: an introduction. Princeton University Press, 2017. pp.32-45. 数据集及程序可在qss.princeton.press/下载 作者简">
 <meta name="author" content="政文观止">
 <link rel="canonical" href="https://poliview.github.io/post/r%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9C%8B%E5%AE%8C%E8%BF%98%E4%B8%8D%E4%BC%9A%E5%81%9A%E6%94%BF%E6%B2%BB%E5%AD%A6%E5%AE%9E%E9%AA%8C%E4%BD%A0%E5%B0%B1%E6%89%93%E6%88%91%E4%BA%8C/">
@@ -96,7 +96,7 @@
   "name": "R语言中实验数据的基本操作——看完还不会做政治学实验你就打我（二）",
   "description": "收录于合集 #数据可视化 15 个 #实用技术 19 个 文献来源： Imai, Kosuke. Quantitative social science: an introduction. Princeton University Press, 2017. pp.32-45. 数据集及程序可在qss.princeton.press/下载 作者简",
   "keywords": [
-    "#数据可视化", "#实用技术"
+    "数据可视化", "实用技术"
   ],
   "articleBody": "收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n文献来源： Imai, Kosuke. Quantitative social science: an introduction. Princeton University Press, 2017. pp.32-45.\n数据集及程序可在qss.princeton.press/下载\n作者简介： Kosuke Imai（今井耕介），哈佛大学政府系与统计系教授，量化社会科学研究所成员，美国政治学方法论学会主席。今井先生为当代统计方法（尤其是因果推论）的发展及其在社会科学中的应用做出了卓越的贡献，同时为社会科学量身定做了十余款R语言程序包，被学界视为Gary King当之无愧的接班人。\n编者按： 很荣幸，政文观止开辟“看完还不会做政治学实验你就打我”系列的第一篇得到了读者朋友的喜爱。与此同时，也有读者反映，我们的推文似乎过于执着于方法论本身的探讨，没有实现“授人以渔”的初心。有鉴于此，本期政观特选编和复现了今井耕介先生在其经典教材中的一些软件操作，期盼所有读者都能愉快地享受“拿来主义”。\n一、实验说明\n本期实验的主题为“ 劳工市场是否存在种族歧视 ”。值得注意的是，研究者并没有直接招募不同种族的求职者或雇主来作为被试进行实体研究，而是用一种更为巧妙的方法将种族属性转化为处理变量。具体而言，研究者根据报纸上的招聘信息，向真实的雇主投去了虚假的简历。实验组和控制组的简历只在姓名上存在差异，其他的信息则都保持一致。实验组的简历都填上了经典的黑人姓名，譬如“Lakisha Washington”或“Jamal Jones”；控制组的简历则填上了经典的白人姓名，譬如“Emily Walsh”或“Greg Baker”。\n研究者渴望通过比较实验组和控制组得到雇主电话的频率来检验种族属性对于求职的实际影响。原始的数据集包括姓名、性别（男或女）、种族（黑或白）和来电（是/1或否/0）这四个变量，一共记录了4879个样本。\n二、命令汇总\nR语言中实验数据的操作一般包含如下命令，我们在此予以简要说明。各位读者可以通过“?命令”的方式在R语言中查看具体说明。\n三、数据分析\n1. 数据描述\n2. 交叉比较\n**\n**\n3. 分类比较\n**\n**\n4. 结论\n附有典型黑人姓名的简历获得了明显少于白人姓名的来电，这种情况在不同的性别间都比较普遍。因此，本实验在一定程度上说明，劳工市场中的种族歧视是确实存在而不可忽视的。\n注： 本文对今井先生的教材内容进行了最简单地遴选和复现，需要进一步学习地读者请完整阅读该教材。须特别强调的是，大多数R语言教材都要求读者使用“下期预告： 《外部效度到底是个什么东西——看完还不会做政治学实验你就打我（三）》\n编译：陆屹洲\n编辑：吴温泉\n审读：杨端程\n“广告点一点，也是支持学术公益”\n政文观止\n微信扫一扫赞赏作者 __赞赏\n已喜欢，对作者说句悄悄话\n取消 __\n发送给作者 发送\n最多40字，当前共字\n 人赞赏\n上一页 1/3 下一页\n长按二维码向我转账\n受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。\n",
   "wordCount" : "1201",
@@ -349,8 +349,8 @@ Washington”或“Jamal Jones”；控制组的简历则填上了经典的白�
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://poliview.github.io/tags/#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">#数据可视化</a></li>
-      <li><a href="https://poliview.github.io/tags/#%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/">#实用技术</a></li>
+      <li><a href="https://poliview.github.io/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化</a></li>
+      <li><a href="https://poliview.github.io/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/">实用技术</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://poliview.github.io/post/%E6%AF%94%E8%BE%83%E5%8E%86%E5%8F%B2%E5%88%86%E6%9E%90%E6%96%87%E7%8C%AE%E8%AE%A8%E8%AE%BA%E4%BC%9A%E4%B8%80/">
@@ -368,7 +368,7 @@ Washington”或“Jamal Jones”；控制组的简历则填上了经典的白�
 
 <div class="share-buttons">
     <a target="_blank" rel="noopener noreferrer" aria-label="share R语言中实验数据的基本操作——看完还不会做政治学实验你就打我（二） on twitter"
-        href="https://twitter.com/intent/tweet/?text=R%e8%af%ad%e8%a8%80%e4%b8%ad%e5%ae%9e%e9%aa%8c%e6%95%b0%e6%8d%ae%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c%e2%80%94%e2%80%94%e7%9c%8b%e5%ae%8c%e8%bf%98%e4%b8%8d%e4%bc%9a%e5%81%9a%e6%94%bf%e6%b2%bb%e5%ad%a6%e5%ae%9e%e9%aa%8c%e4%bd%a0%e5%b0%b1%e6%89%93%e6%88%91%ef%bc%88%e4%ba%8c%ef%bc%89&amp;url=https%3a%2f%2fpoliview.github.io%2fpost%2fr%25E8%25AF%25AD%25E8%25A8%2580%25E4%25B8%25AD%25E5%25AE%259E%25E9%25AA%258C%25E6%2595%25B0%25E6%258D%25AE%25E7%259A%2584%25E5%259F%25BA%25E6%259C%25AC%25E6%2593%258D%25E4%25BD%259C%25E7%259C%258B%25E5%25AE%258C%25E8%25BF%2598%25E4%25B8%258D%25E4%25BC%259A%25E5%2581%259A%25E6%2594%25BF%25E6%25B2%25BB%25E5%25AD%25A6%25E5%25AE%259E%25E9%25AA%258C%25E4%25BD%25A0%25E5%25B0%25B1%25E6%2589%2593%25E6%2588%2591%25E4%25BA%258C%2f&amp;hashtags=%23%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96%2c%23%e5%ae%9e%e7%94%a8%e6%8a%80%e6%9c%af">
+        href="https://twitter.com/intent/tweet/?text=R%e8%af%ad%e8%a8%80%e4%b8%ad%e5%ae%9e%e9%aa%8c%e6%95%b0%e6%8d%ae%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c%e2%80%94%e2%80%94%e7%9c%8b%e5%ae%8c%e8%bf%98%e4%b8%8d%e4%bc%9a%e5%81%9a%e6%94%bf%e6%b2%bb%e5%ad%a6%e5%ae%9e%e9%aa%8c%e4%bd%a0%e5%b0%b1%e6%89%93%e6%88%91%ef%bc%88%e4%ba%8c%ef%bc%89&amp;url=https%3a%2f%2fpoliview.github.io%2fpost%2fr%25E8%25AF%25AD%25E8%25A8%2580%25E4%25B8%25AD%25E5%25AE%259E%25E9%25AA%258C%25E6%2595%25B0%25E6%258D%25AE%25E7%259A%2584%25E5%259F%25BA%25E6%259C%25AC%25E6%2593%258D%25E4%25BD%259C%25E7%259C%258B%25E5%25AE%258C%25E8%25BF%2598%25E4%25B8%258D%25E4%25BC%259A%25E5%2581%259A%25E6%2594%25BF%25E6%25B2%25BB%25E5%25AD%25A6%25E5%25AE%259E%25E9%25AA%258C%25E4%25BD%25A0%25E5%25B0%25B1%25E6%2589%2593%25E6%2588%2591%25E4%25BA%258C%2f&amp;hashtags=%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96%2c%e5%ae%9e%e7%94%a8%e6%8a%80%e6%9c%af">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />

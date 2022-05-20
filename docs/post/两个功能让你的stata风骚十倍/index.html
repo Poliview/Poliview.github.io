@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>两个功能让你的Stata风骚十倍 | 政文观止Poliview</title>
-<meta name="keywords" content="#数据可视化, #实用技术">
+<meta name="keywords" content="数据可视化, 实用技术">
 <meta name="description" content="收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的界面越来越友善，操作难度一降再降">
 <meta name="author" content="政观编辑部">
 <link rel="canonical" href="https://poliview.github.io/post/%E4%B8%A4%E4%B8%AA%E5%8A%9F%E8%83%BD%E8%AE%A9%E4%BD%A0%E7%9A%84stata%E9%A3%8E%E9%AA%9A%E5%8D%81%E5%80%8D/">
@@ -96,7 +96,7 @@
   "name": "两个功能让你的Stata风骚十倍",
   "description": "收录于合集 #数据可视化 15 个 #实用技术 19 个 从小编的直观感受来看，Stata这几年过得并不好。 一方面，SPSS的界面越来越友善，操作难度一降再降",
   "keywords": [
-    "#数据可视化", "#实用技术"
+    "数据可视化", "实用技术"
   ],
   "articleBody": "收录于合集\n#数据可视化 15 个\n#实用技术 19 个\n从小编的直观感受来看，Stata这几年过得并不好。\n一方面，SPSS的界面越来越友善，操作难度一降再降，让零基础的用户爱不释手，甚至反过来帮助许多人学会了统计。另一方面，R语言的魅力逐渐在不同群体中扩散，强大到逆天的功能（尤其是数据可视化）让越来越多的文青变成了码农。相比之下，Stata似乎总是不那么让人满意，初学者对它望洋兴叹，老司机则对它不屑一顾。幸运的是，Stata有着良好的开放性，大神们源源不断地供应着package，而我们则可以简单粗暴地拿来弥补自己的手残。今天，小编就为大家介绍两个实用而方便的package，学会之后记得分享哦。（本文操作软件为Stata 14.0，示例文件为Stata自带的auto.dta，下文功能均可通过findit-install安装。）\nOutreg2\n多个模型排排坐\n曾经的小编还不会做回归，但paper中漂亮的回归表格还是让人心驰神往。特别是那些小星星，多好看啊！\n后来，小编终于学会了Stata，兴冲冲地按下了reg，却发现：\n这是什么？？？？\n我的星星呢！！！\n我的星星呢！！！\n我一定用了假的reg！\n后来，小编经过沉思，\n自认为找到了真相：\n他们的系数和星星是\n一个一个贴上去的！！\n然而，他们只是装了outreg2而已。\n有了这个杀器，回归结果就直观多了。举个栗子，我们对auto文件中的若干变量进行了一顿毫无逻辑的回归（仅作参考，请勿模仿），并调用了outreg2命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom trunk weight length turndisplacement gear_ratio foreign\noutreg2 using reg, word\n就可以得到如下结果：\n可见，用星星表示的显著性、括号内的标准误和表格下的R方都已经乖乖排好了，再也不需要复制粘贴这种naïve的操作了。\n当然，单个模型还体现不出outreg2的优势，下面展示并列输出的命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom\nest store model1\nreg price mpg rep78 headroom trunk weight length\nest store model2\nreg price mpg rep78 headroom trunk weight length turndisplacement gear_ratio foreign\nest store model3\noutreg2 [model1 model2 model3] using regs, word replace\n得到如下结果:\n可见，上方的回归表格非常完整，不需要修改就可以直接插入自己的paper中。此外，生成的文件名（本例中为“reg”和“regs”）和文件格式（本例中为word）都可以根据需要来变更。\n Coefplot\n回归系数可视化\n当小编终于学会上述的操作时，发现paper里好像又不流行回归表了。大牛们会画出一些有点有线的图。类似下图：\n这些图是怎么来的？又是什么含义呢？小编同样通过一个栗子来为大家说明。我们再次对auto文件进行毫无逻辑的回归，并调用coefplot命令：\nclear\nsysuse auto\nreg price mpg rep78 headroom trunk weight length turn\ncoefplot, drop(_cons) xline(0)\n结果如下：\n根据package中的说明信息，我们了解到，上图中蓝色的点为回归系数（未标准化），横线则为回归系数的置信区间。根据回归分析中βj=0的虚无假设，回归系数（含置信区间）在0点右侧表示影响为正，在0点左侧则表示影响为负，如果回归系数的置信区间穿越了0点，那么这个自变量对因变量的影响就不显著。可见，在本例中，大部分变量都不显著。\n与outreg2类似，coefplot也可以并列输出：\nreg price mpg rep78 headroom trunk weight length turn ifdisplacementest store low\nreg price mpg rep78 headroom trunk weight length turn if displacement=200\nest store high\ncoefplot high low,drop(_cons) xline(0)\n  以上就是小编为大家带来的介绍。这是政文观止创号以来第一篇纯技术贴，欢迎各位读者多多拍砖，也希望读者朋友能和政观分享你们学习计量工具过程中的心得与体会。\n政文观止编辑部\n微信扫一扫赞赏作者 __赞赏\n已喜欢，对作者说句悄悄话\n取消 __\n发送给作者 发送\n最多40字，当前共字\n 人赞赏\n上一页 1/3 下一页\n长按二维码向我转账\n受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。\n",
   "wordCount" : "1428",
@@ -378,8 +378,8 @@ foreign</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://poliview.github.io/tags/#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">#数据可视化</a></li>
-      <li><a href="https://poliview.github.io/tags/#%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/">#实用技术</a></li>
+      <li><a href="https://poliview.github.io/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化</a></li>
+      <li><a href="https://poliview.github.io/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/">实用技术</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://poliview.github.io/post/%E7%A7%91%E5%88%A9%E5%B0%94%E5%AF%B9%E8%AF%9Dkkv%E9%87%8D%E6%80%9D%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6/">
@@ -397,7 +397,7 @@ foreign</p>
 
 <div class="share-buttons">
     <a target="_blank" rel="noopener noreferrer" aria-label="share 两个功能让你的Stata风骚十倍 on twitter"
-        href="https://twitter.com/intent/tweet/?text=%e4%b8%a4%e4%b8%aa%e5%8a%9f%e8%83%bd%e8%ae%a9%e4%bd%a0%e7%9a%84Stata%e9%a3%8e%e9%aa%9a%e5%8d%81%e5%80%8d&amp;url=https%3a%2f%2fpoliview.github.io%2fpost%2f%25E4%25B8%25A4%25E4%25B8%25AA%25E5%258A%259F%25E8%2583%25BD%25E8%25AE%25A9%25E4%25BD%25A0%25E7%259A%2584stata%25E9%25A3%258E%25E9%25AA%259A%25E5%258D%2581%25E5%2580%258D%2f&amp;hashtags=%23%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96%2c%23%e5%ae%9e%e7%94%a8%e6%8a%80%e6%9c%af">
+        href="https://twitter.com/intent/tweet/?text=%e4%b8%a4%e4%b8%aa%e5%8a%9f%e8%83%bd%e8%ae%a9%e4%bd%a0%e7%9a%84Stata%e9%a3%8e%e9%aa%9a%e5%8d%81%e5%80%8d&amp;url=https%3a%2f%2fpoliview.github.io%2fpost%2f%25E4%25B8%25A4%25E4%25B8%25AA%25E5%258A%259F%25E8%2583%25BD%25E8%25AE%25A9%25E4%25BD%25A0%25E7%259A%2584stata%25E9%25A3%258E%25E9%25AA%259A%25E5%258D%2581%25E5%2580%258D%2f&amp;hashtags=%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96%2c%e5%ae%9e%e7%94%a8%e6%8a%80%e6%9c%af">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />

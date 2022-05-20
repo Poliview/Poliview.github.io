@@ -2,7 +2,7 @@
 title: DanielT.Gilbert：人天生是轻信的动物|政观编译
 date: 2021-04-14 09:00:22
 author: 政文观止
-tags: ['#政治心理']
+tags: ['政治心理']
 ---
 
 

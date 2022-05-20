@@ -2,7 +2,7 @@
 title: WilliamHurst|诊治中国政治研究
 date: 2018-08-27 10:43:33
 author: 政文观止
-tags: ['#比较政治学']
+tags: ['比较政治学']
 ---
 
 

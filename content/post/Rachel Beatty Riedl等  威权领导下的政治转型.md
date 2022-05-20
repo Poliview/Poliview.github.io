@@ -2,7 +2,7 @@
 title: RachelBeattyRiedl等|威权领导下的政治转型
 date: 2022-01-13 09:03:36
 author: 政文观止
-tags: ['#比较政治学']
+tags: ['比较政治学']
 ---
 
 

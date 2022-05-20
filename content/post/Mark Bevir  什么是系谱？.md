@@ -2,7 +2,7 @@
 title: MarkBevir|什么是系谱？
 date: 2021-07-29 09:00:00
 author: 政文观止
-tags: ['#方法论']
+tags: ['方法论']
 ---
 
 

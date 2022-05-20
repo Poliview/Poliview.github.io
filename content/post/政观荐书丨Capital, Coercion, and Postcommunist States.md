@@ -2,7 +2,7 @@
 title: 政观荐书丨Capital,Coercion,andPostcommunistStates
 date: 2020-12-21 09:00:00
 author: 政文观止
-tags: ['#民主与民主化', '#比较政治学', '#国家建构与国家发展']
+tags: ['民主与民主化', '比较政治学', '国家建构与国家发展']
 ---
 
 

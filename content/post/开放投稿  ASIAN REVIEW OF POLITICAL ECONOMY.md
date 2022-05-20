@@ -2,7 +2,7 @@
 title: 开放投稿|ASIANREVIEWOFPOLITICALECONOMY
 date: 2022-04-11 09:00:00
 author: 
-tags: ['#政观书讯']
+tags: ['政观书讯']
 ---
 
 

@@ -2,7 +2,7 @@
 title: 政观荐书|AdamPrzeworski：CrisesofDemocracy
 date: 2019-11-07 14:33:36
 author: 政文观止
-tags: ['#民主与民主化', '#比较政治学']
+tags: ['民主与民主化', '比较政治学']
 ---
 
 

@@ -2,7 +2,7 @@
 title: Manacorda&Tesei|解放的技术：手机与非洲的政治动员
 date: 2021-06-29 09:00:00
 author: 政文观止
-tags: ['#比较政治学']
+tags: ['比较政治学']
 ---
 
 

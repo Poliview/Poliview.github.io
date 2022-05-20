@@ -2,7 +2,7 @@
 title: LisaBlaydes&JustinGrimmer：对政治文化异质性的测量|政观编译
 date: 2020-08-14 09:00:00
 author: 政文观止
-tags: ['#比较政治学', '#政治文化']
+tags: ['比较政治学', '政治文化']
 ---
 
 
