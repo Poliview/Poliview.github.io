@@ -360,6 +360,24 @@ market）的广告投放情况。2006年选举的个体数据来自2006年协作
 </div>
 
   </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.5.8/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://poliview-twikoo.vercel.app",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+
 </article>
     </main>
     

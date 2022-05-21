@@ -300,6 +300,24 @@ equilibria），即假定政策在很长一段时间内保持均衡，直到受�
 </div>
 
   </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.5.8/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://poliview-twikoo.vercel.app",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+
 </article>
     </main>
     
